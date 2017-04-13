@@ -1,4 +1,4 @@
-#Easy Machine Learning
+# Easy Machine Learning
 
 ## What is Easy Machine Learning
 Machine learning algorithms have become the key components in many big data applications. However, the full potential of machine learning is still far from been realized because using machine learning algorithms is hard,
@@ -9,4 +9,9 @@ Graphical user interface is implemented for making users to create, configure, s
 * 1) Lowing the barriers of defining and executing machine learning tasks;
 * 2) Sharing and re-using the implementations of the algorithms, the job DAGs, and the experimental results;
 * 3) Seamlessly integrating the stand-alone algorithms as well as the distributed algorithms in one task.
-The system has been deployed as a machine learning service in Institute of Computing Technology, Chinese Academy of Sciences and can be access from the Internet.
+The system has been deployed as a machine learning service in Institute of Computing Technology, Chinese Academy of Sciences and can be access from the here.
+
+
+
+
+The system consists of three major components: 1) A distributed machine learning library which implements not only popular used machine learning algorithms, but also the algorithms for data pre/post-processing, data format transformation, feature generation, performance evaluation etc. These algorithms are mainly implemented based on Spark.  2) A GUI-based machine learning studio system which enable users to create, configure, submit, monitor, and sharing their machine learning process in a drag-and-drop manner. All of the algorithms in the machine learning library can be accessed and configured in the studio system. They are the key building blocks for constructing machine learning tasks. 3) A cloud service for executing the tasks. We build the service based on the open source big data platform of Hadoop and Spark. After receiving a task DAG from the GUI, each node will be automatically scheduled to run when all of its dependent data sources are ready. The algorithm corresponds to the node will scheduled to run on Linux, Spark, or Map-Reduce\cite, according to their implementation.

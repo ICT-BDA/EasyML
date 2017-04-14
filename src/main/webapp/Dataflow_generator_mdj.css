@@ -1,0 +1,237 @@
+body {
+    margin: 0px !important;
+    font-family: Arial, "黑体";
+}
+
+.scroll-style{
+	width:100%;
+	height:95%;
+	overflow:auto;
+	position:absolute;
+}
+
+.admin-content-style{
+	margin-top:3%;
+	margin-left:5%;
+	min-height:600px;
+}
+
+.admin-table{
+	width: 95%;
+	border-collapse: collapse !important;
+}
+.admin-table > thead > tr > th,
+.admin-table > tbody > tr > th,
+.admin-table > tfoot > tr > th,
+.admin-table > thead > tr > td,
+.admin-table > tbody > tr > td,
+.admin-table > tfoot > tr > td {
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+}
+.admin-table > thead > tr > th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #ddd;
+}
+
+.admin-page {
+  display: inline-block;
+  margin-top: 20px;
+  border-radius: 4px;
+}
+
+.admin-page > tbody > tr > td {
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  margin-left: -1px;
+  line-height: 1.42857143;
+  color: #0066cc;
+  text-decoration: none;
+  background-color: #fff;
+  font-size:16px;
+  cursor:pointer;
+}
+.admin-page > tbody > tr > td:focus,
+.admin-page > tbody > tr > td:hover{
+  color: #fff;
+  background-color: #4ccfc1;
+  font-size:16px;
+  text-decoration:none;
+  cursor:pointer;
+  border-radius: 4px;
+}
+
+.admin-page-selected {
+  color: #fff;
+  background-color: #4ccfc1;
+  font-size:16px;
+  text-decoration:none;
+  cursor:pointer;
+  border-radius: 4px;
+  width:30px;
+}
+
+.admin-user{
+	margin:3px;
+	cursor:pointer;
+}
+
+.admin-user-edit:before{
+	background: url(img/admin-edit.png) no-repeat 50% 50%;
+	background-size: 16px 16px;
+	content: '';
+    padding: 2px;
+    padding-left: 8px;
+    padding-right: 7px;
+    margin: 3px;
+}
+
+.admin-user-delete:before{
+	background: url(img/admin-delete.png) no-repeat 50% 50%;
+	background-size: 17px 17px;
+	content: '';
+    padding: 2px;
+    padding-left: 8px;
+    padding-right: 7px;
+    margin: 3px;
+}
+
+.account-error{
+	color: red;
+	padding: 9px;
+}
+
+.account-nav-selected{
+	color:#555;
+	cursor:default;
+	background-color:#eee;
+}
+
+.account-footer{
+	border-top:1px solid #ddd;
+	margin-top:10%;
+	margin-left:20%;
+	width:55%;
+
+}
+.account-footer p{
+	padding-top:10px;
+	font-size: 10pt;
+    line-height: 1.8em;
+    color: #585858;
+    font-family: Arial,"黑体";
+}
+.account-footer p a{
+	color:#fefefe;
+	text-decoration: underline;
+	
+}
+.account-footer p a:hover{
+	text-decoration: none;
+}
+
+.button-style{
+	width:70px;
+	height:30px;
+	background-color:#fff;
+	border:1px solid #ccc;
+	border-radius:4px;
+}
+.button-style:focus{
+	color:#fff;
+	background-color:#4CCFC1;
+	border-color:#97e7de;
+	cursor: pointer;
+}
+.button-style:hover{
+	color:#fff;
+	background-color:#4CCFC1;
+	border-color:#97e7de;
+	cursor: pointer;
+}
+
+.input-style {
+	display: block;
+	width: 250px;
+	height: 34px;
+	padding: 6px 12px;
+	margin-left:20px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #555;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+	-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+	-o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s
+}
+
+.input-style:focus {
+	border-color: #66afe9;
+	outline: 0;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6)
+}
+
+.input-style::-moz-placeholder {
+	color: #999;
+	opacity: 1
+}
+
+.input-style:-ms-input-placeholder {
+	color: #999
+}
+
+.input-style::-webkit-input-placeholder {
+	color: #999
+}
+
+.input-style[disabled], .form-control[readonly], fieldset[disabled] .input-style {
+	background-color: #eee;
+	opacity: 1
+}
+
+.input-style[disabled], fieldset[disabled] .input-style {
+	cursor: not-allowed
+}
+
+.admin-cate{
+	float:right;
+	margin-right: 150px;
+    margin-bottom: 8px;
+    margin-top: -27px;
+    cursor:pointer;
+}
+.admin-cate ul{
+	margin: 0px;
+	margin-left: 10px;
+	padding: 0px;
+}
+.admin-cate ul li {
+    display: inline-block;
+    vertical-align: middle;
+}
+.admin-cate ul li a{
+	text-decoration: none;
+	color: #000000;
+}
+.admin-cate-add:before{
+	content: '';
+    padding: 15px;
+	background: url(img/admin-add.png) no-repeat 50% 50%;
+	background-size: 20px 20px;
+}
+.admin-cate-add-input{
+	width: 150px;
+    margin: 5px;
+	height: 25px;
+    border: 1px solid #CCC;
+    border-radius: 3px;
+}

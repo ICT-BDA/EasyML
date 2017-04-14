@@ -1,0 +1,69 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui' xmlns:m="urn:import:com.anotherbigidea.flash.movie" xmlns:s="urn:import:bda.studio.shared.script">
+             
+<ui:style>
+	.pointer { cursor: pointer;}
+</ui:style>
+
+<g:HTMLPanel>
+    <div class="bda-header_bg">
+        <div class="bda-wrap">
+            <div class="bda-headerView">
+                <div class="bda-logo">
+                    <a href="index.html"><img src="img/EMLLogo.png" alt="" /></a>
+                </div>
+                <div class="bda-h_menu">
+                    <ul>
+                		<li><g:Anchor addStyleNames='{style.pointer}' ui:field="userProg">用户程序</g:Anchor></li>
+                		<li><g:Anchor addStyleNames='{style.pointer}' ui:field="userData">查看数据</g:Anchor></li>
+                		<li><g:Anchor addStyleNames='{style.pointer}' ui:field="userList">用户管理</g:Anchor></li>
+                		<li><g:Anchor addStyleNames='{style.pointer}' ui:field="category">目录管理</g:Anchor></li>
+                	</ul>
+				</div>
+               <div class="bda-h_menu bda-h_icon">
+                	<ul>
+                        <li><g:Anchor addStyleNames='{style.pointer}' ui:field="workStage">工作台</g:Anchor></li>
+                		<li><g:Anchor addStyleNames='{style.pointer}' ui:field="userAnchor">游客</g:Anchor></li>
+                		<li>
+                			<div class="bda-log-menu bda-logout-menu bda-active ">
+		                		<g:Anchor ui:field="logout"/>
+		                    </div>
+                		</li>
+                	</ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+	</div>
+		
+	<g:HTMLPanel ui:field="content" styleName="scroll-style">
+		<div class="admin-content-style">
+			<g:Grid cellPadding="1" cellSpacing="1" ui:field="progGrid" addStyleNames="admin-table table-striped table-hover"></g:Grid>
+			<g:Grid cellPadding="1" cellSpacing="1" ui:field="dataGrid" addStyleNames="admin-table table-striped table-hover"></g:Grid>
+			<g:Grid cellPadding="1" cellSpacing="1" ui:field="userGrid" addStyleNames="admin-table table-striped table-hover"></g:Grid>
+			<!-- <g:HTMLPanel ui:field="userGrid" width="100%">
+				<text title="冗余的无效用户：可选择删除" style="font-size:24px;cursor:default;">无效用户</text>
+				<g:Grid cellPadding="1" cellSpacing="1" width="100%" ui:field="invalidGrid"></g:Grid>
+				<text title="正常使用的有效用户：可删除，可修改操作权限" style="font-size:24px;cursor:default;">有效用户</text>
+				<g:Grid cellPadding="1" cellSpacing="1" width="100%" ui:field="validGrid"></g:Grid>
+			</g:HTMLPanel> -->
+			<g:HTMLPanel ui:field="catePanel">
+				<g:HTMLPanel styleName="admin-cate">
+				<ul>
+					<li><g:Anchor ui:field="dataAdd" styleName="admin-cate-add">数据</g:Anchor></li>
+					<li><g:Anchor ui:field="progAdd" styleName="admin-cate-add">程序</g:Anchor></li>
+				</ul>
+				</g:HTMLPanel>
+				<g:Grid cellPadding="1" cellSpacing="1" ui:field="cateGrid" addStyleNames="admin-table table-striped table-hover"></g:Grid>
+			</g:HTMLPanel>
+		</div>
+		<div style="text-align:center">
+		  	<g:Grid cellPadding="1" cellSpacing="1" ui:field="progPage" addStyleNames="admin-page"></g:Grid>
+		  	<g:Grid cellPadding="1" cellSpacing="1" ui:field="dataPage" addStyleNames="admin-page"></g:Grid>
+		  	<g:Grid cellPadding="1" cellSpacing="1" ui:field="userPage" addStyleNames="admin-page"></g:Grid>
+		  	<g:Grid cellPadding="1" cellSpacing="1" ui:field="catePage" addStyleNames="admin-page"></g:Grid>
+		</div>
+	</g:HTMLPanel>
+</g:HTMLPanel>
+</ui:UiBinder>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClassDiagram>
+    <Class
+        name="bda.studio.client.oozie.workflow.ActionNodeDef.FileEntry"
+        x="410" y="230">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class
+        name="bda.studio.client.oozie.workflow.DistributeActionNodeDef"
+        x="474" y="418">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="bda.studio.client.oozie.workflow.ActionNodeDef"/>
+    </Class>
+    <Class name="bda.studio.client.oozie.workflow.ActionNodeDef" x="598" y="273">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="bda.studio.client.oozie.workflow.NodeDef"/>
+    </Class>
+    <Class
+        name="bda.studio.client.oozie.workflow.ShellActionNodeDefVer2"
+        x="784" y="515">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="bda.studio.client.oozie.workflow.ShellActionNodeDef"/>
+        <Communication destinationClassName="bda.studio.client.oozie.workflow.ShellActionNodeDef"/>
+    </Class>
+    <Class name="bda.studio.client.controller.MonitorController" x="90" y="366">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="bda.studio.client.oozie.workflow.ActionNodeDef"/>
+        <Communication destinationClassName="bda.studio.client.oozie.workflow.NodeDefDAG"/>
+        <Communication destinationClassName="bda.studio.client.oozie.workflow.NodeDef"/>
+    </Class>
+    <Class name="bda.studio.client.oozie.workflow.NodeDefDAG" x="355" y="76">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="bda.studio.client.oozie.workflow.NodeDef"
+            endpointName="graph" kind="Simple"/>
+        <Communication destinationClassName="bda.studio.client.oozie.workflow.ActionNodeDef"/>
+        <Communication destinationClassName="bda.studio.client.oozie.workflow.NodeDef"/>
+    </Class>
+    <Class name="bda.studio.client.oozie.workflow.NodeDef" x="636" y="69">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="bda.studio.client.oozie.workflow.NodeDef"
+            endpointName="outNodes" kind="Simple"/>
+        <Association
+            destinationClassName="bda.studio.client.oozie.workflow.NodeDef"
+            endpointName="inNodes" kind="Simple"/>
+    </Class>
+    <Class name="bda.studio.client.oozie.workflow.ShellActionNodeDef"
+        x="794" y="428">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="bda.studio.client.oozie.workflow.ActionNodeDef"/>
+    </Class>
+</ClassDiagram>

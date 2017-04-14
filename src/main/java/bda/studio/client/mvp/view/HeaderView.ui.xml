@@ -1,0 +1,48 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             ui:generateFormat="com.google.gwt.i18n.rebind.format.PropertiesFormat"
+             ui:generateKeys="com.google.gwt.i18n.rebind.keygen.MD5KeyGenerator"
+             ui:generateLocales="default">
+             
+	<ui:style>
+    	.pointer { cursor: pointer;}
+	</ui:style>
+    <!-- start headerView -->
+	<g:HTMLPanel styleName="bda-header_bg">
+	    <div class="bda-wrap">
+			<div class="bda-headerView">
+        		<div class="bda-logo">
+                    <a href="index.html"><img src="img/EMLLogo.png" alt="" /></a>
+                </div>
+				<g:HTMLPanel styleName="bda-h_menu" ui:field="navMenu">
+                <!-- <div class="bda-h_menu"> -->
+                    <ul>
+                        <li><g:Anchor addStyleNames='{style.pointer}' ui:field="newJobAnchor">新建任务</g:Anchor></li>
+                        <li><g:Anchor addStyleNames='{style.pointer}' ui:field="progAnchor">上传程序</g:Anchor></li>
+                        <li><g:Anchor addStyleNames='{style.pointer}' ui:field="dataAnchor">上传数据</g:Anchor></li>
+                		<li><g:Anchor addStyleNames='{style.pointer}' ui:field="userProg">用户程序</g:Anchor></li>
+                		<li><g:Anchor addStyleNames='{style.pointer}' ui:field="userData">查看数据</g:Anchor></li>
+                		<li><g:Anchor addStyleNames='{style.pointer}' ui:field="userList">用户管理</g:Anchor></li>
+                        <li><g:Anchor addStyleNames='{style.pointer}' ui:field="notebook" href="/notebook"></g:Anchor></li>
+                	</ul>
+				</g:HTMLPanel>
+
+				<div class="bda-h_menu bda-h_icon">
+                	<ul>
+                        <li><g:Anchor addStyleNames='{style.pointer}' ui:field="workStage">工作台</g:Anchor></li>
+                        <li><g:Anchor addStyleNames='{style.pointer}' ui:field="adminAnchor">后台管理</g:Anchor></li>
+                		<li><g:Anchor addStyleNames='{style.pointer}' ui:field="userAnchor">游客</g:Anchor></li>
+                		<li>
+                			<div class="bda-log-menu bda-logout-menu bda-active ">
+		                		<g:Anchor ui:field="logout"/>
+		                    </div>
+                		</li>
+                	</ul>
+                </div>
+
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </g:HTMLPanel>
+</ui:UiBinder>

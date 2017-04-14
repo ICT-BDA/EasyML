@@ -1,0 +1,95 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui' xmlns:m="urn:import:com.anotherbigidea.flash.movie">
+             
+    <ui:style>
+    	.pointer { cursor: pointer;}
+    	.content{margin-top:50px;margin-left:40%;}
+		.panel{margin-bottom:20px;}
+    </ui:style>
+
+	<g:HTMLPanel>
+    	<div class="bda-header_bg">
+        	<div class="bda-wrap">
+                <div class="bda-logo">
+                    <a href="index.html"><img src="img/EMLLogo.png" alt="" /></a>
+                </div>
+                <div class="bda-h_menu bda-h_icon">
+                	<ul>
+                        <li><g:Anchor addStyleNames='{style.pointer}' ui:field="workStage">工作台</g:Anchor></li>
+                        <li><g:Anchor addStyleNames='{style.pointer}' ui:field="adminAnchor">后台管理</g:Anchor></li>
+                		<li><g:Anchor ui:field="userAnchor">Visitor</g:Anchor></li>
+                		<li>
+	                		<div class="bda-log-menu bda-logout-menu bda-active">
+		                        <g:Anchor ui:field="logout"/>
+		                    </div>
+                		</li>
+                	</ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+		</div>
+    	<g:HTMLPanel ui:field="container" styleName="scroll-style">
+		<div style="margin-left:20%;margin-top:50px;width:55%;">
+			<ul class="nav nav-tabs">
+				<li><g:Anchor ui:field="navInf" addStyleNames='{style.pointer}'>基本资料</g:Anchor></li>
+				<li><g:Anchor ui:field="navPwd" addStyleNames='{style.pointer}'>账号密码</g:Anchor></li>
+				<!-- <li><g:Anchor ui:field="navRsr">本人资源</g:Anchor></li> -->
+			</ul>
+		</div>
+		<div style="text-align:center;">
+			<g:HorizontalPanel addStyleNames='{style.content}'>
+				<g:VerticalPanel ui:field="infoPanel">
+					<g:Label ui:field="usernameLabel">用户名</g:Label>
+					<g:HorizontalPanel addStyleNames='{style.panel}'>
+						<g:TextBox ui:field="usrBox" addStyleNames="input-style"></g:TextBox>
+						<g:Label addStyleNames="account-error" ui:field="usrerrorLabel"></g:Label>
+					</g:HorizontalPanel>
+					<g:Label ui:field="companyLabel">工作单位</g:Label>
+					<g:HorizontalPanel addStyleNames='{style.panel}'>
+						<g:TextBox ui:field="cmpBox" addStyleNames="input-style"></g:TextBox>
+						<g:Label addStyleNames="account-error" ui:field="cmperrorLabel"></g:Label>
+					</g:HorizontalPanel>
+					<g:Label ui:field="positionLabel">职位</g:Label>
+					<g:HorizontalPanel addStyleNames='{style.panel}'>
+						<g:TextBox ui:field="pstBox" addStyleNames="input-style"></g:TextBox>
+						<g:Label addStyleNames="account-error" ui:field="psterrorLabel"></g:Label>
+					</g:HorizontalPanel>
+					<!-- <g:Label>注册时间</g:Label>
+					<g:Label addStyleNames='{style.panel}' ui:field="createtimeLabel"></g:Label> -->
+					<g:Button addStyleNames="button-style" ui:field="infoConfirmBtn">保存</g:Button>
+				</g:VerticalPanel>
+				<g:VerticalPanel ui:field="pwdPanel">
+					<!-- <g:Label>注册邮箱</g:Label>
+					<g:Label addStyleNames='{style.panel}' ui:field="emailLabel"></g:Label> -->
+					
+					<g:Label ui:field="oldpwdLabel">旧密码</g:Label>
+					<g:HorizontalPanel addStyleNames='{style.panel}'>
+						<g:PasswordTextBox addStyleNames="input-style" ui:field="oldPwd"></g:PasswordTextBox>
+						<g:Label addStyleNames="account-error" ui:field="olderrorLabel"></g:Label>
+					</g:HorizontalPanel>
+					<g:Label ui:field="newpwdLabel">新密码</g:Label>
+					<g:HorizontalPanel addStyleNames='{style.panel}'>
+						<g:PasswordTextBox addStyleNames="input-style" ui:field="newPwd"></g:PasswordTextBox>
+						<g:Label addStyleNames="account-error" ui:field="newerrorLabel"></g:Label>
+					</g:HorizontalPanel>
+					<g:Label ui:field="verpwdLabel">确认密码</g:Label>
+					<g:HorizontalPanel addStyleNames='{style.panel}'>
+						<g:PasswordTextBox addStyleNames="input-style" ui:field="verPwd"></g:PasswordTextBox>
+						<g:Label addStyleNames="account-error" ui:field="vererrorLabel"></g:Label>
+					</g:HorizontalPanel>
+					<g:Button addStyleNames="button-style" ui:field="pwdConfirmBtn">保存</g:Button>
+				</g:VerticalPanel>
+				<!-- <g:VerticalPanel ui:field="rsrPanel">
+					<g:Label>程序</g:Label><g:Label ui:field="prog"></g:Label>
+					<g:Label>数据</g:Label><g:Label ui:field="data"></g:Label>
+					<g:Label>任务</g:Label><g:Label ui:field="job"></g:Label>
+				</g:VerticalPanel> -->
+			</g:HorizontalPanel>
+			<div class="account-footer">
+				<p>@ All rights reserved | 中国科学院网络数据科学与技术重点实验室·大数据分析小组</p>
+			</div>
+		</div>
+		</g:HTMLPanel>
+    </g:HTMLPanel>
+</ui:UiBinder>

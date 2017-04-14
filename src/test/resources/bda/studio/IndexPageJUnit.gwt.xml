@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+  <!-- Inherit our applications main module.                      -->
+  <inherits name='bda.studio.IndexPage' />
+
+  <!-- Specify the path to any remote services.                   -->
+  <!--<servlet path="/IndexPage/greet" class="bda.studio.server.GreetingServiceImpl" />-->
+
+</module>

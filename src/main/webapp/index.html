@@ -1,0 +1,321 @@
+<!--
+Author: HouJP
+Author URL: houjp.com
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>BDA | Home</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="welcome/css/style.css" rel="stylesheet" type="text/css"
+	media="all" />
+<link rel="stylesheet" type="text/css" href="index.css"></link>
+<link rel="icon" type="image/png" href="favicon.ico">
+<script type="text/javascript" src="welcome/js/jquery.min.js"></script>
+<!-- start slider -->
+<link href="welcome/css/slider.css" rel="stylesheet" type="text/css"
+	media="all" />
+<script type="text/javascript"
+	src="welcome/js/modernizr.custom.28468.js"></script>
+<script type="text/javascript" src="welcome/js/jquery.cslider.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$('#da-slider').cslider();
+	});
+</script>
+<!-- Owl Carousel Assets -->
+<link href="welcome/css/owl.carousel.css" rel="stylesheet">
+<!-- Owl Carousel Assets -->
+<!-- Prettify -->
+<script src="welcome/js/owl.carousel.js"></script>
+<script>
+	$(document).ready(function() {
+
+		$("#owl-demo").owlCarousel({
+			items : 4,
+			lazyLoad : true,
+			autoPlay : true,
+			navigation : true,
+			navigationText : [ "", "" ],
+			rewindNav : false,
+			scrollPerPage : false,
+			pagination : false,
+			paginationNumbers : false,
+		});
+
+	});
+</script>
+<!-- //Owl Carousel Assets -->
+<!-- start top_js_button -->
+<script type="text/javascript" src="welcome/js/move-top.js"></script>
+<script type="text/javascript" src="welcome/js/easing.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event) {
+			event.preventDefault();
+			$('html,body').animate({
+				scrollTop : $(this.hash).offset().top
+			}, 1200);
+		});
+	});
+</script>
+
+<script type="text/javascript" src="IndexPage/IndexPage.nocache.js"></script>
+<link type="text/css" rel="stylesheet" href="Dataflow_generator.css">
+<link type="text/css" rel="stylesheet" href="Dataflow_generator_mdj.css">
+
+<!-- http://www.wise.io/product/support -->
+<link href="welcome/css/layout.min.css" rel="stylesheet">
+<link href="welcome/css/style.min.css" rel="stylesheet">
+
+</head>
+<body>
+	<!-- OPTIONAL: include this if you want history support -->
+	<iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1'
+		style="position: absolute; width: 0; height: 0; border: 0"></iframe>
+
+	<!-- RECOMMENDED if your web app will not function without JavaScript enabled -->
+	<noscript>
+		<div
+			style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
+			Your web browser must have JavaScript enabled in order for this
+			application to display correctly.</div>
+	</noscript>
+
+	<!-- start headerView -->
+	<div class="header_bg">
+		<div class="wrap">
+			<div class="headerView">
+				<div class="logo">
+					<a href="index.html"><img src="welcome/img/EMLLOGO_big.png" alt="" /></a>
+				</div>
+				
+				<!-- <div id="bda-accountemail" class="h_account">fortianyou@hello.com
+				</div> -->
+				<!-- <div class="wrap"> -->
+				<!-- <div class="header_sub"> -->
+				<div class="h_menu">
+					<ul>
+						<!-- <li class="active"><a href="BDAStudioDesigner.html">首页</a></li> -->
+						<li><a href="/api/#package"  target="_blank">API DOC</a></li>
+						<!-- <li><a href="BDAStudioDesigner.html">关于</a></li> -->
+					</ul>
+				</div>
+
+				<!-- <div class="h_menu_login">
+					<ul>
+						<li><a id="bda-logout" href="#logout">退出</a></li>
+						<li><a id="bda-login" href="#login">登录</a></li>
+					</ul>
+				</div> -->
+				<div id="bda-login" class="h_icon" style="display: none;">
+					<ul class="icon1 sub-icon1">
+						<li>
+							<div  class="bda-log-menu bda-login-menu" >
+								<a id="bda-login-a" href="#login">登录</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+
+				<div id="bda-logout" class="h_icon" style="display: none;">
+					<ul class="icon1 sub-icon1">
+						<li>
+							<div  class="bda-log-menu bda-logout-menu" >
+								<a id="bda-logout-a" href="#logout">退出</a>
+							</div>
+					</ul>
+				</div>
+				<a id="bda-workstage" class="h_account" href="BDAStudio.html" style="display:none;">STUDIO</a>
+				<a id="bda-account" class="h_account" href="#account" ></a>
+				
+				<div class="clear"></div>
+			</div>
+			<!-- </div> -->
+			<!-- </div> -->
+
+
+			<div class="clear"></div>
+		</div>
+	</div>
+
+	<div class="header_btm">
+
+		<!-- start slider -->
+		<div id="da-slider" class="da-slider">
+
+			<div class="da-slide da-slide-fromleft">
+				<h3>Easy Machine Learning</h3>
+				<p>
+					A large-scale data analysis platform developed by the Big Data Analysis Group of the Chinese Academy of Sciences (CAS), which is designed to help users reduce the threshold of large data analysis and solve the problem of transforming from raw data to analysis results. It includes two major components: distributed large data analysis function and algorithm library EasyML Lib and visual task construction and management platform EasyML Studio.These can greatly enhance the user's analysis and efficiency of large data analysis.
+				</p>
+				<div class="da-img">
+					<img src="img/home_1.fw.png" alt="image02" />
+				</div>
+			</div>
+
+			<div class="da-slide ">
+				<h3>EML Lib</h3>
+				<div class="txt">
+					<ol class="bda-custom-counter">
+						<li>Spark Distributed Computing Framework</li>
+						<li>Extensive ML algorithms are available</li>
+						<li>Standalone/data and model distributed</li>
+						<li>API interface/support command line running</li>
+					</ol>
+				</div>
+				<div class="da-img">
+					<img src="img/home_2.png" alt="image01" />
+				</div>
+			</div>
+
+			
+
+			<div class="da-slide">
+				<h3>EML Studio</h3>
+				<div class="txt">
+					<ol class="bda-custom-counter">
+						<li>Drag-and-drop graphical user interface</li>
+						<li>Standalone and Distribute mixed execution</li>
+						<li>Integrated rich system analysis program</li>
+						<li>Private/custom data and algorithm module</li>
+						<li>Program modules/application sharing</li>
+						<li>Large data analysis sample templates</li>
+					</ol>
+				</div>
+				<div class="da-img">
+					<img src="img/home_3.png" alt="image02" />
+				</div>
+			</div>
+
+			<nav class="da-arrows">
+				<span class="da-arrows-prev"></span> <span class="da-arrows-next"></span>
+			</nav>
+		</div>
+	</div>
+
+	<!-- start main -->
+	<div class="support" >
+		<div class="body-container-wrapper">
+		<div class="body-container container-fluid">
+
+
+		<div class="row-fluid-wrapper row-depth-1 row-number-1 ">
+       	<div class="row-fluid ">
+		<div class="span12 widget-span widget-type-cell panel features" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+            <div class="row-fluid-wrapper row-depth-1 row-number-1 ">
+            <div class="row-fluid ">
+                <div class="span12 widget-span widget-type-headerView " style="" data-widget-type="headerView" data-x="0" data-w="12">
+                    <div class="cell-wrapper layout-widget-wrapper">
+                        <!-- <span id="hs_cos_wrapper_module_143214575778711251" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_header" style="" data-hs-cos-general-type="widget" data-hs-cos-type="headerView"><h2>特性</h2></span> -->
+                    </div><!--end layout-widget-wrapper -->
+                </div><!--end widget-span -->
+            </div><!--end row-->
+            </div><!--end row-wrapper -->
+
+  			<div class="row-fluid-wrapper row-depth-1 row-number-2 ">
+            	<div class="row-fluid ">
+                	<div id="features">
+                		<div class="span12 widget-span widget-type-raw_jinja " style="" data-widget-type="raw_jinja" data-x="0" data-w="12">
+							<div class="row-fluid">
+  								<div class="feature span4">
+    								<div class="feature-icon"><img src="welcome/img/home_f1.jpg" class="hs-image-widget " style="width:80px;border-width:0px;border:0px;" width="180" align="center" alt="Feature 1" title="Feature 1"></div>
+    								<div class="feature-text"><p style="text-align: center;"><strong>Easy to use<br></strong>Provides a draggable graphical interface to help users quickly build analysis tasks.</p></div>
+  								</div>
+
+	  							<div class="feature span4">
+	    							<div class="feature-icon"><img src="welcome/img/home_f2.jpg" class="hs-image-widget " style="width:80px;border-width:0px;border:0px;" width="180" align="center" alt="Feature 2" title="Feature 2"></div>
+	    							<div class="feature-text"><p style="text-align: center;"><strong>Large scale scalable<br></strong>The internal algorithm is based on the Spark memory distributed computing framework, with powerful large data processing capabilities.</p></div>
+	  							</div>
+
+
+							  	<div class="feature span4">
+							    	<div class="feature-icon"><img src="welcome/img/home_f3.jpg" class="hs-image-widget " style="width:80px;border-width:0px;border:0px;" width="180" align="center" alt="Feature 3" title="Feature 3"></div>
+							    	<div class="feature-text"><p style="text-align: center;"><strong>In-depth analysis</strong>&nbsp;<br>With a rich machine learning algorithm, covering classification clustering, text analysis, personalized recommendation and so on.</p></div>
+							  	</div>
+							</div>
+						</div><!--end widget-span -->
+   					</div>
+            	</div><!--end row-->
+            </div><!--end row-wrapper -->
+
+			<div class="row-fluid-wrapper row-depth-1 row-number-2 ">
+            	<div class="row-fluid " >
+                	<div id="features" >
+                		<div class="span12 widget-span widget-type-raw_jinja " style="" data-widget-type="raw_jinja" data-x="0" data-w="12">
+							<div class="row-fluid" stype="">
+								
+								<div style="width:63%;margin:0 auto !important">
+								
+  								<div class="feature span4" style="width:47% !important" >
+    								<div class="feature-icon"><img src="welcome/img/home_f4.jpg" class="hs-image-widget " style="width:80px;border-width:0px;border:0px;" width="180" align="center" alt="Feature 1" title="Feature 1"></div>
+    								<div class="feature-text"><p style="text-align: center;"><strong>Mixed calculation<br></strong>Support Mapreduce, Spark and stand-alone parallel execution of the program, stand-alone / distributed algorithm.</p></div>
+  								</div>
+  								<div class="feature span4" style="width:47% !important">
+	    							<div class="feature-icon"><img src="welcome/img/home_f5.jpg" class="hs-image-widget " style="width:80px;border-width:0px;border:0px;" width="180" align="center" alt="Feature 2" title="Feature 2"></div>
+	    							<div class="feature-text"><p style="text-align: center;"><strong>Open and sharing<br></strong>Support the release and sharing of data, program modules and analysis tasks, and reduce the time cost of the user.</p></div>
+	  							</div>
+  								</div>
+
+	  							<!-- <div class="feature span4">
+	    							<div class="feature-icon"><img src="welcome/img/ico-tag.png" class="hs-image-widget " style="width:180px;border-width:0px;border:0px;" width="180" align="center" alt="Feature 2" title="Feature 2"></div>
+	    							<div class="feature-text"><p style="text-align: center;"><strong>Recommended Response<br></strong>Wise Support shows your agents the best template response to use based on the content of the ticket.</p></div>
+	  							</div> -->
+	  							
+							  <!-- 	<div class="feature span4">
+							    	<div class="feature-icon"><img src="welcome/img/ico-tasks.png" class="hs-image-widget " style="width:180px;border-width:0px;border:0px;" width="180" align="center" alt="Feature 3" title="Feature 3"></div>
+							    	<div class="feature-text"><p style="text-align: center;"><strong>Automated Reply</strong>&nbsp;<br>Wise Support automatically responds to tickets that you designate with the most appropriate template.</p></div>
+							  	</div> -->
+							</div>
+						</div><!--end widget-span -->
+   					</div>
+            	</div><!--end row-->
+            </div><!--end row-wrapper -->
+
+
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
+	<!-- </body> -->
+
+
+	<!-- start footer -->
+	<div class="footer_bg1">
+		<div class="wrap">
+			<div class="footer">
+				<!-- scroll_top_btn -->
+				<script type="text/javascript">
+					$(document).ready(function() {
+
+						var defaults = {
+							containerID : 'toTop', // fading element id
+							containerHoverID : 'toTopHover', // fading element hover id
+							scrollSpeed : 1200,
+							easingType : 'linear'
+						};
+
+						$().UItoTop({
+							easingType : 'easeOutQuart'
+						});
+
+					});
+				</script>
+				<a href="#" id="toTop" style="display: block;"><span
+					id="toTopHover" style="opacity: 1;"></span></a>
+				<!--end scroll_top_btn -->
+				<div class="copy">
+					<p>
+						&copy; All rights reserved | Key Laboratory of Network Data Science and Technology, Chinese Academy of Sciences · Large Data Analysis Group					</p>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

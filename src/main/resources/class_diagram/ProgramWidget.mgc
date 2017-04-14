@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClassDiagram>
+    <Class
+        name="bda.studio.client.ui.widget.program.CommonProgramWidget"
+        x="705" y="580">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="bda.studio.client.ui.widget.program.ProgramWidget"/>
+    </Class>
+    <Class name="bda.studio.client.ui.widget.program.CommonProgramConf"
+        x="190" y="109">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="bda.studio.client.ui.widget.program.ProgramConf"/>
+    </Class>
+    <Class
+        name="bda.studio.client.ui.widget.panel.SqlScriptParameterPanel"
+        x="387" y="684">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="bda.studio.client.ui.widget.panel.ParameterPanel"/>
+        <Association
+            destinationClassName="bda.studio.client.ui.widget.panel.FileConfigPanel"
+            endpointName="panel" kind="Simple"/>
+        <Association
+            destinationClassName="bda.studio.client.ui.widget.program.SqlProgramWidget"
+            endpointName="widget" kind="Simple"/>
+        <Communication destinationClassName="bda.studio.client.ui.widget.panel.FileConfigPanel"/>
+        <Communication destinationClassName="bda.studio.client.ui.widget.program.SqlScriptProgramConf"/>
+    </Class>
+    <Class
+        name="bda.studio.client.ui.widget.panel.SqlScriptFileConfigTable"
+        x="82" y="554">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="bda.studio.client.ui.widget.program.SqlProgramWidget"
+            endpointName="widget" kind="Simple"/>
+        <Communication destinationClassName="bda.studio.client.ui.widget.program.SqlProgramWidget"/>
+    </Class>
+    <Class name="bda.studio.client.ui.widget.program.ScriptProgramConf"
+        x="13" y="113">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="bda.studio.client.ui.widget.program.ProgramConf"/>
+    </Class>
+    <Class
+        name="bda.studio.client.ui.widget.program.SqlScriptProgramConf"
+        x="359" y="110">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="bda.studio.client.ui.widget.program.ProgramConf"/>
+    </Class>
+    <Class
+        name="bda.studio.client.ui.widget.program.ScriptProgramWidget"
+        x="705" y="481">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="bda.studio.client.ui.widget.program.ProgramWidget"/>
+        <Communication destinationClassName="bda.studio.client.ui.widget.program.ProgramWidget"/>
+        <Communication destinationClassName="bda.studio.client.ui.widget.panel.ScriptParameterPanel"/>
+    </Class>
+    <Class
+        name="bda.studio.client.ui.widget.program.ProgramWidget.Model"
+        x="744" y="143">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class
+        name="bda.studio.client.ui.widget.panel.InSqlScriptFileConfigTable"
+        x="192" y="434">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="bda.studio.client.ui.widget.panel.SqlScriptFileConfigTable"/>
+        <Communication destinationClassName="bda.studio.client.ui.widget.panel.SqlScriptFileConfigTable"/>
+        <Communication destinationClassName="bda.studio.client.ui.widget.BaseWidget"/>
+    </Class>
+    <Class name="bda.studio.client.ui.widget.program.ProgramWidget"
+        x="370" y="211">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="bda.studio.client.ui.widget.program.ProgramWidget.Model"
+            endpointName="model" kind="Simple"/>
+        <Association
+            destinationClassName="bda.studio.client.ui.widget.program.ProgramConf"
+            endpointName="programConf" kind="Simple"/>
+        <Association
+            destinationClassName="bda.studio.client.ui.widget.panel.ParameterPanel"
+            endpointName="parameterPanel" kind="Simple"/>
+        <Communication destinationClassName="bda.studio.client.ui.widget.program.ProgramConf"/>
+    </Class>
+    <Class
+        name="bda.studio.client.ui.widget.panel.OutSqlScriptFileConfigTable"
+        x="12" y="435">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="bda.studio.client.ui.widget.panel.SqlScriptFileConfigTable"/>
+        <Communication destinationClassName="bda.studio.client.ui.widget.panel.SqlScriptFileConfigTable"/>
+        <Communication destinationClassName="bda.studio.client.ui.widget.BaseWidget"/>
+    </Class>
+    <Class name="bda.studio.client.ui.widget.program.SqlProgramWidget"
+        x="703" y="683">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="bda.studio.client.ui.widget.program.ProgramWidget"/>
+        <Communication destinationClassName="bda.studio.client.ui.widget.program.ProgramWidget"/>
+        <Communication destinationClassName="bda.studio.client.ui.widget.panel.SqlScriptParameterPanel"/>
+        <Communication destinationClassName="bda.studio.client.ui.widget.panel.SqlScriptFileConfigTable"/>
+    </Class>
+    <Class name="bda.studio.client.ui.widget.panel.CommonParameterPanel"
+        x="379" y="580">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="bda.studio.client.ui.widget.panel.ParameterPanel"/>
+        <Association
+            destinationClassName="bda.studio.client.ui.widget.program.CommonProgramWidget"
+            endpointName="widget" kind="Simple"/>
+        <Communication destinationClassName="bda.studio.client.ui.widget.program.CommonProgramConf"/>
+        <Communication destinationClassName="bda.studio.client.ui.widget.panel.ParameterPanel"/>
+    </Class>
+    <Class name="bda.studio.client.ui.widget.program.ProgramConf"
+        x="180" y="293">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="bda.studio.client.ui.widget.panel.ParameterPanel"
+        x="714" y="256">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="bda.studio.client.ui.widget.panel.ScriptParameterPanel"
+        x="394" y="464">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="bda.studio.client.ui.widget.panel.ParameterPanel"/>
+        <Association
+            destinationClassName="bda.studio.client.ui.widget.program.ScriptProgramWidget"
+            endpointName="widget" kind="Simple"/>
+        <Communication destinationClassName="bda.studio.client.ui.widget.program.ScriptProgramConf"/>
+        <Communication destinationClassName="bda.studio.client.ui.widget.panel.ParameterPanel"/>
+    </Class>
+    <Class name="bda.studio.client.ui.widget.panel.FileConfigPanel"
+        x="217" y="700">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="bda.studio.client.ui.widget.panel.SqlScriptFileConfigTable"
+            endpointName="outputConfigTable" kind="Simple"/>
+        <Association
+            destinationClassName="bda.studio.client.ui.widget.panel.SqlScriptFileConfigTable"
+            endpointName="inputConfigTable" kind="Simple">
+            <Point x="266" y="588"/>
+        </Association>
+    </Class>
+</ClassDiagram>

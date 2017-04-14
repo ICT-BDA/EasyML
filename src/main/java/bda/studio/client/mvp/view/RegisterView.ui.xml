@@ -1,0 +1,58 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui' xmlns:m="urn:import:com.anotherbigidea.flash.movie">
+             
+    <ui:style>
+    	.pointer { cursor: pointer;}
+    	.content{width:600px;height:500px;text-align:center;margin-left:525px;margin-top:60px;}
+		.panel{margin-bottom:20px;}
+    </ui:style>
+
+    <g:HTMLPanel ui:field="container">
+    	<div class="bda-header_bg">
+        	<div class="bda-wrap">
+                <div class="bda-logo">
+                    <a href="index.html"><img src="img/EMLLogo.png" alt="" /></a>
+                </div>
+                <div class="bda-h_menu bda-h_icon">
+                	<ul><li><g:Anchor ui:field="register">用户注册</g:Anchor></li></ul>
+                </div>
+                
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+		</div>
+		
+		<g:VerticalPanel addStyleNames='{style.content}'>
+			<g:Label ui:field="registerUsr">用户名</g:Label>
+			<g:HorizontalPanel addStyleNames='{style.panel}'>
+				<g:TextBox ui:field="usrBox" addStyleNames="input-style"></g:TextBox>
+				<g:Label addStyleNames="account-error" ui:field="usrerrorLabel"></g:Label>
+			</g:HorizontalPanel>
+			<g:Label ui:field="registerPwd">输入密码</g:Label>
+			<g:HorizontalPanel addStyleNames='{style.panel}'>
+				<g:PasswordTextBox ui:field="pwdBox" addStyleNames="input-style"></g:PasswordTextBox>
+				<g:Label addStyleNames="account-error" ui:field="pwderrorLabel"></g:Label>
+			</g:HorizontalPanel>
+			<g:Label ui:field="registerVer">确认密码</g:Label>
+			<g:HorizontalPanel addStyleNames='{style.panel}'>
+				<g:PasswordTextBox ui:field="verBox" addStyleNames="input-style"></g:PasswordTextBox>
+				<g:Label addStyleNames="account-error" ui:field="vererrorLabel"></g:Label>
+			</g:HorizontalPanel>
+			<g:Label ui:field="registerCmp">工作单位</g:Label>
+			<g:HorizontalPanel addStyleNames='{style.panel}'>
+				<g:TextBox ui:field="cmpBox" addStyleNames="input-style"></g:TextBox>
+				<g:Label addStyleNames="account-error" ui:field="cmperrorLabel"></g:Label>
+			</g:HorizontalPanel>
+			<g:Label ui:field="registerPst">职位</g:Label>
+			<g:HorizontalPanel addStyleNames='{style.panel}'>
+				<g:TextBox ui:field="pstBox" addStyleNames="input-style"></g:TextBox>
+				<g:Label addStyleNames="account-error" ui:field="psterrorLabel"></g:Label>
+			</g:HorizontalPanel>
+			<g:Button addStyleNames="button-style" ui:field="confirmBtn">保存</g:Button>
+		</g:VerticalPanel>
+		<div class="account-footer">
+			<p>@ All rights reserved | 中国科学院网络数据科学与技术重点实验室·大数据分析小组</p>
+		</div>
+		<div class="clear"></div>
+    </g:HTMLPanel>
+</ui:UiBinder>

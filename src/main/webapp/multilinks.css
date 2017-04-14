@@ -1,0 +1,77 @@
+.basewidget{
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	background-image: linear-gradient(to top, #DBD4F1, #ffffff);
+	padding: 5px;
+	font-family: Arial, "黑体";
+	color: #000000;
+	text-align: center;
+	outline: 0px solid #87CEFA;
+	margin: 3px;
+	opacity: 0.7;
+	overflow: hidden;
+	width: auto;
+	height: 30px;
+}
+.basewidget-io{
+	-webkit-border-radius: 1px;
+	-moz-border-radius: 1px;
+	border-radius: 1px;
+	-webkit-transform: skew(-20deg);
+	-moz-transform: skew(-20deg);
+	-o-transform: skew(-20deg);
+	transform: skew(-20deg);
+	background-image: linear-gradient(to top, #DBD4F1, #ffffff);
+	padding: 5px;
+	font-family: Arial, "黑体";
+	color: #000000;
+	text-align: center;
+	outline: 0px solid #87CEFA;
+	margin: 3px;
+	opacity: 0.7;
+	overflow: hidden;
+	width: auto;
+	height: 30px;
+}
+.basefocuspanel{
+	outline: 0px solid #87CEFA;
+	color: #000000;
+	height: 40px;
+	width: auto;
+}
+.selected{
+	border: 2px solid #87CEFA;
+	opacity: 1
+}
+.deselected{
+	border: 1px solid #c0c0c0;
+}
+.dragdrop-selected .basewidget{
+	outline: 1px dashed #87CEFA;
+	opacity: 1
+}
+
+.dragdrop-selected .selected{
+	outline: 1px dashed #87CEFA;
+	opacity: 1
+}
+.dragdrop-selected{
+	opacity: 1
+}
+.superwidget{
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	background-image: linear-gradient(to top, #DBD4F1, #ffffff);
+	padding: 5px;
+	font-family: Arial, "黑体";
+	color: #000000;
+	text-align: center;
+	outline: 0px solid #87CEFA;
+	margin: 3px;
+	opacity: 0.7;
+	overflow: hidden;
+	width: auto;
+	height: 50px;
+}

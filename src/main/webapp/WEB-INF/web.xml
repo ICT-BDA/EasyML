@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+              http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5"
+         xmlns="http://java.sun.com/xml/ns/javaee">
+
+  <!-- Servlets -->
+  <servlet>
+    <servlet-name>remoteLoggingServiceImpl</servlet-name>
+    <servlet-class>com.google.gwt.libideas.logging.server.RemoteLoggingServiceImpl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>remoteLoggingServiceImpl</servlet-name>
+    <url-pattern>/BDAStudioDesigner/logging</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>remoteLoggingServiceImpl</servlet-name>
+    <url-pattern>/BDAStudio/logging</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>accountservice</servlet-name>
+    <servlet-class>bda.studio.server.rpc.AccountServiceImpl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>accountservice</servlet-name>
+    <url-pattern>/IndexPage/accountservice</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>accountservice</servlet-name>
+    <url-pattern>/BDAStudio/accountservice</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>programservice</servlet-name>
+    <servlet-class>bda.studio.server.rpc.ProgramServiceImpl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>programservice</servlet-name>
+    <url-pattern>/BDAStudio/programservice</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>programservice</servlet-name>
+    <url-pattern>/IndexPage/programservice</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>datasetservice</servlet-name>
+    <servlet-class>bda.studio.server.rpc.DatasetServiceImpl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>datasetservice</servlet-name>
+    <url-pattern>/BDAStudio/datasetservice</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>datasetservice</servlet-name>
+    <url-pattern>/IndexPage/datasetservice</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>categoryservice</servlet-name>
+    <servlet-class>bda.studio.server.rpc.CategoryServiceImpl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>categoryservice</servlet-name>
+    <url-pattern>/BDAStudio/categoryservice</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>categoryservice</servlet-name>
+    <url-pattern>/IndexPage/categoryservice</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>FileUploadServlet</servlet-name>
+    <servlet-class>bda.studio.server.file.FileUploadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FileUploadServlet</servlet-name>
+    <url-pattern>/BDAStudioDesigner/fileupload</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FileUploadServlet</servlet-name>
+    <url-pattern>/BDAStudio/fileupload</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>FileDownloadServlet</servlet-name>
+    <servlet-class>bda.studio.server.file.FileDownloadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FileDownloadServlet</servlet-name>
+    <url-pattern>/BDAStudioMonitor/filedownload</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FileDownloadServlet</servlet-name>
+    <url-pattern>/BDAStudio/filedownload</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>jobservice</servlet-name>
+    <servlet-class>bda.studio.server.rpc.JobServiceImpl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>jobservice</servlet-name>
+    <url-pattern>/BDAStudio/jobservice</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>jobservice</servlet-name>
+    <url-pattern>/IndexPage/jobservice</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>mailService</servlet-name>
+    <servlet-class>bda.studio.server.rpc.MailServiceImpl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>mailService</servlet-name>
+    <url-pattern>/BDAStudio/mailService</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>mailService</servlet-name>
+    <url-pattern>/IndexPage/mailService</url-pattern>
+  </servlet-mapping>
+
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+
+</web-app>
+

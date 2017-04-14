@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config>
+	<OOZIE_CLIENT>http://hadoop-master:11000/oozie</OOZIE_CLIENT>
+	<NAME_NODE>hdfs://hadoop-master:8020</NAME_NODE>
+	<JOB_TRACKER>hadoop-master:8050</JOB_TRACKER>
+	<QUEUE_NAME>default</QUEUE_NAME>
+	<APP_WORKSPACE>/BDA/oozie</APP_WORKSPACE>
+	<DRAFT_PATH>/BDA/draft</DRAFT_PATH>
+	<DATASET_PATH>/BDA/Data</DATASET_PATH>
+	<MODULE_PATH>/BDA/Modules</MODULE_PATH>
+	<DB_URL>jdbc:mysql://mysql:3306/studio?useUnicode=true&amp;characterEncoding=UTF-8</DB_URL>
+	<DB_USER>root</DB_USER>
+	<DB_PASSWORD>111111</DB_PASSWORD>
+	<DB_TIMEOUT>100</DB_TIMEOUT>
+	<MAIL_HOST>mail.software.ict.ac.cn</MAIL_HOST>
+	<MAIL_USERNAME>bda@software.ict.ac.cn</MAIL_USERNAME>
+	<MAIL_PASSWORD>bda@ict</MAIL_PASSWORD>
+</config>

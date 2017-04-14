@@ -1,0 +1,13 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+    xmlns:g='urn:import:com.google.gwt.user.client.ui'
+    xmlns:ideas='urn:import:com.google.gwt.widgetideas.graphics.client'>
+  <g:AbsolutePanel>
+    <g:Label ui:field='label' styleName='filebackground' pixelSize='30,42'/>
+    <g:at left='0' top='0'>
+    	<ideas:GWTCanvas ui:field='canvas' pixelSize='30,45' coordSize='30,45' />
+    </g:at>
+    <g:at left='30' top='0'>
+    	<g:Label ui:field='nameLabel' width='100%'></g:Label>
+    </g:at>
+  </g:AbsolutePanel>
+</ui:UiBinder>

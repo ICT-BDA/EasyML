@@ -1,0 +1,49 @@
+
+.sp{
+	background-color: #f9f9f9;
+}
+
+.sp .gwt-TabBar{
+	background: #f9f9f9  !important;
+    background-repeat: repeat-x;
+    color: black !important;
+    width:100%;
+    font-weight: bold;
+}
+
+.sp .gwt-TabPanelBottom{
+	border: 0px;
+}
+
+.sp .gwt-StackLayoutPanel .gwt-StackLayoutPanelContent{
+	border: 0px !important;
+	padding: 0px !important;
+}
+
+.sp .gwt-StackLayoutPanelContent{
+	border: 0px !important;
+}
+
+.sp .gwt-TabBar .gwt-TabBarItem{
+	background: #f9f9f9;
+	color: black;
+	font-weight: bold;
+}
+.sp .gwt-TabBar .gwt-TabBarItem-selected{
+	cursor: default;
+    background: #123456;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.sp .gwt-TabPanelBottom{
+	border-top: 2px solid #123456 !important;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.gwt-SuggestBox {
+	color: dodgerblue;
+	width: 180px;
+	height: 20px;
+}

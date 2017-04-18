@@ -4,11 +4,11 @@
 
 	<!-- POM file generated with GWT webAppCreator -->
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>bda</groupId>
-	<artifactId>studio</artifactId>
+	<groupId>eml</groupId>
+	<artifactId>EMLstudio</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>GWT Maven Archetype</name>
+	<version>0.1</version>
+	<name>EasyML</name>
 
 	<properties>
 		<!-- Convenience property to set the GWT version -->
@@ -27,7 +27,7 @@
 		<repository>
 			<id>nexus</id>
 			<name>Team Nexus Repository</name>
-			<url>http://bda01:8000/nexus/content/groups/public</url>
+			<url>http://10.60.0.50:8000/nexus/content/groups/public</url>
 		</repository>
 		<repository>
 			<id>central-repos</id>
@@ -39,7 +39,7 @@
 		<pluginRepository>
 			<id>nexus</id>
 			<name>Team Nexus Repository</name>
-			<url>http://bda01:8000/nexus/content/groups/public</url>
+			<url>http://10.60.0.50:8000/nexus/content/groups/public</url>
 		</pluginRepository>
 	</pluginRepositories>
 	<dependencies>

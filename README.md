@@ -21,8 +21,11 @@ The system consists of three major components: 1) A distributed machine learning
 
 ## How to involve in our project
 
-Pull all project and prepare some necessary environments and a kind of development utilities. Follows the step in Quick-start, and you can create our webapp. You can use our offical account to login.
+Pull all project and prepare some necessary environments and a kind of development utilities. Follows the step in Quick-start, and you can create our webapp.
 
 
 ## How to use Easy Machine Learning Studio 
+After you have ran Easy ML，You can login via `http://localhost:8888/EMLStudio,html`with our official account `bdaict@hotmail.com` and password `bdaict`. For the best user experience, it is recommended to use Chrome.
+
+[登录图]
 

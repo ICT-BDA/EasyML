@@ -1,5 +1,5 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
-             xmlns:g='urn:import:com.google.gwt.user.client.ui' xmlns:m="urn:import:com.anotherbigidea.flash.movie" xmlns:s="urn:import:bda.studio.shared.script">
+             xmlns:g='urn:import:com.google.gwt.user.client.ui' xmlns:m="urn:import:com.anotherbigidea.flash.movie" xmlns:s="urn:import:eml.studio.shared.script">
              
 <ui:style>
 	.pointer { cursor: pointer;}
@@ -14,16 +14,16 @@
                 </div>
                 <div class="bda-h_menu">
                     <ul>
-                		<li><g:Anchor addStyleNames='{style.pointer}' ui:field="userProg">用户程序</g:Anchor></li>
-                		<li><g:Anchor addStyleNames='{style.pointer}' ui:field="userData">查看数据</g:Anchor></li>
-                		<li><g:Anchor addStyleNames='{style.pointer}' ui:field="userList">用户管理</g:Anchor></li>
-                		<li><g:Anchor addStyleNames='{style.pointer}' ui:field="category">目录管理</g:Anchor></li>
+                		<li><g:Anchor addStyleNames='{style.pointer}' ui:field="userProg">userProg</g:Anchor></li>
+                		<li><g:Anchor addStyleNames='{style.pointer}' ui:field="userData">userData</g:Anchor></li>
+                		<li><g:Anchor addStyleNames='{style.pointer}' ui:field="userList">userList</g:Anchor></li>
+                		<li><g:Anchor addStyleNames='{style.pointer}' ui:field="category">category</g:Anchor></li>
                 	</ul>
 				</div>
                <div class="bda-h_menu bda-h_icon">
                 	<ul>
-                        <li><g:Anchor addStyleNames='{style.pointer}' ui:field="workStage">工作台</g:Anchor></li>
-                		<li><g:Anchor addStyleNames='{style.pointer}' ui:field="userAnchor">游客</g:Anchor></li>
+                        <li><g:Anchor addStyleNames='{style.pointer}' ui:field="workStage">workStage</g:Anchor></li>
+                		<li><g:Anchor addStyleNames='{style.pointer}' ui:field="userAnchor">Visiter</g:Anchor></li>
                 		<li>
                 			<div class="bda-log-menu bda-logout-menu bda-active ">
 		                		<g:Anchor ui:field="logout"/>

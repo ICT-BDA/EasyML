@@ -123,7 +123,7 @@ public class OozieProgramNode extends OozieNode implements IsSerializable{
 		for(String aliases: input_aliases)
 			sb.append("  <input_aliases>" + aliases + "</input_aliases>\n");
 		for(String aliases: output_aliases)
-			sb.append("  <output_aliases>" + aliases + "</output_aliases>\n");
+				sb.append("  <output_aliases>" + aliases + "</output_aliases>\n");
 
 		if( getScript() != null ){
 			sb.append("  <incount>" + getInputFileCount() + "</incount>\n");

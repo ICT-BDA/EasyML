@@ -9,7 +9,6 @@ Graphical user interface is implemented for making users to create, configure, s
 * 1) Lowing the barriers of defining and executing machine learning tasks;
 * 2) Sharing and re-using the implementations of the algorithms, the job DAGs, and the experimental results;
 * 3) Seamlessly integrating the stand-alone algorithms as well as the distributed algorithms in one task.
-The system has been deployed as a machine learning service in Institute of Computing Technology, Chinese Academy of Sciences and can be access from the here.
 
 
 
@@ -19,4 +18,11 @@ The system consists of three major components: 1) A distributed machine learning
 <div align=center>
 <img src="./img/LR_DAG.png" width="400" height="300" alt="An example dataflow DAG"/>
 </div>
+
+## How to involve in our project
+
+Pull all project and prepare some necessary environments and a kind of development utilities. Follows the step in Quick-start, and you can create our webapp. You can use our offical account to login.
+
+
+## How to use Easy Machine Learning Studio 
 

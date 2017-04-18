@@ -12,16 +12,16 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>remoteLoggingServiceImpl</servlet-name>
-    <url-pattern>/BDAStudioDesigner/logging</url-pattern>
+    <url-pattern>/EMLStudioDesigner/logging</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>remoteLoggingServiceImpl</servlet-name>
-    <url-pattern>/BDAStudio/logging</url-pattern>
+    <url-pattern>/EMLStudio/logging</url-pattern>
   </servlet-mapping>
 
   <servlet>
     <servlet-name>accountservice</servlet-name>
-    <servlet-class>bda.studio.server.rpc.AccountServiceImpl</servlet-class>
+    <servlet-class>eml.studio.server.rpc.AccountServiceImpl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>accountservice</servlet-name>
@@ -29,16 +29,16 @@
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>accountservice</servlet-name>
-    <url-pattern>/BDAStudio/accountservice</url-pattern>
+    <url-pattern>/EMLStudio/accountservice</url-pattern>
   </servlet-mapping>
 
   <servlet>
     <servlet-name>programservice</servlet-name>
-    <servlet-class>bda.studio.server.rpc.ProgramServiceImpl</servlet-class>
+    <servlet-class>eml.studio.server.rpc.ProgramServiceImpl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>programservice</servlet-name>
-    <url-pattern>/BDAStudio/programservice</url-pattern>
+    <url-pattern>/EMLStudio/programservice</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>programservice</servlet-name>
@@ -47,11 +47,11 @@
 
   <servlet>
     <servlet-name>datasetservice</servlet-name>
-    <servlet-class>bda.studio.server.rpc.DatasetServiceImpl</servlet-class>
+    <servlet-class>eml.studio.server.rpc.DatasetServiceImpl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>datasetservice</servlet-name>
-    <url-pattern>/BDAStudio/datasetservice</url-pattern>
+    <url-pattern>/EMLStudio/datasetservice</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>datasetservice</servlet-name>
@@ -60,11 +60,11 @@
 
   <servlet>
     <servlet-name>categoryservice</servlet-name>
-    <servlet-class>bda.studio.server.rpc.CategoryServiceImpl</servlet-class>
+    <servlet-class>eml.studio.server.rpc.CategoryServiceImpl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>categoryservice</servlet-name>
-    <url-pattern>/BDAStudio/categoryservice</url-pattern>
+    <url-pattern>/EMLStudio/categoryservice</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>categoryservice</servlet-name>
@@ -73,36 +73,36 @@
 
   <servlet>
     <servlet-name>FileUploadServlet</servlet-name>
-    <servlet-class>bda.studio.server.file.FileUploadServlet</servlet-class>
+    <servlet-class>eml.studio.server.file.FileUploadServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>FileUploadServlet</servlet-name>
-    <url-pattern>/BDAStudioDesigner/fileupload</url-pattern>
+    <url-pattern>/EMLStudioDesigner/fileupload</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>FileUploadServlet</servlet-name>
-    <url-pattern>/BDAStudio/fileupload</url-pattern>
+    <url-pattern>/EMLStudio/fileupload</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>FileDownloadServlet</servlet-name>
-    <servlet-class>bda.studio.server.file.FileDownloadServlet</servlet-class>
+    <servlet-class>eml.studio.server.file.FileDownloadServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>FileDownloadServlet</servlet-name>
-    <url-pattern>/BDAStudioMonitor/filedownload</url-pattern>
+    <url-pattern>/EMLStudioMonitor/filedownload</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>FileDownloadServlet</servlet-name>
-    <url-pattern>/BDAStudio/filedownload</url-pattern>
+    <url-pattern>/EMLStudio/filedownload</url-pattern>
   </servlet-mapping>
 
   <servlet>
     <servlet-name>jobservice</servlet-name>
-    <servlet-class>bda.studio.server.rpc.JobServiceImpl</servlet-class>
+    <servlet-class>eml.studio.server.rpc.JobServiceImpl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>jobservice</servlet-name>
-    <url-pattern>/BDAStudio/jobservice</url-pattern>
+    <url-pattern>/EMLStudio/jobservice</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>jobservice</servlet-name>
@@ -111,11 +111,11 @@
 
   <servlet>
     <servlet-name>mailService</servlet-name>
-    <servlet-class>bda.studio.server.rpc.MailServiceImpl</servlet-class>
+    <servlet-class>eml.studio.server.rpc.MailServiceImpl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>mailService</servlet-name>
-    <url-pattern>/BDAStudio/mailService</url-pattern>
+    <url-pattern>/EMLStudio/mailService</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>mailService</servlet-name>

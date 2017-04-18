@@ -295,7 +295,7 @@ Dynamic libraries:
 
 VM Arguments:
 jvm_args: -Xmx512m -Dfile.encoding=UTF-8 
-java_command: com.google.gwt.dev.DevMode -superDevMode -startupUrl BDAStudioMonitor.html -war D:\BDA\dataflow-generator\war -remoteUI 49310:410743721129 -logLevel INFO -codeServerPort 9997 -port 8888 cn.ac.ict.bda.diagram.Diagram cn.ac.ict.bda.tool.dfgen.BDAStudioMonitor cn.ac.ict.bda.tool.dfgen.BDAStudioDesigner cn.ac.ict.bda.tool.dfgen.IndexPage
+java_command: com.google.gwt.dev.DevMode -superDevMode -startupUrl EMLStudioMonitor.html -war D:\EML\dataflow-generator\war -remoteUI 49310:410743721129 -logLevel INFO -codeServerPort 9997 -port 8888 cn.ac.ict.bda.diagram.Diagram cn.ac.ict.bda.tool.dfgen.EMLStudioMonitor cn.ac.ict.bda.tool.dfgen.EMLStudioDesigner cn.ac.ict.bda.tool.dfgen.IndexPage
 Launcher Type: SUN_STANDARD
 
 Environment Variables:

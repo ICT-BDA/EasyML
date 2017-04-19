@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <config>
 	<OOZIE_CLIENT>http://hadoop-master:11000/oozie</OOZIE_CLIENT>
-	<NAME_NODE>hdfs://10.20.13.8:9000</NAME_NODE>
+	<NAME_NODE>hdfs://hadoop-master:9000</NAME_NODE>
 	<JOB_TRACKER>hadoop-master:8032</JOB_TRACKER>
 	<QUEUE_NAME>default</QUEUE_NAME>
 	<APP_WORKSPACE>/EML/oozie</APP_WORKSPACE>

@@ -13,15 +13,12 @@ import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.apache.tools.zip.ZipEntry;
-import org.apache.tools.zip.ZipFile;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Logger;
@@ -51,33 +48,6 @@ public class FileUploadServlet extends HttpServlet {
     zin.close();
   }
 
-  /**
-   * 解压文件到hdfs
-   *
-   * @param zipFile
-   * @param ID
-   * @author zhaohuilee
-   */
-  public static void unZipFiles(File zipFile, String ID) throws IOException {
-
-    ZipFile zip = new ZipFile(zipFile);
-    for (Enumeration entries = zip.getEntries(); entries.hasMoreElements(); ) {
-      ZipEntry entry = (ZipEntry) entries.nextElement();
-
-      String zipEntryName = entry.getName();
-      InputStream in = zip.getInputStream(entry);
-      String outPath = zipEntryName.replaceAll("\\*", "/");
-      System.out.print("\r\n");
-      String path = "lib";
-      path += zipEntryName.substring(zipEntryName.indexOf('/'),
-                                     zipEntryName.length());
-
-      if (!outPath.endsWith("/"))
-        HDFSIO.uploadModel("/" + ID + "/" + path, in);
-      HDFSIO.uploadModel("/" + ID + "/" + path, in);
-      in.close();
-    }
-  }
 
   @Override
 protected void doGet(HttpServletRequest request, HttpServletResponse response)

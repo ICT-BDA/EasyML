@@ -5,8 +5,10 @@
  */
 package eml.studio.server.oozie.workflow;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 
@@ -80,9 +82,28 @@ public class WFBuilder {
 		}
 
 		Map<String, OozieNode> nodeMap = new HashMap<String,OozieNode>();
-		for(OozieDatasetNode node : graph.getDatasetNodes() )nodeMap.put(node.getId(), node);
-		for(OozieProgramNode node : graph.getProgramNodes() )nodeMap.put(node.getId(), node);
-		
+		List<String> nodeOutputFiles = null;
+	    for(OozieDatasetNode node : graph.getDatasetNodes() )
+	    {
+	      nodeOutputFiles = new ArrayList<String>();
+	      nodeMap.put(node.getId(), node);
+	      if(graph.isActiveNode(node.getId()))
+	      {
+	        nodeOutputFiles.add(node.getFile());
+	        wfGraph.addNodeOutputFile(node.getId(), nodeOutputFiles,null);  
+	      }
+	    }
+	    for(OozieProgramNode node : graph.getProgramNodes() )
+	    {
+	      nodeOutputFiles = new ArrayList<String>();
+	      nodeMap.put(node.getId(), node);
+	      if(graph.isActiveNode(node.getId()))
+	      {
+	            nodeOutputFiles.addAll(node.getFiles());
+	            wfGraph.addNodeOutputFile(node.getId(), nodeOutputFiles,node.getWorkPath());
+	      }
+	    }
+	
 		for (OozieEdge edge : graph.getEdges()) {
 			String src = edge.getSrc();
 			String dst = edge.getDst();

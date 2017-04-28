@@ -8,6 +8,7 @@ package eml.studio.server.oozie.workflow;
 import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 
@@ -34,7 +35,32 @@ public class WFGraph {
 	public void addActionNode(NodeDef action) throws Exception {
 		nodeMap.put(action.getName(), action);
 	}
-
+	
+	  /**
+	   * Add fill output file path to node output node
+	   *  
+	   * @param nodeId   Node id
+	   * @param files Output file name list
+	   * @param workPath  App work path
+	   */
+	  public void addNodeOutputFile(String nodeId, List<String> files,String workPath)
+	  {
+	    NodeDef node = nodeMap.get(nodeId);
+	    if(node != null)
+	    {
+	      for(int i = 0 ; i < files.size() ; i++)
+	      {
+	        if(workPath!=null)
+	        {
+	          String totalPath = workPath +files.get(i);
+	          node.putOutputFile(i, totalPath);
+	        }
+	        else
+	          node.putOutputFile(i, files.get(i));
+	      }
+	    }
+	  }
+	  
 	/**
 	 * Add edge from source node to destination node
 	 * @param srcNodeId the source node id
@@ -51,9 +77,7 @@ public class WFGraph {
 			srcNode.addOutNode(dstNode);
 			dstNode.addInNode(srcNode);
 		}
-		// 设置
-		if (srcNode != null)
-			srcNode.putOutputFile(srcNodePort, file);
+		
 		if (dstNode != null)
 			dstNode.putInputFile(dstNodePort, file);
 	}

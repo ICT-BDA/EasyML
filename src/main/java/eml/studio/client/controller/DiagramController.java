@@ -535,7 +535,6 @@ public class DiagramController {
 				OutNodeShape outShape = (OutNodeShape)shape;
 				String fileId = outShape.getFileId();
 				String path = outShape.getAbsolutePath();
-				Window.alert(path + ":"  + fileId);
 				DBController.showPreviewPopup(path,fileId);
 			}
 			if(isvacancy){

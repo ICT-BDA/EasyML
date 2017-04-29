@@ -10,13 +10,14 @@ The easy machine learning (EasyML) project presents a general-purpose dataflow-b
 * Seamlessly integrating the stand-alone algorithms as well as the distributed algorithms in one task.
 
 The EasyML consists of two major components: 
-* A GUI-based machine learning studio system which enable users to create, configure, submit, monitor, and sharing their machine learning process in a drag-and-drop manner. 
- 
-* A cloud service for executing the tasks. We build the service based on the open source big data platform of Hadoop and Spark. After receiving a task DAG from the GUI, each node will be automatically scheduled to run when all of its dependent data sources are ready. The algorithms correspond to the nodes will automatically scheduled to run on Linux, Spark, or Map-Reduce, according to their implementations and configurations.
+* A GUI-based machine learning studio system which enable users to create, configure, submit, monitor, and sharing their machine learning process in a drag-and-drop manner. The following figure shows an example task in EasyML. 
 
 <div align=center>
 <img src="./img/LR_DAG.png" width="400" height="300" alt="An example dataflow DAG"/>
 </div>
+
+* A cloud service for executing the tasks. We build the service based on the open source big data platform of Hadoop and Spark. After receiving a task DAG from the GUI, each node will be automatically scheduled to run when all of its dependent data sources are ready. The algorithms correspond to the nodes will automatically scheduled to run on Linux, Spark, or Map-Reduce, according to their implementations and configurations.
+
 
 The EasyML project is originated from the Big Data Analysis (BDA) system developed at CAS Key Lab of Network Data Science and Technology, Institute of Computing Technolgy, Chinese Academy of Sciences. Detailed introduction of the system can be found in [Guo et al., CIKM 2016](PDF: http://www.bigdatalab.ac.cn/~junxu/publications/CIKM2016_BDADemo.pdf). The online service is available at http://159.226.40.104:18080/.   
 

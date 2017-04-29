@@ -18,11 +18,9 @@ The EasyML consists of two major components:
 <img src="./img/LR_DAG.png" width="400" height="300" alt="An example dataflow DAG"/>
 </div>
 
-The EasyML project is originated from the Big Data Analysis (BDA) system developed at Institute of Computing Technolgy, Chinese Academy of Sciences. Detailed introduction can be found in [Guo et al., CIKM 2016]. The online service is available at http://159.226.40.104:18080/. Details of the system and the guest account can be found in the following paper. (PDF: http://www.bigdatalab.ac.cn/~junxu/publications/CIKM2016_BDADemo.pdf) 
+The EasyML project is originated from the Big Data Analysis (BDA) system developed at CAS Key Lab of Network Data Science and Technology, Institute of Computing Technolgy, Chinese Academy of Sciences. Detailed introduction of the system can be found in [Guo et al., CIKM 2016](PDF: http://www.bigdatalab.ac.cn/~junxu/publications/CIKM2016_BDADemo.pdf). The online service is available at http://159.226.40.104:18080/.   
 
 [Guo et al., CIKM 2016] Tianyou Guo, Jun Xu, Xiaohui Yan, Jianpeng Hou, Ping Li, Zhaohui Li, Jiafeng Guo, and Xueqi Cheng. Ease the Process of Machine Learning with Dataflow. Proceedings of the 25th ACM International Conference on Information and Knowledge Management (CIKM '16), Indianapolis, USA, pp. 2437-2440, 2016. 
-
-
 
 ## How to involve in our project
 
@@ -33,6 +31,14 @@ Pull all project and prepare some necessary environments and a kind of developme
 After you have ran Easy ML，You can login via `http://localhost:8888/EMLStudio,html`with our official account `bdaict@hotmail.com` and password `bdaict`. For the best user experience, it is recommended to use Chrome.
 [登录图]
 
-## Acknowledgement
+## Acknowledgements
+We thank the following contributors to the initial version of the EasyML project
+* Jun Xu, Institute of Computing Technolgy, Chinese Academy of Sciences. Homepage: http://www.bigdatalab.ac.cn/~junxu
+* Xiaohui Yan, Huawei Technologies 
+* Xinjie Chen,  Institute of Computing Technolgy, Chinese Academy of Sciences
+* Zhaohui Li,  Institute of Computing Technolgy, Chinese Academy of Sciences
+* Tianyou Guo,  Institute of Computing Technolgy, Chinese Academy of Sciences
+* Jianpeng Hou,  Institute of Computing Technolgy, Chinese Academy of Sciences
+* Ping Li,  Institute of Computing Technolgy, Chinese Academy of Sciences
 
 

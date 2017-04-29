@@ -18,9 +18,9 @@ The EasyML consists of two major components:
 <img src="./img/LR_DAG.png" width="400" height="300" alt="An example dataflow DAG"/>
 </div>
 
-The EasyML project is originated from the Big Data Analysis (BDA) system developed at Institute of Computing Technolgy, Chinese Academy of Sciences. Detailed introduction can be found in [Guo et al., CIKM 2016]. The online service is available at http://159.226.40.104:18080/. Guest account can be found in the paper. 
+The EasyML project is originated from the Big Data Analysis (BDA) system developed at Institute of Computing Technolgy, Chinese Academy of Sciences. Detailed introduction can be found in [Guo et al., CIKM 2016]. The online service is available at http://159.226.40.104:18080/. Details of the system and the guest account can be found in the following paper. (PDF: http://www.bigdatalab.ac.cn/~junxu/publications/CIKM2016_BDADemo.pdf) 
 
-* Tianyou Guo, Jun Xu, Xiaohui Yan, Jianpeng Hou, Ping Li, Zhaohui Li, Jiafeng Guo, and Xueqi Cheng. Ease the Process of Machine Learning with Dataflow. Proceedings of the 25th ACM International Conference on Information and Knowledge Management (CIKM '16), Indianapolis, USA, pp. 2437-2440, 2016. Demo paper.
+[Guo et al., CIKM 2016] Tianyou Guo, Jun Xu, Xiaohui Yan, Jianpeng Hou, Ping Li, Zhaohui Li, Jiafeng Guo, and Xueqi Cheng. Ease the Process of Machine Learning with Dataflow. Proceedings of the 25th ACM International Conference on Information and Knowledge Management (CIKM '16), Indianapolis, USA, pp. 2437-2440, 2016. 
 
 
 

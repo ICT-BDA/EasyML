@@ -11,6 +11,7 @@ Before you can use *EasyML Studio*, you must configure the environment which inc
 <div align=center>
 <img src="./img/import_eml.png" height ="500px" margin-top = "10px" alt="import project to IDEA"/>
 </div>
+
 - Only support **java version 1.7**
 
 <div align=center>
@@ -19,15 +20,18 @@ Before you can use *EasyML Studio*, you must configure the environment which inc
 
   
 ### Configure GWT Lib Path
+
 * Make sure your IDE have install ***Maven***
 * Use Maven to down load all related dependency package
 <div align=center>
 <img src="./img/import_maven.png" height ="400px" width = "550" alt="configure maven"/>
 </div>
-* Make sure you can see the whole **External Libraries** on the right
+
+* Make sure you can see the whole **External Libraries** on the *Project* list
 <div align=center>
 <img src="./img/import_maven_suc.png"  alt="External libraries"/>
 </div>
+
 * Install GWT plugin in your IDE (IDEA user can skip this step)
 ### Create and run our EML web application
   After you have get all dependencies, you can start building your *EasyML Studio* web app for the following steps:
@@ -37,11 +41,13 @@ Before you can use *EasyML Studio*, you must configure the environment which inc
 <div align=center>
 <img src="./img/import_config.png" alt="Edit configuration"/>
 </div>
+
 * Add GWT web app via `+` at upper left corner, if you do not see `GWT Configuration` in the list, you might have something wrong in the step of *Configure GWT Lib Path*. Go back to the last step, resolve the problem.
 
 <div align=center>
 <img src="./img/import_rundetail.png" width = "90%" alt="Edit Easy ML"/>
 </div>
+
 * `Use Super Dev Mode` can allow you debugging your web app at the browser side. It is make debugging more effient, for which remember choosing it. 
 * When you have finished all the steps above, you can click the green run button to make and debug the **EasyML**. After a while, you can browse EasyML in your *Chrome* to accesss it.
 <div align=center>
@@ -87,6 +93,7 @@ Every single server in our cluster is created by one *docker image*, and this *i
 
 * You can use `sh run_containers.sh` to run all servers:
 	<img src="./img/run_containers.png" style ="margin-left=100;" alt="net works">
+
 * If your have run all these four server successed: **mysql, hadoop-master, hadoop-slave1,hadoop-slave2**, you can use `docker ps` to check
 
 ### Confirm the connectivity between containers
@@ -114,16 +121,19 @@ Because the hadoop cluster network communication depend on ssh, we need to confi
 <div align=center>
 <img src="./img/namenode_web.png" width = "90%" alt="namenode_web"/>
 </div>
+
 ### Start Spark and Oozie service
  * Enter the *hadoop-master* container via `docker exec -it hadoop-master /bin/bash` 
  * Run `sh /root/start-oozie.sh` to start Spark, Oozie and Tomcat service, it will spend some time:
 <div align=center>
 <img src="./img/start_ooize.png" width = "90%" alt="start oozie"/>
 </div>
+
  * We have started a ooize task example in the start shell, you can visit *http://hadoop-master:11000/oozie/* in your browser and refresh for the detail of the task.
 <div align=center>
 <img src="./img/browse_oozie.png" width = "90%" alt="namenode_web"/>
 </div>
+
 ### Visit EMLStudio test website to confirm correctness of whole process
 * Visit *http://hadoop-master:18080/EMLStudio* in your browser and log in via *username: bdaict@hotmail.com* and *password: bdaict*, you can find a example in the task list.
 * Clone it and submit to the server. If the task can run correctly, congratulations on your successful configuration. 
@@ -133,7 +143,7 @@ Because the hadoop cluster network communication depend on ssh, we need to confi
 
 ### Stop and restart containers
 * If you want to rebuild the cluster, you can use `sh stop_containers.sh` to stop and remove *hadoop-master, hadoop-slave1 and hadoop-slave2* containers and use `sh rm_images.sh` to remove *cluster* image.
-* If you have restart your docker or entity machine, the containers need to be restarted, you can use `sh restart_service.sh` to restart all containers. But you need to note that after you have executed the `sh restart_service.sh`, you will enter the *hadoop-master* container, meanwhile you also need to execute the `sh restart.sh` in *hadoop-master* container to restart *hadoop, spark and oozie service.
+* If you have restart your docker or entity machine, the containers need to be restarted, you can use `sh restart_service.sh` to restart all containers. But you need to note that after you have executed the `sh restart_service.sh`, you will enter the *hadoop-master* container, meanwhile you also need to execute the `sh restart.sh` in *hadoop-master* container to restart *hadoop, spark and oozie* service.
 
 
 

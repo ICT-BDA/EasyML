@@ -3,7 +3,9 @@
 ## What is Easy Machine Learning
 Machine learning algorithms have become the key components in many big data applications. However, the full potential of machine learning is still far from been realized because using machine learning algorithms is hard,
 especially on distributed platforms such as Hadoop and Spark. The key barriers come from not only the implementation of the algorithms themselves, but also the processing for applying them to real applications which often involve multiple steps 
-and different algorithms. Our platform **Easy Machine Learning** presents a general-purpose dataflow-based system for easing the process of applying machine learning algorithms to real world tasks. In the system a learning task is formulated as a directed acyclic graph (DAG) in which each node represents an operation 
+and different algorithms. 
+
+Our platform **Easy Machine Learning** presents a general-purpose dataflow-based system for easing the process of applying machine learning algorithms to real world tasks. In the system a learning task is formulated as a directed acyclic graph (DAG) in which each node represents an operation 
 (e.g., a machine learning algorithm), and each edge represents the flow of the data from one node to its descendants. The task can be defined manually or be cloned from existing tasks/templates. After submitting a task to the cloud, each node will be automatically scheduled to execute according to the DAG. 
 Graphical user interface is implemented for making users to create, configure, submit, and monitor a task in a drag-and-drop manner. Advantages of the system include 
  
@@ -23,7 +25,7 @@ The system consists of three major components:
 <div align=center>
 <img src="./img/LR_DAG.png" width="400" height="300" alt="An example dataflow DAG"/>
 </div>
-* A cloud service for executing the tasks. We build the service based on the open source big data platform of Hadoop and Spark. In order to build an platform, we organised a cluster of server on *Docker*. After receiving a task DAG from the GUI, each node will be automatically scheduled to run when all of its dependent data sources are ready. The algorithm corresponds to the node will scheduled to run on Linux, Spark, or Map-Reduce\cite, according to their implementation.
+* A cloud service for executing the tasks. We build the service based on the open source big data platform of Hadoop and Spark. In order to build an platform, we organised a cluster of server on *Docker* . After receiving a task DAG from the GUI, each node will be automatically scheduled to run when all of its dependent data sources are ready. The algorithm corresponds to the node will scheduled to run on Linux, Spark, or Map-Reduce\cite, according to their implementation.
 <div align=center>
 <img src="./img/Docker_structure.png" width="90%  alt="Docker studio"/>
 </div>

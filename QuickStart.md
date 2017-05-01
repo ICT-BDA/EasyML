@@ -71,6 +71,7 @@ Our server cluster is based on docker, thus you can build it on your own compute
 * Our Eml server images is based on ubuntu, so pull it first:   
     ```docker pull nkxujun/ubuntu_eml```
 * You can use `docker images` to see if you have pulled these two images successfully:
+
 	<img src="./img/origin_images.png" width = "90%"alt="	Origin images"/>
 
  
@@ -83,6 +84,7 @@ Every single server in our cluster is created by one *docker image*, and this *i
 * Use build.sh to build our image, this process will last for a few minute  
      ```sh build.sh``` 
 * You can use `docker images` to see if you have built successfully:
+
 	<img src="./img/build_cluster.png" width = "90%"alt="	Origin images"/>
 
 ## Run docker virtual server cluster
@@ -101,7 +103,9 @@ Because the hadoop cluster network communication depend on ssh, we need to confi
 
 * We can use `docker exec -it hadoop-master /bin/bash` to enter the container named *Hadoop-master*
 * In *Hadoop-master*，use `ssh hadoop-slave1` and `ssh hadoop-slave2` to test the ssh function and do not forget *exit* after each ssh test:
+
 	<img src="./img/test_ssh.png" style ="margin-left=100;" alt="test ssh">
+
 * If the ssh does not work, enter each container and execute this:
 	```/etc/init.d/ssh start``` 
 
@@ -111,6 +115,7 @@ Because the hadoop cluster network communication depend on ssh, we need to confi
   * Add your Localhost(Linux) or Docker IP(Windows) as `hadoop-master` and `mysql` to your hosts file, for example:
  
     <img src="./img/hosts.png" alt="Hosts"/>
+
 ### Init Mysql database
  * Run `sh init_mysql.sh` to prepare the databases for *oozie* and * * 
 ### Start HDFS and Yarn service
@@ -135,7 +140,7 @@ Because the hadoop cluster network communication depend on ssh, we need to confi
 </div>
 
 ### Visit EMLStudio test website to confirm correctness of whole process
-* Visit *http://hadoop-master:18080/EMLStudio* in your browser and log in via *username: bdaict@hotmail.com* and *password: bdaict*, you can find a example in the task list.
+* Visit *http://hadoop-master:18080/EMLStudio* in your browser and log in via *username: bdaict@hotmail.com* and *password: `bdaict`*, you can find a example in the task list.
 * Clone it and submit to the server. If the task can run correctly, congratulations on your successful configuration. 
 <div align=center>
 <img src="./img/EML_example.png" width = "90%" alt="namenode_web"/>

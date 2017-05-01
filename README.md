@@ -25,6 +25,7 @@ The system consists of three major components:
 <div align=center>
 <img src="./img/LR_DAG.png" width="400" height="300" alt="An example dataflow DAG"/>
 </div>
+
 * A cloud service for executing the tasks. We build the service based on the open source big data platform of Hadoop and Spark. In order to build an platform, we organised a cluster of server on *Docker* . After receiving a task DAG from the GUI, each node will be automatically scheduled to run when all of its dependent data sources are ready. The algorithm corresponds to the node will scheduled to run on Linux, Spark, or Map-Reduce\cite, according to their implementation.
 <div align=center>
 <img src="./img/Docker_structure.png" width="90%  alt="Docker studio"/>

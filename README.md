@@ -47,6 +47,7 @@ After you have ran Easy ML，You can login via *`http://localhost:8888/EMLStudio
 <div align=center>
 <img src="./img/job_construct.png" width="90%  alt="job_structure"/>
 </div>
+
 * The task is submitted to run on the cloud after clicking the **`submit`** button. The status of each node is indicated with different colors, as shown in the following figure.
 <div align=center>
 <img src="./img/job_submit.png" width="90%  alt="job_structure"/>

@@ -31,7 +31,7 @@ The system consists of three major components:
 
 ## How to involve in our project
 
-Pull all project and prepare some necessary environments and a kind of development utilities. Follows the step in **Quick-start**, and you can create our webapp.
+Pull all project and prepare some necessary environments and a kind of development utilities. Follows the step in **Quick-start**, and you can create our system in your computer.
 
 
 ## How to use Easy Machine Learning Studio 

@@ -6,7 +6,7 @@ especially on distributed platforms such as Hadoop and Spark. The key barriers c
 and different algorithms. 
 
 Our platform **Easy Machine Learning** presents a general-purpose dataflow-based system for easing the process of applying machine learning algorithms to real world tasks. In the system a learning task is formulated as a directed acyclic graph (DAG) in which each node represents an operation 
-(e.g., a machine learning algorithm), and each edge represents the flow of the data from one node to its descendants. The task can be defined manually or be cloned from existing tasks/templates. After submitting a task to the cloud, each node will be automatically scheduled to execute according to the DAG. 
+(e.g. a machine learning algorithm), and each edge represents the flow of the data from one node to its descendants. The task can be defined manually or be cloned from existing tasks/templates. After submitting a task to the cloud, each node will be automatically scheduled to execute according to the DAG. 
 Graphical user interface is implemented for making users to create, configure, submit, and monitor a task in a drag-and-drop manner. Advantages of the system include 
  
 1. Lowing the barriers of defining and executing machine learning tasks;
@@ -26,7 +26,7 @@ The system consists of three major components:
 <img src="./img/LR_DAG.png" width="400" height="300" alt="An example dataflow DAG"/>
 </div>
 
-* A cloud service for executing the tasks. We build the service based on the open source big data platform of Hadoop and Spark. In order to build an platform, we organised a cluster of server on *Docker* . After receiving a task DAG from the GUI, each node will be automatically scheduled to run when all of its dependent data sources are ready. The algorithm corresponds to the node will scheduled to run on Linux, Spark, or Map-Reduce\cite, according to their implementation.
+* A cloud service for executing the tasks. We build the service based on the open source big data platform of Hadoop and Spark. In order to build an platform, we organised a cluster of server on ***Docker***. After receiving a task DAG from the GUI, each node will be automatically scheduled to run when all of its dependent data sources are ready. The algorithm corresponds to the node will scheduled to run on Linux, Spark, or Map-Reduce\cite, according to their implementation.
 <div align=center>
 <img src="./img/Docker_structure.png" width="90%  alt="Docker studio"/>
 </div>
@@ -34,30 +34,36 @@ The system consists of three major components:
 
 ## How to involve in our project
 
-Pull all project and prepare some necessary environments and a kind of development utilities. Follows the step in **Quick-start**, and you can create our system in your computer.
+Pull all project and prepare some necessary environments and a kind of development utilities. Follows the step in **[Quick-start.md](https://github.com/ICT-BDA/EasyML/blob/master/QuickStart.md)**, and you can create our system in your computer.
 
 
 ## How to use Easy Machine Learning Studio 
-After you have ran Easy ML，You can login via `http://localhost:8888/EMLStudio.html`with our official account `bdaict@hotmail.com` and password `bdaict`. For the best user experience, it is recommended to use Chrome.
+After you have ran Easy ML，You can login via *`http://localhost:8888/EMLStudio.html`*with our official account `bdaict@hotmail.com` and password `bdaict`. For the best user experience, it is recommended to use Chrome.
 <div align=center>
 <img src="./img/home_page.png" width="90%  alt="Homepage"/>
 </div>
 
-* As shown in the following figure, the users can create a machine learning task (a dataflow DAG) with the algorithms and data sets listed in the left panel of the page. They can choose to click the algorithms and data sets listed in the `Program` and `Data` panels. They can also click the `Job` panel, select an existing task, clone it, and make necessary modifications. The users can configure the task information and parameter values of each node in the right panel. The nodes in the task could corresponds to either a stand-alone Linux program or a distributed program running on Spark or Hadoop Map-Reduce.
+* As shown in the following figure, the users can create a machine learning task (a dataflow DAG) with the algorithms and data sets listed in the left panel of the page. They can choose to click the algorithms and data sets listed in the **`Program`** and **`Data`** panels. They can also click the **`Job`** panel, select an existing task, clone it, and make necessary modifications. The users can configure the task information and parameter values of each node in the right panel. The nodes in the task could corresponds to either a stand-alone Linux program or a distributed program running on Spark or Hadoop Map-Reduce.
 <div align=center>
 <img src="./img/job_construct.png" width="90%  alt="job_structure"/>
 </div>
-*The task is submitted to run on the cloud after clicking the `submit` button. The status of each node is indicated with different colors, as shown in the following figure.
+* The task is submitted to run on the cloud after clicking the **`submit`** button. The status of each node is indicated with different colors, as shown in the following figure.
 <div align=center>
 <img src="./img/job_submit.png" width="90%  alt="job_structure"/>
 </div>
-* Users could right click on the `green output port` of finished executing node to preview the output data. One could check the stdout and stderr logs from the right click menu of each finished executing node as well.
-The users may check the outputs of a node by right clicking the corresponding output ports. The standard output and standard error information printed during the execution can be checked through right clicking the corresponding nodes and selects the menu `Show STDOUT` and `Show STDERR`.
+
+* Users could right click on the **`green output port`** of finished executing node to preview the output data. One could check the stdout and stderr logs from the right click menu of each finished executing node as well.
+The users may check the outputs of a node by right clicking the corresponding output ports. The standard output and standard error information printed during the execution can be checked through right clicking the corresponding nodes and selects the menu **`Show STDOUT`** and **`Show STDERR`**.
+<div align=center>
+<img src="./img/job_stdout.png" width="90%  alt="job_stdout"/>
+</div>
+
+* A finished (either success or not) task can be further modified and resubmitted to run, as shown in the following figure. Our system will only schedule the influenced nodes to run. The outputs of uninfluenced nodes are directly reused to save the running time and system resources.
 <div align=center>
 <img src="./img/job_reuse_submit.png" width="90%  alt="job_stdout"/>
 </div>
-* A finished (either success or not) task can be further modified and resubmitted to run, as shown in the following figure. Our system will only schedule the influenced nodes to run. The outputs of uninfluenced nodes are directly reused to save the running time and system resources.
-* The users can upload their own algorithm packages and data sets for creating their own tasks or shared with other users. By clicking the ``upload program'' button, the popup window allows the users to specify the necessary information of the algorithm package, including the name, the category, the description, and the command line pattern string etc, as shown in the following figure. The most important thing is to write the command line pattern string with the predefined format. It defined the input ports, output ports, and parameter settings of a node. We developed a tool in the panel for helping users to write the command line string patterns. By clicking the ``upload data'' button, users can upload a data set in the similar way as that of uploading a algorithms package.
+
+* The users can upload their own algorithm packages and data sets for creating their own tasks or shared with other users. By clicking the **`upload program`** button, the popup window allows the users to specify the necessary information of the algorithm package, including the name, the category, the description, and the command line pattern string etc, as shown in the following figure. The most important thing is to write the command line pattern string with the predefined format. It defined the input ports, output ports, and parameter settings of a node. We developed a tool in the panel for helping users to write the command line string patterns. By clicking the **`upload data`** button, users can upload a data set in the similar way as that of uploading a algorithms package.
 <div align=center>
 <img src="./img/Upload_Program.png" width="90%  alt="job_stdout"/>
 </div>
@@ -65,12 +71,12 @@ The users may check the outputs of a node by right clicking the corresponding ou
 ## Acknowledgements
 We thank the following contributors to the initial version of the EasyML project：
 
-* Jun Xu, Institute of Computing Technolgy, Chinese Academy of Sciences. Homepage: http://www.bigdatalab.ac.cn/~junxu
-* Xiaohui Yan, Huawei Technologies 
-* Xinjie Chen,  Institute of Computing Technolgy, Chinese Academy of Sciences
-* Zhaohui Li,  Institute of Computing Technolgy, Chinese Academy of Sciences
-* Tianyou Guo,  Institute of Computing Technolgy, Chinese Academy of Sciences
-* Jianpeng Hou,  Institute of Computing Technolgy, Chinese Academy of Sciences
-* Ping Li,  Institute of Computing Technolgy, Chinese Academy of Sciences
+* **Jun Xu**, Institute of Computing Technolgy, Chinese Academy of Sciences. Homepage: http://www.bigdatalab.ac.cn/~junxu
+* **Xiaohui Yan**, Huawei Technologies 
+* **Xinjie Chen**,  Institute of Computing Technolgy, Chinese Academy of Sciences
+* **Zhaohui Li**,  Institute of Computing Technolgy, Chinese Academy of Sciences
+* **Tianyou Guo**,  Institute of Computing Technolgy, Chinese Academy of Sciences
+* **Jianpeng Hou**,  Institute of Computing Technolgy, Chinese Academy of Sciences
+* **Ping Li**,  Institute of Computing Technolgy, Chinese Academy of Sciences
 
 

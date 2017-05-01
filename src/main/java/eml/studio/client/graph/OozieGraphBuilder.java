@@ -5,11 +5,14 @@
  */
 package eml.studio.client.graph;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.logging.Logger;
+
+import com.orange.links.client.shapes.DrawableSet;
 
 import eml.studio.client.controller.MonitorController;
 import eml.studio.client.ui.connection.Connection;
@@ -18,6 +21,7 @@ import eml.studio.client.ui.widget.command.Parameter;
 import eml.studio.client.ui.widget.dataset.DatasetWidget;
 import eml.studio.client.ui.widget.program.CommonProgramWidget;
 import eml.studio.client.ui.widget.program.ProgramWidget;
+import eml.studio.client.ui.widget.shape.InNodeShape;
 import eml.studio.client.ui.widget.shape.NodeShape;
 import eml.studio.client.ui.widget.shape.OutNodeShape;
 import eml.studio.shared.graph.OozieDatasetNode;
@@ -120,22 +124,42 @@ public class OozieGraphBuilder {
 	private void buildInitialization(MonitorController controller){
 		Map<String, BaseWidget> widgets = controller.getWidgets();
 		logger.info("(Oozie Graph build Initialization ): Setting Widgets");
+	    Set<String> activeNodes = new HashSet<String>();
+	    
+	    //Get the nodes that need to be re-executed
+	    //(including non-successful nodes and their descendants)
+	    for( Map.Entry<String, BaseWidget> entry: widgets.entrySet())
+	    {
+	      BaseWidget wgt = entry.getValue();
+	      if( !( wgt instanceof ProgramWidget ) ) continue;
+	      ProgramWidget pw = (ProgramWidget)wgt;
+	      if( !ProgramUtil.isSuccess( pw.getAction() ))
+	      {
+	        activeNodes.add(pw.getId());
+	        pw.getModel().setInActionList(true);
+	        getActiveNode(pw,activeNodes);
+	      }
+	    }
+	    
 		for( Map.Entry<String, BaseWidget> entry: widgets.entrySet()){
 			BaseWidget wgt = entry.getValue();
 			if( !( wgt instanceof ProgramWidget ) ) continue;
 			ProgramWidget pw = (ProgramWidget)wgt;
 			//Skip the node that has been executed successfully
-			if( ProgramUtil.isSuccess( pw.getAction() )){ 
+			if( !activeNodes.contains(pw.getId()) ){ 
 				pw.getModel().setInActionList(false);
 				continue;
-			}else{
-				pw.getModel().setInActionList(true);
 			}
-				
-			graph.addActiveNode( pw.getId() );
+		
 			pw.getModel().setCurOozJobId( ProgramWidget.Model.LATEST_OOZIE_JOBID );
 	        pw.randFileName();
 
+		}
+		logger.info("Active node size = "+activeNodes.size());
+		for(String nodeId : activeNodes)
+		{
+			logger.info("Active node :"+nodeId);
+			graph.addActiveNode(nodeId);
 		}
 		
 		logger.info("(Oozie Graph build Initialization ): Setting edges");
@@ -171,5 +195,37 @@ public class OozieGraphBuilder {
 	    for (Connection conn : connDrawSet) {
 	    	this.addEdge(conn);
 	    }
+	}
+	
+	/**
+	 * Get active node from DAG to execute
+	 * 
+	 * @param pw  Program widget
+	 * @param activeNodes  Active nodes
+	 */
+	private  void  getActiveNode(ProgramWidget pw,Set<String> activeNodes)
+	{
+		List<OutNodeShape> outNodeShapes = pw.getOutNodeShapes();
+		logger.info("n(out nodes) = " + outNodeShapes.size() );
+
+		for ( OutNodeShape shape: outNodeShapes) {
+			DrawableSet<Connection> connections = shape.getConnections();
+			logger.info("size="+connections.size());
+			if(connections != null)
+			{
+				for(Connection connection : connections) {
+					InNodeShape inShape = (InNodeShape) connection.getEndShape();
+					ProgramWidget dstWidget = (ProgramWidget) inShape.getWidget();
+					logger.info("【Id】"+dstWidget.getId());
+					String id = dstWidget.getId();
+					if (!activeNodes.contains(id))
+					{
+						dstWidget.getModel().setInActionList(true);
+						activeNodes.add(dstWidget.getId());
+					}
+					getActiveNode(dstWidget, activeNodes);
+				}
+			}
+		}
 	}
 }

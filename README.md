@@ -3,7 +3,7 @@
 ## What is Easy Machine Learning
 Machine learning algorithms have become the key components in many big data applications. However, the full potential of machine learning is still far from been realized because using machine learning algorithms is hard,
 especially on distributed platforms such as Hadoop and Spark. The key barriers come from not only the implementation of the algorithms themselves, but also the processing for applying them to real applications which often involve multiple steps 
-and different algorithms.Our plantform **Easy Machine Learning** presents a general-purpose dataflow-based system for easing the process of applying machine learning algorithms to real world tasks. In the system a learning task is formulated as a directed acyclic graph (DAG) in which each node represents an operation 
+and different algorithms. Our platform **Easy Machine Learning** presents a general-purpose dataflow-based system for easing the process of applying machine learning algorithms to real world tasks. In the system a learning task is formulated as a directed acyclic graph (DAG) in which each node represents an operation 
 (e.g., a machine learning algorithm), and each edge represents the flow of the data from one node to its descendants. The task can be defined manually or be cloned from existing tasks/templates. After submitting a task to the cloud, each node will be automatically scheduled to execute according to the DAG. 
 Graphical user interface is implemented for making users to create, configure, submit, and monitor a task in a drag-and-drop manner. Advantages of the system include 
  
@@ -54,7 +54,20 @@ The users may check the outputs of a node by right clicking the corresponding ou
 <img src="./img/job_reuse_submit.png" width="90%  alt="job_stdout"/>
 </div>
 * A finished (either success or not) task can be further modified and resubmitted to run, as shown in the following figure. Our system will only schedule the influenced nodes to run. The outputs of uninfluenced nodes are directly reused to save the running time and system resources.
-* The users can upload their own algorithm packages and data sets for creating their own tasks or shared with other users. By clicking the `upload program` button, the popup window allows the users to specify the necessary information of the algorithm package, including the name, the category, the description, and the command line pattern string etc, as shown in the following figure. The most important thing is to write the command line pattern string with the predefined format. It defined the input ports, output ports, and parameter settings of a node. We developed a tool in the panel for helping users to write the command line string patterns. By clicking the `upload data` button, users can upload a data set in the similar way as that of uploading a algorithms package.
+* The users can upload their own algorithm packages and data sets for creating their own tasks or shared with other users. By clicking the ``upload program'' button, the popup window allows the users to specify the necessary information of the algorithm package, including the name, the category, the description, and the command line pattern string etc, as shown in the following figure. The most important thing is to write the command line pattern string with the predefined format. It defined the input ports, output ports, and parameter settings of a node. We developed a tool in the panel for helping users to write the command line string patterns. By clicking the ``upload data'' button, users can upload a data set in the similar way as that of uploading a algorithms package.
 <div align=center>
 <img src="./img/Upload_Program.png" width="90%  alt="job_stdout"/>
 </div>
+
+## Acknowledgements
+We thank the following contributors to the initial version of the EasyML project：
+
+* Jun Xu, Institute of Computing Technolgy, Chinese Academy of Sciences. Homepage: http://www.bigdatalab.ac.cn/~junxu
+* Xiaohui Yan, Huawei Technologies 
+* Xinjie Chen,  Institute of Computing Technolgy, Chinese Academy of Sciences
+* Zhaohui Li,  Institute of Computing Technolgy, Chinese Academy of Sciences
+* Tianyou Guo,  Institute of Computing Technolgy, Chinese Academy of Sciences
+* Jianpeng Hou,  Institute of Computing Technolgy, Chinese Academy of Sciences
+* Ping Li,  Institute of Computing Technolgy, Chinese Academy of Sciences
+
+

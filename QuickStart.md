@@ -66,7 +66,7 @@ Our server cluster is based on docker, thus you can build it on your own compute
 
 ### Pull mysql server images from docker hub
 * Pull our mysql server images from our [docker hub](https://hub.docker.com/u/nkxujun/):
-    ```docker pull nkxujun/emlsql```
+    ```docker pull nkxujun/mysql_eml```
 ### Pull ubuntu_eml images from docker hub
 * Our Eml server images is based on ubuntu, so pull it first:   
     ```docker pull nkxujun/ubuntu_eml```
@@ -85,7 +85,7 @@ Every single server in our cluster is created by one *docker image*, and this *i
      ```sh build.sh``` 
 * You can use `docker images` to see if you have built successfully:
 
-	<img src="./img/build_cluster.png" width = "90%"alt="	Origin images"/>
+	<img src="./img/build_cluster.png" width = "90%"alt="Origin images"/>
 
 ## Run docker virtual server cluster
 ### Build a network for docker virtual server cluster
@@ -117,33 +117,33 @@ Because the hadoop cluster network communication depend on ssh, we need to confi
     <img src="./img/hosts.png" alt="Hosts"/>
 
 ### Init Mysql database
- * Run `sh init_mysql.sh` to prepare the databases for *oozie* and * * 
-### Start HDFS and Yarn service
+ * Run `sh init_mysql.sh` to prepare the databases for *Oozie* and *EasyML Studio* 
+### Start HDFS，spark and Yarn service
  * Enter the *hadoop-master* container via `docker exec -it hadoop-master /bin/bash` (a vital important command to enter every container)
- * Run `sh /root/start-hadoop.sh` to start hadoop service
+ * Run `sh /root/start-hadoop.sh` to start hadoop and spark service
  * You can use `sh /root/run_wordcount.sh` to test the hadoop service
  * Visit *http://hadoop-master:50070/* in your browser to check namenode and every datanode's status:  
 <div align=center>
 <img src="./img/namenode_web.png" width = "90%" alt="namenode_web"/>
 </div>
 
-### Start Spark and Oozie service
+### Start  and Oozie service
  * Enter the *hadoop-master* container via `docker exec -it hadoop-master /bin/bash` 
- * Run `sh /root/start-oozie.sh` to start Spark, Oozie and Tomcat service, it will spend some time:
+ * Run `sh /root/start-oozie.sh` to start Oozie and Tomcat service, it will spend some time:
 <div align=center>
 <img src="./img/start_ooize.png" width = "90%" alt="start oozie"/>
 </div>
 
  * We have started a ooize task example in the start shell, you can visit *http://hadoop-master:11000/oozie/* in your browser and refresh for the detail of the task.
 <div align=center>
-<img src="./img/browse_oozie.png" width = "90%" alt="namenode_web"/>
+<img src="./img/browse_oozie.png" width = "90%" alt="browse_oozie"/>
 </div>
 
 ### Visit EMLStudio test website to confirm correctness of whole process
 * Visit *http://hadoop-master:18080/EMLStudio* in your browser and log in via *username: bdaict@hotmail.com* and *password: `bdaict`*, you can find a example in the task list.
 * Clone it and submit to the server. If the task can run correctly, congratulations on your successful configuration. 
 <div align=center>
-<img src="./img/EML_example.png" width = "90%" alt="namenode_web"/>
+<img src="./img/EML_example.png" width = "90%" alt="Eml_example"/>
 </div>
 
 ### Stop and restart containers

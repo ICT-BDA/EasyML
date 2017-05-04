@@ -1,9 +1,9 @@
 # Quick Start
 
-Before you can use *EasyML Studio*, you must configure the environment which include ***runtime server environment*** and your ***development environment***.
+Before you can use **EasyML Studio**, you must configure the environment which include your ***development environment*** and ***runtime server environment*** which contains *Preparation, Run Docker containers and Start services* three steps to run it successfully.
 
 ## Development Environment
-### Step 1:Import project to IDEA or Eclipse 
+### Step 1: Import project to IDEA or Eclipse 
 
 - Get code from Git repository <https://github.com/ICT-BDA/EasyML>
 - Import the code to your IDE via maven project 
@@ -19,7 +19,7 @@ Before you can use *EasyML Studio*, you must configure the environment which inc
 </div>
 
   
-### Step 2:Configure GWT Lib Path
+### Step 2: Configure GWT Lib Path
 
 * Make sure your IDE have install ***Maven***
 * Use Maven to down load all related dependency package
@@ -33,7 +33,7 @@ Before you can use *EasyML Studio*, you must configure the environment which inc
 </div>
 
 * Install GWT plugin in your IDE (IDEA user can skip this step)
-### Step 3:Create and run our EML web application
+### Step 3: Create and run our EML web application
   After you have get all dependencies, you can start building your *EasyML Studio* web app for the following steps:
 
 * Edit run configurations
@@ -55,8 +55,8 @@ Before you can use *EasyML Studio*, you must configure the environment which inc
 </div>
 
 ## Preparation for virtual server cluster
-Our server cluster is based on docker, thus you can build it on your own computer. It is convenient for you to develop project without any remote connections. Furthermore, you can also contribute to the server environments. The docker version server cluster is not stable and efficient, for which we can do a series of things on it. However, you first step to access it is installing Docker.
-### Step 1:Install Docker 
+Our server cluster is based on ***Docker***, thus you can build run time environment on your own computer. It is convenient for you to develop project without any remote connections. Furthermore, you can also contribute to the server environments. The docker version server cluster is not stable and efficient, for which we can do a series of things on it. However, you first step to access it is installing Docker.
+### Step 1: Install Docker 
 * Just follow the [official guide](https://www.docker.com/) to install Docker.
 * Make sure your docker service runs correctly via `Docker info` and `Docker version`
 * No matter which system your computer is, stop the **Firewall** of your system
@@ -64,21 +64,21 @@ Our server cluster is based on docker, thus you can build it on your own compute
 * Run ```sudo docker run helloworld``` to see if we have install docker successfully.
 
 
-### Step 2:Pull mysql server images from docker hub
+### Step 2: Pull mysql server images from docker hub
 * Pull our mysql server images from our [docker hub](https://hub.docker.com/u/nkxujun/):
     ```docker pull nkxujun/mysql_eml```
-### Pull ubuntu_eml images from docker hub
+### Step 3: Pull ubuntu_eml images from docker hub
 * Our Eml server images is based on ubuntu, so pull it first:   
     ```docker pull nkxujun/ubuntu_eml```
 * You can use `docker images` to see if you have pulled these two images successfully:
 
 	<img src="./img/origin_images.png" width = "90%" alt="eml_images"/>
  
-### Step 3:Download install dependent package
+### Step 4: Download install dependent package
 Every single server in our cluster is created by one *docker image*, and this *image* can be built via a **Dockerfile** which has defined by us and includes all utilities we need such as hadoop. Thus we need to download the **Dockerfile** and all dependent files and configuration files from our [google drive disk](https://drive.google.com/open?id=0B5Lj6qkCMBbFWW5uYlJwb2drb1k) or [Baidu Cloud](http://pan.baidu.com/s/1i5BSiup).
 
 
-### Step 4:Build Eml server images  
+### Step 5: Build Eml server images  
 * Enter the path of the files which you have download last step
 * Use build.sh to build our image, this process will last for a few minute  
      ```sh build.sh``` 

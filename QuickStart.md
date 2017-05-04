@@ -71,6 +71,7 @@ Our server cluster is based on docker, thus you can build it on your own compute
 * Our Eml server images is based on ubuntu, so pull it first:   
     ```docker pull nkxujun/ubuntu_eml```
 * You can use `docker images` to see if you have pulled these two images successfully:
+
 	<img src="./img/origin_images.png" width = "90%" alt="eml_images"/>
  
 ### Down load install dependent package
@@ -82,15 +83,18 @@ Every single server in our cluster is created by one *docker image*, and this *i
 * Use build.sh to build our image, this process will last for a few minute  
      ```sh build.sh``` 
 * You can use `docker images` to see if you have built successfully:
-	<img src="./img/build_cluster.png" width = "90%"alt="Origin_images"/>
+
+	<img src="./img/build_cluster.png" width = "90%" alt="Origin_images"/>
 
 ## Run docker virtual server cluster
 ### Build a network for docker virtual server cluster
 * Use `sh build_network.sh` to build a network which called **shadownet**:
+
 	<img src="./img/build_network.png" style ="margin-left=100;" alt="networks">
 ### Run all needed containers
 
 * You can use `sh run_containers.sh` to run all servers:
+
 	<img src="./img/run_containers.png" style ="margin-left=100;" alt="net works">
 
 * If your have run all these four server successed: **mysql, hadoop-master, hadoop-slave1,hadoop-slave2**, you can use `docker ps` to check

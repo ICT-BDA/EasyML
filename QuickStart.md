@@ -71,7 +71,7 @@ Our server cluster is based on docker, thus you can build it on your own compute
 * Our Eml server images is based on ubuntu, so pull it first:   
     ```docker pull nkxujun/ubuntu_eml```
 * You can use `docker images` to see if you have pulled these two images successfully:
-	<img src="./img/origin_images.png" width = "90%"alt="	Origin images"/>
+	<img src="./img/origin_images.png" width = "90%" alt="eml_images"/>
  
 ### Down load install dependent package
 Every single server in our cluster is created by one *docker image*, and this *image* can be built via a **Dockerfile** which has defined by us and includes all utilities we need such as hadoop. Thus we need to download the **Dockerfile** and all dependent files and configuration files from our [google drive disk](https://drive.google.com/open?id=0B5Lj6qkCMBbFWW5uYlJwb2drb1k) or [Baidu Cloud](http://pan.baidu.com/s/1i5BSiup).
@@ -82,7 +82,7 @@ Every single server in our cluster is created by one *docker image*, and this *i
 * Use build.sh to build our image, this process will last for a few minute  
      ```sh build.sh``` 
 * You can use `docker images` to see if you have built successfully:
-	<img src="./img/build_cluster.png" width = "90%"alt="Origin images"/>
+	<img src="./img/build_cluster.png" width = "90%"alt="Origin_images"/>
 
 ## Run docker virtual server cluster
 ### Build a network for docker virtual server cluster

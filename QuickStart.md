@@ -72,6 +72,7 @@ Our server cluster is based on docker, thus you can build it on your own compute
     ```docker pull nkxujun/ubuntu_eml```
 * You can use `docker images` to see if you have pulled these two images successfully:
 
+
 	<img src="./img/origin_images.png" width = "90%"alt="	Origin images"/>
 
  

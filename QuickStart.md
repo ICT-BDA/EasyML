@@ -66,9 +66,13 @@ Our server cluster is based on ***Docker***, thus you can build run time environ
 
 ### Step 2: Pull mysql server images from docker hub
 * Pull our mysql server images from our [docker hub](https://hub.docker.com/u/nkxujun/):
+
+
     ```docker pull nkxujun/mysql_eml```
 ### Step 3: Pull ubuntu_eml images from docker hub
 * Our Eml server images is based on ubuntu, so pull it first:   
+
+
     ```docker pull nkxujun/ubuntu_eml```
 * You can use `docker images` to see if you have pulled these two images successfully:
 

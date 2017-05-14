@@ -70,7 +70,7 @@ The users may check the outputs of a node by right clicking the corresponding ou
 </div>
 
 ## Acknowledgements
-We thank the following contributors to the initial version of the EasyML project：
+The following people contributed to the development of the EasyML project：
 
 * **Jun Xu**, Institute of Computing Technolgy, Chinese Academy of Sciences. Homepage: http://www.bigdatalab.ac.cn/~junxu
 * **Xiaohui Yan**, Huawei Technologies 

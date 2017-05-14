@@ -79,5 +79,6 @@ We thank the following contributors to the initial version of the EasyML project
 * **Tianyou Guo**,  Institute of Computing Technolgy, Chinese Academy of Sciences
 * **Jianpeng Hou**,  Institute of Computing Technolgy, Chinese Academy of Sciences
 * **Ping Li**,  Institute of Computing Technolgy, Chinese Academy of Sciences
+* **Xueqi Cheng**, Institute of Computing Technolgy, Chinese Academy of Sciences. Homepage: http://www.bigdatalab.ac.cn/~cxq/
 
 

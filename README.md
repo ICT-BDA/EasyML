@@ -38,7 +38,7 @@ Pull all project and prepare some necessary environments and a kind of developme
 
 
 ## How to use Easy Machine Learning Studio 
-After you have ran Easy ML，You can login via *`http://localhost:18080/EMLStudio.html`*with our official account `bdaict@hotmail.com` and password `bdaict`. For the best user experience, it is recommended to use Chrome.
+After you have ran Easy ML，You can login via `http://localhost:18080/EMLStudio.html`with our official account `bdaict@hotmail.com` and password `bdaict`. For the best user experience, it is recommended to use Chrome.
 <div align=center>
 <img src="./img/home_page.png" width="90%  alt="Homepage"/>
 </div>

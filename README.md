@@ -73,7 +73,7 @@ The users may check the outputs of a node by right clicking the corresponding ou
 The following people contributed to the development of the EasyML project：
 
 * **Jun Xu**, Institute of Computing Technolgy, Chinese Academy of Sciences. Homepage: http://www.bigdatalab.ac.cn/~junxu
-* **Xiaohui Yan**, Huawei Technologies 
+* **Xiaohui Yan**, Homepage: http://xiaohuiyan.github.io/ 
 * **Xinjie Chen**,  Institute of Computing Technolgy, Chinese Academy of Sciences
 * **Zhaohui Li**,  Institute of Computing Technolgy, Chinese Academy of Sciences
 * **Tianyou Guo**,  Institute of Computing Technolgy, Chinese Academy of Sciences

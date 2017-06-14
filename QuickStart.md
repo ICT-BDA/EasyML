@@ -132,14 +132,14 @@ Because the hadoop cluster network communication depend on ssh, we need to confi
 <img src="./img/namenode_web.png" width = "90%" alt="namenode_web"/>
 </div>
 
-### Start  and Oozie service
+### Start Oozie service
  * Enter the *hadoop-master* container via `docker exec -it hadoop-master /bin/bash` 
  * Run `sh /root/start-oozie.sh` to start Oozie and Tomcat service, it will spend some time:
 <div align=center>
 <img src="./img/start_ooize.png" width = "90%" alt="start oozie"/>
 </div>
 
- * We have started a ooize task example in the start shell, you can visit *http://hadoop-master:11000/oozie/* in your browser and refresh for the detail of the task.
+ * We have started an ooize task example in the start shell, you can visit *http://hadoop-master:11000/oozie/* in your browser and refresh for the detail of the task.
 <div align=center>
 <img src="./img/browse_oozie.png" width = "90%" alt="browse_oozie"/>
 </div>

@@ -79,5 +79,20 @@ public class Util {
 
     return now;
   }
+  
+	/**
+	 * Parse string value to int type, string value may be double or int type
+	 * 
+	 * @param value
+	 * @return
+	 */
+	public static int parseStrToInt(String value)
+	{
+		if(value.contains("."))
+		{
+			value = value.substring(0,value.indexOf("."));
+		}
+		return Integer.valueOf(value);
+	}
 
 }

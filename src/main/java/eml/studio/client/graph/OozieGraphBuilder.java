@@ -24,6 +24,7 @@ import eml.studio.client.ui.widget.program.ProgramWidget;
 import eml.studio.client.ui.widget.shape.InNodeShape;
 import eml.studio.client.ui.widget.shape.NodeShape;
 import eml.studio.client.ui.widget.shape.OutNodeShape;
+import eml.studio.client.util.Util;
 import eml.studio.shared.graph.OozieDatasetNode;
 import eml.studio.shared.graph.OozieEdge;
 import eml.studio.shared.graph.OozieGraph;
@@ -188,7 +189,10 @@ public class OozieGraphBuilder {
 	      BaseWidget widget = entry.getValue();
 	      Integer x = widget.getController().getWidgetPanel().getWidgetLeft(widget);
 	      Integer y = widget.getController().getWidgetPanel().getWidgetTop(widget);
-	      this.addWidget(widget, x, y);
+	      int tx = Util.parseStrToInt(String.valueOf(x));
+	      int ty = Util.parseStrToInt(String.valueOf(y));
+	      
+	      this.addWidget(widget, tx, ty);
 	    }
 
 	    Set<Connection> connDrawSet = controller.getConnDrawSet();

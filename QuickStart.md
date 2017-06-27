@@ -57,11 +57,11 @@ Before you can use **EasyML Studio**, you must configure the environment which i
 ## Preparation for virtual server cluster
 Our server cluster is based on ***Docker***, thus you can build run time environment on your own computer. It is convenient for you to develop project without any remote connections. Furthermore, you can also contribute to the server environments. The docker version server cluster is not stable and efficient, for which we can do a series of things on it. However, you first step to access it is installing Docker.
 ### Step 1: Install Docker 
-* Just follow the [official guide](https://www.docker.com/) to install Docker.
+* Just follow the [official guide](https://www.docker.com/) to install Docker. If you install the `docker in windows`, at least `Minimum Memory Requirement (RAM) = 8GB` for standalone computer. Hard drive must contain `enough space (10GB)` in which you install Docker. Otherwise it will be very very slow.
 * Make sure your docker service runs correctly via `Docker info` and `Docker version`
 * No matter which system your computer is, stop the **Firewall** of your system
 * If you are using *centos 7*, you also should stop the **selinux**, in order to avoiding run Docker container error. 
-* Run ```sudo docker run helloworld``` to see if we have install docker successfully.
+* Run ```sudo docker run hello-world``` to see if we have install docker successfully.
 
 
 ### Step 2: Pull mysql server images from docker hub
@@ -79,7 +79,7 @@ Our server cluster is based on ***Docker***, thus you can build run time environ
 	<img src="./img/origin_images.png" width = "90%" alt="eml_images"/>
  
 ### Step 4: Download install dependent package
-Every single server in our cluster is created by one *docker image*, and this *image* can be built via a **Dockerfile** which has defined by us and includes all utilities we need such as hadoop. Thus we need to download the **Dockerfile** and all dependent files and configuration files from our [google drive disk](https://drive.google.com/open?id=0B5Lj6qkCMBbFWW5uYlJwb2drb1k) or [Baidu Cloud](https://pan.baidu.com/s/1nvE4tXf).
+Every single server in our cluster is created by one *docker image*, and this *image* can be built via a **Dockerfile** which has defined by us and includes all utilities we need such as hadoop. Thus we need to download the **Dockerfile** and all dependent files and configuration files from our [google drive disk](https://drive.google.com/open?id=0B5Lj6qkCMBbFWW5uYlJwb2drb1k) or [Baidu Cloud](https://pan.baidu.com/s/1jH6SToy).
 
 
 ### Step 5: Build Eml server images  
@@ -107,7 +107,7 @@ Every single server in our cluster is created by one *docker image*, and this *i
 Because the hadoop cluster network communication depend on ssh, we need to confirm that the three server can do ssh log-in without password.
 
 * We can use `docker exec -it hadoop-master /bin/bash` to enter the container named *Hadoop-master*
-* In *Hadoop-master*，use `ssh hadoop-slave1` and `ssh hadoop-slave2` to test the ssh function and do not forget *exit* after each ssh test:
+* In *Hadoop-master*，use `ssh hadoop localhost`、`ssh hadoop-slave1` and `ssh hadoop-slave2` to test the ssh function and do not forget *exit* after each ssh test, check all the hadoop containers ssh service is working:
 
 	<img src="./img/test_ssh.png" style ="margin-left=100;" alt="test ssh">
 
@@ -117,7 +117,7 @@ Because the hadoop cluster network communication depend on ssh, we need to confi
 ## Start all services in cluster 
 
 ### Configure local hosts 
-  * Add your Localhost(Linux) or Docker IP(Windows) as `hadoop-master` and `mysql` to your hosts file, for example:
+  * Add your Localhost(Linux) or Docker IP(Windows, if you use [DockerToolBox](https://www.docker.com/products/docker-toolbox "DockerToolBox") to install, the default virtual IP is `192.168.99.100`) as `hadoop-master` and `mysql` to your hosts file, for example:
  
     <img src="./img/hosts.png" alt="Hosts"/>
 
@@ -143,9 +143,22 @@ Because the hadoop cluster network communication depend on ssh, we need to confi
 <div align=center>
 <img src="./img/browse_oozie.png" width = "90%" alt="browse_oozie"/>
 </div>
+ * when you finish install oozie, you can't visit http://hadoop-master:11000/oozie/  and when you execute oozie status check by below  command in hadoop-master container, it appear connection exception:
+>      oozie admin -oozie http://hadoop-master:11000/oozie -status
+>      //Meet below exception
+>      Error: IO_ERROR:java.net.ConnectException: Connection refused
+  then you can try to restart oozie again in hadoop-master container like belows:
+
+>     rm -rf $OOZIE_HOME/logs/*    //Clear log directory
+>     rm -rf $OOZIE_HOME/oozie-server/logs/*    //Clear log directory
+>     rm -rf $OOZIE_HOME/oozie-server/temp/*    //Clear temp directory
+>     rm -rf $OOZIE_HOME/oozie-server/webapps/oozie/     //Delete oozie 
+>     rm -rf $OOZIE_HOME/oozie-server/webapps/oozie.war    //Delete oozie.war
+>     ./root/start-oozie.sh    //Rerun the start script about oozie
+
 
 ### Visit EMLStudio test website to confirm correctness of whole process
-* Visit *http://hadoop-master:18080/EMLStudio* in your browser and log in via *username: bdaict@hotmail.com* and *password: `bdaict`*, you can find a example in the task list.
+* Visit *http://hadoop-master:18080/EMLStudio* in your browser and log in via *username: `bdaict@hotmail.com`* and *password: `bdaict`*, you can find a example in the task list.
 * Clone it and submit to the server. If the task can run correctly, congratulations on your successful configuration. 
 <div align=center>
 <img src="./img/EML_example.png" width = "90%" alt="Eml_example"/>

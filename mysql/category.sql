@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : BDA(118)
-Source Server Version : 50553
-Source Host           : 10.61.1.118:3306
-Source Database       : studio
+Source Server         : BDA
+Source Server Version : 50173
+Source Host           : bda04:3306
+Source Database       : studio4
 
 Target Server Type    : MYSQL
-Target Server Version : 50553
+Target Server Version : 50173
 File Encoding         : 65001
 
-Date: 2017-06-21 09:37:27
+Date: 2017-06-26 20:59:51
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,3 +30,13 @@ CREATE TABLE `category` (
   `createtime` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of category
+-- ----------------------------
+INSERT INTO `category` VALUES ('0A0F402F-670F-4696-9D9C-42F0E0D665A0', 'System Program', '1', 'prog', 'System Program', null, '0', '2016-06-17 14:32:48');
+INSERT INTO `category` VALUES ('0A0F402F-670F-4696-9D9C-42F0E0D665A00', 'System Data', '1', 'data', 'System Data', '', '0', '2016-06-17 14:32:48');
+INSERT INTO `category` VALUES ('0A0F402F-670F-4696-9D9C-42F0E0D665A1', 'Shared Program', '1', 'prog', 'Shared Program', null, '0', '2016-06-17 14:32:48');
+INSERT INTO `category` VALUES ('0A0F402F-670F-4696-9D9C-42F0E0D665A11', 'Shared Data', '1', 'data', 'Shared Data', '', '0', '2016-06-17 14:32:48');
+INSERT INTO `category` VALUES ('0A0F402F-670F-4696-9D9C-42F0E0D665A2', 'My Program', '1', 'prog', 'My Program', null, '0', '2016-06-17 14:32:48');
+INSERT INTO `category` VALUES ('0A0F402F-670F-4696-9D9C-42F0E0D665A22', 'My Data', '1', 'data', 'My Data', '', '0', '2016-06-17 14:32:48');

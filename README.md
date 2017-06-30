@@ -69,6 +69,14 @@ The users may check the outputs of a node by right clicking the corresponding ou
 <img src="./img/Upload_Program.png" width="90%  alt="job_stdout"/>
 </div>
 
+## How to experience our system
+We apply an online service for you to experience our system. You can register your own account or use our official account to login the system. The website of the system is as belows:
+
+* Outside ICT, you can visit: [http://159.226.40.104:18080/dev/](http://159.226.40.104:18080/dev/ "http://159.226.40.104:18080/dev/")
+* Inside ICT, you can visit: [http://10.60.0.50:18080/dev/](http://10.60.0.50:18080/dev/ "http://10.60.0.50:18080/dev/")
+
+If you have any advice or problems when you expericen our system, welcome to contact us! You can leave us a message or give a email to `bdaict@hotmail.com`, thank you for your advice!
+
 ## Acknowledgements
 The following people contributed to the development of the EasyML project：
 

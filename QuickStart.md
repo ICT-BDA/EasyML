@@ -144,6 +144,7 @@ Because the hadoop cluster network communication depend on ssh, we need to confi
 <img src="./img/browse_oozie.png" width = "90%" alt="browse_oozie"/>
 </div>
  * when you finish install oozie, you can't visit http://hadoop-master:11000/oozie/  and when you execute oozie status check by below  command in hadoop-master container, it appear connection exception:
+ 
 >      oozie admin -oozie http://hadoop-master:11000/oozie -status
 >      //Meet below exception
 >      Error: IO_ERROR:java.net.ConnectException: Connection refused

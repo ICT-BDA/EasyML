@@ -107,19 +107,23 @@ Every single server in our cluster is created by one *docker image*, and this *i
 Because the hadoop cluster network communication depend on ssh, we need to confirm that the three server can do ssh log-in without password.
 
 * We can use `docker exec -it hadoop-master /bin/bash` to enter the container named *Hadoop-master*
-* In *Hadoop-master*，use `ssh hadoop localhost`、`ssh hadoop-slave1` and `ssh hadoop-slave2` to test the ssh function and do not forget *exit* after each ssh test, check all the hadoop containers ssh service is working:
+* In *Hadoop-master*，use `ssh localhost`、`ssh hadoop-slave1` and `ssh hadoop-slave2` to test the ssh function and do not forget *exit* after each ssh test, check all the hadoop containers ssh service is working:
 
 	<img src="./img/test_ssh.png" style ="margin-left=100;" alt="test ssh">
 
 * If the ssh does not work, enter each container and execute this:
 	```/etc/init.d/ssh start``` 
+* If you meet **Bad owner or permissions on ~/.ssh/config.** exception when you test `ssh localhost`, you can execute `chmod 600 ~/.ssh/config` command and try again.
 
 ## Start all services in cluster 
 
 ### Configure local hosts 
-  * Add your Localhost(Linux) or Docker IP(Windows, if you use [DockerToolBox](https://www.docker.com/products/docker-toolbox "DockerToolBox") to install, the default virtual IP is `192.168.99.100`) as `hadoop-master` and `mysql` to your hosts file, for example:
+  * Add your Localhost(Linux) or Docker IP(Windows, if you use [DockerToolBox](https://www.docker.com/products/docker-toolbox "DockerToolBox") to install, the default virtual IP is `192.168.99.100`) as `hadoop-master` , `hadoop-slave1`, `hadoop-slave2` and `mysql` to your hosts file, for example:
  
-    <img src="./img/hosts.png" alt="Hosts"/>
+>      10.20.11.7 hadoop-master
+>      10.20.11.7 mysql
+>      10.20.11.7 hadoop-slave1
+>      10.20.11.7 hadoop-slave2
 
 ### Init Mysql database
  * Run `sh init_mysql.sh` to prepare the databases for *Oozie* and *EasyML Studio* 

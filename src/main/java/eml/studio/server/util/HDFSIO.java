@@ -15,7 +15,6 @@ import org.apache.hadoop.fs.permission.FsAction;
 import org.apache.hadoop.fs.permission.FsPermission;
 import org.apache.hadoop.io.IOUtils;
 
-
 import java.io.*;
 import java.util.logging.Logger;
 
@@ -29,6 +28,9 @@ public class HDFSIO {
 
   static {
     conf.set("fs.default.name", Constants.NAME_NODE);
+    
+    //Wheather client use hostname to visit datanode or not
+    conf.set("dfs.client.use.datanode.hostname", Constants.HOSTNAME_CON); 
     try {
       fs = FileSystem.get(conf);
     } catch (IOException e) {

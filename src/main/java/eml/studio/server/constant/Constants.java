@@ -39,6 +39,7 @@ public class Constants {
   public static String MAIL_HOST;
   public static String MAIL_USERNAME;
   public static String MAIL_PASSWORD;
+  public static String HOSTNAME_CON;
   static Logger logger = Logger.getLogger(Constants.class.getName());
 
   static {

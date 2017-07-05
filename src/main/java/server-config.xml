@@ -3,6 +3,7 @@
 	<OOZIE_CLIENT>http://hadoop-master:11000/oozie</OOZIE_CLIENT>
 	<NAME_NODE>hdfs://hadoop-master:9000</NAME_NODE>
 	<JOB_TRACKER>hadoop-master:8032</JOB_TRACKER>
+	<HOSTNAME_CON>true</HOSTNAME_CON>
 	<QUEUE_NAME>default</QUEUE_NAME>
 	<APP_WORKSPACE>/EML/oozie</APP_WORKSPACE>
 	<DRAFT_PATH>/EML/draft</DRAFT_PATH>

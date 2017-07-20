@@ -47,16 +47,6 @@ public class DistributedRunShellGenerator extends RunShellGenerator {
         + "        hdfs dfs -put stdout $3\n" + "        exit $exit_code\n"
         + "fi\n\n" + "echo upload output files to hdfs\n");
 
-    idx = 3;
-    for (FileHolder fp : commander.getOutFileHolders()) {
-      idx++;
-      // ${idx}表示文件模块的路径
-      sb.append("describe ${" + idx + "##*/} > ${" + idx
-          + "##*/}_describe.xml\n" + "hdfs dfs -put ${" + idx
-          + "##*/}_describe.xml ${" + idx
-          + "}/describe.xml 1>>stdout 2>>stderr\n");
-    }
-
     sb.append("hdfs dfs -put stderr $3\n" + "hdfs dfs -put stdout $3\n\n"
         + "hdfs dfs -chmod -R 777 $3\n\n"
         + "exit $exit_code");

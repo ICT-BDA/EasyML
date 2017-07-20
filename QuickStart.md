@@ -130,7 +130,7 @@ Because the hadoop cluster network communication depend on ssh, we need to confi
 ### Start HDFS，spark and Yarn service
  * Enter the *hadoop-master* container via `docker exec -it hadoop-master /bin/bash` (a vital important command to enter every container)
  * Run `sh /root/start-hadoop.sh` to start hadoop and spark service
- * You can use `sh /root/run_wordcount.sh` to test the hadoop service
+ * You can use `sh /root/run-wordcount.sh` to test the hadoop service
  * Visit *http://hadoop-master:50070/* in your browser to check namenode and every datanode's status:  
 <div align=center>
 <img src="./img/namenode_web.png" width = "90%" alt="namenode_web"/>

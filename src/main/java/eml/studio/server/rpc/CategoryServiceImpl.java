@@ -138,17 +138,17 @@ public class CategoryServiceImpl extends RemoteServiceServlet implements Categor
 		    String fathPath = category.getPath().substring(0, index);
 
 		    if("my program".equals(fathPath.toLowerCase())){
-	    		update.setPath("我的程序");
+	    		update.setPath("My Program");
 			}else if("shared program".equals(fathPath.toLowerCase())){
-	    		update.setPath("共享程序");
+	    		update.setPath("Shared Program");
 			}else if("system program".equals(fathPath.toLowerCase())){
-				update.setPath("系统程序");
+				update.setPath("System Program");
 			}else if("my data".equals(fathPath.toLowerCase())){
-				update.setPath("我的数据");
+				update.setPath("My Data");
 			}else if("shared data".equals(fathPath.toLowerCase())){
-				update.setPath("共享数据");
+				update.setPath("Shared Data");
 			}else if("system data".equals(fathPath.toLowerCase())){
-				update.setPath("系统数据");
+				update.setPath("System Data");
 			}else
 				update.setPath(fathPath);
 		    

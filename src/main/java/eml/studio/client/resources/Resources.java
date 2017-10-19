@@ -11,14 +11,14 @@ import com.google.gwt.resources.client.ImageResource;
 
 public interface Resources extends ClientBundle {
 
-  Resources instance = GWT.create(Resources.class);
+	Resources instance = GWT.create(Resources.class);
 
-  @Source("dir_close.png")
-  ImageResource getTreeClosed();
+	@Source("dir_close.png")
+	ImageResource getTreeClosed();
 
-  @Source("dir_open.png")
-  ImageResource getTreeOpen();
+	@Source("dir_open.png")
+	ImageResource getTreeOpen();
 
-  @Source("dir_close.png")
-  ImageResource getTreeLeaf();
+	@Source("dir_close.png")
+	ImageResource getTreeLeaf();
 }

@@ -8,16 +8,60 @@ package eml.studio.client.ui.widget.program;
 import eml.studio.client.ui.widget.command.FileDescription;
 
 /**
- * The conference of Program wedget
+ * The conference of Program widget
  */
 public interface ProgramConf {
-  
-  public String getCommandLine();
-  public int getInputFileCount();
-  public int getOutputFileCount();
-  public FileDescription getInputFile(int index);
-  public FileDescription getOutputFile(int index);
-  public void setInputFilePath(int index, String path, String filename);
-  public void setOutputFilePath(int index, String path, String filename);
-  
+
+	/**
+	 * Get program widget commandline
+	 * @return  command line string
+	 */
+	public String getCommandLine();
+
+	/**
+	 * Get program input file number
+	 * @return  input file number
+	 */
+	public int getInputFileCount();
+
+	/**
+	 * Get program output file number
+	 * @return output file number
+	 */
+	public int getOutputFileCount();
+
+	/**
+	 * Get input file description by index
+	 * 
+	 * @param index  input file index(position of the input shape node in widget)
+	 * @return
+	 */
+	public FileDescription getInputFile(int index);
+
+	/**
+	 * Get output file description by index
+	 * 
+	 * @param index  output file index(position of the output shape node in widget)
+	 * @return
+	 */
+	public FileDescription getOutputFile(int index);
+
+	/**
+	 * Set input file path of the program widget
+	 * 
+	 * @param index  input file index
+	 * @param path  input file path 
+	 * @param filename  input file name
+	 */
+	public void setInputFilePath(int index, String path, String filename);
+
+	/**
+	 * Set output file path of the program widget
+	 * 
+	 * @param index  output file index
+	 * @param path  output file path 
+	 * @param filename  output file name
+	 */
+	public void setOutputFilePath(int index, String path, String filename);
+
 }

@@ -20,33 +20,33 @@ import com.google.gwt.user.client.ui.MenuItem;
  */
 public class DatasetDeprecateMenu {
 
-  public static MenuItem create(final DatasetLeaf node) {
-    Command command = new MenuItemCommand(node) {
-      @Override
-	public void execute() {
-        String id = node.getModule().getId();
-        boolean y = Window.confirm("Ready to deprecate " + node.getModule().getName() + "？");
-        if (y) {
-          DatasetServiceAsync svc = GWT.create(DatasetService.class);
-          svc.deprecate(id, new AsyncCallback<Void>() {
+	public static MenuItem create(final DatasetLeaf node) {
+		Command command = new MenuItemCommand(node) {
+			@Override
+			public void execute() {
+				String id = node.getModule().getId();
+				boolean y = Window.confirm("Ready to deprecate " + node.getModule().getName() + "？");
+				if (y) {
+					DatasetServiceAsync svc = GWT.create(DatasetService.class);
+					svc.deprecate(id, new AsyncCallback<Void>() {
 
-            @Override
-			public void onFailure(Throwable caught) {
-              Window.alert(caught.getMessage());
-            }
+						@Override
+						public void onFailure(Throwable caught) {
+							Window.alert(caught.getMessage());
+						}
 
-            @Override
-			public void onSuccess(Void result) {
-              node.delete();
-            }
+						@Override
+						public void onSuccess(Void result) {
+							node.delete();
+						}
 
-          });
-        }
-        this.component.getContextMenu().hide();
-      }
-    };
+					});
+				}
+				this.component.getContextMenu().hide();
+			}
+		};
 
-    MenuItem item = new MenuItem("Deprecate", command);
-    return item;
-  }
+		MenuItem item = new MenuItem("Deprecate", command);
+		return item;
+	}
 }

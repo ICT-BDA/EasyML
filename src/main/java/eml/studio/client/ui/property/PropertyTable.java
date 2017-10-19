@@ -18,32 +18,32 @@ import java.util.Map;
  */
 public abstract class PropertyTable extends ScrollPanel {
 
-  protected Grid grid;
-  protected VerticalPanel vp;
+	protected Grid grid;
+	protected VerticalPanel vp;
 
-  private Map<Property, Label> properties;
+	private Map<Property, Label> properties;
 
-  public PropertyTable(int rows, int cols) {
-    super();
+	public PropertyTable(int rows, int cols) {
+		super();
 
-    grid = new Grid(rows, cols);
-    vp = new VerticalPanel();
-    this.setAlwaysShowScrollBars(false);
-    this.setSize("100%", "80%");
-    vp.setBorderWidth(0);
-    vp.add(grid);
-    this.add(vp);
-    properties = new HashMap<Property, Label>();
-  }
+		grid = new Grid(rows, cols);
+		vp = new VerticalPanel();
+		this.setAlwaysShowScrollBars(false);
+		this.setSize("100%", "80%");
+		vp.setBorderWidth(0);
+		vp.add(grid);
+		this.add(vp);
+		properties = new HashMap<Property, Label>();
+	}
 
-  public void addProperty(Property p, int row) {
-    grid.setWidget(row, 0, new Label(p.getName()));
+	public void addProperty(Property p, int row) {
+		grid.setWidget(row, 0, new Label(p.getName()));
 
-    Label box = new Label();
-    box.setText(p.getValue());
-    grid.setWidget(row, 1, box);
-    box.setStyleName("propetybox");
-    properties.put(p, box);
-  }
+		Label box = new Label();
+		box.setText(p.getValue());
+		grid.setWidget(row, 1, box);
+		box.setStyleName("propetybox");
+		properties.put(p, box);
+	}
 
 }

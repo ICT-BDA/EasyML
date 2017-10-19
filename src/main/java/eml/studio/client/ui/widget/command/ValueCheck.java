@@ -28,12 +28,10 @@ public class ValueCheck {
           || "boolean".equals(type.toLowerCase())) {
         value = value.trim();
 
-        //logger.info(value);
         if (!("false".equals(value) || "False".equals(value)
             || "True".equals(value) || "true".equals(value)))
           return null;
 
-        //logger.info("Parsing value " + value);
         res = Boolean.parseBoolean(value);
       } else if( "string".equals(type.toLowerCase())){
         res = value;
@@ -49,7 +47,6 @@ public class ValueCheck {
       throws ValueInvalidException {
     Object res = validate(param.getParamType(), value);
     if (res == null) {
-      //logger.warning("参数[" + param.getParaName() + "]的值\"" + value + "\"无效");
       throw new ValueInvalidException("Parameter [" + param.getParaName() + "] value \""
           + value + "\" is invalide");
     }
@@ -69,9 +66,7 @@ public class ValueCheck {
 
         Double min = Double.parseDouble(minStr);
 
-        //logger.warning("参数[" + param.getParaName() + "]的值\"" + val + "\"不能小于"+ minStr);
         if (min > val) {
-
           throw new ValueInvalidException("Parameter [" + param.getParaName()
               + "] should not small than " + minStr);
         }
@@ -79,9 +74,7 @@ public class ValueCheck {
 
       if (maxStr != null && !maxStr.equals("")) {
         Double max = Double.parseDouble(maxStr);
-        //logger.warning("参数[" + param.getParaName() + "]的值\"" + val + "\"不能大于"+ maxStr);
         if (max < val) {
-
           throw new ValueInvalidException("Parameter [" + param.getParaName()
               + "] should not bigger than " + maxStr);
         }

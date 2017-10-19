@@ -11,5 +11,5 @@ import com.google.gwt.event.shared.EventHandler;
  * Upadate event handler interface
  */
 public interface UpdateHandler extends EventHandler {
-  void onUpdate(UpdateEvent event);
+	void onUpdate(UpdateEvent event);
 }

@@ -56,7 +56,7 @@ public class FileDownloadServlet extends HttpServlet {
 	 * @param resp HttpServletResponse
 	 * @throws ServletException
 	 * @throws IOException
-     */
+	 */
 	protected void saveDownloadFile(HttpServletRequest req,
 			HttpServletResponse resp) throws ServletException, IOException {
 		String filename = req.getParameter("filename");
@@ -84,7 +84,7 @@ public class FileDownloadServlet extends HttpServlet {
 			out.close();
 		}
 		else //If the directory, then download the directory from HDFS to the server,
-		// and then compressed, and then download to the client
+			// and then compressed, and then download to the client
 		{
 			resp.addHeader("Content-Disposition", "attachment; filename=\"" + filename+".zip");
 			String[] filePathStrs = filename.split("/");
@@ -136,19 +136,19 @@ public class FileDownloadServlet extends HttpServlet {
 
 	}
 
-		/**
-		* Download files or files from HDFS to local
-	 	*
-	 	* @param filePath  File or file directory path (HDFS path)
-	 	* @throws IOException
-	 	*/
-		public static void downloadFile(String filePath) throws IOException
-		{
-			String[] paths = filePath.split("/");
-			String fileName = paths[paths.length-1];
-			String baseDir="";
-			download(filePath,fileName,baseDir);
-		}
+	/**
+	 * Download files or files from HDFS to local
+	 *
+	 * @param filePath  File or file directory path (HDFS path)
+	 * @throws IOException
+	 */
+	public static void downloadFile(String filePath) throws IOException
+	{
+		String[] paths = filePath.split("/");
+		String fileName = paths[paths.length-1];
+		String baseDir="";
+		download(filePath,fileName,baseDir);
+	}
 
 	/**
 	 * Method of download file from HDFS

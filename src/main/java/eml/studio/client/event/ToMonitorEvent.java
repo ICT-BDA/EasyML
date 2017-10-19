@@ -11,32 +11,31 @@ import com.google.gwt.event.shared.GwtEvent;
 /**
  * The event that will be triggered when navigating to monitor page
  */
-public class ToMonitorEvent extends
-    GwtEvent<ToMonitorEvent.ToMonitorEventHandler> {
-  public final static Type<ToMonitorEventHandler> TYPE = new Type<ToMonitorEventHandler>();
+public class ToMonitorEvent extends GwtEvent<ToMonitorEvent.ToMonitorEventHandler> {
+	public final static Type<ToMonitorEventHandler> TYPE = new Type<ToMonitorEventHandler>();
 
-  private String message;
+	private String message;
 
-  public ToMonitorEvent(String msg) {
-    message = msg;
-  }
+	public ToMonitorEvent(String msg) {
+		message = msg;
+	}
 
-  public interface ToMonitorEventHandler extends EventHandler {
-    void onToMonitorEvent(ToMonitorEvent event);
-  }
+	public interface ToMonitorEventHandler extends EventHandler {
+		void onToMonitorEvent(ToMonitorEvent event);
+	}
 
-  @Override
-  public Type<ToMonitorEventHandler> getAssociatedType() {
-    return TYPE;
-  }
+	@Override
+	public Type<ToMonitorEventHandler> getAssociatedType() {
+		return TYPE;
+	}
 
-  @Override
-  protected void dispatch(ToMonitorEventHandler handler) {
-    handler.onToMonitorEvent(this);
-  }
+	@Override
+	protected void dispatch(ToMonitorEventHandler handler) {
+		handler.onToMonitorEvent(this);
+	}
 
-  public String getMessage() {
-    return message;
-  }
+	public String getMessage() {
+		return message;
+	}
 
 }

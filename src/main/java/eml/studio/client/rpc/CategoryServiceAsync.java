@@ -26,9 +26,5 @@ public interface CategoryServiceAsync {
   
   void deleteCategory(Category category, AsyncCallback<Category> callback);
   
-//  void getCateToPath(String id, String str, AsyncCallback<String> callback);
-//
-//  void getPathToCate(String id, String path, AsyncCallback<String> callback);
-//  
-//  void getCateIdMap(AsyncCallback<Map<String, Category>> callback);
+  void search(Category category, int limitStart, int limitSize, AsyncCallback<List<Category>> callback);
 }

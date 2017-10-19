@@ -12,15 +12,14 @@ import eml.studio.client.ui.widget.shape.Shape;
  * Connection Factory
  */
 public class CommonConnectionFactory extends AbstractConnectionFactory {
-  public static AbstractConnectionFactory singleton = new CommonConnectionFactory();
+	public static AbstractConnectionFactory singleton = new CommonConnectionFactory();
 
-  private CommonConnectionFactory() {
-  }
+	private CommonConnectionFactory() {
+	}
 
-  
-  @Override
-  public Connection buildConnection(DiagramController controller, Shape start,
-                                    Shape end) {
-    return new Connection(controller, start, end);
-  }
+
+	@Override
+	public Connection buildConnection(DiagramController controller, Shape start, Shape end) {
+		return new Connection(controller, start, end);
+	}
 }

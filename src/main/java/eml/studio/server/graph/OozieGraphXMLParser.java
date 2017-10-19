@@ -67,7 +67,7 @@ public class OozieGraphXMLParser {
 				graph.addProgramNode(opn);
 				graph.addActiveNode(opn.getId());
 			}
-			
+
 		}
 
 		// parse edges
@@ -77,7 +77,7 @@ public class OozieGraphXMLParser {
 			if (edge != null)
 				graph.addEdge(edge);
 		}
-		
+
 		return graph;
 	}
 

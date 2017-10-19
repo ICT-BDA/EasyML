@@ -13,23 +13,23 @@ import eml.studio.server.graph.OozieGraphXMLParser;
 import eml.studio.server.oozie.workflow.WFBuilder;
 import eml.studio.server.util.HDFSIO;
 import eml.studio.server.util.OozieUtil;
+import eml.studio.server.util.ProgramAbleRunShellGenerator;
 import eml.studio.server.util.TimeUtils;
 import eml.studio.shared.graph.OozieGraph;
 import eml.studio.shared.model.BdaJob;
 import eml.studio.shared.oozie.OozieAction;
 import eml.studio.shared.oozie.OozieJob;
+import eml.studio.shared.script.Script;
 
 /**
  * BdaJob Oozie Job
- * @author Roger
- *
  */
 public class OozieInstance {
 
 	public OozieInstance(BdaJob bdaJob){
 		this.bdaJob = bdaJob;
 	}
-	
+
 	public OozieInstance(String bdaJobId) throws Exception{
 		BdaJob query = new BdaJob();
 		query.setJobId(bdaJobId);
@@ -38,31 +38,46 @@ public class OozieInstance {
 	}
 	public BdaJob exec() throws Exception {
 		if( bdaJob == null ) return null;
-		
+
 		OozieGraph graph = bdaJob.getOozieGraph();
 		WFBuilder wfBuilder = new WFBuilder();
 		wfBuilder.buildFromOozieGraph(graph);
 		String workflow = wfBuilder.asWFGraph().toWorkflow(bdaJob.getJobName());
-		// 生成和创建oozie任务对应app-path
+
+		// Generate and create oozie job application path
 		String app_path = Constants.APP_WORKSPACE + "/APP-PATH-"
 				+ UUID.randomUUID().toString();
 
 		HDFSIO.mkdirs(app_path);
 		HDFSIO.upload(app_path + "/workflow.xml", workflow);
-		// 上传脚本
-		// 提交oozie任务
+
+		// If is script or sql script program , it should upload the script to hdfs
+		for (Script entry : graph.getScriptList()) {
+			String path = entry.getPath().replace("${appPath}", app_path);
+			ProgramAbleRunShellGenerator generator = new ProgramAbleRunShellGenerator();
+			if (entry.getStartShellPath() != null) {
+				String start_script = generator.generate(entry.getInputCount(),
+						entry.getOutputCount());
+				HDFSIO.upload(
+						entry.getStartShellPath().replace("${appPath}",
+								app_path), start_script);
+			}
+			HDFSIO.upload(path, entry.getValue());
+		}
+
+		// Submit the oozie job
 		String oozJobId = OozieUtil.submit(app_path);
 
-		// 设置当前对应的oozie任务id
+		// Set the current oozie job id
 		bdaJob.setCurOozJobId(oozJobId);
 		bdaJob.setLastSubmitTime(TimeUtils.getTime());
 
 		String cond[] = {"job_id"};
 		String setFields[] = {"oozie_job", "job_name", "account",
-				"last_submit_time"};
+		"last_submit_time"};
 		SecureDao.update(bdaJob, setFields, cond);
 
-		// 每个oozie任务会对应多个action，bda数据库中会保存所有与任务相关的action信息
+		// Every oozie job corresponds to multiple actions,  all the job actions information saved in bda database
 		for (String actionName : graph.getActiveList()) {
 			OozieAction action = new OozieAction();
 			action.setBdaJobId(bdaJob.getJobId());
@@ -73,7 +88,7 @@ public class OozieInstance {
 			SecureDao.insert(action);
 		}
 
-		// 同时bda数据库还会保留oozie数据库的任务副本
+		// All oozie jobs information are also saved in bda database 
 		OozieJob oozJob = new OozieJob();
 		oozJob.setAppName(bdaJob.getJobName());
 		oozJob.setJobid(bdaJob.getJobId());
@@ -88,6 +103,6 @@ public class OozieInstance {
 		bdaJob.setCurOozJob(oozJob);
 		return bdaJob;
 	}
-	
+
 	private BdaJob bdaJob;
 }

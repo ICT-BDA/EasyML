@@ -15,23 +15,23 @@ import com.google.gwt.user.client.ui.TreeItem;
  */
 public abstract class BaseTree extends Tree {
 
-  public BaseTree() {
-    super(new TreeImageResources(), true);
+	public BaseTree() {
+		super(new TreeImageResources(), true);
 
-    this.addStyleName("bda-treedir");
+		this.addStyleName("bda-treedir");
 
-    this.addSelectionHandler(new SelectionHandler<TreeItem>() {
-      @Override
-      public void onSelection(SelectionEvent<TreeItem> event) {
-        TreeItem item = event.getSelectedItem();
-        Boolean state = item.getState();
-        // [GWT Issue 3660] to avoid pass invoke onSection two times
-        TreeItem parent = item.getParentItem();
-        item.getTree().setSelectedItem(parent, false);
-        if (parent != null)
-          parent.setSelected(false);
-        item.setState(!state);
-      }
-    });
-  }
+		this.addSelectionHandler(new SelectionHandler<TreeItem>() {
+			@Override
+			public void onSelection(SelectionEvent<TreeItem> event) {
+				TreeItem item = event.getSelectedItem();
+				Boolean state = item.getState();
+				// [GWT Issue 3660] to avoid pass invoke onSection two times
+				TreeItem parent = item.getParentItem();
+				item.getTree().setSelectedItem(parent, false);
+				if (parent != null)
+					parent.setSelected(false);
+				item.setState(!state);
+			}
+		});
+	}
 }

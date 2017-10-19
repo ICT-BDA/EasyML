@@ -14,62 +14,62 @@ import eml.studio.client.ui.widget.command.FileHolder;
  * Generator local version run.sh
  */
 public class RunShellGenerator {
-  /**
-   * generate new cmdLine (content of run.sh)
-   * @param cmdLine origin version
-   * @return string of new cmdline
-   */
-  public String generate(String cmdLine) throws CommandParseException {
-    Commander commander = CommandParser.parse(cmdLine);
-    StringBuffer sb = new StringBuffer("");
-    sb.append("#! /bin/bash\n" +
-                  "#standalone\n" +
-                  "echo +++++++++++++log information+++++++++++\n" +
-                  "source /etc/profile\n" +
-                  "echo $PATH \n" +
-                  "exit_code=0\n\n" +
-                  "echo mk action-dir...\n" +
-                  "actionId=${3##*/}\n" +
-                  "mkdir $actionId\n" +
-                  "echo download libaries ...\n" +
-                  "hdfs dfs -get $2/* 1>>stdout 2>>stderr\n" +
-                  "#((exit_code=exit_code|$?))\n" +
-                  "chmod -R +x *\n" +
-                  "echo download input hdfs files ...\n");
+	/**
+	 * generate new cmdLine (content of run.sh)
+	 * @param cmdLine origin version
+	 * @return string of new cmdline
+	 */
+	public String generate(String cmdLine) throws CommandParseException {
+		Commander commander = CommandParser.parse(cmdLine);
+		StringBuffer sb = new StringBuffer("");
+		sb.append("#! /bin/bash\n" +
+				"#standalone\n" +
+				"echo +++++++++++++log information+++++++++++\n" +
+				"source /etc/profile\n" +
+				"echo $PATH \n" +
+				"exit_code=0\n\n" +
+				"echo mk action-dir...\n" +
+				"actionId=${3##*/}\n" +
+				"mkdir $actionId\n" +
+				"echo download libaries ...\n" +
+				"hdfs dfs -get $2/* 1>>stdout 2>>stderr\n" +
+				"#((exit_code=exit_code|$?))\n" +
+				"chmod -R +x *\n" +
+				"echo download input hdfs files ...\n");
 
-    // readlCmd itype_1 input_1 ... itype_n input_n otype_1 output_1 ... otype_n
-    // output_n
-    int idx = 3;
-    for (FileHolder fp : commander.getInFileHolders()) {
-      idx++;
-      sb.append(String.format(
-          "if [ \"${%d}\" = \"HFile\" ]\n" +
-              "then\n" +
-              "\t hdfs dfs -getmerge ${%d}/${%d##*/} ${%d##*/} 1>>stdout 2>>stderr\n",
-          idx, idx + 1, idx + 1, idx + 1));
-      sb.append(String.format(
-          "else\n" +
-              "\t hdfs dfs -get ${%d}/${%d##*/} ${%d##*/} 1>>stdout 2>>stderr\n" +
-              "fi\n\n", idx + 1, idx + 1, idx + 1));
-      idx++;
-    }
+		// readlCmd itype_1 input_1 ... itype_n input_n otype_1 output_1 ... otype_n
+		// output_n
+		int idx = 3;
+		for (FileHolder fp : commander.getInFileHolders()) {
+			idx++;
+			sb.append(String.format(
+					"if [ \"${%d}\" = \"HFile\" ]\n" +
+							"then\n" +
+							"\t hdfs dfs -getmerge ${%d}/${%d##*/} ${%d##*/} 1>>stdout 2>>stderr\n",
+							idx, idx + 1, idx + 1, idx + 1));
+			sb.append(String.format(
+					"else\n" +
+							"\t hdfs dfs -get ${%d}/${%d##*/} ${%d##*/} 1>>stdout 2>>stderr\n" +
+							"fi\n\n", idx + 1, idx + 1, idx + 1));
+			idx++;
+		}
 
-    sb.append("\necho execute command line\n" +
-                  "echo $1 1>>stdout 2>>stderr\n" +
-                  "eval $1 1>>stdout 2>>stderr\n" +
-                  "((exit_code=exit_code|$?))\n\n");
-    for (FileHolder fp : commander.getOutFileHolders()) {
-      idx++;
-      sb.append( String.format("mkdir $actionId/${%d##*/}\n", idx));
-      sb.append( String.format("mv ${%d##*/} $actionId/${%d##*/} 1>>stdout 2>>stderr\n", idx, idx) );
-    }
+		sb.append("\necho execute command line\n" +
+				"echo $1 1>>stdout 2>>stderr\n" +
+				"eval $1 1>>stdout 2>>stderr\n" +
+				"((exit_code=exit_code|$?))\n\n");
+		for (FileHolder fp : commander.getOutFileHolders()) {
+			idx++;
+			sb.append( String.format("mkdir $actionId/${%d##*/}\n", idx));
+			sb.append( String.format("mv ${%d##*/} $actionId/${%d##*/} 1>>stdout 2>>stderr\n", idx, idx) );
+		}
 
-    sb.append("mv stdout stderr $actionId\n" +
-              "hdfs dfs -put $actionId $3\n" +
-              "hdfs dfs -chmod -R 777 $3\n\n" +
-              "exit $exit_code");
+		sb.append("mv stdout stderr $actionId\n" +
+				"hdfs dfs -put $actionId $3\n" +
+				"hdfs dfs -chmod -R 777 $3\n\n" +
+				"exit $exit_code");
 
-    System.out.print(sb.toString());
-    return sb.toString();
-  }
+		System.out.print(sb.toString());
+		return sb.toString();
+	}
 }

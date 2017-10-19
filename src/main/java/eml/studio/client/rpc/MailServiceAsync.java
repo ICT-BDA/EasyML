@@ -12,7 +12,9 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 public interface MailServiceAsync {
 
 	void VerifyEmail(Account account, AsyncCallback<Account> callback);
+	
 	void VerifyLink(String url, AsyncCallback<String> callback);
+	
 	void SendMail(String base_url, Account account, String flag, AsyncCallback<String> asyncCallback);
 
 }

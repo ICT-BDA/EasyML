@@ -17,39 +17,39 @@ import com.google.gwt.user.client.ui.VerticalPanel;
  * Base panel class of jocDesc
  */
 public class BasePopupPanel extends PopupPanel {
-  private static Logger logger = Logger.getLogger(BasePopupPanel.class
-      .getName());
-  public VerticalPanel verticalPanel = new VerticalPanel();
-  public HTML closeButton = new HTML("X");
+	private static Logger logger = Logger.getLogger(BasePopupPanel.class
+			.getName());
+	public VerticalPanel verticalPanel = new VerticalPanel();
+	public HTML closeButton = new HTML("X");
 
-  public BasePopupPanel() {
-    init();
-  }
+	public BasePopupPanel() {
+		init();
+	}
 
-  protected void init() {
-    this.setGlassEnabled(true);
+	protected void init() {
+		this.setGlassEnabled(true);
 
-    this.setModal(true);
-    this.setCloseEnable(true);
-    verticalPanel.setStyleName("vpanel");
-    this.add(verticalPanel);
-    this.setStyleName("loading_container");
-  }
+		this.setModal(true);
+		this.setCloseEnable(true);
+		verticalPanel.setStyleName("vpanel");
+		this.add(verticalPanel);
+		this.setStyleName("loading_container");
+	}
 
-  public void setCloseEnable(boolean enable) {
-    if (!enable) {
-      verticalPanel.remove(closeButton);
-    } else {
-      closeButton.setSize("10px", "10px");
-      closeButton.setStyleName("closebtn");
-      closeButton.addClickHandler(new ClickHandler() {
-        @Override
-        public void onClick(ClickEvent event) {
-          BasePopupPanel.this.hide();
-        }
-      });
-      verticalPanel.add(closeButton);
-      verticalPanel.setCellHeight(closeButton, "13px");
-    }
-  }
+	public void setCloseEnable(boolean enable) {
+		if (!enable) {
+			verticalPanel.remove(closeButton);
+		} else {
+			closeButton.setSize("10px", "10px");
+			closeButton.setStyleName("closebtn");
+			closeButton.addClickHandler(new ClickHandler() {
+				@Override
+				public void onClick(ClickEvent event) {
+					BasePopupPanel.this.hide();
+				}
+			});
+			verticalPanel.add(closeButton);
+			verticalPanel.setCellHeight(closeButton, "13px");
+		}
+	}
 }

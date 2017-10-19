@@ -5,12 +5,9 @@
  */
 package eml.studio.client.ui.panel;
 
-
 import java.util.logging.Logger;
-
 import org.moxieapps.gwt.uploader.client.events.UploadCompleteEvent;
 import org.moxieapps.gwt.uploader.client.events.UploadCompleteHandler;
-
 import eml.studio.client.controller.DBController;
 import eml.studio.client.mvp.AppController;
 import eml.studio.client.mvp.presenter.MonitorPresenter;
@@ -34,10 +31,10 @@ import com.google.gwt.user.client.Window;
  * Upload Data Set Panel
  */
 public class UploadDatasetPanel extends BasePanel{
-  private static Logger logger = Logger.getLogger(UploadDatasetPanel.class.getName());
+	private static Logger logger = Logger.getLogger(UploadDatasetPanel.class.getName());
 	private DBController dbController = new DBController();
 	private final MonitorPresenter presenter;
-  protected UploadFileModule uploaderPanel;
+	protected UploadFileModule uploaderPanel;
 	private Dataset dataset = new Dataset();
 
 	public UploadDatasetPanel(String emailAccount,MonitorPresenter presenter) {
@@ -46,14 +43,14 @@ public class UploadDatasetPanel extends BasePanel{
 		labarr = new String[][]{
 				{"Name","Category","DataType","Version","CreateDate","Owner","Description"},
 				{Constants.studioUIMsg.dataName(), Constants.studioUIMsg.dataCategory(), 
-				 Constants.studioUIMsg.dataType(), Constants.studioUIMsg.dataVersion(),
-                 Constants.studioUIMsg.dataCreateTime(), Constants.studioUIMsg.dataOwner(), 
-                 Constants.studioUIMsg.dataDescription()},
-             	{"textbox","tree","listbox","textbox","textbox","textbox","textarea"},
-				{"true","true","true","true","false","false","true"},
-				{"", Constants.studioUIMsg.chooseCategory(), "General/CSV/TSV", "0.1", 
-				 TimeUtils.timeNow(), AppController.email, ""},
-				{"left","left","left","left","left","left","right"}
+					Constants.studioUIMsg.dataType(), Constants.studioUIMsg.dataVersion(),
+					Constants.studioUIMsg.dataCreateTime(), Constants.studioUIMsg.dataOwner(), 
+					Constants.studioUIMsg.dataDescription()},
+					{"textbox","tree","listbox","textbox","textbox","textbox","textarea"},
+					{"true","true","true","true","false","false","true"},
+					{"", Constants.studioUIMsg.chooseCategory(), "General/CSV/TSV", "0.1", 
+						TimeUtils.timeNow(), AppController.email, ""},
+						{"left","left","left","left","left","left","right"}
 		};
 		owner = emailAccount;
 		init();
@@ -76,15 +73,15 @@ public class UploadDatasetPanel extends BasePanel{
 			@Override
 			public boolean onUploadComplete(UploadCompleteEvent uploadCompleteEvent) {
 				uploaderPanel.getCancelButtons().get(uploadCompleteEvent.getFile().getId())
-								.removeFromParent();
+				.removeFromParent();
 
-        DatasetLeaf node = new DatasetLeaf(uploaderPanel.getUpLoadDataset());
-        DatasetTreeLoader.addContextMenu( presenter.getView().getDatasetTree()
-            ,node);
-        DatasetTreeLoader.addDatasetLeaf( presenter.getView().getDatasetTree(),
-            node,AppController.email);
+				DatasetLeaf node = new DatasetLeaf(uploaderPanel.getUpLoadDataset());
+				DatasetTreeLoader.addContextMenu( presenter.getView().getDatasetTree()
+						,node);
+				DatasetTreeLoader.addDatasetLeaf( presenter.getView().getDatasetTree(),
+						node,AppController.email);
 
-				
+
 				Window.alert("Uploaded successfully！");
 				UploadDatasetPanel.this.hide();
 				UploadDatasetPanel.this.clean();
@@ -122,13 +119,13 @@ public class UploadDatasetPanel extends BasePanel{
 		});
 	}
 
-  public UploadFileModule getUploaderPanel() {
-    return uploaderPanel;
-  }
+	public UploadFileModule getUploaderPanel() {
+		return uploaderPanel;
+	}
 
-  public void setUploaderPanel(UploadFileModule uploaderPanel) {
-    this.uploaderPanel = uploaderPanel;
-  }
+	public void setUploaderPanel(UploadFileModule uploaderPanel) {
+		this.uploaderPanel = uploaderPanel;
+	}
 
 	public void setDataset(Dataset dataset){
 		this.dataset = dataset;

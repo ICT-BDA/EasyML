@@ -12,13 +12,13 @@ import eml.studio.server.db.SecureDao;
 import eml.studio.shared.model.Account;
 
 /**
- * 链接生成工具（注册时的邮箱验证链接、修改密码链接）
- * 
- * @author madongjing
+ * Email link generation tool
+ * -- The mailbox verification link at the time of registration
+ * -- The modification of password link
  */
 public class LinkUtils {
 	private static final String CHECK_CODE = "checkcode";  
-	
+
 	/**
 	 * Generate a registered link
 	 * @param base_url Link prefix
@@ -31,7 +31,7 @@ public class LinkUtils {
 				+ checkCode(account);
 		return url;
 	}
-	
+
 	/**
 	 * Generate the url of change Password
 	 * @param base_url Link prefix
@@ -42,22 +42,22 @@ public class LinkUtils {
 		String url = base_url + "/EMLStudio.html#verifym?email="
 				+ account.getEmail() + "&" + CHECK_CODE + "="
 				+ checkCode(account);
-		
+
 		return url;
 	}
-	
+
 	/**
 	 * Generate check code（serial+token）
 	 * @param account
 	 * @return Encrypted check code
 	 */
 	public static String checkCode(Account account) {  
-        return md5(account.getSerial() + ":" + account.getToken());  
-    } 
-	
+		return md5(account.getSerial() + ":" + account.getToken());  
+	} 
+
 	/**
 	 * Link validity verification
-     * verify that the check code in the link is consistent with the check code at the time of transmission
+	 * verify that the check code in the link is consistent with the check code at the time of transmission
 	 * @param account
 	 * @param checkcode
 	 * @return boolean, true/false
@@ -73,63 +73,63 @@ public class LinkUtils {
 				long hour = (between/(60*60*1000) - day*24);
 				long minute = ((between/(60*1000)) - day*24*60 - hour*60);
 				long second = (between/1000 - day*24*60*60 - hour*60*60 - minute*60);
-				//account.verifylink是验证链接标志位，ok：验证通过，其他：第一次验证
-				if (!temp.getVerifylink().equals("ok")){				//非ok，即第一次验证
-					if(second > 1800){									//超过过有效期
+				//The account.verifylink is verify link flag，ok：verification passed，other：first verification
+				if (!temp.getVerifylink().equals("ok")){				//Not ok: first verification
+					if(second > 1800){									//Over valid date
 						return "timed_out" + " " + temp.getEmail();	
-					}else{												//未过有效期
+					}else{												//Not over valid date
 						account.setSerial(temp.getSerial());
 						account.setToken(temp.getToken());
-						if(checkCode(account).equals(checkcode)){		//验证码正确 即验证成功
-							account.setVerifylink("ok");				//标志位设为ok，即验证通过
+						if(checkCode(account).equals(checkcode)){		//Vertification code is correct, verification passed
+							account.setVerifylink("ok");				//Flag is set ok，verification passed
 							return "success" + " " + account.getUsername() + " " + account.getEmail() 
 									+ " " + account.getSerial() + " " + account.getToken()
 									+ " " + account.getVerifylink();
-						}else											//验证码错误 及验证失败
+						}else											//Vertification code error,  verification failed
 							return "useless_checkcode" + " " + temp.getEmail();
 					}
-				}else													//非第一次验证 即链接已经验证过 无效
+				}else													//Not the first vertification, the link have been verified, invalid
 					return "useless_link";
-			}else														//验证链接中的邮箱不存在数据库中 即链接失效
+			}else														//The email in the verification link does not exist in the database, link is invalid
 				return "useless_email";
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
-    } 
-	
+	} 
+
 	/**
 	 * Use md5 method to encryption
 	 * @param string input string
 	 */
 	private static String md5(String string) {  
-        MessageDigest md = null;  
-        try {  
-            md = MessageDigest.getInstance("md5");  
-            md.update(string.getBytes());  
-            byte[] md5Bytes = md.digest();  
-            return bytes2Hex(md5Bytes);  
-        } catch (NoSuchAlgorithmException e) {  
-            e.printStackTrace();  
-        }  
-          
-        return null;  
-    }
+		MessageDigest md = null;  
+		try {  
+			md = MessageDigest.getInstance("md5");  
+			md.update(string.getBytes());  
+			byte[] md5Bytes = md.digest();  
+			return bytes2Hex(md5Bytes);  
+		} catch (NoSuchAlgorithmException e) {  
+			e.printStackTrace();  
+		}  
+
+		return null;  
+	}
 
 	/**
 	 * Convert byteArray to String
 	 * @param byteArray
-     * @return string of input byteArray
-     */
+	 * @return string of input byteArray
+	 */
 	private static String bytes2Hex(byte[] byteArray) {
 		StringBuffer strBuf = new StringBuffer();
-        for (int i = 0; i < byteArray.length; i++)  {  
-            if(byteArray[i] >= 0 && byteArray[i] < 16) {  
-                strBuf.append("0");  
-            }  
-            strBuf.append(Integer.toHexString(byteArray[i] & 0xFF));  
-        }  
-        return strBuf.toString();  
+		for (int i = 0; i < byteArray.length; i++)  {  
+			if(byteArray[i] >= 0 && byteArray[i] < 16) {  
+				strBuf.append("0");  
+			}  
+			strBuf.append(Integer.toHexString(byteArray[i] & 0xFF));  
+		}  
+		return strBuf.toString();  
 	}
 }

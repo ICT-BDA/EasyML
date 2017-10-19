@@ -8,9 +8,9 @@ package eml.studio.client.event;
 import eml.studio.client.ui.connection.Connection;
 
 public interface HasConnectionEvent {
-  void onConnectionCancel();
+	void onConnectionCancel();
 
-  void onConnectionStart();
+	void onConnectionStart();
 
-  void onConnectionEnd(Connection conn);
+	void onConnectionEnd(Connection conn);
 }

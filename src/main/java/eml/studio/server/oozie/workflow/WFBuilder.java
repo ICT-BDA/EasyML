@@ -27,7 +27,7 @@ import eml.studio.shared.model.Program;
 public class WFBuilder {
 
 	WFGraph wfGraph = new WFGraph();
-	
+
 	/**
 	 * A {@link WFGraph} should be built from an {@link OozieGraph}
 	 */
@@ -36,10 +36,10 @@ public class WFBuilder {
 		//and built relations between program nodes
 		//according to the edges in OoziGrpah
 		loadGraph(graph);
-		
+
 		//insert start node and end node for Oozie workflow into the DAG
 		insertStartAndEnd();
-		
+
 		//insert Fork and Join Action for parallel
 		insertForkAndJoin();
 	}
@@ -52,14 +52,14 @@ public class WFBuilder {
 	 */
 	private NodeDef wrapAsNodeDef(OozieProgramNode node) throws Exception {
 		NodeDef action = null;
-		
+
 		Program query = new Program();
 		query.setId(node.getModuleId());
 		System.out.println( node.getModuleId() );
 		Program prog = SecureDao.getObject(query);
-		
+
 		if (prog.isDistributed() || prog.isETL()) {
-			// 如果为分布式程序
+			// If is distribute program
 			action = new DistributeActionNodeDef(prog, node.getId(), node.getCmdLine());
 		} else {
 			action = new ShellActionNodeDef(prog, node.getId(), node.getCmdLine());
@@ -75,7 +75,7 @@ public class WFBuilder {
 	 */
 	private void loadGraph(OozieGraph graph) throws Exception {
 		for (OozieProgramNode node : graph.getProgramNodes()) {
-            if (graph.isActiveNode(node.getId())) {
+			if (graph.isActiveNode(node.getId())) {
 				NodeDef action = wrapAsNodeDef(node);
 				wfGraph.addActionNode(action);
 			}
@@ -83,27 +83,27 @@ public class WFBuilder {
 
 		Map<String, OozieNode> nodeMap = new HashMap<String,OozieNode>();
 		List<String> nodeOutputFiles = null;
-	    for(OozieDatasetNode node : graph.getDatasetNodes() )
-	    {
-	      nodeOutputFiles = new ArrayList<String>();
-	      nodeMap.put(node.getId(), node);
-	      if(graph.isActiveNode(node.getId()))
-	      {
-	        nodeOutputFiles.add(node.getFile());
-	        wfGraph.addNodeOutputFile(node.getId(), nodeOutputFiles,null);  
-	      }
-	    }
-	    for(OozieProgramNode node : graph.getProgramNodes() )
-	    {
-	      nodeOutputFiles = new ArrayList<String>();
-	      nodeMap.put(node.getId(), node);
-	      if(graph.isActiveNode(node.getId()))
-	      {
-	            nodeOutputFiles.addAll(node.getFiles());
-	            wfGraph.addNodeOutputFile(node.getId(), nodeOutputFiles,node.getWorkPath());
-	      }
-	    }
-	
+		for(OozieDatasetNode node : graph.getDatasetNodes() )
+		{
+			nodeOutputFiles = new ArrayList<String>();
+			nodeMap.put(node.getId(), node);
+			if(graph.isActiveNode(node.getId()))
+			{
+				nodeOutputFiles.add(node.getFile());
+				wfGraph.addNodeOutputFile(node.getId(), nodeOutputFiles,null);  
+			}
+		}
+		for(OozieProgramNode node : graph.getProgramNodes() )
+		{
+			nodeOutputFiles = new ArrayList<String>();
+			nodeMap.put(node.getId(), node);
+			if(graph.isActiveNode(node.getId()))
+			{
+				nodeOutputFiles.addAll(node.getFiles());
+				wfGraph.addNodeOutputFile(node.getId(), nodeOutputFiles,node.getWorkPath());
+			}
+		}
+
 		for (OozieEdge edge : graph.getEdges()) {
 			String src = edge.getSrc();
 			String dst = edge.getDst();
@@ -151,7 +151,7 @@ public class WFBuilder {
 		NodeDef start = wfGraph.start;
 		NodeDef end = wfGraph.end;
 		Queue<NodeDef> que = new LinkedList<NodeDef>();
-		// 插入fork和join节点
+		// Insert fork and join node
 		NodeDef cur_node = start;
 		int count = 0;
 		do {
@@ -159,14 +159,14 @@ public class WFBuilder {
 				break;
 			for (NodeDef suc_node : cur_node.getOutNodes()) {
 				suc_node.delInNode(cur_node);
-				if (suc_node.getInDegree() == 0) {// 删除cur_node后度为0的节点
+				if (suc_node.getInDegree() == 0) {
 					que.add(suc_node);
 				}
 			}
 
 			cur_node.clearOutNodes();
 
-			if (que.size() > 1) {// 如果出度大于1则需要插入fork/join节点（必须成对配套使用）
+			if (que.size() > 1) {// If the out degree greater than 1, then need to insert fork/join node（the node should be used in pair）
 				// A fork node splits one path of execution into multiple
 				// concurrent
 				// paths of execution.
@@ -180,26 +180,27 @@ public class WFBuilder {
 				String uuid = UUID.randomUUID();
 				NodeDef fork = new ForkNodeDef("fork-" + uuid);
 				NodeDef join = new JoinNodeDef("join-" + uuid);
-				// 修改cur_node的后继为fork
+
+				// Modify cur_node descent node  to fork node
 				buildLink(cur_node, fork);
 
 				while (!que.isEmpty()) {
 					buildLink(fork, que.remove());
 				}
 
-				// 在pre_node和suc_node之间插入join节点
-				for (NodeDef pre_node : fork.getOutNodes()) {// 对于fork的所有子节点
-					for (NodeDef suc_node : pre_node.getOutNodes()) {// 在pre_node和suc_node之间插入join节点
+				//Insert join node between pre_node and suc_node node
+				for (NodeDef pre_node : fork.getOutNodes()) {// For children node of fork node
+					for (NodeDef suc_node : pre_node.getOutNodes()) {// Insert join node between pre_node and suc_node
 						suc_node.delInNode(pre_node);
-						join.addOutNode(suc_node);// 将join指向 suc_node
+						join.addOutNode(suc_node);// Point the join node to suc_node
 					}
 
-					// 修改pre_node只有join一个后继节点
+					//Modify pre_node descent node which only include join node
 					pre_node.clearOutNodes();
 					buildLink(pre_node, join);
 				}
 
-				// join的所有后继的前继节点设为join
+				// Modify the join descent node's father node to join node
 				for (NodeDef suc_node : join.getOutNodes()) {
 					suc_node.addInNode(join);
 				}
@@ -208,7 +209,6 @@ public class WFBuilder {
 				buildLink(cur_node, que.peek());
 				cur_node = que.remove();
 			}
-			// logger.info( cur_node.getName() );
 		} while (cur_node != end);
 
 	}
@@ -222,7 +222,7 @@ public class WFBuilder {
 		pre_node.addOutNode(suc_node);
 		suc_node.addInNode(pre_node);
 	}
-	
+
 	public WFGraph asWFGraph(){
 		return this.wfGraph;
 	}

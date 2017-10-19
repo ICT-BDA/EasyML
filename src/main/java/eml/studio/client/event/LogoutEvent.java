@@ -12,22 +12,22 @@ import com.google.gwt.event.shared.GwtEvent;
  * The event that will be triggered when logout
  */
 public class LogoutEvent extends GwtEvent<LogoutEvent.LogoutEventHandler>{
- 
-  public interface LogoutEventHandler extends EventHandler{
-    void onLogoutEvent(LogoutEvent event);
-  }
-  
-  public final static Type<LogoutEventHandler> TYPE = new Type<LogoutEventHandler>();
 
-  @Override
-  public Type<LogoutEventHandler> getAssociatedType() {
-    return TYPE;
-  }
+	public interface LogoutEventHandler extends EventHandler{
+		void onLogoutEvent(LogoutEvent event);
+	}
 
-  @Override
-  protected void dispatch(LogoutEventHandler handler) {
-    handler.onLogoutEvent(this);
-  }
- 
+	public final static Type<LogoutEventHandler> TYPE = new Type<LogoutEventHandler>();
+
+	@Override
+	public Type<LogoutEventHandler> getAssociatedType() {
+		return TYPE;
+	}
+
+	@Override
+	protected void dispatch(LogoutEventHandler handler) {
+		handler.onLogoutEvent(this);
+	}
+
 
 }

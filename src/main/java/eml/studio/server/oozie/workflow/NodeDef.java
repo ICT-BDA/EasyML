@@ -24,7 +24,7 @@ public abstract class NodeDef {
 	 * The set of out-going nodes, which is determined by the output files dependencies
 	 */
 	protected Set<NodeDef> outNodes;
-	
+
 	/**
 	 * Specifies the input file dependencies
 	 */
@@ -93,11 +93,11 @@ public abstract class NodeDef {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public void putInputFile(int port, String file){
 		this.inputFiles.put(port, file);
 	}
-	
+
 	public void putOutputFile(int port, String file){
 		this.outputFiles.put(port, file);
 	}

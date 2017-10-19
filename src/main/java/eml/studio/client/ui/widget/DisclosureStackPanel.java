@@ -11,20 +11,20 @@ import com.google.gwt.user.client.ui.DisclosurePanel;
  * Base Class of DisclosureStackPanel
  */
 public class DisclosureStackPanel {
-  private DisclosurePanel panel;
+	private DisclosurePanel panel;
 
-  public DisclosureStackPanel(String title) {
+	public DisclosureStackPanel(String title) {
 
-    panel = new DisclosurePanel(title);
-    panel.setOpen(true);
-    panel.setAnimationEnabled(true);
-    panel.getElement().setAttribute("style", "width:100%;");
-    panel.setStyleName("myDisclosurePanel");
-    panel.getHeader().setStyleName("myDisclosurePanel-header");
-    panel.setSize("100%", "100%");
-  }
+		panel = new DisclosurePanel(title);
+		panel.setOpen(true);
+		panel.setAnimationEnabled(true);
+		panel.getElement().setAttribute("style", "width:100%;");
+		panel.setStyleName("myDisclosurePanel");
+		panel.getHeader().setStyleName("myDisclosurePanel-header");
+		panel.setSize("100%", "100%");
+	}
 
-  public DisclosurePanel asWidget() {
-    return panel;
-  }
+	public DisclosurePanel asWidget() {
+		return panel;
+	}
 }

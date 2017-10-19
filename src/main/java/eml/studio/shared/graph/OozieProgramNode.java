@@ -13,7 +13,7 @@ import com.google.gwt.user.client.rpc.IsSerializable;
 import eml.studio.client.ui.widget.program.ProgramWidget;
 
 /**
- * Dataset node in Oozie workflow graph
+ * Program node in Oozie workflow graph
  */
 public class OozieProgramNode extends OozieNode implements IsSerializable{
 
@@ -28,7 +28,7 @@ public class OozieProgramNode extends OozieNode implements IsSerializable{
 
 	/** Input Parameters of the program */
 	protected List<String> params = new LinkedList<String>();
-	
+
 	protected boolean distributed=false;
 	private boolean standaloneScript=false;
 
@@ -42,7 +42,7 @@ public class OozieProgramNode extends OozieNode implements IsSerializable{
 
 	public OozieProgramNode() {
 	}
-	
+
 	public void init(String widgetId, String moduleId, String workPath, int x,int y,
 			String oozJobId,int inCnt, int outCnt,boolean isDistributed){
 		init(widgetId, moduleId, x, y);
@@ -52,19 +52,32 @@ public class OozieProgramNode extends OozieNode implements IsSerializable{
 		this.setWorkPath(workPath);
 		this.distributed = isDistributed;
 	}
-	
+
 	public void initAsScriptNode(List<String> outFileIdList,
 			String script){
 		for(String fileId : outFileIdList) files.add( fileId );
 		this.script = script;
 		this.standaloneScript=true;
 	}
-	
+
 	public void initAsCommonNode(List<String> outFileIdList, List<String> paramList){
 		for(String fileId : outFileIdList) files.add( fileId );
 		for(String param : paramList) params.add( param );
 	}
 
+	public void initAsSqlNode(List<String> outFileIdList, 
+			List<String> dyOutFileIdList, 
+			List<String> paramList,
+			List<String> input_aliases,
+			List<String> output_aliases,
+			List<String> dy_input_aliases,
+			List<String> dy_output_aliases,
+			String script){
+		for(String fileId : outFileIdList) files.add( fileId );
+		for(String param : input_aliases) this.input_aliases.add( param );
+		for(String param : output_aliases) this.output_aliases.add( param );
+		setScript(script);
+	}
 
 	public List<String> getFiles() {
 		return files;
@@ -123,18 +136,18 @@ public class OozieProgramNode extends OozieNode implements IsSerializable{
 		for(String aliases: input_aliases)
 			sb.append("  <input_aliases>" + aliases + "</input_aliases>\n");
 		for(String aliases: output_aliases)
-				sb.append("  <output_aliases>" + aliases + "</output_aliases>\n");
+			sb.append("  <output_aliases>" + aliases + "</output_aliases>\n");
 
 		if( getScript() != null ){
 			sb.append("  <incount>" + getInputFileCount() + "</incount>\n");
 			sb.append("  <outcount>" + getOutputFileCount() + "</outcount>\n");
-			
+
 			String script_trans = getScript().replace(">", "&gt;").replace("<", "&lt;");
 			sb.append("  <script>" + script_trans +"</script>\n");
 		}
 		sb.append("  <cmd_line>"+String.valueOf(getCmdLine())+"</cmd_line>\n");
 		sb.append("  <is_distributed>"+String.valueOf(isDistributed())+"</is_distributed>\n");
-        sb.append("  <is_standalone_script>"+String.valueOf(standaloneScript)+"</is_standalone_script>\n");		sb.append("</widget>\n");
+		sb.append("  <is_standalone_script>"+String.valueOf(standaloneScript)+"</is_standalone_script>\n");		sb.append("</widget>\n");
 	}
 
 	public String getScript() {
@@ -160,11 +173,19 @@ public class OozieProgramNode extends OozieNode implements IsSerializable{
 	public void setInputFileCount(int inputFileCount) {
 		this.inputFileCount = inputFileCount;
 	}
-	
+
+	public List<String> getOutputAliases(){
+		return output_aliases;
+	}
+
+	public List<String> getInputAliases(){
+		return input_aliases;
+	}
+
 	public boolean isDistributed(){
 		return this.distributed;
 	}
-	
+
 	public void setDistributed(boolean distributed){
 		this.distributed = distributed;
 	}

@@ -20,34 +20,34 @@ import com.google.gwt.user.client.ui.MenuItem;
  */
 public class ProgramDownloadMenu {
 
-  public static MenuItem create(final ProgramLeaf node) {
-    Command command = new MenuItemCommand(node) {
+	public static MenuItem create(final ProgramLeaf node) {
+		Command command = new MenuItemCommand(node) {
 
-      @Override
-	public void execute() {
-        String id = node.getModule().getId();
-        ProgramServiceAsync svc = GWT.create(ProgramService.class);
-        svc.download(id, new AsyncCallback<String>() {
+			@Override
+			public void execute() {
+				String id = node.getModule().getId();
+				ProgramServiceAsync svc = GWT.create(ProgramService.class);
+				svc.download(id, new AsyncCallback<String>() {
 
-          @Override
-		public void onFailure(Throwable caught) {
-            Window.alert(caught.getMessage());
-          }
+					@Override
+					public void onFailure(Throwable caught) {
+						Window.alert(caught.getMessage());
+					}
 
-          @Override
-		public void onSuccess(String result) {
-            String url = GWT.getModuleBaseURL().split("EML")[0]
-                + "EMLStudioMonitor/filedownload?filename=" + result;
-            Window.open(url, "_blank",
-                "status=0,toolbar=0,menubar=0,location=0");
-          }
+					@Override
+					public void onSuccess(String result) {
+						String url = GWT.getModuleBaseURL().split("EML")[0]
+								+ "EMLStudioMonitor/filedownload?filename=" + result;
+						Window.open(url, "_blank",
+								"status=0,toolbar=0,menubar=0,location=0");
+					}
 
-        });
-        this.component.getContextMenu().hide();
-      }
-    };
+				});
+				this.component.getContextMenu().hide();
+			}
+		};
 
-    MenuItem item = new MenuItem("Download", command);
-    return item;
-  }
+		MenuItem item = new MenuItem("Download", command);
+		return item;
+	}
 }

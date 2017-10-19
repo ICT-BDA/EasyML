@@ -17,20 +17,20 @@ import com.google.gwt.user.client.ui.MenuItem;
  */
 public class ProgramUpdateMenu {
 
-  public static MenuItem create(final ProgramLeaf node, final ProgramTree tree) {
+	public static MenuItem create(final ProgramLeaf node, final ProgramTree tree) {
 
-    Command command = new MenuItemCommand(node) {
+		Command command = new MenuItemCommand(node) {
 
-      @Override
-	public void execute() {
-        UpdateProgramPanel panel = new UpdateProgramPanel(tree,node);
-        panel.show(node.getModule());
-        this.component.getContextMenu().hide();
-      }
+			@Override
+			public void execute() {
+				UpdateProgramPanel panel = new UpdateProgramPanel(tree,node);
+				panel.show(node.getModule());
+				this.component.getContextMenu().hide();
+			}
 
-    };
+		};
 
-    MenuItem item = new MenuItem("Update", command);
-    return item;
-  }
+		MenuItem item = new MenuItem("Update", command);
+		return item;
+	}
 }

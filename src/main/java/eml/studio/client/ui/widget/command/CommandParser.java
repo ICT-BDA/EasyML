@@ -48,22 +48,21 @@ public class CommandParser {
 		int k = begin + 1;
 		while( k < arr.length  ){
 			if( arr[k] == '\\' ){
-				//        System.out.println( String.valueOf(arr, offset, k - offset ));
 				if( k + 1 < arr.length ){
-					if( arr[k+1] == '\\' ){//转义\\
+					if( arr[k+1] == '\\' ){//  Escaped\\
 						sb.append('\\');
 						k += 2;
-					}else if( arr[k+1] == '"' ){//转义\"
+					}else if( arr[k+1] == '"' ){// Escaped\"
 						sb.append('"');
 						k += 2;
-					}else{//如果只有一个\+其它字符则不管
+					}else{// If only have one \+, other character regardless
 						sb.append('\\');
 						k ++;
 					}
 				}else{
 					k ++;
 				}
-			}else if( arr[k] == '"' ){//终结字符
+			}else if( arr[k] == '"' ){//End character
 				k ++;
 				break;
 			}else{
@@ -93,14 +92,14 @@ public class CommandParser {
 		String word = String.valueOf( arr, offset + 1, k - offset - 1 );
 		String cntType = null;
 		String storeType = null;
-		
+
 		if( word.equals( "in") ){
 			holder.setFileType( FileHolder.FileType.InputFile);
 			offset = k;
 			k = nextChar(arr, ':', offset + 1 );
 			if( k == -1 ) throw new CommandParseException(
 					"Parsing failed, colon is not found in " +String.valueOf(arr, offset + 1, arr.length));
-			
+
 			cntType = String.valueOf(arr,offset + 1, k - offset - 1 );
 			storeType = "HFile";
 		}else if( word.equals("out") ){
@@ -180,7 +179,7 @@ public class CommandParser {
 					"Parsing failed, caused by the parameter name is not enclosed by '\"'");
 		}
 
-		/** 获取类型和最小值最大值区域 **/
+		/** Get the type and the maximum minimum area**/
 		if( arr[k] != ':' ) throw new CommandParseException(
 				"Parsing failed, a parameter name should be followed by colon");
 
@@ -276,10 +275,7 @@ public class CommandParser {
 		if( k < arr.length && !(arr[k] == ' ' || arr[k] == '\t') ){
 			throw new CommandParseException(
 					"Parsing failed, the fields should be splited by space");
-
 		}
-
-
 		return k;
 	}
 
@@ -293,7 +289,7 @@ public class CommandParser {
 
 		if( k == -1 )throw new CommandParseException(
 				"Parsing failed, the script should be enclosed by '\"'");
-		
+
 		holder.setName( sb.toString() );
 
 		if( k < arr.length && arr[k] != ')' ){
@@ -312,7 +308,6 @@ public class CommandParser {
 	}
 
 	public static Commander parse(String cmdline) throws CommandParseException{
-		//logger.info( cmdline );
 		char []arr = cmdline.trim().toCharArray();
 		int i,j,k;
 		i = 0;
@@ -323,7 +318,7 @@ public class CommandParser {
 				k = i + 1;
 				//to skip all tab and space
 				while( k < arr.length && (arr[k] == ' ' || arr[k] == '\t') ) k ++;
-				
+
 				if( i - j > 0 ){ // if true, there are contents
 					cmd.getSplitList().add( String.valueOf(arr, j, i - j ));
 				}
@@ -405,7 +400,6 @@ public class CommandParser {
 		{
 			line = "{out:"+f.getContentType() +"," + f.getStoreType() + ":\"" + f.getDescription()+"\"}";
 			arr[f.getIndex()] = line;
-			//System.out.println( line );
 		}
 
 		for( Parameter param: cmd.getParameters()){
@@ -429,7 +423,6 @@ public class CommandParser {
 
 			line += "]";
 			arr[param.getIndex()] = line;
-			//System.out.println( line );
 		}
 		line = "";
 		for( String str: arr){

@@ -85,24 +85,22 @@ MouseOverHandler, HasRightMouseUpMenu {
 		focusPanel.setStyleName("basefocuspanel");
 		abspanel.setHeight("100%");
 		initWidget(focusPanel);
-		//initMenu();
 
-    addDomHandler(this, MouseDownEvent.getType());
-    addDomHandler(this, MouseUpEvent.getType());
-    addDomHandler(this, MouseOverEvent.getType());
-    addDomHandler(this, MouseOutEvent.getType());
+		addDomHandler(this, MouseDownEvent.getType());
+		addDomHandler(this, MouseUpEvent.getType());
+		addDomHandler(this, MouseOverEvent.getType());
+		addDomHandler(this, MouseOutEvent.getType());
 
 
-  }
-  @Override
-  public void onAttach() {
-    super.onAttach();
-    if (firstload) {
-      init();
-      firstload = false;
-    }
-  }
-
+	}
+	@Override
+	public void onAttach() {
+		super.onAttach();
+		if (firstload) {
+			init();
+			firstload = false;
+		}
+	}
 
 	/**
 	 * Draw NodeShape
@@ -143,7 +141,6 @@ MouseOverHandler, HasRightMouseUpMenu {
 	protected void init() {
 		clientWidth = DOM.getElementPropertyInt(label.getElement(), "clientWidth");
 		if (clientWidth < 100) {
-			// clientWidth = 100;
 			label.setWidth("100px");
 		}
 		clientWidth = DOM.getElementPropertyInt(label.getElement(), "clientWidth");
@@ -170,7 +167,7 @@ MouseOverHandler, HasRightMouseUpMenu {
 	public List<OutNodeShape> getOutNodeShapes() {
 		return outNodeShapes;
 	}
-	
+
 	public void registerController(DiagramController controller) {
 		this.controller = controller;
 
@@ -193,24 +190,23 @@ MouseOverHandler, HasRightMouseUpMenu {
 
 	public void setFocus(){
 		focusPanel.setFocus(true);
-		//logger.info("set focus");
 	}
 
 	public void cancelFocus(){
 		focusPanel.setFocus(false);
 	}
 
-    @Override
-    public void onMouseDown(MouseDownEvent event) {
-    logger.info("widget left mouse down");
-    this.onSelected();
-    this.getController().setIsVacancy(false);
-    if(event.isControlKeyDown()){
-      if(this.getController().isInSelectedWidgets(this)){
-        this.getController().getSelectedWidgets().remove(this);
-        this.onDeSelected();
-      }
-      else{
+	@Override
+	public void onMouseDown(MouseDownEvent event) {
+		logger.info("widget left mouse down");
+		this.onSelected();
+		this.getController().setIsVacancy(false);
+		if(event.isControlKeyDown()){
+			if(this.getController().isInSelectedWidgets(this)){
+				this.getController().getSelectedWidgets().remove(this);
+				this.onDeSelected();
+			}
+			else{
 
 				this.getController().addSelectedWidgets(this);
 			}
@@ -224,13 +220,11 @@ MouseOverHandler, HasRightMouseUpMenu {
 
 	@Override
 	public void onMouseUp(MouseUpEvent event) {
-		//logger.info("widget left mouse up");
 		if (event.getNativeButton() == NativeEvent.BUTTON_RIGHT) {
 			event.stopPropagation();
 			event.preventDefault();
 			controller.showMenu(this);
 			this.setFocus();
-			// Window.alert("mouse right up");
 		}
 	}
 
@@ -273,8 +267,8 @@ MouseOverHandler, HasRightMouseUpMenu {
 	}
 	/**
 	 * Add Menu Item
-     *
-     * @param menuItem target item
+	 *
+	 * @param menuItem target item
 	 */
 	@Override
 	public void addMenuItem(MenuItem menuItem) {
@@ -309,7 +303,6 @@ MouseOverHandler, HasRightMouseUpMenu {
 		if (Y > size.getTop()) {
 			Y = this.getAbsoluteTop() + 5;
 		}
-		// Window.alert( size.getLeft() + " " + size.getTop() );
 		p.setPopupPosition(X, Y);
 
 		p.show();
@@ -346,88 +339,88 @@ MouseOverHandler, HasRightMouseUpMenu {
 		return addDomHandler(handler, MouseDownEvent.getType());
 	}
 
-  @Override
-  public HandlerRegistration addMouseOverHandler(MouseOverHandler handler) {
-    return addDomHandler(handler, MouseOverEvent.getType());
-  }
+	@Override
+	public HandlerRegistration addMouseOverHandler(MouseOverHandler handler) {
+		return addDomHandler(handler, MouseOverEvent.getType());
+	}
 
-  public int getOffsetLeft() {
-    return offsetLeft;
-  }
+	public int getOffsetLeft() {
+		return offsetLeft;
+	}
 
-  public void setOffsetLeft(int offsetLeft) {
-    this.offsetLeft = offsetLeft;
-  }
+	public void setOffsetLeft(int offsetLeft) {
+		this.offsetLeft = offsetLeft;
+	}
 
-  public int getOffsetTop() {
-    return offsetTop;
-  }
+	public int getOffsetTop() {
+		return offsetTop;
+	}
 
-  public void setOffsetTop(int offsetTop) {
-    this.offsetTop = offsetTop;
-  }
-
-
-
-  public void setOffsetHeight(double offsetHeight) {
-    this.offsetHeight = offsetHeight;
-  }
+	public void setOffsetTop(int offsetTop) {
+		this.offsetTop = offsetTop;
+	}
 
 
 
-  public void setOffsetWidth(double offsetWidth) {
-    this.offsetWidth = offsetWidth;
-  }
+	public void setOffsetHeight(double offsetHeight) {
+		this.offsetHeight = offsetHeight;
+	}
 
-  public int getClientHeight() {
-    return clientHeight;
-  }
 
-  public void setClientHeight(int clientHeight) {
-    this.clientHeight = clientHeight;
-  }
 
-  public int getClientWidth() {
-    return clientWidth;
-  }
+	public void setOffsetWidth(double offsetWidth) {
+		this.offsetWidth = offsetWidth;
+	}
 
-  public Integer getY() {
-    return y;
-  }
+	public int getClientHeight() {
+		return clientHeight;
+	}
 
-  public void setY(Integer y) {
-    this.y = y;
-  }
+	public void setClientHeight(int clientHeight) {
+		this.clientHeight = clientHeight;
+	}
 
-  public Integer getX() {
-    return x;
-  }
+	public int getClientWidth() {
+		return clientWidth;
+	}
 
-  public void setX(Integer x) {
-    this.x = x;
-  }
-  public void setClientWidth(int clientWidth) {
-    this.clientWidth = clientWidth;
-  }
+	public Integer getY() {
+		return y;
+	}
 
-  public BaseWidget clone(String Id){
-        Window.alert("clone");
+	public void setY(Integer y) {
+		this.y = y;
+	}
+
+	public Integer getX() {
+		return x;
+	}
+
+	public void setX(Integer x) {
+		this.x = x;
+	}
+	public void setClientWidth(int clientWidth) {
+		this.clientWidth = clientWidth;
+	}
+
+	public BaseWidget clone(String Id){
+		Window.alert("clone");
 		return this;
-  }
+	}
 
-    /**
-     * clone widget Nodes
-     * @param widget the origin widget
-     */
-  public void cloneNode(BaseWidget widget){
-      inNodeShapes.clear();
-      for(InNodeShape inNodeShape : widget.getInNodeShapes()){
-          this.inNodeShapes.add(inNodeShape.clone());
-      }
-      outNodeShapes.clear();
-      for(OutNodeShape outNodeShape : widget.getOutNodeShapes()){
-          this.outNodeShapes.add(outNodeShape.clone());
-      }
+	/**
+	 * clone widget Nodes
+	 * @param widget the origin widget
+	 */
+	public void cloneNode(BaseWidget widget){
+		inNodeShapes.clear();
+		for(InNodeShape inNodeShape : widget.getInNodeShapes()){
+			this.inNodeShapes.add(inNodeShape.clone());
+		}
+		outNodeShapes.clear();
+		for(OutNodeShape outNodeShape : widget.getOutNodeShapes()){
+			this.outNodeShapes.add(outNodeShape.clone());
+		}
 	}
 
 	public void setName(String name){

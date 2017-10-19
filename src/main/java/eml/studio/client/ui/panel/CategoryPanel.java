@@ -22,6 +22,7 @@ import com.google.gwt.user.client.ui.*;
 public class CategoryPanel extends PopupPanel {
 	private String type;
 	private Label title = new Label(Constants.adminUIMsg.chooseCate());
+	private Label change = new Label();
 	private Label close = new Label();
 	private VerticalPanel vPanel = new VerticalPanel();
 	private ScrollPanel sPanel = new ScrollPanel();
@@ -35,6 +36,8 @@ public class CategoryPanel extends PopupPanel {
 	    HorizontalPanel alertHeader = new HorizontalPanel();
 	    title.addStyleName("cateAddBoxTitle");
 	    close.addStyleName("alertClose");
+	    change.addStyleName("change");
+	    change.setTitle( Constants.adminUIMsg.change());
 	    alertHeader.add(title);
 	    alertHeader.add(close);
 	    alertHeader.addStyleName("alertTitleBG");
@@ -76,6 +79,10 @@ public class CategoryPanel extends PopupPanel {
 				CategoryPanel.this.hide();
 			}
 		});
+	}
+	
+	public Label getChange(){
+		return change;
 	}
 	
 	public Label getClose(){

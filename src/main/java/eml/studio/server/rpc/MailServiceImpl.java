@@ -86,9 +86,9 @@ public class MailServiceImpl extends RemoteServiceServlet implements MailService
 				new_account.setCreatetime(TimeUtils.getTime());
 
 				JavaMail mail = new JavaMail();
-				String title = "账号注册-邮箱验证";
-				String content = new_account.getEmail() + " 您好，<br>您正在用此邮箱注册EMLStudio账号，"
-						+ "请点击链接进行邮箱验证，验证成功后设置密码及个人信息。<br/>"
+				String title = "Register-mail verification";
+				String content = new_account.getEmail() + " Hello, <br>you are using this mailbox to register your EMLStudio account, "
+						+ "Please click on the link for email verification and set the password and personal information after the verification.<br/>"
 						+ "<a href='" + LinkUtils.activateLink(base_url, new_account) + "' onClick='" + "'>" + LinkUtils.activateLink(base_url, new_account) + "</a>";
 				
 				Account tmp = SecureDao.getObject(account);
@@ -130,9 +130,9 @@ public class MailServiceImpl extends RemoteServiceServlet implements MailService
 					verify_account.setToken( token );
 					
 					JavaMail mail = new JavaMail();
-					String title = "重置密码-邮箱验证";
-					String content = verify_account.getEmail() + " 您好，<br>您正在通过此邮箱进行账号密码的重置，"
-							+ "请点击链接进行邮箱验证，验证成功后设置新密码。<br/>"
+					String title = "Reset password-mail verification";
+					String content = verify_account.getEmail() + "Hello, <br>you are using this mailbox to reset your account password,"
+							+ "Please click on the link for email verification and set your new password after after the verification.<br/>"
 							+ "<a href='" + LinkUtils.resetpwdLink(base_url, verify_account) + "' onClick='" + "'>" + LinkUtils.resetpwdLink(base_url, verify_account) + "</a>";
 
 					Account update_account = new Account();

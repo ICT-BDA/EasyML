@@ -15,34 +15,34 @@ import eml.studio.shared.model.Program;
  */
 public class ProgramPropertyTable extends PropertyTable {
 
-  public ProgramPropertyTable(Program program) {
-    super(7, 2);
-    addProperties(program);
-  }
+	public ProgramPropertyTable(Program program) {
+		super(7, 2);
+		addProperties(program);
+	}
 
-  public void addParameterPanel(ParameterPanel parameterPanel) {
-    vp.add(parameterPanel);
-  }
+	public void addParameterPanel(ParameterPanel parameterPanel) {
+		vp.add(parameterPanel);
+	}
 
-  private void addProperties(Program m) {
-    int i = 0;
-    Property p = new Property(Constants.studioUIMsg.moduleName(), m.getName());
-    addProperty(p, i++);
-    p = new Property(Constants.studioUIMsg.moduleDesription(), m.getDescription());
-    addProperty(p, i++);
-    p = new Property(Constants.studioUIMsg.moduleDeterminacy(), m.getIsdeterministic().toString());
-    addProperty(p, i++);
-    p = new Property(Constants.studioUIMsg.moduleVersion(), m.getVersion());
-    addProperty(p, i++);
-    p = new Property(Constants.studioUIMsg.moduleCreateTime(), m.getCreatedate());
-    addProperty(p, i++);
-    p = new Property(Constants.studioUIMsg.moduleOwner(), m.getOwner());
-    addProperty(p, i++);
-    if (!m.getDeprecated())
-      p = new Property(Constants.studioUIMsg.moduleDeprecated(), Constants.studioUIMsg.no());
-    else
-      p = new Property(Constants.studioUIMsg.moduleDeprecated(), Constants.studioUIMsg.yes());
-    addProperty(p, i++);
-  }
+	private void addProperties(Program m) {
+		int i = 0;
+		Property p = new Property(Constants.studioUIMsg.moduleName(), m.getName());
+		addProperty(p, i++);
+		p = new Property(Constants.studioUIMsg.moduleDesription(), m.getDescription());
+		addProperty(p, i++);
+		p = new Property(Constants.studioUIMsg.moduleDeterminacy(), m.getIsdeterministic().toString());
+		addProperty(p, i++);
+		p = new Property(Constants.studioUIMsg.moduleVersion(), m.getVersion());
+		addProperty(p, i++);
+		p = new Property(Constants.studioUIMsg.moduleCreateTime(), m.getCreatedate());
+		addProperty(p, i++);
+		p = new Property(Constants.studioUIMsg.moduleOwner(), m.getOwner());
+		addProperty(p, i++);
+		if (!m.getDeprecated())
+			p = new Property(Constants.studioUIMsg.moduleDeprecated(), Constants.studioUIMsg.no());
+		else
+			p = new Property(Constants.studioUIMsg.moduleDeprecated(), Constants.studioUIMsg.yes());
+		addProperty(p, i++);
+	}
 
 }

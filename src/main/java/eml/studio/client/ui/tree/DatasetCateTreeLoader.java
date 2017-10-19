@@ -18,42 +18,42 @@ import java.util.List;
  * Load all existing programs from database into Program Tree Menu
  */
 public class DatasetCateTreeLoader {
-  protected static CategoryServiceAsync categorySrv = GWT.create(CategoryService.class);
-  protected static Logger logger = Logger.getLogger(DatasetCateTreeLoader.class.getName());
-  
-  
-  /**
-   * Query the programs by users
-   */
-  public static DatasetCategoryTree load() {
-	final DatasetCategoryTree tree = new DatasetCategoryTree();
-    Category category = new Category();
-    category.setType("data");
-	categorySrv.getCategory(category, " and level != 1 order by name", new AsyncCallback<List<Category>>(){
+	protected static CategoryServiceAsync categorySrv = GWT.create(CategoryService.class);
+	protected static Logger logger = Logger.getLogger(DatasetCateTreeLoader.class.getName());
 
-		@Override
-		public void onFailure(Throwable caught) {
-			// TODO Auto-generated method stub
-			logger.info("Failed to load data component");
-		}
 
-		@Override
-		public void onSuccess(List<Category> result) {
-			// TODO Auto-generated method stub
-			for(Category c : result){
-				addCategoryLeaf(tree,c);
+	/**
+	 * Query the programs by users
+	 */
+	public static DatasetCategoryTree load() {
+		final DatasetCategoryTree tree = new DatasetCategoryTree();
+		Category category = new Category();
+		category.setType("data");
+		categorySrv.getCategory(category, " and level != 1 order by name", new AsyncCallback<List<Category>>(){
+
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
+				logger.info("Failed to load data component");
 			}
-		}
-    	
-    });
-    return tree;
-  }
 
-  /** Add a program into the menu */
-  public static void addCategoryLeaf(final DatasetCategoryTree tree, Category category) {
-      if(category.getPath().equals(null)){
-    	  tree.findTreeItem(category.getName());
-      }else
-    	  tree.findTreeItem(category.getPath());
-  }
+			@Override
+			public void onSuccess(List<Category> result) {
+				// TODO Auto-generated method stub
+				for(Category c : result){
+					addCategoryLeaf(tree,c);
+				}
+			}
+
+		});
+		return tree;
+	}
+
+	/** Add a program into the menu */
+	public static void addCategoryLeaf(final DatasetCategoryTree tree, Category category) {
+		if(category.getPath().equals(null)){
+			tree.findTreeItem(category.getName());
+		}else
+			tree.findTreeItem(category.getPath());
+	}
 }

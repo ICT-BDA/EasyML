@@ -11,62 +11,62 @@ import com.google.gwt.user.client.rpc.IsSerializable;
  * Base node in Oozie workflow graph
  */
 public abstract class OozieNode implements IsSerializable {
-  protected String id = "";
+	protected String id = "";
 
-  /** moduleId id */
-  protected String moduleId = "";
+	/** moduleId id */
+	protected String moduleId = "";
 
-  /** (x, y) is the position in the panel */
-  protected int x = 0;
-  protected int y = 0;
+	/** (x, y) is the position in the panel */
+	protected int x = 0;
+	protected int y = 0;
 
-  public OozieNode() {
-  }
+	public OozieNode() {
+	}
 
-  public void init(String id, String moduleId,
-                   int x, int y) {
-    this.id = id;
-    this.moduleId = moduleId;
-    this.x = x;
-    this.y = y;
-  }
+	public void init(String id, String moduleId,
+			int x, int y) {
+		this.id = id;
+		this.moduleId = moduleId;
+		this.x = x;
+		this.y = y;
+	}
 
-  public String getId() {
-    return id;
-  }
+	public String getId() {
+		return id;
+	}
 
-  public void setId(String id) {
-    this.id = id;
-  }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-  public String getModuleId() {
-    return moduleId;
-  }
+	public String getModuleId() {
+		return moduleId;
+	}
 
-  public void setModuleId(String moduleId) {
-    this.moduleId = moduleId;
-  }
+	public void setModuleId(String moduleId) {
+		this.moduleId = moduleId;
+	}
 
-  public int getX() {
-    return x;
-  }
+	public int getX() {
+		return x;
+	}
 
-  public void setX(int x) {
-    this.x = x;
-  }
+	public void setX(int x) {
+		this.x = x;
+	}
 
-  public int getY() {
-    return y;
-  }
+	public int getY() {
+		return y;
+	}
 
-  public void setY(int y) {
-    this.y = y;
-  }
+	public void setY(int y) {
+		this.y = y;
+	}
 
-  public abstract String toXML();
+	public abstract String toXML();
 
-  @Override
-  public String toString() {
-    return toXML();
-  }
+	@Override
+	public String toString() {
+		return toXML();
+	}
 }

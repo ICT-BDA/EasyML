@@ -18,32 +18,32 @@ import com.google.gwt.user.client.ui.MenuItem;
  * Menu of adding a job to example
  */
 public class JobAddExampleMenu {
-  public static MenuItem create(final JobLeaf node) {
-    Command command = new MenuItemCommand(node) {
+	public static MenuItem create(final JobLeaf node) {
+		Command command = new MenuItemCommand(node) {
 
-      @Override
-      public void execute() {
-        String id = node.getModule().getJobId();
-        boolean y = Window.confirm("Are you sure you want to join the example task?");
-        if (y) {
-          JobServiceAsync srv = GWT.create(JobService.class);
-          srv.setExampleJobs(id, new AsyncCallback<Void>() {
+			@Override
+			public void execute() {
+				String id = node.getModule().getJobId();
+				boolean y = Window.confirm("Are you sure you want to join the example task?");
+				if (y) {
+					JobServiceAsync srv = GWT.create(JobService.class);
+					srv.setExampleJobs(id, new AsyncCallback<Void>() {
 
-            @Override
-			public void onFailure(Throwable caught) {
-              Window.alert(caught.getMessage());
-            }
+						@Override
+						public void onFailure(Throwable caught) {
+							Window.alert(caught.getMessage());
+						}
 
-            @Override
-			public void onSuccess(Void result) {
-              node.delete();
-            }
-          });
-        }
-        this.component.getContextMenu().hide();
-      }
-    };
-    MenuItem item = new MenuItem("Join example task", command);
-    return item;
-  }
+						@Override
+						public void onSuccess(Void result) {
+							node.delete();
+						}
+					});
+				}
+				this.component.getContextMenu().hide();
+			}
+		};
+		MenuItem item = new MenuItem("Join example task", command);
+		return item;
+	}
 }

@@ -10,6 +10,6 @@ package eml.studio.server.util.typeparser;
  * @param <T>
  */
 public interface TypeParser<T> {
-    T parse(String value);
-    String toString(Object obj);
+	T parse(String value);
+	String toString(Object obj);
 }

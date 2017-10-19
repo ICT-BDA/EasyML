@@ -12,24 +12,24 @@ import com.google.gwt.user.client.rpc.IsSerializable;
  * This object is used to record module version
  */
 public class ModuleVersion implements IsSerializable {
-  @TableField
-  private String oldversionid;
-  @TableField
-  private String newversionid;
+	@TableField
+	private String oldversionid;
+	@TableField
+	private String newversionid;
 
-  public String getOldversionid() {
-    return oldversionid;
-  }
+	public String getOldversionid() {
+		return oldversionid;
+	}
 
-  public void setOldversionid(String Oldversionid) {
-    this.oldversionid = Oldversionid;
-  }
+	public void setOldversionid(String Oldversionid) {
+		this.oldversionid = Oldversionid;
+	}
 
-  public String getNewversionid() {
-    return newversionid;
-  }
+	public String getNewversionid() {
+		return newversionid;
+	}
 
-  public void setNewversionid(String Newversionid) {
-    this.newversionid = Newversionid;
-  }
+	public void setNewversionid(String Newversionid) {
+		this.newversionid = Newversionid;
+	}
 }

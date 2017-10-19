@@ -10,55 +10,55 @@ package eml.studio.client.ui.property;
  */
 public class Property {
 
-  private String name;
-  private String value;
+	private String name;
+	private String value;
 
-  /**
-   * Constructor which records name and value
-   *
-   * @param name
-   *          name
-   * @param value
-   *          value
-   */
-  public Property(String name, String value) {
-    this.name = name;
-    this.value = value;
-  }
+	/**
+	 * Constructor which records name and value
+	 *
+	 * @param name
+	 *          name
+	 * @param value
+	 *          value
+	 */
+	public Property(String name, String value) {
+		this.name = name;
+		this.value = value;
+	}
 
-  /**
-   * Return a name of property
-   *
-   * @return
-   */
-  public String getName() {
-    return name;
-  }
+	/**
+	 * Return a name of property
+	 *
+	 * @return
+	 */
+	public String getName() {
+		return name;
+	}
 
-  /**
-   * Set a name of property
-   *
-   * @param name
-   */
-  public void setName(String name) {
-    this.name = name;
-  }
+	/**
+	 * Set a name of property
+	 *
+	 * @param name
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
 
-  /**
-   * Return a value of property
-   *
-   * @return
-   */
-  public String getValue() {
-    return value;
-  }
+	/**
+	 * Return a value of property
+	 *
+	 * @return
+	 */
+	public String getValue() {
+		return value;
+	}
 
-  /**
-   * Set a value of property
-   *
-   * @param value
-   */
-  public void setValue(String value) {
-    this.value = value;
-  }
+	/**
+	 * Set a value of property
+	 *
+	 * @param value
+	 */
+	public void setValue(String value) {
+		this.value = value;
+	}
 }

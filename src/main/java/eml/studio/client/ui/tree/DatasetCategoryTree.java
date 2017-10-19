@@ -12,9 +12,9 @@ import eml.studio.client.util.Constants;
  */
 public class DatasetCategoryTree extends DatasetModuleTree {
 
-  public DatasetCategoryTree() {
-    super(Constants.studioUIMsg.systemData(),
-        Constants.studioUIMsg.myData(),
-        Constants.studioUIMsg.sharedData());
-  }
+	public DatasetCategoryTree() {
+		super(Constants.studioUIMsg.systemData(),
+				Constants.studioUIMsg.myData(),
+				Constants.studioUIMsg.sharedData());
+	}
 }

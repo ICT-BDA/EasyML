@@ -11,19 +11,19 @@ import org.dom4j.Element;
  */
 public class EndNodeDef extends NodeDef {
 
-  public EndNodeDef() {
-    super("end");
-  }
+	public EndNodeDef() {
+		super("end");
+	}
 
-  @Override
-  public void append2XML(Element root) {
-    Element kill = root.addElement("kill");
-    Element msg = kill.addElement("message");
-    msg.addText("Map/Reduce failed, error message[${wf:errorMessage(wf:lastErrorNode())}]");
-    kill.addAttribute("name", "fail");
+	@Override
+	public void append2XML(Element root) {
+		Element kill = root.addElement("kill");
+		Element msg = kill.addElement("message");
+		msg.addText("Map/Reduce failed, error message[${wf:errorMessage(wf:lastErrorNode())}]");
+		kill.addAttribute("name", "fail");
 
-    Element end = root.addElement("end");
-    end.addAttribute("name", getName());
-  }
+		Element end = root.addElement("end");
+		end.addAttribute("name", getName());
+	}
 
 }

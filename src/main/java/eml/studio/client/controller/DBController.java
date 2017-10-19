@@ -19,6 +19,8 @@ import eml.studio.client.rpc.ProgramServiceAsync;
 import eml.studio.client.ui.binding.DatasetBinder;
 import eml.studio.client.ui.panel.component.DescribeGrid;
 import eml.studio.client.ui.binding.ProgramBinder;
+import eml.studio.client.ui.panel.DataTypeSelectPanel;
+import eml.studio.client.ui.panel.DataVisualPopPanel;
 import eml.studio.client.ui.panel.EditDatasetPanel;
 import eml.studio.client.ui.panel.EditProgramPanel;
 import eml.studio.client.ui.panel.PreviewPopupPanel;
@@ -36,6 +38,7 @@ import eml.studio.client.ui.widget.shape.OutNodeShape;
 import eml.studio.client.util.Constants;
 import eml.studio.shared.model.Dataset;
 import eml.studio.shared.model.Program;
+import eml.studio.shared.util.DatasetType;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.i18n.client.DateTimeFormat;
@@ -53,7 +56,7 @@ public class DBController {
 	public static ProgramServiceAsync programSrv = GWT.create(ProgramService.class);
 	public static DatasetServiceAsync datasetSrv = GWT.create(DatasetService.class);
 	public static CategoryServiceAsync categorySrv = GWT.create(CategoryService.class);
-	
+
 	public static ProgramBinder programBinder = GWT.create(ProgramBinder.class);
 	public static DatasetBinder datasetBinder = GWT.create(DatasetBinder.class);
 	private static Logger logger = Logger.getLogger(DBController.class.getName());
@@ -69,7 +72,7 @@ public class DBController {
 	 * @throws CommandParseException
 	 */
 	public boolean submitUploadProgram2DB(final Presenter presenter, final UploadFileModule fileUploader,
-										  Program program, final DescribeGrid grid)
+			Program program, final DescribeGrid grid)
 					throws CommandParseException {
 		String name = grid.getText("Name");
 		if (name == null || "".equals(name)) {
@@ -550,5 +553,49 @@ public class DBController {
 		// Set the current data's resource path
 		previewPopup.setSourceUrl( path );
 		previewPopup.center();
+	}
+
+	/**
+	 * Data Visualization
+	 * 
+	 * @param path  file path
+	 * @param fileId  fileId
+	 */
+	public static void showDataVisualPopup(final String path,String fileId){
+		//Data module visualization
+		if(path.contains("null"))
+		{
+			Window.alert("The results have not been produced yet!");
+			return;
+		}
+
+		datasetSrv.loadFile(path, new AsyncCallback<Dataset>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				Window.alert("Loading data failed！");
+				logger.info(caught.getMessage());
+			}
+			@Override
+			public void onSuccess(Dataset result) {
+				if (result == null)
+					return;
+				if(result.getContenttype() == null)
+				{
+					Window.alert("Data type is not defined ，please select the data type first！");
+					DataTypeSelectPanel dataSelectPanel = new DataTypeSelectPanel(path,result);
+					dataSelectPanel.getDescLabel().setText("Data Type Selection - " + result.getName());
+					dataSelectPanel.center();
+				}
+				else if(result.getContenttype().equals(DatasetType.GENERAL.getDesc()))
+					Window.alert("Visualization only support json、tsv、csv data type！");
+				else
+				{
+					DataVisualPopPanel chartPopPanel = new DataVisualPopPanel(path	,result);
+					chartPopPanel.getDescLabel().setText("Data Visualization - " + result.getName());
+					chartPopPanel.center();
+				}
+			}
+		});
 	}
 }

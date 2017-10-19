@@ -12,17 +12,17 @@ import org.dom4j.Element;
  */
 public class StartNodeDef extends NodeDef {
 
-  public StartNodeDef() {
-    super("start");
-  }
+	public StartNodeDef() {
+		super("start");
+	}
 
-  @Override
-  public void append2XML(Element root) {
-    Element start = root.addElement("start");
+	@Override
+	public void append2XML(Element root) {
+		Element start = root.addElement("start");
 
-    // assure that start node has only one out-path
-    NodeDef nextNode = outNodes.iterator().next();
-    start.addAttribute("to", nextNode.getName());
-  }
+		// assure that start node has only one out-path
+		NodeDef nextNode = outNodes.iterator().next();
+		start.addAttribute("to", nextNode.getName());
+	}
 
 }

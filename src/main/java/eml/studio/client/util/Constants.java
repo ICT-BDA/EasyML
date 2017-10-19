@@ -17,18 +17,18 @@ import com.google.gwt.core.shared.GWT;
 
 public class Constants {
 
-  /**********************************************
-   *********** CLIENT *****************
-   **********************************************/
+	/**********************************************
+	 *********** CLIENT *****************
+	 **********************************************/
 
-  public static int CONTROLLER_WIDTH = 2400;
-  public static int CONTROLLER_HEIGHT = 1200;
-  public static StudioUIMessages studioUIMsg = (StudioUIMessages)GWT.create(StudioUIMessages.class);
-  public static HeaderUIMessages headerUIMsg = (HeaderUIMessages)GWT.create(HeaderUIMessages.class);
-  public static LogUIMessages logUIMsg = (LogUIMessages)GWT.create(LogUIMessages.class);
-  public static RegisterUIMessages registerUIMsg = (RegisterUIMessages)GWT.create(RegisterUIMessages.class);
-  public static ResetpwdUIMessages resetpwdUIMsg = (ResetpwdUIMessages)GWT.create(ResetpwdUIMessages.class);
-  public static AdminUIMessages adminUIMsg = (AdminUIMessages)GWT.create(AdminUIMessages.class);
-  public static AccountUIMessages accountUIMsg = (AccountUIMessages)GWT.create(AccountUIMessages.class);
+	public static int CONTROLLER_WIDTH = 2400;
+	public static int CONTROLLER_HEIGHT = 1200;
+	public static StudioUIMessages studioUIMsg = (StudioUIMessages)GWT.create(StudioUIMessages.class);
+	public static HeaderUIMessages headerUIMsg = (HeaderUIMessages)GWT.create(HeaderUIMessages.class);
+	public static LogUIMessages logUIMsg = (LogUIMessages)GWT.create(LogUIMessages.class);
+	public static RegisterUIMessages registerUIMsg = (RegisterUIMessages)GWT.create(RegisterUIMessages.class);
+	public static ResetpwdUIMessages resetpwdUIMsg = (ResetpwdUIMessages)GWT.create(ResetpwdUIMessages.class);
+	public static AdminUIMessages adminUIMsg = (AdminUIMessages)GWT.create(AdminUIMessages.class);
+	public static AccountUIMessages accountUIMsg = (AccountUIMessages)GWT.create(AccountUIMessages.class);
 
 }

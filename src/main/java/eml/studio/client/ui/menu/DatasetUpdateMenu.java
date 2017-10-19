@@ -17,19 +17,19 @@ import com.google.gwt.user.client.ui.MenuItem;
  */
 public class DatasetUpdateMenu {
 
-  public static MenuItem create(final DatasetLeaf node, final DatasetTree tree) {
-    Command command = new MenuItemCommand(node) {
-      @Override
-	public void execute() {
-        UpdateDatasetPanel panel = new UpdateDatasetPanel(tree, node);
-        
-        panel.show(node.getModule());
-        
-        this.component.getContextMenu().hide();
-      }
-    };
+	public static MenuItem create(final DatasetLeaf node, final DatasetTree tree) {
+		Command command = new MenuItemCommand(node) {
+			@Override
+			public void execute() {
+				UpdateDatasetPanel panel = new UpdateDatasetPanel(tree, node);
 
-    MenuItem item = new MenuItem("Update", command);
-    return item;
-  }
+				panel.show(node.getModule());
+
+				this.component.getContextMenu().hide();
+			}
+		};
+
+		MenuItem item = new MenuItem("Update", command);
+		return item;
+	}
 }

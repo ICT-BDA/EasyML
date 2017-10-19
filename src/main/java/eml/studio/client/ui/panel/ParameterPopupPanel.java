@@ -18,41 +18,39 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
  */
 public class ParameterPopupPanel extends BasePopupPanel {
 
-  protected Button submitBtn = new Button(Constants.studioUIMsg.confirm());
-  protected ParameterPanel panel;
+	protected Button submitBtn = new Button(Constants.studioUIMsg.confirm());
+	protected ParameterPanel panel;
 
-  HorizontalPanel hpanel = new HorizontalPanel();
+	HorizontalPanel hpanel = new HorizontalPanel();
 
-  public ParameterPopupPanel() {
-	submitBtn.removeStyleName("gwt-Button");
-	submitBtn.addStyleName("button-style");
-	submitBtn.getElement().getStyle().setMarginLeft(180, Unit.PX);
-	submitBtn.getElement().getStyle().setMarginTop(20, Unit.PX);
-	submitBtn.getElement().getStyle().setMarginBottom(-20, Unit.PX);
-    hpanel.setStyleName("bda-newjob-hpanel");
-    // verticalPanel.add( errorLabel );
-    hpanel.add(submitBtn);
-    // errorLabel.setStyleName("error-label");
-    verticalPanel.add(hpanel);
-    verticalPanel.addStyleName("bda-parameter-vpanel");
-    this.setCloseEnable(false);
-  }
+	public ParameterPopupPanel() {
+		submitBtn.removeStyleName("gwt-Button");
+		submitBtn.addStyleName("button-style");
+		submitBtn.getElement().getStyle().setMarginLeft(180, Unit.PX);
+		submitBtn.getElement().getStyle().setMarginTop(20, Unit.PX);
+		submitBtn.getElement().getStyle().setMarginBottom(-20, Unit.PX);
+		hpanel.setStyleName("bda-newjob-hpanel");
+		hpanel.add(submitBtn);
+		verticalPanel.add(hpanel);
+		verticalPanel.addStyleName("bda-parameter-vpanel");
+		this.setCloseEnable(false);
+	}
 
-  public void addSubmitHandler(ClickHandler handler) {
-    submitBtn.addClickHandler(handler);
-  }
+	public void addSubmitHandler(ClickHandler handler) {
+		submitBtn.addClickHandler(handler);
+	}
 
-  public void setParameterPanel(ParameterPanel panel) {
-    if (panel == null)
-      return;
-    verticalPanel.clear();
-    verticalPanel.add(panel);
-    verticalPanel.add(submitBtn);
-    this.panel = panel;
-  }
+	public void setParameterPanel(ParameterPanel panel) {
+		if (panel == null)
+			return;
+		verticalPanel.clear();
+		verticalPanel.add(panel);
+		verticalPanel.add(submitBtn);
+		this.panel = panel;
+	}
 
-  public ParameterPanel getPanel() {
-    return panel;
-  }
+	public ParameterPanel getPanel() {
+		return panel;
+	}
 
 }

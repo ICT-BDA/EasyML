@@ -9,26 +9,26 @@ import com.google.gwt.i18n.client.Messages;
 
 public interface LogUIMessages extends Messages{
 
-  String login();
-  String logout();
-  String register();
-  String remember();
-  String forget();
-  
-  String guest();
-  String email();
-  String password();
-  
-  String loginErrorMsg();
-  String loginWrongMsg();
-  
-  String resetEmail();
-  String resetSend();
-  String resetCancel();
+	String login();
+	String logout();
+	String register();
+	String remember();
+	String forget();
 
-  String registerEmail();
-  String registerVerify();
-  String registerConfirm();
-  String registerCancel();
-  
+	String guest();
+	String email();
+	String password();
+
+	String loginErrorMsg();
+	String loginWrongMsg();
+
+	String resetEmail();
+	String resetSend();
+	String resetCancel();
+
+	String registerEmail();
+	String registerVerify();
+	String registerConfirm();
+	String registerCancel();
+
 }

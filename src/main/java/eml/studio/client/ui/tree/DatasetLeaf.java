@@ -12,11 +12,11 @@ import eml.studio.shared.model.Dataset;
  */
 public class DatasetLeaf extends Leaf<Dataset> {
 
-  public DatasetLeaf(Dataset m) {
-    super(m.getName(), m);
-    if (m.isDistributed())
-      this.label.addStyleName("bda-treeleaf-distribute");
-    else
-      this.label.addStyleName("bda-treeleaf-standalone");
-  }
+	public DatasetLeaf(Dataset m) {
+		super(m.getName(), m);
+		if (m.isDistributed())
+			this.label.addStyleName("bda-treeleaf-distribute");
+		else
+			this.label.addStyleName("bda-treeleaf-standalone");
+	}
 }

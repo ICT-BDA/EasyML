@@ -11,19 +11,19 @@ import com.google.gwt.user.client.ui.Tree;
 
 public class TreeImageResources implements Tree.Resources {
 
-  @Override
-  public ImageResource treeClosed() {
-    return Resources.instance.getTreeClosed();
-  }
+	@Override
+	public ImageResource treeClosed() {
+		return Resources.instance.getTreeClosed();
+	}
 
-  @Override
-  public ImageResource treeLeaf() {
-    return Resources.instance.getTreeLeaf();
-  }
+	@Override
+	public ImageResource treeLeaf() {
+		return Resources.instance.getTreeLeaf();
+	}
 
-  @Override
-  public ImageResource treeOpen() {
-    return Resources.instance.getTreeOpen();
-  }
+	@Override
+	public ImageResource treeOpen() {
+		return Resources.instance.getTreeOpen();
+	}
 
 }

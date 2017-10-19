@@ -15,10 +15,8 @@ public interface ProgramServiceAsync {
   
   void loadPart(int start, int size, AsyncCallback<List<Program>> callback);
   
-  /** Load all available programs */
   void load(AsyncCallback<List<Program>> callback);
 
-  /** Load a program given its id */
   void load(String id, AsyncCallback<Program> callback);
   
   void load(Program program, AsyncCallback<List<Program>> callback);
@@ -36,5 +34,7 @@ public interface ProgramServiceAsync {
   void download(String id, AsyncCallback<String> callback);
 
   void upgrade(String id, String newID, AsyncCallback<Void> callback);
+  
+  void search(Program program, String startDate, String endDate, int limitStart, int limitSize, AsyncCallback<List<Program>> callback);
 
 }

@@ -26,13 +26,13 @@ public class ShellActionNodeDef extends ActionNodeDef {
 			generateElement(shell, "argument", "HDFS");
 			generateElement(shell, "argument", inputFiles.get(i));
 		}
-		
+
 		//add all output file arguments to the shell xml element
 		int outCnt = outputFiles.size();
 		for( int j = 0; j < outCnt; ++ j ){
 			generateElement(shell, "argument", outputFiles.get(j));
 		}
-		
+
 	}
 
 }

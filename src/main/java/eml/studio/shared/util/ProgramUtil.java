@@ -12,51 +12,51 @@ import eml.studio.shared.oozie.OozieAction;
  */
 public class ProgramUtil {
 
-  /**
-   * @return if is distributed
-   */
-  public static boolean isDistributed(String type){
-    if( "分布式".equals(type) || "distributed".equals(type)
-        || "spark".equals(type)
-        || "mapreduce".equals(type) ) return true;
-    return false;
-  }
-  public static boolean isETL(String type){
-    if( "ETL".equals(type)||"etl".equals(type)) return true;
-    return false;
-  }
-  public static boolean isStandalone(String type){
-    if( "单机".equals(type)
-        || "standalone".equals(type)
-        || "Standalone".equals(type)
-        || "STANDALONE".equals(type) ) return true;
-    return false;
-  }
+	/**
+	 * @return if is distributed
+	 */
+	public static boolean isDistributed(String type){
+		if( "分布式".equals(type) || "distributed".equals(type)
+				|| "spark".equals(type)
+				|| "mapreduce".equals(type) ) return true;
+		return false;
+	}
+	public static boolean isETL(String type){
+		if( "ETL".equals(type)||"etl".equals(type)) return true;
+		return false;
+	}
+	public static boolean isStandalone(String type){
+		if( "单机".equals(type)
+				|| "standalone".equals(type)
+				|| "Standalone".equals(type)
+				|| "STANDALONE".equals(type) ) return true;
+		return false;
+	}
 
-  public static boolean isSuccess(OozieAction action){
-    if( action == null ||
-        action.getAppPath() == null ||
-        "".equals(action.getAppPath() )) return false;
-    return "OK".equals(action.getStatus()) || "SUCCESS".equals(action.getStatus());
-  }
-    
+	public static boolean isSuccess(OozieAction action){
+		if( action == null ||
+				action.getAppPath() == null ||
+				"".equals(action.getAppPath() )) return false;
+		return "OK".equals(action.getStatus()) || "SUCCESS".equals(action.getStatus());
+	}
 
 
-  public static boolean isOkState(OozieAction action){
-    if( "OK".equals(action.getStatus()) ) return true;
-    return false;
-  }
-  
-  public static boolean isErrorState(OozieAction action){
-    if( "ERROR".equals(action.getStatus())
-                || "FAILED".equals(action.getStatus())
-                || "KILLED".equals(action.getStatus()) )
-      return true;
-    return false;
-  }
 
-  public static boolean isNewState(OozieAction action){
-    if( "new".equals(action.getStatus()) ) return true;
-    return false;
-  }
+	public static boolean isOkState(OozieAction action){
+		if( "OK".equals(action.getStatus()) ) return true;
+		return false;
+	}
+
+	public static boolean isErrorState(OozieAction action){
+		if( "ERROR".equals(action.getStatus())
+				|| "FAILED".equals(action.getStatus())
+				|| "KILLED".equals(action.getStatus()) )
+			return true;
+		return false;
+	}
+
+	public static boolean isNewState(OozieAction action){
+		if( "new".equals(action.getStatus()) ) return true;
+		return false;
+	}
 }

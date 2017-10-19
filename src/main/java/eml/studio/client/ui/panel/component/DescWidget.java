@@ -7,7 +7,7 @@ package eml.studio.client.ui.panel.component;
 
 public interface DescWidget {
 
-  void setValue(String val);
+	void setValue(String val);
 
-  String getValue();
+	String getValue();
 }

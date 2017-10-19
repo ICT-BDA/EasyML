@@ -12,5 +12,5 @@ import com.orange.links.client.menu.HasContextMenu;
  * Right mouse up Menu interface
  */
 public interface HasRightMouseUpMenu extends HasContextMenu {
-  public void addMenuItem(MenuItem menuItem);
+	public void addMenuItem(MenuItem menuItem);
 }

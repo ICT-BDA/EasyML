@@ -7,7 +7,7 @@ package eml.studio.client.ui.widget.command;
 
 public class CommandParseException extends Exception {
 
-  public CommandParseException(String message) {
-    super(message);
-  }
+	public CommandParseException(String message) {
+		super(message);
+	}
 }

@@ -12,7 +12,7 @@ package eml.studio.client.ui.binding;
  */
 public interface TextBinder<T, O> {
 
-  void bind(T text, O obj);
+	void bind(T text, O obj);
 
-  void sync(T text, O obj);
+	void sync(T text, O obj);
 }

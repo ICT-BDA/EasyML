@@ -20,159 +20,159 @@ import com.google.gwt.user.client.History;
  * 
  */
 public class HeaderLoader {
-  private final HandlerManager eventBus;
-  private final HeaderView headerView;
-  private final MonitorPresenter presenter;
-  
-  /**
-	* Init
-	*/
-  public void init() {
-    if(AppController.email.equals("guest")){
-    	headerView.getNavMenu().setVisible(false);
-    	headerView.getWorkStage().setVisible(false);
-    	headerView.getAdminAnchor().setVisible(false);
-    	headerView.getLogout().setVisible(false);
-    	headerView.getWorkStage().getElement().removeAttribute("href");
-    	headerView.getAdminAnchor().getElement().removeAttribute("href");
-    }else{
-		headerView.setAccount(AppController.username, AppController.email);
-	
-	    String arr[] = AppController.power.split("");
-	    if(arr[1].equals("1")){
-	    	headerView.getAdminAnchor().setVisible(true);
-	    	headerView.getUserProg().setVisible(false);
-	    	headerView.getUserData().setVisible(false);
-	    	headerView.getUserList().setVisible(false);
-	    	headerView.getWorkStage().setVisible(false);
-	    	headerView.getUserProg().getElement().removeAttribute("href");
-	    	headerView.getUserData().getElement().removeAttribute("href");
-	    	headerView.getUserList().getElement().removeAttribute("href");
-	    	headerView.getWorkStage().getElement().removeAttribute("href");
-	    }else{
-	    	headerView.getWorkStage().setVisible(false);
-	    	headerView.getAdminAnchor().setVisible(false);
-	    	headerView.getUserProg().setVisible(false);
-	    	headerView.getUserData().setVisible(false);
-	    	headerView.getUserList().setVisible(false);
-	    	headerView.getUserProg().getElement().removeAttribute("href");
-	    	headerView.getUserData().getElement().removeAttribute("href");
-	    	headerView.getUserList().getElement().removeAttribute("href");
-	    	headerView.getWorkStage().getElement().removeAttribute("href");
-	    	headerView.getAdminAnchor().getElement().removeAttribute("href");
-	    }	
-	  		  
-	    if(arr[3].equals("1")){
-	    	headerView.getProgAnchor().setVisible(true);
-	    	headerView.getDataAnchor().setVisible(true);
-	    }else{
-	    	headerView.getProgAnchor().setVisible(false);
-	    	headerView.getDataAnchor().setVisible(false);
-	    	headerView.getProgAnchor().getElement().removeAttribute("href");
-	    	headerView.getDataAnchor().getElement().removeAttribute("href");
-	    }	
-	  	  
-	    headerView.getNewJobAnchor().setVisible(true);
-	}
-  }
+	private final HandlerManager eventBus;
+	private final HeaderView headerView;
+	private final MonitorPresenter presenter;
 
-  public HeaderLoader(HandlerManager eventBus, HeaderView headerView,MonitorPresenter presenter) {
-    this.eventBus = eventBus;
-    this.headerView = headerView;
-    this.presenter = presenter;
-  }
+	/**
+	 * Init
+	 */
+	public void init() {
+		if(AppController.email.equals("guest")){
+			headerView.getNavMenu().setVisible(false);
+			headerView.getWorkStage().setVisible(false);
+			headerView.getAdminAnchor().setVisible(false);
+			headerView.getLogout().setVisible(false);
+			headerView.getWorkStage().getElement().removeAttribute("href");
+			headerView.getAdminAnchor().getElement().removeAttribute("href");
+		}else{
+			headerView.setAccount(AppController.username, AppController.email);
 
-  /**
-	* Event binding
-	*/
-  public void bind() {
-    //logout
-    headerView.getLogout().addClickHandler(new ClickHandler() {
+			String arr[] = AppController.power.split("");
+			if(arr[1].equals("1")){
+				headerView.getAdminAnchor().setVisible(true);
+				headerView.getUserProg().setVisible(false);
+				headerView.getUserData().setVisible(false);
+				headerView.getUserList().setVisible(false);
+				headerView.getWorkStage().setVisible(false);
+				headerView.getUserProg().getElement().removeAttribute("href");
+				headerView.getUserData().getElement().removeAttribute("href");
+				headerView.getUserList().getElement().removeAttribute("href");
+				headerView.getWorkStage().getElement().removeAttribute("href");
+			}else{
+				headerView.getWorkStage().setVisible(false);
+				headerView.getAdminAnchor().setVisible(false);
+				headerView.getUserProg().setVisible(false);
+				headerView.getUserData().setVisible(false);
+				headerView.getUserList().setVisible(false);
+				headerView.getUserProg().getElement().removeAttribute("href");
+				headerView.getUserData().getElement().removeAttribute("href");
+				headerView.getUserList().getElement().removeAttribute("href");
+				headerView.getWorkStage().getElement().removeAttribute("href");
+				headerView.getAdminAnchor().getElement().removeAttribute("href");
+			}	
 
-      @Override
-      public void onClick(ClickEvent event) {
-        eventBus.fireEvent(new LogoutEvent());
-      }
+			if(arr[3].equals("1")){
+				headerView.getProgAnchor().setVisible(true);
+				headerView.getDataAnchor().setVisible(true);
+			}else{
+				headerView.getProgAnchor().setVisible(false);
+				headerView.getDataAnchor().setVisible(false);
+				headerView.getProgAnchor().getElement().removeAttribute("href");
+				headerView.getDataAnchor().getElement().removeAttribute("href");
+			}	
 
-    });
-
-    //Create a new task
-    headerView.getNewJobAnchor().addClickHandler( new ClickHandler(){
-
-      @Override
-      public void onClick(ClickEvent event) {
-        presenter.clearCurrentJob();
-        presenter.getView().getController().clear();
-        presenter.getView().clearPropTable();
-        presenter.unlockSubmit();
-        presenter.updateJobIFView();
-      }
-
-    } );
-    
-    //Upload programs
-    headerView.getProgAnchor().addClickHandler(new ClickHandler() {
-
-      @Override
-      public void onClick(ClickEvent event) {
-        UploadProgramPanel panel = new UploadProgramPanel(AppController.email,presenter);
-        panel.show();
-        panel.center();
-      }
-
-    });
-
-    //Upload data
-    headerView.getDataAnchor().addClickHandler(new ClickHandler() {
-
-      @Override
-      public void onClick(ClickEvent event) {
-        UploadDatasetPanel panel = new UploadDatasetPanel(AppController.email,presenter);
-        panel.show();
-        panel.center();
-      }
-
-    });
-    
-    //Backstage management
-    headerView.getAdminAnchor().addClickHandler(new ClickHandler(){
-
-		@Override
-		public void onClick(ClickEvent event) {
-			// TODO Auto-generated method stub
-			History.newItem("admin");
+			headerView.getNewJobAnchor().setVisible(true);
 		}
-    	
-    });
-    
-    //Personal information
-    if(AppController.email != "guest"){
-	    headerView.getUserAnchor().addClickHandler(new ClickHandler(){
-	
+	}
+
+	public HeaderLoader(HandlerManager eventBus, HeaderView headerView,MonitorPresenter presenter) {
+		this.eventBus = eventBus;
+		this.headerView = headerView;
+		this.presenter = presenter;
+	}
+
+	/**
+	 * Event binding
+	 */
+	public void bind() {
+		//logout
+		headerView.getLogout().addClickHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+				eventBus.fireEvent(new LogoutEvent());
+			}
+
+		});
+
+		//Create a new task
+		headerView.getNewJobAnchor().addClickHandler( new ClickHandler(){
+
+			@Override
+			public void onClick(ClickEvent event) {
+				presenter.clearCurrentJob();
+				presenter.getView().getController().clear();
+				presenter.getView().clearPropTable();
+				presenter.unlockSubmit();
+				presenter.updateJobIFView();
+			}
+
+		} );
+
+		//Upload programs
+		headerView.getProgAnchor().addClickHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+				UploadProgramPanel panel = new UploadProgramPanel(AppController.email,presenter);
+				panel.show();
+				panel.center();
+			}
+
+		});
+
+		//Upload data
+		headerView.getDataAnchor().addClickHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+				UploadDatasetPanel panel = new UploadDatasetPanel(AppController.email,presenter);
+				panel.show();
+				panel.center();
+			}
+
+		});
+
+		//Backstage management
+		headerView.getAdminAnchor().addClickHandler(new ClickHandler(){
+
 			@Override
 			public void onClick(ClickEvent event) {
 				// TODO Auto-generated method stub
-				History.newItem("account");
+				History.newItem("admin");
 			}
-	    	
-	    });
-    }
-    
-    //Work Stage
-    headerView.getWorkStage().addClickHandler(new ClickHandler(){
 
-		@Override
-		public void onClick(ClickEvent event) {
-			// TODO Auto-generated method stub
-	        presenter.clearCurrentJob();
-	        presenter.getView().getController().clear();
-	        presenter.getView().clearPropTable();
-	        presenter.unlockSubmit();
-	        presenter.updateJobIFView();
-	        
+		});
+
+		//Personal information
+		if(AppController.email != "guest"){
+			headerView.getUserAnchor().addClickHandler(new ClickHandler(){
+
+				@Override
+				public void onClick(ClickEvent event) {
+					// TODO Auto-generated method stub
+					History.newItem("account");
+				}
+
+			});
 		}
-    	
-    });
 
-  }
+		//Work Stage
+		headerView.getWorkStage().addClickHandler(new ClickHandler(){
+
+			@Override
+			public void onClick(ClickEvent event) {
+				// TODO Auto-generated method stub
+				presenter.clearCurrentJob();
+				presenter.getView().getController().clear();
+				presenter.getView().clearPropTable();
+				presenter.unlockSubmit();
+				presenter.updateJobIFView();
+
+			}
+
+		});
+
+	}
 }

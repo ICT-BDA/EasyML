@@ -27,44 +27,44 @@ public class AlertPanel extends PopupPanel {
 	private VerticalPanel alertContent = new VerticalPanel();
 	private VerticalPanel mask = new VerticalPanel();
 	private VerticalPanel root = new VerticalPanel();
-    
+
 	public AlertPanel() {
 		bind();
-		
-	    title.setStyleName("alertTitle");
-	    close.setStyleName("alertClose");
-	    alertHeader.add(title);
-	    alertHeader.add(close);
-	    alertHeader.addStyleName("alertTitleBG");
-	    
-	    content.removeStyleName("gwt-Label");
-	    content.addStyleName("alertBody");
-	    alertContent.add(content);
-	    alertContent.addStyleName("alertBodyBG");
-	    
-	    confirmBtn.removeStyleName("gwt-Button");
-	    alertButton.add(confirmBtn);
-	    alertButton.addStyleName("alertButton1");
-	    
-	    vPanel.add(alertHeader);
-	    vPanel.add(alertContent);
-	    vPanel.add(alertButton);
 
-	    vPanel.addStyleName("alertBox");
-	    mask.addStyleName("alertBack");
-	    
-	    mask.addStyleName("alertBack");
+		title.setStyleName("alertTitle");
+		close.setStyleName("alertClose");
+		alertHeader.add(title);
+		alertHeader.add(close);
+		alertHeader.addStyleName("alertTitleBG");
+
+		content.removeStyleName("gwt-Label");
+		content.addStyleName("alertBody");
+		alertContent.add(content);
+		alertContent.addStyleName("alertBodyBG");
+
+		confirmBtn.removeStyleName("gwt-Button");
+		alertButton.add(confirmBtn);
+		alertButton.addStyleName("alertButton1");
+
+		vPanel.add(alertHeader);
+		vPanel.add(alertContent);
+		vPanel.add(alertButton);
+
+		vPanel.addStyleName("alertBox");
+		mask.addStyleName("alertBack");
+
+		mask.addStyleName("alertBack");
 		mask.getElement().getStyle().setDisplay(Display.NONE);
 		vPanel.add(mask);
-	    
-	    root.add(mask);
-	    root.add(vPanel);
-	    this.add(root);
-	    this.removeStyleName("gwt-PopupPanel");
-	    this.getElement().getStyle().setPosition(Position.FIXED);
-	    this.getElement().getStyle().setZIndex(999999999);
+
+		root.add(mask);
+		root.add(vPanel);
+		this.add(root);
+		this.removeStyleName("gwt-PopupPanel");
+		this.getElement().getStyle().setPosition(Position.FIXED);
+		this.getElement().getStyle().setZIndex(999999999);
 	}
-	
+
 	/**
 	 * Event binding
 	 */
@@ -78,7 +78,7 @@ public class AlertPanel extends PopupPanel {
 				AlertPanel.this.hide();
 			}
 		});
-		
+
 		//confirm
 		confirmBtn.addClickHandler(new ClickHandler(){
 
@@ -87,15 +87,15 @@ public class AlertPanel extends PopupPanel {
 				// TODO Auto-generated method stub
 				AlertPanel.this.hide();
 			}
-			
+
 		});
 	}
-	
+
 	@Override
 	public void setTitle(String msg){
 		title.setText(msg);
 	}
-	
+
 	public void setContent(String msg){
 		content.setText(msg);
 	}
@@ -103,15 +103,15 @@ public class AlertPanel extends PopupPanel {
 	public VerticalPanel getMask(){
 		return mask;
 	}
-	
+
 	public Label getContent(){
 		return content;
 	}
-	
+
 	public Button getConfirmBtn(){
 		return confirmBtn;
 	}
-	
+
 	public Label getClose(){
 		return close;
 	}

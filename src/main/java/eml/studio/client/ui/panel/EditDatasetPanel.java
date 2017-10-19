@@ -38,16 +38,16 @@ public class EditDatasetPanel extends BasePanel {
 		super();
 		owner = emailAccount;
 		labarr = new String[][]{
-						{"Name", "Category", "DataType", "Version", "CreateDate", "Owner", "Description"},
-						{Constants.studioUIMsg.dataName(), Constants.studioUIMsg.dataCategory(), 
-						 Constants.studioUIMsg.dataType(), Constants.studioUIMsg.dataVersion(),
-						 Constants.studioUIMsg.dataCreateTime(), Constants.studioUIMsg.dataOwner(), 
-						 Constants.studioUIMsg.dataDescription()},
-						{"textbox", "tree", "listbox", "textbox", "textbox", "textbox", "textarea"},
-						{"true", "true", "true", "true", "false", "false", "true"},
-						{"", Constants.studioUIMsg.chooseCategory(), "General/CSV/TSV", "0.1", 
-						 TimeUtils.timeNow(), AppController.email, ""},
-					    {"left", "left", "left", "left", "left", "left", "right"}
+				{"Name", "Category", "DataType", "Version", "CreateDate", "Owner", "Description"},
+				{Constants.studioUIMsg.dataName(), Constants.studioUIMsg.dataCategory(), 
+					Constants.studioUIMsg.dataType(), Constants.studioUIMsg.dataVersion(),
+					Constants.studioUIMsg.dataCreateTime(), Constants.studioUIMsg.dataOwner(), 
+					Constants.studioUIMsg.dataDescription()},
+					{"textbox", "tree", "listbox", "textbox", "textbox", "textbox", "textarea"},
+					{"true", "true", "true", "true", "false", "false", "true"},
+					{"", Constants.studioUIMsg.chooseCategory(), "General/CSV/TSV", "0.1", 
+						TimeUtils.timeNow(), AppController.email, ""},
+						{"left", "left", "left", "left", "left", "left", "right"}
 		};
 		this.tree = tree;
 		this.node = node;
@@ -76,19 +76,19 @@ public class EditDatasetPanel extends BasePanel {
 	}
 	public void show(Dataset dataset){
 		this.dataset = dataset;
-	    final String values[] = DBController.getDatasetPanelValue(dataset,false);
-	    final String category = dataset.getCategory();
-	    if("我的数据".equals(category) || "my data".equals(category.toLowerCase())
-	    	|| "共享数据".equals(category) || "shared data".equals(category.toLowerCase())
-	    	|| "系统数据".equals(category) || "system data".equals(category.toLowerCase()) ){
-	    	values[1] = category;
+		final String values[] = DBController.getDatasetPanelValue(dataset,false);
+		final String category = dataset.getCategory();
+		if("我的数据".equals(category) || "my data".equals(category.toLowerCase())
+				|| "共享数据".equals(category) || "shared data".equals(category.toLowerCase())
+				|| "系统数据".equals(category) || "system data".equals(category.toLowerCase()) ){
+			values[1] = category;
 			EditDatasetPanel.this.setValues(values);
 			EditDatasetPanel.this.init();
 			EditDatasetPanel.this.center();
 			EditDatasetPanel.this.show();
-	    }else{
-		    categorySrv.getCategory(category, new AsyncCallback<Category>(){
-	
+		}else{
+			categorySrv.getCategory(category, new AsyncCallback<Category>(){
+
 				@Override
 				public void onFailure(Throwable caught) {
 					// TODO Auto-generated method stub
@@ -98,7 +98,7 @@ public class EditDatasetPanel extends BasePanel {
 					EditDatasetPanel.this.center();
 					EditDatasetPanel.this.show();
 				}
-	
+
 				@Override
 				public void onSuccess(Category result) {
 					// TODO Auto-generated method stub
@@ -106,15 +106,15 @@ public class EditDatasetPanel extends BasePanel {
 						values[1] = result.getName();
 					}else
 						values[1] = result.getPath();
-	
+
 					EditDatasetPanel.this.setValues( values );
 					EditDatasetPanel.this.init();
 					EditDatasetPanel.this.center();
 					EditDatasetPanel.this.show();
 				}
-		    	
-		    });
-	    }
+
+			});
+		}
 	}
 }
 

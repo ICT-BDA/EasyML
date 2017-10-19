@@ -80,11 +80,6 @@
 					</g:HorizontalPanel>
 					<g:Button addStyleNames="button-style" ui:field="pwdConfirmBtn">保存</g:Button>
 				</g:VerticalPanel>
-				<!-- <g:VerticalPanel ui:field="rsrPanel">
-					<g:Label>程序</g:Label><g:Label ui:field="prog"></g:Label>
-					<g:Label>数据</g:Label><g:Label ui:field="data"></g:Label>
-					<g:Label>任务</g:Label><g:Label ui:field="job"></g:Label>
-				</g:VerticalPanel> -->
 			</g:HorizontalPanel>
 			<div class="account-footer">
 				<p>@ All rights reserved | 中国科学院网络数据科学与技术重点实验室·大数据分析小组</p>

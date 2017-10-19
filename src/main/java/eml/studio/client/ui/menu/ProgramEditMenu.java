@@ -18,19 +18,19 @@ import com.google.gwt.user.client.ui.MenuItem;
  */
 public class ProgramEditMenu {
 
-  public static MenuItem create(final ProgramLeaf node, final ProgramTree tree) {
+	public static MenuItem create(final ProgramLeaf node, final ProgramTree tree) {
 
-    Command command = new MenuItemCommand(node) {
-      @Override
-	public void execute() {
-        EditProgramPanel panel = new EditProgramPanel(AppController.email,tree,node);
-        
-        panel.show(node.getModule());
-        
-        this.component.getContextMenu().hide();
-      }
-    };
-    MenuItem item = new MenuItem("Edit", command);
-    return item;
-  }
+		Command command = new MenuItemCommand(node) {
+			@Override
+			public void execute() {
+				EditProgramPanel panel = new EditProgramPanel(AppController.email,tree,node);
+
+				panel.show(node.getModule());
+
+				this.component.getContextMenu().hide();
+			}
+		};
+		MenuItem item = new MenuItem("Edit", command);
+		return item;
+	}
 }

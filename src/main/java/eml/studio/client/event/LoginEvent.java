@@ -12,31 +12,31 @@ import com.google.gwt.event.shared.GwtEvent;
  * The event that will be triggered when login
  */
 public class LoginEvent extends GwtEvent<LoginEvent.LoginEventHandler>{
- 
-  public interface LoginEventHandler extends EventHandler{
-    void onLoginEvent(LoginEvent event);
-  }
-  
-  public final static Type<LoginEventHandler> TYPE = new Type<LoginEventHandler>();
 
-  private String message;
+	public interface LoginEventHandler extends EventHandler{
+		void onLoginEvent(LoginEvent event);
+	}
 
-  public LoginEvent(String msg){
-    this.message = msg;
-  }
+	public final static Type<LoginEventHandler> TYPE = new Type<LoginEventHandler>();
 
-  @Override
-  public Type<LoginEventHandler> getAssociatedType() {
-    return TYPE;
-  }
+	private String message;
 
-  @Override
-  protected void dispatch(LoginEventHandler handler) {
-    handler.onLoginEvent(this);
-  }
+	public LoginEvent(String msg){
+		this.message = msg;
+	}
 
-  public String getMessage(){
-    return message;
-  }
+	@Override
+	public Type<LoginEventHandler> getAssociatedType() {
+		return TYPE;
+	}
+
+	@Override
+	protected void dispatch(LoginEventHandler handler) {
+		handler.onLoginEvent(this);
+	}
+
+	public String getMessage(){
+		return message;
+	}
 
 }

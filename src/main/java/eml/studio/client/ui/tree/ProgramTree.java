@@ -13,21 +13,21 @@ import eml.studio.client.ui.widget.program.ProgramWidget;
  */
 public class ProgramTree extends ProgramModuleTree {
 
-  /** Record the latest popup widget */
-  private ProgramWidget popupWidget = null;
+	/** Record the latest popup widget */
+	private ProgramWidget popupWidget = null;
 
-  public ProgramTree() {
-    super(Constants.studioUIMsg.systemProgram(),
-        Constants.studioUIMsg.myProgram(),
-        Constants.studioUIMsg.sharedProgram());
-  }
+	public ProgramTree() {
+		super(Constants.studioUIMsg.systemProgram(),
+				Constants.studioUIMsg.myProgram(),
+				Constants.studioUIMsg.sharedProgram());
+	}
 
-  public ProgramWidget getPopupWidget() {
-    return popupWidget;
-  }
+	public ProgramWidget getPopupWidget() {
+		return popupWidget;
+	}
 
-  public void setPopupWidget(ProgramWidget popupWidget) {
-    this.popupWidget = popupWidget;
-  }
+	public void setPopupWidget(ProgramWidget popupWidget) {
+		this.popupWidget = popupWidget;
+	}
 
 }

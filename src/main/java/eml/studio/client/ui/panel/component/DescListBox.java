@@ -14,37 +14,37 @@ import java.util.LinkedList;
  */
 public class DescListBox extends ListBox implements DescWidget {
 
-  public DescListBox (boolean multichocie){
-      super(multichocie);
-  }
-  public DescListBox (){
-    super();
-  }
+	public DescListBox (boolean multichocie){
+		super(multichocie);
+	}
+	public DescListBox (){
+		super();
+	}
 
-  public LinkedList<Integer> getSelectedItems() {
-    LinkedList<Integer> selectedItems = new LinkedList<Integer>();
-    for (int i = 0; i < getItemCount(); i++) {
-      if (isItemSelected(i)) {
-        selectedItems.add(i);
-      }
-    }
-    return selectedItems;
-  }
-  @Override
-  public void setValue(String val) {
-    this.setSelectedIndex(-1);
-    for (int i = 0; i < this.getItemCount(); i++) {
-      String string = this.getItemText(i);
-      if (string.equals(val)) {
-        this.setSelectedIndex(i);
-        break;
-      }
-    }
-  }
+	public LinkedList<Integer> getSelectedItems() {
+		LinkedList<Integer> selectedItems = new LinkedList<Integer>();
+		for (int i = 0; i < getItemCount(); i++) {
+			if (isItemSelected(i)) {
+				selectedItems.add(i);
+			}
+		}
+		return selectedItems;
+	}
+	@Override
+	public void setValue(String val) {
+		this.setSelectedIndex(-1);
+		for (int i = 0; i < this.getItemCount(); i++) {
+			String string = this.getItemText(i);
+			if (string.equals(val)) {
+				this.setSelectedIndex(i);
+				break;
+			}
+		}
+	}
 
-  @Override
-  public String getValue() {
-    return this.getItemText(this.getSelectedIndex());
-  }
+	@Override
+	public String getValue() {
+		return this.getItemText(this.getSelectedIndex());
+	}
 
 }

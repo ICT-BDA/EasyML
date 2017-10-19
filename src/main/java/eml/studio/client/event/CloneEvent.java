@@ -11,32 +11,31 @@ import com.google.gwt.event.shared.GwtEvent;
 /**
  * The event that will be triggered when clone
  */
-public class CloneEvent extends
-    GwtEvent<CloneEvent.CloneEventHandler> {
-  public final static Type<CloneEventHandler> TYPE = new Type<CloneEventHandler>();
+public class CloneEvent extends GwtEvent<CloneEvent.CloneEventHandler> {
+	public final static Type<CloneEventHandler> TYPE = new Type<CloneEventHandler>();
 
-  private String message;
+	private String message;
 
-  public CloneEvent(String msg) {
-    message = msg;
-  }
+	public CloneEvent(String msg) {
+		message = msg;
+	}
 
-  public interface CloneEventHandler extends EventHandler {
-    void onCloneEvent(CloneEvent event);
-  }
+	public interface CloneEventHandler extends EventHandler {
+		void onCloneEvent(CloneEvent event);
+	}
 
-  @Override
-  public Type<CloneEventHandler> getAssociatedType() {
-    return TYPE;
-  }
+	@Override
+	public Type<CloneEventHandler> getAssociatedType() {
+		return TYPE;
+	}
 
-  @Override
-  protected void dispatch(CloneEventHandler handler) {
-    handler.onCloneEvent(this);
-  }
+	@Override
+	protected void dispatch(CloneEventHandler handler) {
+		handler.onCloneEvent(this);
+	}
 
-  public String getMessage() {
-    return message;
-  }
+	public String getMessage() {
+		return message;
+	}
 
 }

@@ -17,13 +17,13 @@ public class OozieGraph implements IsSerializable {
 	/** Program nodes */
 	LinkedList<OozieProgramNode> pnodes = new LinkedList<OozieProgramNode>();
 	LinkedList<OozieEdge> edges = new LinkedList<OozieEdge>();
-	
+
 	/**
 	 * activeList
 	 */
 	private LinkedList<String> activeList = new LinkedList<String>();
 	private LinkedList<Script> scriptList = new LinkedList<Script>();
-	
+
 	public void addActiveNode(String nodeId) {
 		this.activeList.add(nodeId);
 	}
@@ -31,11 +31,11 @@ public class OozieGraph implements IsSerializable {
 	public boolean isActiveNode(String nodeId) {
 		return this.activeList.contains(nodeId);
 	}
-	
+
 	public void addScript(Script script){
 		this.scriptList.add(script);
 	}
-	
+
 	public LinkedList<Script> getScriptList(){
 		return this.scriptList;
 	}
@@ -74,7 +74,9 @@ public class OozieGraph implements IsSerializable {
 		edges.add(edge);
 	}
 
-	/** Generate a XML string for the graph */
+	/**
+	 *  Generate a XML string for the graph 
+	 * */
 	public String toXML() {
 		StringBuffer sb = new StringBuffer(5000);
 		sb.append("<graph>\n");

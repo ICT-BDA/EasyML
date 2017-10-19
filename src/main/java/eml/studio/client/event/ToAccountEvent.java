@@ -11,32 +11,31 @@ import com.google.gwt.event.shared.GwtEvent;
 /**
  * The event that will be triggered when navigating to account page
  */
-public class ToAccountEvent extends
-    GwtEvent<ToAccountEvent.ToAccountEventHandler> {
-  public final static Type<ToAccountEventHandler> TYPE = new Type<ToAccountEventHandler>();
+public class ToAccountEvent extends GwtEvent<ToAccountEvent.ToAccountEventHandler> {
+	public final static Type<ToAccountEventHandler> TYPE = new Type<ToAccountEventHandler>();
 
-  private String message;
+	private String message;
 
-  public ToAccountEvent(String msg) {
-    message = msg;
-  }
+	public ToAccountEvent(String msg) {
+		message = msg;
+	}
 
-  public interface ToAccountEventHandler extends EventHandler {
-    void onToAccountEvent(ToAccountEvent event);
-  }
+	public interface ToAccountEventHandler extends EventHandler {
+		void onToAccountEvent(ToAccountEvent event);
+	}
 
-  @Override
-  public Type<ToAccountEventHandler> getAssociatedType() {
-    return TYPE;
-  }
+	@Override
+	public Type<ToAccountEventHandler> getAssociatedType() {
+		return TYPE;
+	}
 
-  @Override
-  protected void dispatch(ToAccountEventHandler handler) {
-    handler.onToAccountEvent(this);
-  }
+	@Override
+	protected void dispatch(ToAccountEventHandler handler) {
+		handler.onToAccountEvent(this);
+	}
 
-  public String getMessage() {
-    return message;
-  }
+	public String getMessage() {
+		return message;
+	}
 
 }

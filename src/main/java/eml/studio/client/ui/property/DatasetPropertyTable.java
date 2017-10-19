@@ -14,36 +14,36 @@ import eml.studio.shared.model.Dataset;
  */
 public class DatasetPropertyTable extends PropertyTable {
 
-  public DatasetPropertyTable(Dataset dataset) {
-    super(7, 2);
-    addProperties(dataset);
-  }
+	public DatasetPropertyTable(Dataset dataset) {
+		super(7, 2);
+		addProperties(dataset);
+	}
 
-  private void addProperties(Dataset dataset) {
-    int i = 0;
-    Property p = null;
-    p = new Property(Constants.studioUIMsg.dataType(), dataset.getContenttype());
-    addProperty(p, i++);
+	private void addProperties(Dataset dataset) {
+		int i = 0;
+		Property p = null;
+		p = new Property(Constants.studioUIMsg.dataType(), dataset.getContenttype());
+		addProperty(p, i++);
 
-    p = new Property(Constants.studioUIMsg.dataStorage(), dataset.getStoretype());
-    addProperty(p, i++);
+		p = new Property(Constants.studioUIMsg.dataStorage(), dataset.getStoretype());
+		addProperty(p, i++);
 
-    p = new Property(Constants.studioUIMsg.dataDescription(), dataset.getDescription());
-    addProperty(p, i++);
+		p = new Property(Constants.studioUIMsg.dataDescription(), dataset.getDescription());
+		addProperty(p, i++);
 
-    p = new Property(Constants.studioUIMsg.dataVersion(), dataset.getVersion());
-    addProperty(p, i++);
+		p = new Property(Constants.studioUIMsg.dataVersion(), dataset.getVersion());
+		addProperty(p, i++);
 
-    p = new Property(Constants.studioUIMsg.dataCreateTime(), dataset.getCreatedate());
-    addProperty(p, i++);
+		p = new Property(Constants.studioUIMsg.dataCreateTime(), dataset.getCreatedate());
+		addProperty(p, i++);
 
-    p = new Property(Constants.studioUIMsg.dataOwner(), dataset.getOwner());
-    addProperty(p, i++);
+		p = new Property(Constants.studioUIMsg.dataOwner(), dataset.getOwner());
+		addProperty(p, i++);
 
-    if (!dataset.getDeprecated())
-      p = new Property(Constants.studioUIMsg.dataDeprecated(), Constants.studioUIMsg.no());
-    else
-      p = new Property(Constants.studioUIMsg.dataDeprecated(), Constants.studioUIMsg.yes());
-    addProperty(p, i++);
-  }
+		if (!dataset.getDeprecated())
+			p = new Property(Constants.studioUIMsg.dataDeprecated(), Constants.studioUIMsg.no());
+		else
+			p = new Property(Constants.studioUIMsg.dataDeprecated(), Constants.studioUIMsg.yes());
+		addProperty(p, i++);
+	}
 }

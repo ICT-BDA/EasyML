@@ -10,35 +10,33 @@ import com.google.gwt.event.shared.GwtEvent;
 
 /**
  * The event that will be triggered when navigating to register page
- * @author Roger
  *
  */
-public class ToRegisterEvent extends
-    GwtEvent<ToRegisterEvent.ToRegisterEventHandler> {
-  public final static Type<ToRegisterEventHandler> TYPE = new Type<ToRegisterEventHandler>();
+public class ToRegisterEvent extends GwtEvent<ToRegisterEvent.ToRegisterEventHandler> {
+	public final static Type<ToRegisterEventHandler> TYPE = new Type<ToRegisterEventHandler>();
 
-  private String message;
+	private String message;
 
-  public ToRegisterEvent(String msg) {
-    message = msg;
-  }
+	public ToRegisterEvent(String msg) {
+		message = msg;
+	}
 
-  public interface ToRegisterEventHandler extends EventHandler {
-    void onToRegisterEvent(ToRegisterEvent event);
-  }
+	public interface ToRegisterEventHandler extends EventHandler {
+		void onToRegisterEvent(ToRegisterEvent event);
+	}
 
-  @Override
-  public Type<ToRegisterEventHandler> getAssociatedType() {
-    return TYPE;
-  }
+	@Override
+	public Type<ToRegisterEventHandler> getAssociatedType() {
+		return TYPE;
+	}
 
-  @Override
-  protected void dispatch(ToRegisterEventHandler handler) {
-    handler.onToRegisterEvent(this);
-  }
+	@Override
+	protected void dispatch(ToRegisterEventHandler handler) {
+		handler.onToRegisterEvent(this);
+	}
 
-  public String getMessage() {
-    return message;
-  }
+	public String getMessage() {
+		return message;
+	}
 
 }

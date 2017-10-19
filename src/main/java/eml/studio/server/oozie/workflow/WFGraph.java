@@ -20,6 +20,10 @@ import org.dom4j.QName;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.XMLWriter;
 
+/**
+ * The workflow graph description
+ *
+ */
 public class WFGraph {
 
 	protected Map<String, NodeDef> nodeMap = new HashMap<String, NodeDef>();
@@ -92,8 +96,7 @@ public class WFGraph {
 		QName qName = QName.get("workflow-app", xmlns); // your root element's name
 		Element workflow = DocumentHelper.createElement(qName);
 		Document xmldoc = DocumentHelper.createDocument(workflow);
-		// 创建workflow的根
-
+		// Create workflow root
 		workflow.addAttribute("xmlns", "uri:oozie:workflow:0.4");
 		// <workflow-app name='xxx'></workflow-app>
 		if (jobname == null || "".equals(jobname))
@@ -111,35 +114,33 @@ public class WFGraph {
 
 			for (NodeDef toNode : cur.getOutNodes()) {
 				toNode.delInNode(cur);
-				// Window.alert( toNode.getName() + " " + toNode.getInDegree()
-				// );
 				if (toNode.getInDegree() == 0)
 					que.add(toNode);
 			}
 		}
 
-		// 设置XML文档格式
+		// Set XML document format
 		OutputFormat outputFormat = OutputFormat.createPrettyPrint();
-		// 设置XML编码方式,即是用指定的编码方式保存XML文档到字符串(String),这里也可以指定为GBK或是ISO8859-1
+		// Set XML encoding, use the specified encoding to save the XML document to the string, it can be specified GBK or ISO8859-1
 		outputFormat.setEncoding("UTF-8");
-		outputFormat.setSuppressDeclaration(true); //是否生产xml头
-		outputFormat.setIndent(true); // 设置是否缩进
-		outputFormat.setIndent("    "); // 以四个空格方式实现缩进
-		outputFormat.setNewlines(true); // 设置是否换行
+		outputFormat.setSuppressDeclaration(true); // Whether generate xml header
+		outputFormat.setIndent(true); // Whether set indentation
+		outputFormat.setIndent("    "); // Implement indentation with four spaces
+		outputFormat.setNewlines(true); // Set whether to wrap
 
 		try {
-			// stringWriter字符串是用来保存XML文档的
+			// stringWriter is used to save xml document
 			StringWriter stringWriter = new StringWriter();
-			// xmlWriter是用来把XML文档写入字符串的(工具)
+			// xmlWriter is used to write XML document to string(tool)
 			XMLWriter xmlWriter = new XMLWriter(stringWriter, outputFormat);
 			
-			// 把创建好的XML文档写入字符串
+			// Write the created XML document into the string
 			xmlWriter.write(xmldoc);
 
 			xmlWriter.close();
 
 			System.out.println( stringWriter.toString().trim());
-			// 打印字符串,即是XML文档
+			// Print the string, that is, the XML document
 			return stringWriter.toString().trim();
 
 		} catch (Exception ex) {
@@ -158,28 +159,18 @@ public class WFGraph {
 		workflow.addAttribute("name", "test");
 		Element test = workflow.addElement("test");
 		test.addText("hello");
-		// 设置XML文档格式
 				OutputFormat outputFormat = OutputFormat.createPrettyPrint();
-				// 设置XML编码方式,即是用指定的编码方式保存XML文档到字符串(String),这里也可以指定为GBK或是ISO8859-1
 				outputFormat.setEncoding("UTF-8");
-//				outputFormat.setSuppressDeclaration(true); //是否生产xml头
-				outputFormat.setIndent(true); // 设置是否缩进
-				outputFormat.setIndent("    "); // 以四个空格方式实现缩进
-				outputFormat.setNewlines(true); // 设置是否换行
+				outputFormat.setIndent(true); 
+				outputFormat.setIndent("    "); 
+				outputFormat.setNewlines(true); 
 		try {
-			// stringWriter字符串是用来保存XML文档的
 			StringWriter stringWriter = new StringWriter();
-			// xmlWriter是用来把XML文档写入字符串的(工具)
-			XMLWriter xmlWriter = new XMLWriter(stringWriter);//, outputFormat);
-			
-			// 把创建好的XML文档写入字符串
+			XMLWriter xmlWriter = new XMLWriter(stringWriter);
 			xmlWriter.write(doc);
-
 			xmlWriter.close();
 			System.out.println( doc.asXML() );
-
 			System.out.println( stringWriter.toString().trim());
-			// 打印字符串,即是XML文档
 
 		} catch (Exception ex) {
 			ex.printStackTrace();

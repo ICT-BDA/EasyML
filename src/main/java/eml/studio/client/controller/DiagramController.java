@@ -295,7 +295,7 @@ public class DiagramController {
 		scrollPanel.setHeight(frameHeight + "px");
 
 	}
-	
+
 	/**
 	 * Initialize the widget panel according to the canvas.
 	 * 
@@ -382,11 +382,11 @@ public class DiagramController {
 		this.clearSelectedWidgets();
 	}
 
-    /**
-     * Initialize panel event handler.
-     * 
-     * @param panel
-     */
+	/**
+	 * Initialize panel event handler.
+	 * 
+	 * @param panel
+	 */
 	protected void initEventHandler(Panel panel) {
 
 		panel.addDomHandler(new MouseMoveHandler() {
@@ -451,7 +451,7 @@ public class DiagramController {
 			deleteWidget();
 		}
 	}
-	
+
 	/**
 	 * Trigger action when mouse move event fired
 	 * 
@@ -533,9 +533,10 @@ public class DiagramController {
 			NodeShape shape = (NodeShape) getShapeUnderMouse();
 			if (shape instanceof OutNodeShape) {
 				OutNodeShape outShape = (OutNodeShape)shape;
-				String fileId = outShape.getFileId();
-				String path = outShape.getAbsolutePath();
-				DBController.showPreviewPopup(path,fileId);
+				int x = outShape.getOffsetLeft() + 2*outShape.getRadius();
+				int y = outShape.getOffsetTop() + 2*outShape.getRadius();
+				outShape.getContextMenu().setPopupPosition(x,y);
+				outShape.getContextMenu().show();
 			}
 			if(isvacancy){
 				event.stopPropagation();
@@ -1111,7 +1112,7 @@ public class DiagramController {
 	public AbsolutePanel getView() {
 		return widgetPanel;
 	}
-	
+
 	public Map<String, BaseWidget> getWidgets() {
 		return widgets;
 	}
@@ -1119,7 +1120,7 @@ public class DiagramController {
 	public void setWidgets(Map<String, BaseWidget> widgets) {
 		this.widgets = widgets;
 	}
-	
+
 	public SVGPanel getSvgPanel() {
 		return svgPanel;
 	}

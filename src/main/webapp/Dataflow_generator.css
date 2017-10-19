@@ -31,6 +31,21 @@ body {
     overflow: hidden;
     height: 30px;
 }
+.supernodeOK {
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    /* background-color: #80ff00; */
+    background-image: linear-gradient(to top, #80ff00, #ffffff);
+    padding: 7px;
+    color: #000000;
+    text-align: center;
+    outline: 0px solid #000000;
+    margin: 3px;
+    opacity: 0.7;
+    overflow: hidden;
+    height: 50px;
+}
 
 .actionERROR {
     -webkit-border-radius: 12px;
@@ -47,7 +62,21 @@ body {
     overflow: hidden;
     height: 30px;
 }
-
+.supernodeERROR {
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    /* background-color: #ff0000; */
+    background-image: linear-gradient(to top, #ff0000, #ffffff);
+    padding: 7px;
+    color: #000000;
+    text-align: center;
+    outline: 0px solid #000000;
+    margin: 3px;
+    opacity: 0.7;
+    overflow: hidden;
+    height: 50px;
+}
 .actionRunning {
     -webkit-border-radius: 12px;
     -moz-border-radius: 12px;
@@ -62,6 +91,21 @@ body {
     opacity: 0.7;
     overflow: hidden;
     height: 30px;
+}
+.supernodeRunning {
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    /* background-color: #ffff80; */
+    background-image: linear-gradient(to top, #ffff80, #ffffff);
+    padding: 7px;
+    color: #000000;
+    text-align: center;
+    outline: 0px solid #000000;
+    margin: 3px;
+    opacity: 0.7;
+    overflow: hidden;
+    height: 50px;
 }
 
 .loading_container {
@@ -79,7 +123,7 @@ body {
     -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px;
     -moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px;
-    z-index: 30;
+    z-index: 20;
     padding: 10px;
 }
 
@@ -121,6 +165,25 @@ body {
     z-index: 19;
 }
 
+
+.gwt-PopupPanel {
+    background: #ffffff;
+    border: 3px solid;
+    border-color: #ffffff;
+    outline-style: ridge;
+    outline-color: #284869;
+    /* border-radius */
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    /* box-shadow */
+    -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px;
+    z-index: 20;
+    padding: 10px;
+}
+
 .popupTitle {
     font-size: 20px;
     font-weight: bold;
@@ -128,6 +191,26 @@ body {
 .popupFileSelectName{
 	font-size:11px;
 	font-weight:bold;
+}
+
+.popupDatatypeSelectTitle{
+	font-size:14px;
+	font-weight:bold;
+}
+
+.popupDatatypeButtonPanel{
+	margin-left: 290px;
+	margin-top: 20px;
+}
+
+.popupDatatypeSelectPanel{
+	margin-left: 120px;
+	margin-top: 20px;
+}
+
+.popupBakVersionSelectPanel{
+	margin-left: 60px;
+	margin-top: 20px;
 }
 
 .popupContent .vpanel {
@@ -242,7 +325,7 @@ body {
     background: rgba(249, 249, 249, 0) !important;
     color: black !important;
     algin: center;
-    margin: 0px 35% 20px 35%;
+    margin: 0px 35% 20px 18%;
     width: 30%;
     z-index: 10;
     min-width: 255px;
@@ -260,7 +343,21 @@ body {
     border-color: #4CCFC1;
 }
 
+/*
+.bda-logo{
+	background-image: url("img/logo.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	-moz-background-size:100% 100%;
+    background-size:100% 100%;
+    width: 32px;
+    height: 32px;
+    position:absolute;
+    left: 15px;
+    top: 2px;
+}
 
+ */
 .head-bar .gwt-MenuBar-horizontal {
     background: #eae3e3 !important;
     border: 0px solid #00172E !important;
@@ -322,6 +419,18 @@ body {
     padding-right: 7px;
     margin: 3px;
 }
+
+.bda-action-tensorflow:before {
+    content: '';
+    background: url(img/tensorflow_blue.png) no-repeat;
+    background-size: 12px 12px;
+    /* width: 16px; */
+    /* height: 16px; */
+    padding-left: 6px;
+    padding-right: 7px;
+    margin: 3px;
+}
+
 .bda-action-distribute:before {
     content: '';
     background: url(img/distribute_blue.png) no-repeat;
@@ -391,6 +500,16 @@ body {
 }
 .bda-treeleaf-distribute:before {
     background: url(img/distribute_blue.png) no-repeat 50% 50%;
+    background-size: 15px 15px;
+    content: '';
+    padding-left: 12px;
+    padding-right: 10px;
+    margin-left: -22px;
+    line-height:100%;
+}
+
+.bda-treeleaf-tensorflow:before {
+    background: url(img/tensorflow_blue.png) no-repeat 50% 50%;
     background-size: 15px 15px;
     content: '';
     padding-left: 12px;

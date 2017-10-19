@@ -169,9 +169,9 @@ public class PreviewPopupPanel extends PopupPanel {
 						else
 							Window.alert("Download file over limit size (1g), can not download the file!");
 					}
-					
+
 				});
-				
+
 			}
 		});
 		savebtn.addClickHandler(new ClickHandler() {
@@ -190,7 +190,7 @@ public class PreviewPopupPanel extends PopupPanel {
 			@Override
 			public void onSelection(SelectionEvent<TreeItem> event) {
 				// TODO Auto-generated method stub
-		        TreeItem item = event.getSelectedItem();
+				TreeItem item = event.getSelectedItem();
 				if (item instanceof PopupRetDirLeaf) {
 					PopupRetDirLeaf leaf = (PopupRetDirLeaf)item;
 					fileLabel.setText(leaf.getText());
@@ -198,7 +198,7 @@ public class PreviewPopupPanel extends PopupPanel {
 					String filePath = leaf.getPath();
 					//Only the root directory for data loading tips
 					if(leaf.getName().equals(resultDirTree.getRoot().getName()) && leaf.getChildCount() == resultDirTree.getRoot().getChildCount())
-					      fileTextArea.setText("The data is loading, please be patient ...");
+						fileTextArea.setText("The data is loading, please be patient ...");
 					datasetSrv.previewFile(filePath, 100,new AsyncCallback<String>(){
 						@Override
 						public void onFailure(Throwable caught) {

@@ -17,19 +17,19 @@ import com.google.gwt.user.client.ui.MenuItem;
  * Created a edit context menu for a Dataset
  */
 public class DatasetEditMenu {
-  public static MenuItem create(final DatasetLeaf node, final DatasetTree tree) {
+	public static MenuItem create(final DatasetLeaf node, final DatasetTree tree) {
 
-    Command command = new MenuItemCommand(node) {
-      @Override
-      public void execute() {
-        EditDatasetPanel panel = new EditDatasetPanel(AppController.email,tree,node);
-        
-        panel.show(node.getModule());
-        
-        this.component.getContextMenu().hide();
-      }
-    };
-    MenuItem item = new MenuItem("Edit", command);
-    return item;
-  }
+		Command command = new MenuItemCommand(node) {
+			@Override
+			public void execute() {
+				EditDatasetPanel panel = new EditDatasetPanel(AppController.email,tree,node);
+
+				panel.show(node.getModule());
+
+				this.component.getContextMenu().hide();
+			}
+		};
+		MenuItem item = new MenuItem("Edit", command);
+		return item;
+	}
 }

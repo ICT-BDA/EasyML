@@ -11,39 +11,39 @@ import com.google.gwt.user.client.rpc.IsSerializable;
  * Run script object class
  */
 public class Script implements IsSerializable{
-  String path;
-  String startShellPath;
-  String value;
-  Integer inputCount;
-  Integer outputCount;
-  public String getPath() {
-    return path;
-  }
-  public String getValue() {
-    return value;
-  }
-  public Integer getInputCount() {
-    return inputCount;
-  }
-  public void setPath(String path) {
-    this.path = path;
-  }
-  public void setValue(String value) {
-    this.value = value;
-  }
-  public void setInputCount(Integer inputCount) {
-    this.inputCount = inputCount;
-  }
-  public Integer getOutputCount() {
-    return outputCount;
-  }
-  public void setOutputCount(Integer outputCount) {
-    this.outputCount = outputCount;
-  }
-  public String getStartShellPath() {
-    return startShellPath;
-  }
-  public void setStartShellPath(String startShellPath) {
-    this.startShellPath = startShellPath;
-  }
+	String path;
+	String startShellPath;
+	String value;
+	Integer inputCount;
+	Integer outputCount;
+	public String getPath() {
+		return path;
+	}
+	public String getValue() {
+		return value;
+	}
+	public Integer getInputCount() {
+		return inputCount;
+	}
+	public void setPath(String path) {
+		this.path = path;
+	}
+	public void setValue(String value) {
+		this.value = value;
+	}
+	public void setInputCount(Integer inputCount) {
+		this.inputCount = inputCount;
+	}
+	public Integer getOutputCount() {
+		return outputCount;
+	}
+	public void setOutputCount(Integer outputCount) {
+		this.outputCount = outputCount;
+	}
+	public String getStartShellPath() {
+		return startShellPath;
+	}
+	public void setStartShellPath(String startShellPath) {
+		this.startShellPath = startShellPath;
+	}
 }

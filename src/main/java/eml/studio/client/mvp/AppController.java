@@ -35,133 +35,150 @@ import com.google.gwt.user.client.ui.HasWidgets;
  * This Controller is used to control webpage's operations
  */
 public class AppController implements ValueChangeHandler<String> {
-  private static Logger logger = Logger.getLogger(AppController.class.getName());
+	private static Logger logger = Logger.getLogger(AppController.class.getName());
 
-  public static String email = null;
-  public static String username = null;
-  public static String verifylink = null;
-  public static String power = null;
-  private LoginController loginController;
-  private HandlerManager eventBus;
-  private HasWidgets container;
+	public static String email = null;
+	public static String username = null;
+	public static String verifylink = null;
+	public static String power = null;
+	private LoginController loginController;
+	private HandlerManager eventBus;
+	private HasWidgets container;
 
-  public AppController(HandlerManager eventBus, LoginController loginController) {
-    this.eventBus = eventBus;
-    this.loginController = loginController;
-    bind();
-  }
+	public AppController(HandlerManager eventBus, LoginController loginController) {
+		this.eventBus = eventBus;
+		this.loginController = loginController;
+		bind();
+	}
 
-  /**
-   * Event binding
-   */
-  private void bind() {
-     //Browser browser page token history (token is url # token)
-    History.addValueChangeHandler(this);
+	/**
+	 * Event binding
+	 */
+	private void bind() {
+		//Browser browser page token history (token is url # token)
+		History.addValueChangeHandler(this);
 
-    eventBus.addHandler(ToMonitorEvent.TYPE,
-        new ToMonitorEvent.ToMonitorEventHandler() {
+		eventBus.addHandler(ToMonitorEvent.TYPE,
+				new ToMonitorEvent.ToMonitorEventHandler() {
 
-          @Override
-          public void onToMonitorEvent(ToMonitorEvent event) {
-            String msg = event.getMessage();
-            if (msg != null && !"".equals(msg))
-              History.newItem("monitor=" + msg);
-            else
-              History.newItem("monitor");
-          }
-        });
+			@Override
+			public void onToMonitorEvent(ToMonitorEvent event) {
+				String msg = event.getMessage();
+				if (msg != null && !"".equals(msg))
+					History.newItem("monitor=" + msg);
+				else
+					History.newItem("monitor");
+			}
+		});
 
-    eventBus.addHandler(LogoutEvent.TYPE,
-        new LogoutEvent.LogoutEventHandler() {
+		eventBus.addHandler(LogoutEvent.TYPE,
+				new LogoutEvent.LogoutEventHandler() {
 
-          @Override
-          public void onLogoutEvent(LogoutEvent event) {
-            loginController.logout();
-          }
+			@Override
+			public void onLogoutEvent(LogoutEvent event) {
+				loginController.logout();
+			}
 
-        });
+		});
 
-    eventBus.addHandler(LoginEvent.TYPE,
-        new LoginEvent.LoginEventHandler() {
+		eventBus.addHandler(LoginEvent.TYPE,
+				new LoginEvent.LoginEventHandler() {
 
-          @Override
-          public void onLoginEvent(LoginEvent event) {
-            handleToken(event.getMessage());
-          }
-        });
-  }
+			@Override
+			public void onLoginEvent(LoginEvent event) {
+				handleToken(event.getMessage());
+			}
+		});
+	}
 
-  public void go(final HasWidgets container) {
-    logger.info("app view going...");
-    this.container = container;
+	public void go(final HasWidgets container) {
+		logger.info("app view going...");
+		this.container = container;
 
-    if ("".equals(History.getToken())) {
-      History.newItem("monitor");
-    } else {
-      History.fireCurrentHistoryState();
-    }
-  }
+		if ("".equals(History.getToken())) {
+			History.newItem("monitor");
+		} else {
+			History.fireCurrentHistoryState();
+		}
+	}
 
-  @Override
-  public void onValueChange(ValueChangeEvent<String> event) {
-    final String token = event.getValue();
-    logger.info("value change:" + token);
+	@Override
+	public void onValueChange(ValueChangeEvent<String> event) {
+		final String token = event.getValue();
+		logger.info("value change:" + token);
 
-    loginController.go(token);
-  }
+		loginController.go(token);
+	}
 
-  /** token is the url postfix after bdastudio, like designer or desigeer=jobid */
-  private void handleToken(String token) {
-    if (token != null) {
-      Presenter presenter = null;
+	/** token is the url postfix after bdastudio, like designer or desigeer=jobid */
+	private void handleToken(String token) {
+		if (token != null) {
+			Presenter presenter = null;
 
-      if (token.startsWith("monitor")) {
-        String jobid = null;
-        if (token.startsWith("monitor=")) {
-          logger.info("token = " + token);
-          jobid = token.replaceFirst("monitor=", "");
-          logger.info("jobid = " + jobid);
-        }
-        presenter = new MonitorPresenter(eventBus, new MonitorView(), jobid);
-      }else if (token.startsWith("account")){
-    	presenter = new AccountPresenter(eventBus, new AccountView());
-      } else if (token.startsWith("register")){
-    	presenter = new RegisterPresenter(eventBus, new RegisterView());
-      } else if (token.startsWith("resetpwd")){
-    	presenter = new ResetpwdPresenter(eventBus, new ResetpwdView());
-      } else if (token.startsWith("admin")){
-    	presenter = new AdminPresenter(eventBus, new AdminView());
-      }
+			if (token.startsWith("monitor")) {
+				if(token.contains("&instance="))
+				{
+					String jobId = null;
+					String oozieJobId = null;
+					if(token.startsWith("monitor="))
+					{
+						logger.info("token = " + token);
+						String[] ids = token.replaceFirst("monitor=", "").split("&instance=");
+						jobId = ids[0];
+						oozieJobId = ids[1];
+						logger.info("jobId = "+jobId+"; oozieJobId = "+oozieJobId);
+					}
+					presenter = new MonitorPresenter(eventBus,new MonitorView(),jobId,oozieJobId);
+				}
+				else
+				{
+					String jobid = null;
+					if (token.startsWith("monitor=")) {
+						logger.info("token = " + token);
+						jobid = token.replaceFirst("monitor=", "");
+						logger.info("jobid = " + jobid);
+					}
+					presenter = new MonitorPresenter(eventBus, new MonitorView(), jobid);
+				}
+			}else if (token.startsWith("account")){
+				presenter = new AccountPresenter(eventBus, new AccountView());
+			} else if (token.startsWith("register")){
+				presenter = new RegisterPresenter(eventBus, new RegisterView());
+			} else if (token.startsWith("resetpwd")){
+				presenter = new ResetpwdPresenter(eventBus, new ResetpwdView());
+			} else if (token.startsWith("admin")){
+				presenter = new AdminPresenter(eventBus, new AdminView());
+			}
 
-      if (presenter != null) {
-        presenter.go(container);
-      }
-    }
-  }
+			if (presenter != null) {
+				presenter.go(container);
+			}
+		}
+	}
 
-    /**
-     * Redirect to url
-     * @param url target url
-     */
-  public static void redirect(String url) {
-    String href = Window.Location.getHref();
-    logger.info("[href]" + href);
-    int splitIdx = href.lastIndexOf('/');
-    String base_url = href.substring(0, splitIdx);
-    logger.info("[base_url]" + base_url);
-    Window.Location.replace(base_url + "/" + url);
-  }
+	/**
+	 * Redirect to url
+	 * @param url target url
+	 */
+	public static void redirect(String url) {
+		String href = Window.Location.getHref();
+		logger.info("[href]" + href);
+		int splitIdx = href.lastIndexOf('/');
+		String base_url = href.substring(0, splitIdx);
+		logger.info("[base_url]" + base_url);
+		Window.Location.replace(base_url + "/" + url);
+	}
 
-    /**
-     * Get now Url
-     * @return url string
-     */
-  public static native String getUrl()/*-{
+	/**
+	 * Get now Url
+	 * @return url string
+	 */
+	public static native String getUrl()/*-{
       return $wnd.location;
   }-*/;
-  public static int random(int min, int max){
-    Random random = new Random();
-    int s = random.nextInt(max)%(max-min+1) + min;
-    return s;
-  }
+	public static int random(int min, int max){
+		Random random = new Random();
+		int s = random.nextInt(max)%(max-min+1) + min;
+		return s;
+	}
 }

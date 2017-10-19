@@ -62,6 +62,12 @@ public class BdaJob implements IsSerializable {
 
 	public void setCurOozJob(OozieJob lastjob) {
 		this.curOozJob = lastjob;
+		if( this.curOozJob != null ) {
+			this.curOozJobId = this.curOozJob.getId();
+		}
+		else {
+			this.curOozJobId = null;
+		}
 	}
 
 	public String getAccount() {

@@ -19,44 +19,44 @@ import com.google.gwt.user.client.ui.VerticalPanel;
  */
 public class StdPanel extends PopupPanel {
 
-  public StdPanel(String msg, String title) {
-    init(msg, title);
-  }
+	public StdPanel(String msg, String title) {
+		init(msg, title);
+	}
 
-  protected void init(String msg, String title) {
-    this.setTitle("stdErr");
-    this.setGlassEnabled(true);
+	protected void init(String msg, String title) {
+		this.setTitle("stdErr");
+		this.setGlassEnabled(true);
 
-    HTML closeButton = new HTML("X");
-    closeButton.setSize("10px", "10px");
-    closeButton.setStyleName("closebtn");
-    closeButton.addClickHandler(new ClickHandler() {
-      @Override
-      public void onClick(ClickEvent event) {
-        StdPanel.this.hide();
-      }
-    });
+		HTML closeButton = new HTML("X");
+		closeButton.setSize("10px", "10px");
+		closeButton.setStyleName("closebtn");
+		closeButton.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				StdPanel.this.hide();
+			}
+		});
 
-    ScrollPanel scvp = new ScrollPanel();
-    VerticalPanel verticalPanel = new VerticalPanel();
+		ScrollPanel scvp = new ScrollPanel();
+		VerticalPanel verticalPanel = new VerticalPanel();
 
-    verticalPanel.add(closeButton);
-    verticalPanel.setCellHeight(closeButton, "30px");
-    verticalPanel.setStyleName("vpanel");
-    HTML desc = new HTML(title);
-    desc.setStyleName("popupTitle");
-    verticalPanel.add(desc);
-    verticalPanel.setCellHeight(desc, "30px");
+		verticalPanel.add(closeButton);
+		verticalPanel.setCellHeight(closeButton, "30px");
+		verticalPanel.setStyleName("vpanel");
+		HTML desc = new HTML(title);
+		desc.setStyleName("popupTitle");
+		verticalPanel.add(desc);
+		verticalPanel.setCellHeight(desc, "30px");
 
-    TextArea label = new TextArea();
-    label.setText(msg);
-    label.setReadOnly(true);
-    label.setSize("650px", "400px");
-    verticalPanel.add(label);
-    scvp.add(verticalPanel);
-    this.add(scvp);
-    this.setStyleName("loading_container");
-    this.center();
-    this.show();
-  }
+		TextArea label = new TextArea();
+		label.setText(msg);
+		label.setReadOnly(true);
+		label.setSize("650px", "400px");
+		verticalPanel.add(label);
+		scvp.add(verticalPanel);
+		this.add(scvp);
+		this.setStyleName("loading_container");
+		this.center();
+		this.show();
+	}
 }

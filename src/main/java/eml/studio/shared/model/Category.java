@@ -12,87 +12,87 @@ import com.google.gwt.user.client.rpc.IsSerializable;
  * Category of program modules in the project
  */
 public class Category implements IsSerializable {
-	
-  @TableField
-  private String id;
-  @TableField
-  private String name;
-  @TableField
-  private String level;
-  @TableField
-  private String type;
-  @TableField
-  private String path;
-  @TableField
-  private String fatherid;
-  @TableField
-  private Boolean haschild;
-  @TableField
-  private String createtime;
-  
-  public Category(){}
 
-  public String getId() {
-    return id;
-  }
+	@TableField
+	private String id;
+	@TableField
+	private String name;
+	@TableField
+	private String level;
+	@TableField
+	private String type;
+	@TableField
+	private String path;
+	@TableField
+	private String fatherid;
+	@TableField
+	private Boolean haschild;
+	@TableField
+	private String createtime;
 
-  public void setId(String id) {
-    this.id = id;
-  }
+	public Category(){}
 
-  public String getName() {
-    return name;
-  }
+	public String getId() {
+		return id;
+	}
 
-  public void setName(String name) {
-    this.name = name;
-  }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-  public String getLevel() {
-    return level;
-  }
+	public String getName() {
+		return name;
+	}
 
-  public void setLevel(String level) {
-    this.level = level;
-  }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-  public String getType() {
-	return type;
-  }
+	public String getLevel() {
+		return level;
+	}
 
-  public void setType(String type) {
-	this.type = type;
-  }
-  
-  public String getPath() {
-    return path;
-  }
+	public void setLevel(String level) {
+		this.level = level;
+	}
 
-  public void setPath(String path) {
-    this.path = path;
-  }
-  
-  public String getFatherid() {
-	return fatherid;
-  }
+	public String getType() {
+		return type;
+	}
 
-  public void setFatherid(String fatherid) {
-	this.fatherid = fatherid;
-  }
+	public void setType(String type) {
+		this.type = type;
+	}
 
-  public Boolean getHaschild() {
-    return haschild;
-  }
+	public String getPath() {
+		return path;
+	}
 
-  public void setHaschild(Boolean haschild) {
-    this.haschild = haschild;
-  }
-  
-  public String getCreatetime() {
-	return createtime;
-  }
+	public void setPath(String path) {
+		this.path = path;
+	}
 
-  public void setCreatetime(String createtime) {
-	this.createtime = createtime;
-  }
+	public String getFatherid() {
+		return fatherid;
+	}
+
+	public void setFatherid(String fatherid) {
+		this.fatherid = fatherid;
+	}
+
+	public Boolean getHaschild() {
+		return haschild;
+	}
+
+	public void setHaschild(Boolean haschild) {
+		this.haschild = haschild;
+	}
+
+	public String getCreatetime() {
+		return createtime;
+	}
+
+	public void setCreatetime(String createtime) {
+		this.createtime = createtime;
+	}
 }

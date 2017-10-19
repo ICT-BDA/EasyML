@@ -7,7 +7,6 @@ package eml.studio.shared.graph;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 
-
 /**
  * Edge of a Oozie workflow graph
  */
@@ -19,7 +18,7 @@ public class OozieEdge implements IsSerializable{
 	private String dst;
 
 	public OozieEdge(){}
-	
+
 	public void init(String src, String dst) {
 		this.setSrc(src);
 		this.setDst(dst);
@@ -36,10 +35,10 @@ public class OozieEdge implements IsSerializable{
 	/** Generate a XML string for the edge */
 	public String toXML() {
 		StringBuffer sb = new StringBuffer(100);
-			sb.append("<edge>\n");
-			sb.append("  <source>" + getSrc() + "</source>\n");
-			sb.append("  <destination>" + getDst() + "</destination>\n");
-			sb.append("</edge>\n");
+		sb.append("<edge>\n");
+		sb.append("  <source>" + getSrc() + "</source>\n");
+		sb.append("  <destination>" + getDst() + "</destination>\n");
+		sb.append("</edge>\n");
 		return sb.toString();
 	}
 

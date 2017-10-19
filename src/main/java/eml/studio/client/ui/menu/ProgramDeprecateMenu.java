@@ -20,34 +20,34 @@ import com.google.gwt.user.client.ui.MenuItem;
  */
 public class ProgramDeprecateMenu {
 
-  public static MenuItem create(final ProgramLeaf node) {
-    Command command = new MenuItemCommand(node) {
-      @Override
-	public void execute() {
-        String id = node.getModule().getId();
-        boolean y = Window.confirm("Are you ready to deprecate " + node.getModule().getName() + "？");
-        if (y) {
-          ProgramServiceAsync svc = GWT.create(ProgramService.class);
-          svc.deprecate(id, new AsyncCallback<Void>() {
+	public static MenuItem create(final ProgramLeaf node) {
+		Command command = new MenuItemCommand(node) {
+			@Override
+			public void execute() {
+				String id = node.getModule().getId();
+				boolean y = Window.confirm("Are you ready to deprecate " + node.getModule().getName() + "？");
+				if (y) {
+					ProgramServiceAsync svc = GWT.create(ProgramService.class);
+					svc.deprecate(id, new AsyncCallback<Void>() {
 
-            @Override
-			public void onFailure(Throwable caught) {
-              Window.alert(caught.getMessage());
-            }
+						@Override
+						public void onFailure(Throwable caught) {
+							Window.alert(caught.getMessage());
+						}
 
-            @Override
-			public void onSuccess(Void result) {
-              node.delete();
-            }
+						@Override
+						public void onSuccess(Void result) {
+							node.delete();
+						}
 
-          });
-        }
-        this.component.getContextMenu().hide();
-      }
+					});
+				}
+				this.component.getContextMenu().hide();
+			}
 
-    };
+		};
 
-    MenuItem item = new MenuItem("deprecate", command);
-    return item;
-  }
+		MenuItem item = new MenuItem("deprecate", command);
+		return item;
+	}
 }

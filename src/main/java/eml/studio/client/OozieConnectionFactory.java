@@ -20,19 +20,19 @@ public class OozieConnectionFactory extends AbstractConnectionFactory {
 	public static AbstractConnectionFactory singleton = new OozieConnectionFactory();
 
 	private OozieConnectionFactory() {}
-	
-    /**
-     * Build diagram widget shape connection
-     * 
-     * @param controller  diagram controller
-     * @param start  start shape point
-     * @param end  end shape point
-     * @return  connection between start and end shape
-     */
+
+	/**
+	 * Build diagram widget shape connection
+	 * 
+	 * @param controller  diagram controller
+	 * @param start  start shape point
+	 * @param end  end shape point
+	 * @return  connection between start and end shape
+	 */
 	@Override
 	public Connection buildConnection(DiagramController controller,
-									  Shape start,
-									  Shape end) {
+			Shape start,
+			Shape end) {
 		if (((NodeShape) start).getWidget() == ((NodeShape) end).getWidget())
 			return null;
 		return new Connection(controller, start, end);

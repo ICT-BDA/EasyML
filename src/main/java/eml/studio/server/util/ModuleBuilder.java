@@ -13,37 +13,37 @@ import java.util.List;
 
 public class ModuleBuilder {
 
-  /**
-   * Generate dataset module based on path and id
-   *
-   * @param path
-   *          dataset path
-   * @param id
-   *          dataset uuid
-   * @return Dataset
-   * @throws Exception
-   */
-  public static Dataset buildDataset(String path, String id) throws Exception {
-    if (HDFSIO.exist(path)) {
-      Dataset dataset = new Dataset();
-      List list;
-      try {
-        Dataset temp = SecureDao.getObject(dataset, " and id = '" + id + "'");
-        if ( temp != null ) {
-          dataset = temp;
-        } else {
-          dataset.setId(id);
-          dataset.setName("id" + id);
-          dataset.setPath(path);
-        }
-      } catch (Exception e) {
-        e.printStackTrace();
-        throw new SerializationException(e);
-      }
-      return dataset;
-    } else {
-      System.out.println("DataSet is return null");
-      return null;
-    }
-  }
+	/**
+	 * Generate dataset module based on path and id
+	 *
+	 * @param path
+	 *          dataset path
+	 * @param id
+	 *          dataset uuid
+	 * @return Dataset
+	 * @throws Exception
+	 */
+	public static Dataset buildDataset(String path, String id) throws Exception {
+		if (HDFSIO.exist(path)) {
+			Dataset dataset = new Dataset();
+			List list;
+			try {
+				Dataset temp = SecureDao.getObject(dataset, " and id = '" + id + "'");
+				if ( temp != null ) {
+					dataset = temp;
+				} else {
+					dataset.setId(id);
+					dataset.setName("id" + id);
+					dataset.setPath(path);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				throw new SerializationException(e);
+			}
+			return dataset;
+		} else {
+			System.out.println("DataSet is return null");
+			return null;
+		}
+	}
 }

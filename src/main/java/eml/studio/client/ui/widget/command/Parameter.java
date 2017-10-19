@@ -5,74 +5,76 @@
  */
 package eml.studio.client.ui.widget.command;
 
-/** Program Parameter in String format */
+/** 
+ * Program Parameter in String format 
+ */
 public class Parameter {
 
-  private int index;
-  private String paramName;
-  private String paramType;
+	private int index;
+	private String paramName;
+	private String paramType;
 
-  private String minValue;
-  private String maxValue;
-  private String paramValue;
+	private String minValue;
+	private String maxValue;
+	private String paramValue;
 
-  public Parameter(int id, String name, String type, String value) {
-    setIndex(id);
-    setParamName(name);
-    setParamType(type);
-    setParamValue(value);
-  }
-  
-  public Parameter(){
-    
-  }
-  
-  public int getIndex() {
-    return index;
-  }
+	public Parameter(int id, String name, String type, String value) {
+		setIndex(id);
+		setParamName(name);
+		setParamType(type);
+		setParamValue(value);
+	}
 
-  public void setIndex(int id) {
-    this.index = id;
-  }
+	public Parameter(){
 
-  public String getMinValue() {
-    return minValue;
-  }
+	}
 
-  public void setMinValue(String min) {
-    this.minValue = min;
-  }
+	public int getIndex() {
+		return index;
+	}
 
-  public String getMaxValue() {
-    return maxValue;
-  }
+	public void setIndex(int id) {
+		this.index = id;
+	}
 
-  public void setMaxValue(String max) {
-    this.maxValue = max;
-  }
+	public String getMinValue() {
+		return minValue;
+	}
 
-  public String getParaName() {
-    return paramName;
-  }
+	public void setMinValue(String min) {
+		this.minValue = min;
+	}
 
-  public void setParamName(String paraName) {
-    this.paramName = paraName;
-  }
+	public String getMaxValue() {
+		return maxValue;
+	}
 
-  public String getParamType() {
-    return paramType;
-  }
+	public void setMaxValue(String max) {
+		this.maxValue = max;
+	}
 
-  public void setParamType(String paramType) {
-    this.paramType = paramType;
-  }
+	public String getParaName() {
+		return paramName;
+	}
 
-  public String getParamValue() {
-    return paramValue;
-  }
+	public void setParamName(String paraName) {
+		this.paramName = paraName;
+	}
 
-  public void setParamValue(String value) {
-    this.paramValue = value;
-  }
+	public String getParamType() {
+		return paramType;
+	}
+
+	public void setParamType(String paramType) {
+		this.paramType = paramType;
+	}
+
+	public String getParamValue() {
+		return paramValue;
+	}
+
+	public void setParamValue(String value) {
+		this.paramValue = value;
+	}
 
 }

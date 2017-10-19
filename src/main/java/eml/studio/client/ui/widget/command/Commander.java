@@ -108,7 +108,7 @@ public class Commander {
 			else value = fh.getPath();
 			splitList.set(idx, value );
 		}
-	
+
 		for( FileHolder fh : this.getDyInFileHolders() ){
 			int idx = fh.getIndex();
 			String value = null;

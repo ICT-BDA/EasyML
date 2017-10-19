@@ -8,8 +8,7 @@ package eml.studio.server.oozie.workflow;
 
 public abstract class ControlNodeDef extends NodeDef {
 
-  protected ControlNodeDef(String name) {
-    super(name);
-  }
-
+	protected ControlNodeDef(String name) {
+		super(name);
+	}
 }

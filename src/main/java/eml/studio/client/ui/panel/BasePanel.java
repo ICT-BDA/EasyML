@@ -19,119 +19,114 @@ import com.google.gwt.user.client.ui.*;
  */
 public class BasePanel extends PopupPanel implements HasAllKeyHandlers{
 
-  private static Logger logger = Logger.getLogger(BasePanel.class.getName());
-  protected VerticalPanel verticalPanel = new VerticalPanel();
-  protected FocusPanel focusPanel = new FocusPanel();
-  protected HTML closeButton = new HTML("X");
-  protected String[][] labarr = {null,null,null,null,null};
-  protected String type = null;
-  protected DescribeGrid grid = null;
-  protected String owner;
+	private static Logger logger = Logger.getLogger(BasePanel.class.getName());
+	protected VerticalPanel verticalPanel = new VerticalPanel();
+	protected FocusPanel focusPanel = new FocusPanel();
+	protected HTML closeButton = new HTML("X");
+	protected String[][] labarr = {null,null,null,null,null};
+	protected String type = null;
+	protected DescribeGrid grid = null;
+	protected String owner;
 
-  public BasePanel() {
-    this.setGlassEnabled(true);
-    this.setModal(false);
+	public BasePanel() {
+		this.setGlassEnabled(true);
+		this.setModal(false);
 
-    closeButton.setSize("10px", "10px");
-    closeButton.setStyleName("closebtn");
+		closeButton.setSize("10px", "10px");
+		closeButton.setStyleName("closebtn");
 
-    closeButton.addClickHandler(new ClickHandler() {
-      @Override
-      public void onClick(ClickEvent event) {
-        clean();
-        BasePanel.this.hide();
-      }
-    });
-    verticalPanel.add(closeButton);
-    verticalPanel.setCellHeight(closeButton, "13px");
-    verticalPanel.setStyleName("vpanel");
-    focusPanel.add(verticalPanel.asWidget());
-    this.add(focusPanel);
-    this.setStyleName("loading_container");
+		closeButton.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				clean();
+				BasePanel.this.hide();
+			}
+		});
+		verticalPanel.add(closeButton);
+		verticalPanel.setCellHeight(closeButton, "13px");
+		verticalPanel.setStyleName("vpanel");
+		focusPanel.add(verticalPanel.asWidget());
+		this.add(focusPanel);
+		this.setStyleName("loading_container");
 
-    this.sinkEvents(Event.ONKEYDOWN);
-    focusPanel.addKeyPressHandler(new KeyPressHandler() {
-      @Override
-      public void onKeyPress( KeyPressEvent event) {
-        event.getCharCode();
-      }
-    });
+		this.sinkEvents(Event.ONKEYDOWN);
+		focusPanel.addKeyPressHandler(new KeyPressHandler() {
+			@Override
+			public void onKeyPress( KeyPressEvent event) {
+				event.getCharCode();
+			}
+		});
 
-  }
+	}
 
-  protected void init() {
-    grid = new DescribeGrid(labarr, type);
-  }
+	protected void init() {
+		grid = new DescribeGrid(labarr, type);
+	}
 
-  @Override
-public void show(){
-    super.show();
-  }
-  public void clean(){
-    this.verticalPanel.clear();
-    verticalPanel.add(closeButton);
-    verticalPanel.setCellHeight(closeButton, "13px");
-  }
+	@Override
+	public void show(){
+		super.show();
+	}
+	public void clean(){
+		this.verticalPanel.clear();
+		verticalPanel.add(closeButton);
+		verticalPanel.setCellHeight(closeButton, "13px");
+	}
 
-  public void setValues(String[] values){
-    labarr[4] = values;
-  }
+	public void setValues(String[] values){
+		labarr[4] = values;
+	}
 
-  public String getOwner() {
-    return owner;
-  }
-  public void setOwner(String owner) {
-    this.owner = owner;
-  }
+	public String getOwner() {
+		return owner;
+	}
+	public void setOwner(String owner) {
+		this.owner = owner;
+	}
 
-  public String[][] getLabarr() {
-    return labarr;
-  }
-  public void setLabarr(String[][] labarr) {
-    this.labarr = labarr;
-  }
+	public String[][] getLabarr() {
+		return labarr;
+	}
+	public void setLabarr(String[][] labarr) {
+		this.labarr = labarr;
+	}
 
-  public HTML getCloseButton() {
-    return closeButton;
-  }
+	public HTML getCloseButton() {
+		return closeButton;
+	}
 
-  public void setCloseButton(HTML closeButton) {
-    this.closeButton = closeButton;
-  }
+	public void setCloseButton(HTML closeButton) {
+		this.closeButton = closeButton;
+	}
 
-  public VerticalPanel getVerticalPanel() {
-    return verticalPanel;
-  }
+	public VerticalPanel getVerticalPanel() {
+		return verticalPanel;
+	}
 
-  public void setVerticalPanel(VerticalPanel verticalPanel) {
-    this.verticalPanel = verticalPanel;
-  }
+	public void setVerticalPanel(VerticalPanel verticalPanel) {
+		this.verticalPanel = verticalPanel;
+	}
 
-  public DescribeGrid getGrid() {
-    return grid;
-  }
+	public DescribeGrid getGrid() {
+		return grid;
+	}
 
-  public void setGrid(DescribeGrid grid) {
-    this.grid = grid;
-  }
+	public void setGrid(DescribeGrid grid) {
+		this.grid = grid;
+	}
 
-  @Override
-  public HandlerRegistration addKeyUpHandler(KeyUpHandler handler) {
-    return this.addKeyUpHandler(handler);
-  }
+	@Override
+	public HandlerRegistration addKeyUpHandler(KeyUpHandler handler) {
+		return this.addKeyUpHandler(handler);
+	}
 
-  @Override
-  public HandlerRegistration addKeyDownHandler(KeyDownHandler handler) {
-    return this.addKeyDownHandler(handler);
-  }
+	@Override
+	public HandlerRegistration addKeyDownHandler(KeyDownHandler handler) {
+		return this.addKeyDownHandler(handler);
+	}
 
-  @Override
-  public HandlerRegistration addKeyPressHandler(KeyPressHandler handler) {
-    return this.addKeyPressHandler(handler);
-  }
-
-/*  @Override
-  public void onBrowserEvent(Event event) {
-
-  }*/
+	@Override
+	public HandlerRegistration addKeyPressHandler(KeyPressHandler handler) {
+		return this.addKeyPressHandler(handler);
+	}
 }

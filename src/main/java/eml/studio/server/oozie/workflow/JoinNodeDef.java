@@ -12,17 +12,17 @@ import org.dom4j.Element;
  */
 public class JoinNodeDef extends ControlNodeDef {
 
-  public JoinNodeDef(String name) {
-    super(name);
-  }
+	public JoinNodeDef(String name) {
+		super(name);
+	}
 
-  @Override
-  public void append2XML(Element root) {
-    Element join = root.addElement("join");
-    join.addAttribute("name", getName());
+	@Override
+	public void append2XML(Element root) {
+		Element join = root.addElement("join");
+		join.addAttribute("name", getName());
 
-    NodeDef toNode = outNodes.iterator().next();
-    join.addAttribute("to", toNode.getName());
-  }
+		NodeDef toNode = outNodes.iterator().next();
+		join.addAttribute("to", toNode.getName());
+	}
 
 }

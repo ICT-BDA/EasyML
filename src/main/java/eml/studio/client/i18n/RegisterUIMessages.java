@@ -9,27 +9,26 @@ import com.google.gwt.i18n.client.Messages;
 
 public interface RegisterUIMessages extends Messages {
 
+	String register();
+	String registerUsr();
+	String registerPwd();
+	String registerVer();
+	String registerCmp();
+	String registerPst();
 
-  String register();
-  String registerUsr();
-  String registerPwd();
-  String registerVer();
-  String registerCmp();
-  String registerPst();
-  
-  String emailFormatErrorMsg();
-  String emailHasRegisteredMsg();
-  String verifyEmailErrMsg();
-  String verifyEmailSuccessMsg();
-  String registerSuccessMsg();
-  String usernameExistMsg();
-  String usernameEmptyMsg();
-  String companyEmptyMsg();
-  String positionEmptyMsg();
-  String passwordEmptyMsg();
-  String passwordLengthMsg();
-  String passwordMismatchMsg();
-  String otherErrMsg();
+	String emailFormatErrorMsg();
+	String emailHasRegisteredMsg();
+	String verifyEmailErrMsg();
+	String verifyEmailSuccessMsg();
+	String registerSuccessMsg();
+	String usernameExistMsg();
+	String usernameEmptyMsg();
+	String companyEmptyMsg();
+	String positionEmptyMsg();
+	String passwordEmptyMsg();
+	String passwordLengthMsg();
+	String passwordMismatchMsg();
+	String otherErrMsg();
 
-  String confirm();
+	String confirm();
 }

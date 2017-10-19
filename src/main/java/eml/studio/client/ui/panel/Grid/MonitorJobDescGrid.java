@@ -7,7 +7,6 @@ package eml.studio.client.ui.panel.Grid;
 
 import eml.studio.client.util.Constants;
 
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextArea;
@@ -26,7 +25,6 @@ public class MonitorJobDescGrid extends Grid {
 	private TextBox useTimeBox = new TextBox();
 	private TextBox endTimeBox = new TextBox();
 	private TextArea descBox = new TextArea();
-	private ClickHandler handler = null;
 
 	/**
 	 * Init Grid

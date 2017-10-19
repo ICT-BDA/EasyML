@@ -32,7 +32,7 @@ public abstract class ActionNodeDef extends NodeDef {
 		this.program = program;
 		this.commandLine = cmdLine;
 	}
-	
+
 	/**
 	 * This function will be called somewhere when generate oozie workflow. <br/>
 	 * It append current Oozie Action workflow configuration to the workflow xml tree.
@@ -120,18 +120,16 @@ public abstract class ActionNodeDef extends NodeDef {
 	}
 
 	protected void generateElement(Element root, String tag, String content) {
+		if(content == null) content = "";
 		Element ele = root.addElement(tag);
 		ele.addText(content);
 	}
 
 	protected abstract void appendFileParameter(Element shell);
 
-
 	public Program getProgram() {
 		return program;
 	}
-
-
 
 	public void setProgram(Program program) {
 		this.program = program;

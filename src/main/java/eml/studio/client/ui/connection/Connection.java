@@ -39,7 +39,7 @@ public class Connection implements Drawable, HasContextMenu {
 	protected CssColor connectionColor = defaultConnectionColor;
 
 	protected ContextMenu menu;
-	protected static String deleteMenuText = "删除";
+	protected static String deleteMenuText = "Delete";
 
 	private boolean sync;
 	private boolean allowSync = true;

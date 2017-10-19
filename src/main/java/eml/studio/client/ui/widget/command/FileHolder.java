@@ -27,7 +27,7 @@ public class FileHolder implements FileDescription{
 	private String description;
 
 	private FileType fileType;
-	
+
 	private boolean inputfile;
 
 	private int index;

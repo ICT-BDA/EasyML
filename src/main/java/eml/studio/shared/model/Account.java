@@ -15,142 +15,142 @@ import com.google.gwt.user.client.rpc.IsSerializable;
  */
 public class Account implements IsSerializable {
 
-  @TableField
-  private String email;
-  @TableField
-  private String username;
-  @TableField@Password
-  private String password;
-  @TableField
-  private String verified;
-  @TableField
-  private Date createtime;
-  @TableField
-  private String power;
-  /**
-   * 登录序列：一个被MD5散列过的随机数， 用户每次修改密码会重新设置
-   * 为了方式cookie被盗用。
-   * Note: 目前暂时不用
-   */
-  @TableField
-  private String serial;
+	@TableField
+	private String email;
+	@TableField
+	private String username;
+	@TableField@Password
+	private String password;
+	@TableField
+	private String verified;
+	@TableField
+	private Date createtime;
+	@TableField
+	private String power;
+	/**
+	 * Login sequence：a random number than has been overdone by MD5, and when the user modify password it will be reset each time
+	 * In order for cookie stolen
+	 * Note: not used at present time
+	 */
+	@TableField
+	private String serial;
 
-  /**
-   * 登录token：一个被MD5散列过的随机数，仅一个登录session内有效，
-   * 用户每次登陆会重新设置。
-   * 对应cooke字段"bdatoken"。
-   */
-  @TableField
-  private String token;
-  
-  /**
-   * 有效时间：用户通过发送邮件方式注册/修改密码，邮件中链接的有效时间
-   */
-  @TableField
-  private Date activetime;
-  @TableField
-  private String company;
-  @TableField
-  private String position;
-  @TableField
-  private String verifylink;
+	/**
+	 * Login token：a random number that has been hash by MD5，only be valid in one login session
+	 * It will be reset when user login each time
+	 * Corresponding cookie field "bdatoken"。
+	 */
+	@TableField
+	private String token;
 
-  /** For deserialize */
-  public Account(){}
+	/**
+	 * Valid time：the valid time in the email link when user send email to register or modify password
+	 */
+	@TableField
+	private Date activetime;
+	@TableField
+	private String company;
+	@TableField
+	private String position;
+	@TableField
+	private String verifylink;
 
-  public String getEmail() {
-    return email;
-  }
+	/** For deserialize */
+	public Account(){}
 
-  public void setEmail(String email) {
-    this.email = email;
-  }
+	public String getEmail() {
+		return email;
+	}
 
-  public String getUsername() {
-    return username;
-  }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-  public void setUsername(String username) {
-    this.username = username;
-  }
+	public String getUsername() {
+		return username;
+	}
 
-  public String getPassword() {
-    return password;
-  }
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-  public void setPassword(String password) {
-    this.password = password;
-  }
+	public String getPassword() {
+		return password;
+	}
 
-  public String getVerified() {
-    return verified;
-  }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-  public void setVerified(String verified) {
-    this.verified = verified;
-  }
+	public String getVerified() {
+		return verified;
+	}
 
-  public Date getCreatetime() {
-    return createtime;
-  }
+	public void setVerified(String verified) {
+		this.verified = verified;
+	}
 
-  public void setCreatetime(Date createtime) {
-    this.createtime = createtime;
-  }
+	public Date getCreatetime() {
+		return createtime;
+	}
 
-  public String getSerial() {
-    return serial;
-  }
+	public void setCreatetime(Date createtime) {
+		this.createtime = createtime;
+	}
 
-  public void setSerial(String serial) {
-    this.serial = serial;
-  }
+	public String getSerial() {
+		return serial;
+	}
 
-  public String getToken() {
-    return token;
-  }
+	public void setSerial(String serial) {
+		this.serial = serial;
+	}
 
-  public void setToken(String token) {
-    this.token = token;
-  }
-  
-  public Date getActivetime() {
-	return activetime;
-  }
-  
-  public void setActivetime(Date date) {
-    this.activetime = date;
-  }
-  
-  public String getCompany() {
-	return company;
-  }
-  
-  public void setCompany(String company) {
-    this.company = company;
-  }
+	public String getToken() {
+		return token;
+	}
 
-  public String getPosition() {
-	return position;
-  }
-  
-  public void setPosition(String position) {
-    this.position = position;
-  }  
-  
-  public String getVerifylink(){
-	return verifylink;
-  }
-  
-  public void setVerifylink(String verifylink){
-	  this.verifylink = verifylink;
-  }
-  
-  public String getPower(){
-	return power;
-  }
-  
-  public void setPower(String power){
-	  this.power = power;
-  }
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+	public Date getActivetime() {
+		return activetime;
+	}
+
+	public void setActivetime(Date date) {
+		this.activetime = date;
+	}
+
+	public String getCompany() {
+		return company;
+	}
+
+	public void setCompany(String company) {
+		this.company = company;
+	}
+
+	public String getPosition() {
+		return position;
+	}
+
+	public void setPosition(String position) {
+		this.position = position;
+	}  
+
+	public String getVerifylink(){
+		return verifylink;
+	}
+
+	public void setVerifylink(String verifylink){
+		this.verifylink = verifylink;
+	}
+
+	public String getPower(){
+		return power;
+	}
+
+	public void setPower(String power){
+		this.power = power;
+	}
 }

@@ -13,10 +13,10 @@ import com.google.gwt.user.client.Command;
  */
 public abstract class MenuItemCommand implements Command {
 
-  protected HasRightMouseUpMenu component;
+	protected HasRightMouseUpMenu component;
 
-  public MenuItemCommand(HasRightMouseUpMenu com) {
-    this.component = com;
-  }
+	public MenuItemCommand(HasRightMouseUpMenu com) {
+		this.component = com;
+	}
 
 }

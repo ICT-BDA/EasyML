@@ -29,65 +29,65 @@ public class CateAddPanel extends PopupPanel {
 	private VerticalPanel vPanel = new VerticalPanel();
 	private HorizontalPanel mask = new HorizontalPanel();
 	private VerticalPanel root = new VerticalPanel();
-    
+
 	public CateAddPanel() {
-	    bind();
-	    
-	    HorizontalPanel alertHeader = new HorizontalPanel();
-	    HorizontalPanel alertButton = new HorizontalPanel();
-	    VerticalPanel alertContent = new VerticalPanel();
-	    title.setStyleName("cateAddBoxTitle");
-	    close.setStyleName("alertClose");
-	    alertHeader.add(title);
-	    alertHeader.add(close);
-	    alertHeader.addStyleName("alertTitleBG");
-	    
-	    HorizontalPanel namePanel = new HorizontalPanel();
-	    HorizontalPanel fathPanel = new HorizontalPanel();
-	    nameLabel.getElement().getStyle().setMargin(9, Unit.PX);
-	    nameBox.removeStyleName("gwt-TextBox");
-	    nameBox.addStyleName("admin-cate-add-input");
-	    nameErrorLabel.addStyleName("account-error");
-	    namePanel.add(nameLabel);
-	    namePanel.add(nameBox);
-	    namePanel.add(nameErrorLabel);
-	    fathLabel.getElement().getStyle().setMargin(12, Unit.PX);
-	    fathBox.removeStyleName("gwt-TextBox");
-	    fathBox.addStyleName("admin-cate-add-input");
-	    fathErrorLabel.addStyleName("account-error");
-	    fathPanel.add(fathLabel);
-	    fathPanel.add(fathBox);
-	    fathPanel.add(fathErrorLabel);
+		bind();
 
-	    namePanel.getElement().getStyle().setMarginTop(20, Unit.PX);
-	    namePanel.getElement().getStyle().setMarginBottom(20, Unit.PX);
-	    fathPanel.getElement().getStyle().setMarginTop(20, Unit.PX);
-	    fathPanel.getElement().getStyle().setMarginBottom(20, Unit.PX);
-	    alertContent.add(namePanel);
-	    alertContent.add(fathPanel);
-	    alertContent.addStyleName("margin_left_17");
-	    
-	    confirmBtn.removeStyleName("gwt-Button");
-	    cancelBtn.removeStyleName("gwt-Button");
-	    cancelBtn.getElement().getStyle().setMarginLeft(105, Unit.PX);
-	    
-	    alertButton.add(confirmBtn);
-	    alertButton.add(cancelBtn);
-	    alertButton.addStyleName("alertButton2");
+		HorizontalPanel alertHeader = new HorizontalPanel();
+		HorizontalPanel alertButton = new HorizontalPanel();
+		VerticalPanel alertContent = new VerticalPanel();
+		title.setStyleName("cateAddBoxTitle");
+		close.setStyleName("alertClose");
+		alertHeader.add(title);
+		alertHeader.add(close);
+		alertHeader.addStyleName("alertTitleBG");
 
-	    vPanel.add(alertHeader);
-	    vPanel.add(alertContent);
-	    vPanel.add(alertButton);
-	    
-	    vPanel.addStyleName("alertBox");
-	    mask.addStyleName("alertBack");
-	    
-	    root.add(mask);
-	    root.add(vPanel);
-	    this.add(root);
-	    this.removeStyleName("gwt-PopupPanel");
+		HorizontalPanel namePanel = new HorizontalPanel();
+		HorizontalPanel fathPanel = new HorizontalPanel();
+		nameLabel.getElement().getStyle().setMargin(9, Unit.PX);
+		nameBox.removeStyleName("gwt-TextBox");
+		nameBox.addStyleName("admin-cate-add-input");
+		nameErrorLabel.addStyleName("account-error");
+		namePanel.add(nameLabel);
+		namePanel.add(nameBox);
+		namePanel.add(nameErrorLabel);
+		fathLabel.getElement().getStyle().setMargin(12, Unit.PX);
+		fathBox.removeStyleName("gwt-TextBox");
+		fathBox.addStyleName("admin-cate-add-input");
+		fathErrorLabel.addStyleName("account-error");
+		fathPanel.add(fathLabel);
+		fathPanel.add(fathBox);
+		fathPanel.add(fathErrorLabel);
+
+		namePanel.getElement().getStyle().setMarginTop(20, Unit.PX);
+		namePanel.getElement().getStyle().setMarginBottom(20, Unit.PX);
+		fathPanel.getElement().getStyle().setMarginTop(20, Unit.PX);
+		fathPanel.getElement().getStyle().setMarginBottom(20, Unit.PX);
+		alertContent.add(namePanel);
+		alertContent.add(fathPanel);
+		alertContent.addStyleName("margin_left_17");
+
+		confirmBtn.removeStyleName("gwt-Button");
+		cancelBtn.removeStyleName("gwt-Button");
+		cancelBtn.getElement().getStyle().setMarginLeft(105, Unit.PX);
+
+		alertButton.add(confirmBtn);
+		alertButton.add(cancelBtn);
+		alertButton.addStyleName("alertButton2");
+
+		vPanel.add(alertHeader);
+		vPanel.add(alertContent);
+		vPanel.add(alertButton);
+
+		vPanel.addStyleName("alertBox");
+		mask.addStyleName("alertBack");
+
+		root.add(mask);
+		root.add(vPanel);
+		this.add(root);
+		this.removeStyleName("gwt-PopupPanel");
 	}
-	
+
 	/**
 	 * Event binding
 	 */
@@ -105,7 +105,7 @@ public class CateAddPanel extends PopupPanel {
 				CateAddPanel.this.hide();
 			}
 		});
-		
+
 		//cancel
 		cancelBtn.addClickHandler(new ClickHandler(){
 
@@ -118,47 +118,47 @@ public class CateAddPanel extends PopupPanel {
 				CateAddPanel.this.fathErrorLabel.setText("");
 				CateAddPanel.this.hide();
 			}
-			
+
 		});
 	}
-	
+
 	@Override
 	public void setTitle(String msg){
 		title.setText(msg);
 	}
-	
+
 	public String getType(){
 		return type;
 	}
-	
+
 	public VerticalPanel getPanel(){
 		return vPanel;
 	}
-	
+
 	public TextBox getNameBox(){
 		return nameBox;
 	}
-	
+
 	public Label getNameErrorLabel(){
 		return nameErrorLabel;
 	}
-	
+
 	public TextBox getFatherBox(){
 		return fathBox;
 	}
-	
+
 	public Label getFathErrorLabel(){
 		return fathErrorLabel;
 	}
-	
+
 	public Button getCancelBtn(){
 		return cancelBtn;
 	}
-	
+
 	public Button getConfirmBtn(){
 		return confirmBtn;
 	}
-	
+
 	public Label getClose(){
 		return close;
 	}

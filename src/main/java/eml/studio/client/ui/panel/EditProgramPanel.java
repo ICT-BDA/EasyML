@@ -38,22 +38,22 @@ public class EditProgramPanel extends BasePanel{
 	public EditProgramPanel(String emailAccount,final ProgramTree tree,final ProgramLeaf node) {
 		super();
 		labarr = new String[][]{
-					{"Name","Category","Type","Programable","Isdeterministic","Version","CreateDate",
-										"Owner","Description","CommandLine"},
+				{"Name","Category","Type","Programable","Isdeterministic","Version","CreateDate",
+					"Owner","Description","CommandLine"},
 					{Constants.studioUIMsg.moduleName(), Constants.studioUIMsg.moduleCategory(), 
-					 Constants.studioUIMsg.moduleType(), Constants.studioUIMsg.programable(),
-					 Constants.studioUIMsg.moduleDeterminacy(),Constants.studioUIMsg.moduleVersion(),
-					 Constants.studioUIMsg.moduleCreateTime(), Constants.studioUIMsg.moduleOwner(),
-					 Constants.studioUIMsg.dataDescription(),Constants.studioUIMsg.moduleCMDFormat()},
-					{"textbox","tree","listbox","listbox","listbox","textbox","textbox",
-					 "textbox","textarea","textarea"},
-					{"true","true","true","true","true","true","false","false","true","true"},
-					{"", Constants.studioUIMsg.chooseCategory(),
-					 Constants.studioUIMsg.standalone() + "/" + Constants.studioUIMsg.distributed()+"/ETL",
-					 Constants.studioUIMsg.no()+"/" + Constants.studioUIMsg.yes(),
-					 Constants.studioUIMsg.no()+"/" + Constants.studioUIMsg.yes(),
-					 "0.1", TimeUtils.timeNow(), AppController.email, "", ""},
-				    {"left","left","left","left","left","left","left","left","left","right"}
+						Constants.studioUIMsg.moduleType(), Constants.studioUIMsg.programable(),
+						Constants.studioUIMsg.moduleDeterminacy(),Constants.studioUIMsg.moduleVersion(),
+						Constants.studioUIMsg.moduleCreateTime(), Constants.studioUIMsg.moduleOwner(),
+						Constants.studioUIMsg.dataDescription(),Constants.studioUIMsg.moduleCMDFormat()},
+						{"textbox","tree","listbox","listbox","listbox","textbox","textbox",
+							"textbox","textarea","textarea"},
+							{"true","true","true","true","true","true","false","false","true","true"},
+							{"", Constants.studioUIMsg.chooseCategory(),
+								Constants.studioUIMsg.standalone() + "/" + Constants.studioUIMsg.distributed()+"/ETL",
+								Constants.studioUIMsg.no()+"/" + Constants.studioUIMsg.yes(),
+								Constants.studioUIMsg.no()+"/" + Constants.studioUIMsg.yes(),
+								"0.1", TimeUtils.timeNow(), AppController.email, "", ""},
+								{"left","left","left","left","left","left","left","left","left","right"}
 		};
 		owner = emailAccount;
 		this.tree = tree;
@@ -85,19 +85,19 @@ public class EditProgramPanel extends BasePanel{
 	}
 	public void show(Program program){
 		this.program = program;
-	    final String values[] =DBController.getProgramPanelValue(program,false);
-	    final String category = program.getCategory();
-	    if("我的程序".equals(category) || "my program".equals(category.toLowerCase())
-	    	|| "共享程序".equals(category) || "shared program".equals(category.toLowerCase())
-	    	|| "系统程序".equals(category) || "system program".equals(category.toLowerCase()) ){
-	    	values[1] = category;
-	    	EditProgramPanel.this.setValues(values);
-	    	EditProgramPanel.this.init();
-	    	EditProgramPanel.this.center();
-	    	EditProgramPanel.this.show();
-	    }else{
-		    categorySrv.getCategory(category, new AsyncCallback<Category>(){
-	
+		final String values[] =DBController.getProgramPanelValue(program,false);
+		final String category = program.getCategory();
+		if("我的程序".equals(category) || "my program".equals(category.toLowerCase())
+				|| "共享程序".equals(category) || "shared program".equals(category.toLowerCase())
+				|| "系统程序".equals(category) || "system program".equals(category.toLowerCase()) ){
+			values[1] = category;
+			EditProgramPanel.this.setValues(values);
+			EditProgramPanel.this.init();
+			EditProgramPanel.this.center();
+			EditProgramPanel.this.show();
+		}else{
+			categorySrv.getCategory(category, new AsyncCallback<Category>(){
+
 				@Override
 				public void onFailure(Throwable caught) {
 					// TODO Auto-generated method stub
@@ -107,7 +107,7 @@ public class EditProgramPanel extends BasePanel{
 					EditProgramPanel.this.center();
 					EditProgramPanel.this.show();
 				}
-	
+
 				@Override
 				public void onSuccess(Category result) {
 					// TODO Auto-generated method stub
@@ -115,15 +115,15 @@ public class EditProgramPanel extends BasePanel{
 						values[1] = result.getName();
 					}else
 						values[1] = result.getPath();
-	
+
 					EditProgramPanel.this.setValues( values );
 					EditProgramPanel.this.init();
 					EditProgramPanel.this.center();
 					EditProgramPanel.this.show();
 				}
-		    	
-		    });
-	    }
+
+			});
+		}
 	}
 
 }

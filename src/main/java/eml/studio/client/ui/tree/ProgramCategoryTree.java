@@ -12,11 +12,11 @@ import eml.studio.client.util.Constants;
  */
 public class ProgramCategoryTree extends ProgramModuleTree {
 
-  public ProgramCategoryTree() {
-    super(Constants.studioUIMsg.systemProgram(),
-        Constants.studioUIMsg.myProgram(),
-        Constants.studioUIMsg.sharedProgram());
-  }
+	public ProgramCategoryTree() {
+		super(Constants.studioUIMsg.systemProgram(),
+				Constants.studioUIMsg.myProgram(),
+				Constants.studioUIMsg.sharedProgram());
+	}
 
 
 }

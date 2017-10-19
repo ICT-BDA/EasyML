@@ -24,43 +24,42 @@ import eml.studio.server.constant.Constants;
  */
 public class JavaMail {
 
-  private Properties props;
+	private Properties props;
 
-  public JavaMail() {
-    props = new Properties();
-    props.setProperty("mail.debug", "true");					// Enable debug debugging
-    props.setProperty("mail.smtp.auth", "true");				// The sending server requires authentication
-    props.setProperty("mail.host", Constants.MAIL_HOST);	 	// Set the mail server host name
-    props.setProperty("mail.transport.protocol", "smtp");		// Send mail protocol name
-    props.setProperty("mail.smtp.auth.mechanisms", "login");
+	public JavaMail() {
+		props = new Properties();
+		props.setProperty("mail.debug", "true");					// Enable debug debugging
+		props.setProperty("mail.smtp.auth", "true");				// The sending server requires authentication
+		props.setProperty("mail.host", Constants.MAIL_HOST);	 	// Set the mail server host name
+		props.setProperty("mail.transport.protocol", "smtp");		// Send mail protocol name
+		props.setProperty("mail.smtp.auth.mechanisms", "login");
 
-  }
+	}
 
-  public boolean sendMsg(String recipient, String subject, String content)
-      throws MessagingException {
-    // Create a mail object
-    Session session = Session.getInstance(props, new Authenticator() {
-      // 在session中设置账户信息，Transport发送邮件时会使用
-      @Override
-      protected PasswordAuthentication getPasswordAuthentication() {
-        return new PasswordAuthentication(Constants.MAIL_USERNAME, Constants.MAIL_PASSWORD);
-      }
-    });
-    session.setDebug(true);
-    Message msg = new MimeMessage(session);
-    try {
-      msg.setSubject(subject);			//Set the mail subject
-      // msg.setText(content);			//Set the mail content
-      msg.setContent(content,"text/html;charset=utf-8");
-      msg.setFrom(new InternetAddress(Constants.MAIL_USERNAME));			//Set the sender
-      msg.setRecipient(RecipientType.TO, new InternetAddress(recipient));	//Set the recipient
-      Transport.send(msg);
-      return true;
-    } catch (Exception ex) {
-      ex.printStackTrace();
-      System.out.println(ex.getMessage());
-      return false;
-    }
-    
-  }
+	public boolean sendMsg(String recipient, String subject, String content)
+			throws MessagingException {
+		// Create a mail object
+		Session session = Session.getInstance(props, new Authenticator() {
+			// Set the account information session，transport will send mail
+			@Override
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(Constants.MAIL_USERNAME, Constants.MAIL_PASSWORD);
+			}
+		});
+		session.setDebug(true);
+		Message msg = new MimeMessage(session);
+		try {
+			msg.setSubject(subject);			//Set the mail subject
+			msg.setContent(content,"text/html;charset=utf-8");
+			msg.setFrom(new InternetAddress(Constants.MAIL_USERNAME));			//Set the sender
+			msg.setRecipient(RecipientType.TO, new InternetAddress(recipient));	//Set the recipient
+			Transport.send(msg);
+			return true;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			System.out.println(ex.getMessage());
+			return false;
+		}
+
+	}
 }

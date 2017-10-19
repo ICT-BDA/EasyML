@@ -38,4 +38,6 @@ public interface AccountServiceAsync {
 	void resetPassword(Account account, AsyncCallback<Account> callback);
 
 	void deleteAccount(Account account, AsyncCallback<String> callback);
+	
+	void search(Account currentAccount, Account account, int limitStart, int limitSize, AsyncCallback<List<Account>> callback);
 }

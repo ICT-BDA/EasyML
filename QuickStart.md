@@ -68,18 +68,18 @@ Our server cluster is based on ***Docker***, thus you can build run time environ
 * Pull our mysql server images from our [docker hub](https://hub.docker.com/u/nkxujun/):
 
 
-    ```docker pull nkxujun/mysql_eml```
+    ```docker pull nkxujun/mysql_eml:version (latest default)```
 ### Step 3: Pull ubuntu_eml images from docker hub
 * Our Eml server images is based on ubuntu, so pull it first:   
 
 
-    ```docker pull nkxujun/ubuntu_eml```
+    ```docker pull nkxujun/ubuntu_eml:version(latest default)```
 * You can use `docker images` to see if you have pulled these two images successfully:
 
 	<img src="./img/origin_images.png" width = "90%" alt="eml_images"/>
  
 ### Step 4: Download install dependent package
-Every single server in our cluster is created by one *docker image*, and this *image* can be built via a **Dockerfile** which has defined by us and includes all utilities we need such as hadoop. Thus we need to download the **Dockerfile** and all dependent files and configuration files from our [google drive disk](https://drive.google.com/open?id=0B5Lj6qkCMBbFWW5uYlJwb2drb1k) or [Baidu Cloud](https://pan.baidu.com/s/1miFXzVq).
+Every single server in our cluster is created by one *docker image*, and this *image* can be built via a **Dockerfile** which has defined by us and includes all utilities we need such as hadoop. Thus we need to download the **Dockerfile** and all dependent files and configuration files from our [google drive disk](https://drive.google.com/open?id=0B5Lj6qkCMBbFWW5uYlJwb2drb1k) or [Baidu Cloud](https://pan.baidu.com/s/1bpMwYSJ).
 
 
 ### Step 5: Build Eml server images  

@@ -25,7 +25,7 @@ Before you can use **EasyML Studio**, you must configure the environment which i
 * Please remove or comment `jdk.tools` dependency properties in pom.xml(This dependency is not used for IDEA, but for eclipse IDE) 
 
 <div align=center>
-<img src="./img/modify_pom.png" height ="400px" width = "550" alt="Modify Pom File"/>
+<img src="./img/modify_pom.png" height ="350px" width = "530" alt="Modify Pom File"/>
 </div>
 
 * Use Maven clean and compile goal to download all related dependency package
@@ -40,7 +40,7 @@ Before you can use **EasyML Studio**, you must configure the environment which i
 
 * Use `gwt:compile` plugin to compile gwt project.
 <div align=center>
-<img src="./img/gwt_compile.png"  alt="GWT Compile"/>
+<img src="./img/gwt_compile.png" width = "40%" alt="GWT Compile"/>
 </div>
 
 ### Step 3: Create and run our EML web application
@@ -55,13 +55,13 @@ Before you can use **EasyML Studio**, you must configure the environment which i
 * Add GWT web app via `+` at upper left corner, if you do not see `GWT Configuration` in the list, you might have something wrong in the step of *Configure GWT Lib Path*. Go back to the last step, resolve the problem.
 
 <div align=center>
-<img src="./img/import_rundetail.png" width = "90%" alt="Edit Easy ML"/>
+<img src="./img/import_rundetail.png" width = "70%" alt="Edit Easy ML"/>
 </div>
 
 * `Use Super Dev Mode` can allow you debugging your web app at the browser side. It is make debugging more effient, for which remember choosing it. 
 * When you have finished all the steps above, you can click the green run button to make and debug the **EasyML**. After a while, you can browse EasyML in your *Chrome* to access it.
 <div align=center>
-<img src="./img/home_page.png" width = "90%" alt="Easy ML home page"/>
+<img src="./img/home_page.png" width = "80%" alt="Easy ML home page"/>
 </div>
 
 ## Development Environment For Eclipse
@@ -71,11 +71,11 @@ Before you can use **EasyML Studio**, you must configure the environment which i
 - Make sure your eclipse have install **maven** and **GWT** plugins.(As the GWT plugins can't be downloaded easily now, we supply [GWT plugins for Eclipse 4.4 Luna](https://pan.baidu.com/s/1hrFSyI4), you can install the plugin to eclipse by offline mode) 
 - Import the code into your IDE via maven project
 <div align=center>
-<img src="./img/import_to_eclipse.png" width = "90%" alt="Import maven project"/>
+<img src="./img/import_to_eclipse.png" width = "55%" alt="Import maven project"/>
 </div>
 - Click project peoperties by right key to modify project facets. Keep these facets as bellows will make your project structure more clearly.
 <div align=center>
-<img src="./img/project_facets.png" width = "90%" alt="Modify project facets"/>
+<img src="./img/project_facets.png" width = "75%" alt="Modify project facets"/>
 </div>
 - The project support **java version 1.7** by default, you can switch to other java version by project configuration modification.
 
@@ -83,19 +83,19 @@ Before you can use **EasyML Studio**, you must configure the environment which i
 
 - Use maven clean and maven compile goal to download all related dependency package. Right click project `Run as`, select `maven clean` to clean the project and then select `maven build...` to configure goal for project compiling.
 <div align=center>
-<img src="./img/maven_compile_eclipse.png" width = "90%" alt="Maven compile project"/>
+<img src="./img/maven_compile_eclipse.png" width = "65%" alt="Maven compile project"/>
 </div>
 
 - If you meet **tools.jar can not be found error**, you should modify your project JRE System Library from JRE to JDK path. The eclipse import project use JRE path by default.
 <div align=center>
-<img src="./img/jdk_path_eclipse.png" width = "90%" alt="Modify JRE Path to JDK"/>
+<img src="./img/jdk_path_eclipse.png" width = "65%" alt="Modify JRE Path to JDK"/>
 </div>
 
 - When you finish compiling the project, please refresh it.
 
 - Use gwt-maven plugin goal to compile the gwt project. If you don't do this step, you can't see some images in your browser when you login the system.
 <div align=center>
-<img src="./img/gwt_compile_eclipse.png" width = "90%" alt="GWT Compile"/>
+<img src="./img/gwt_compile_eclipse.png" width = "65%" alt="GWT Compile"/>
 </div>
 
 ### Step 3: Run our EML web application
@@ -103,16 +103,16 @@ Before you can use **EasyML Studio**, you must configure the environment which i
 - Right click the project `Run as`, select `Web Application(GWT Super Dev Mode)`. Then select `index.html` page to run the project.
 
 <div align=center>
-<img src="./img/index_page_eclipse.png" width = "90%" alt="Select index page to run"/>
+<img src="./img/index_page_eclipse.png" width = "50%" alt="Select index page to run"/>
 </div>
 
 - After a while for above steps, you can see the finished `Console` state.
 <div align=center>
-<img src="./img/run_finish_eclipse.png" width = "90%" alt="Project server start finished"/>
+<img src="./img/run_finish_eclipse.png" width = "80%" alt="Project server start finished"/>
 </div>
 - Switch to the `Development Mode`, and you can visit the project through the url.
 <div align=center>
-<img src="./img/project_url_eclipse.png" width = "90%" alt="Project url for development mode"/>
+<img src="./img/project_url_eclipse.png" width = "80%" alt="Project url for development mode"/>
 </div>
 
 ## Preparation for virtual server cluster
@@ -149,7 +149,7 @@ Every single server in our cluster is created by one *docker image*, and this *i
      ```sh build.sh``` 
 * You can use `docker images` to see if you have built successfully:
 
-	<img src="./img/build_cluster.png" width = "90%" alt="Origin_images"/>
+	<img src="./img/build_cluster.png" width = "80%" alt="Origin_images"/>
 
 ## Run docker virtual server cluster
 ### Build a network for docker virtual server cluster

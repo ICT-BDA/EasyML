@@ -18,6 +18,7 @@
   <inherits name="com.google.gwt.i18n.I18N"/>
   <extend-property name="locale" values="en"/>
   <extend-property name="locale" values="cn"/>
+  <!--  <set-property name="locale" value="cn"/>  set default language-->
   
   <set-property name="gwt.logging.popupHandler" value="DISABLED" />
   <!-- <set-property name="gwt.logging.simpleRemoteHandler" value="ENABLED" /> -->

@@ -68,49 +68,53 @@ Before you can use **EasyML Studio**, you must configure the environment which i
 
 ### Step 1: Import project to Eclipse
 
-- Make sure your eclipse have install **maven** and **GWT** plugins.(As the GWT plugins can't be downloaded easily now, we supply [GWT plugins for Eclipse 4.4 Luna](https://pan.baidu.com/s/1hrFSyI4), you can install the plugin to eclipse by offline mode) 
-- Import the code into your IDE via maven project
+* Make sure your eclipse have install **maven** and **GWT** plugins.(As the GWT plugins can't be downloaded easily now, we supply [GWT plugins for Eclipse 4.4 Luna](https://pan.baidu.com/s/1hrFSyI4), you can install the plugin to eclipse by offline mode) 
+
+* Import the code into your IDE via maven project
 <div align=center>
 <img src="./img/import_to_eclipse.png" width = "55%" alt="Import maven project"/>
 </div>
-- Click project peoperties by right key to modify project facets. Keep these facets as bellows will make your project structure more clearly.
+
+* Click project peoperties by right key to modify project facets. Keep these facets as bellows will make your project structure more clearly.
 <div align=center>
 <img src="./img/project_facets.png" width = "75%" alt="Modify project facets"/>
 </div>
-- The project support **java version 1.7** by default, you can switch to other java version by project configuration modification.
+
+* The project support **java version 1.7** by default, you can switch to other java version by project configuration modification.
 
 ### Step 2: Compile GWT Project
 
-- Use maven clean and maven compile goal to download all related dependency package. Right click project `Run as`, select `maven clean` to clean the project and then select `maven build...` to configure goal for project compiling.
+* Use maven clean and maven compile goal to download all related dependency package. Right click project `Run as`, select `maven clean` to clean the project and then select `maven build...` to configure goal for project compiling.
 <div align=center>
 <img src="./img/maven_compile_eclipse.png" width = "65%" alt="Maven compile project"/>
 </div>
 
-- If you meet **tools.jar can not be found error**, you should modify your project JRE System Library from JRE to JDK path. The eclipse import project use JRE path by default.
+* If you meet **tools.jar can not be found error**, you should modify your project JRE System Library from JRE to JDK path. The eclipse import project use JRE path by default.
 <div align=center>
 <img src="./img/jdk_path_eclipse.png" width = "65%" alt="Modify JRE Path to JDK"/>
 </div>
 
-- When you finish compiling the project, please refresh it.
+* When you finish compiling the project, please refresh it.
 
-- Use gwt-maven plugin goal to compile the gwt project. If you don't do this step, you can't see some images in your browser when you login the system.
+* Use gwt-maven plugin goal to compile the gwt project. If you don't do this step, you can't see some images in your browser when you login the system.
 <div align=center>
 <img src="./img/gwt_compile_eclipse.png" width = "65%" alt="GWT Compile"/>
 </div>
 
 ### Step 3: Run our EML web application
 
-- Right click the project `Run as`, select `Web Application(GWT Super Dev Mode)`. Then select `index.html` page to run the project.
+* Right click the project `Run as`, select `Web Application(GWT Super Dev Mode)`. Then select `index.html` page to run the project.
 
 <div align=center>
 <img src="./img/index_page_eclipse.png" width = "50%" alt="Select index page to run"/>
 </div>
 
-- After a while for above steps, you can see the finished `Console` state.
+* After a while for above steps, you can see the finished `Console` state.
 <div align=center>
 <img src="./img/run_finish_eclipse.png" width = "80%" alt="Project server start finished"/>
 </div>
-- Switch to the `Development Mode`, and you can visit the project through the url.
+
+* Switch to the `Development Mode`, and you can visit the project through the url.
 <div align=center>
 <img src="./img/project_url_eclipse.png" width = "80%" alt="Project url for development mode"/>
 </div>

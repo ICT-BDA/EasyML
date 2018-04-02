@@ -9,11 +9,16 @@
 	<DRAFT_PATH>/EML/draft</DRAFT_PATH>
 	<DATASET_PATH>/EML/Data</DATASET_PATH>
 	<MODULE_PATH>/EML/Modules</MODULE_PATH>
-	<DB_URL>jdbc:mysql://mysql:3306/studio?useUnicode=true&amp;characterEncoding=UTF-8</DB_URL>
+	<DB_HOST>mysql</DB_HOST>
+	<DB_PORT>3306</DB_PORT>
+	<DB_NAME>studio</DB_NAME>
 	<DB_USER>root</DB_USER>
 	<DB_PASSWORD>111111</DB_PASSWORD>
 	<DB_TIMEOUT>100</DB_TIMEOUT>
 	<MAIL_HOST>mail.software.ict.ac.cn</MAIL_HOST>
 	<MAIL_USERNAME>bda@software.ict.ac.cn</MAIL_USERNAME>
 	<MAIL_PASSWORD>bda@ict</MAIL_PASSWORD>
+	<TENSORFLOW_CLUSTER>hadoop-master,hadoop-slave1,hadoop-slave2</TENSORFLOW_CLUSTER>
+	<TENSORFLOW_MASTER>hadoop-master</TENSORFLOW_MASTER>
+	<TENSORFLOW_USER>root</TENSORFLOW_USER>
 </config>

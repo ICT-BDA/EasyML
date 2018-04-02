@@ -25,6 +25,9 @@ public class Program extends Module implements IsSerializable {
 	private String scriptversion;
 	@TableField
 	private Boolean programable;
+	
+	@TableField(name="tensorflow_mode")
+	private String tensorflowMode;
 
 	public Program() {
 	}
@@ -60,6 +63,10 @@ public class Program extends Module implements IsSerializable {
 	public Boolean isETL() {
 		return ProgramUtil.isETL(type);
 	}
+	public Boolean isTensorflow(){
+		return ProgramUtil.isTensorflow(type);
+	}
+	
 	public String getCommandline() {
 		return commandline;
 	}
@@ -74,6 +81,23 @@ public class Program extends Module implements IsSerializable {
 
 	public void setScriptversion(String sv) {
 		scriptversion = sv;
+	}
+	
+	/**
+	 * @return the tensorflowMode
+	 */
+	public String getTensorflowMode() {
+		return tensorflowMode;
+	}
+
+	/**
+	 * @param tensorflowMode the tensorflowMode to set
+	 */
+	public void setTensorflowMode(String tensorflowMode) {
+		if(tensorflowMode !=null)
+		    this.tensorflowMode = tensorflowMode.toLowerCase();
+		else
+			this.tensorflowMode = tensorflowMode;
 	}
 
 	@Override
@@ -101,6 +125,7 @@ public class Program extends Module implements IsSerializable {
 		m.setVersion(this.getVersion());
 		m.setCategory(this.getCategory());
 		m.setScriptversion(this.getScriptversion());
+		m.setTensorflowMode(this.getTensorflowMode());
 		return m;
 	}
 

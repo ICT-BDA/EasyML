@@ -119,12 +119,14 @@ public abstract class ProgramWidget extends BaseWidget {
 		}
 		ptable = new ProgramPropertyTable(program);
 		label.addStyleName("deselected");
-		if (program.isStandalone())
-			label.addStyleName("bda-action-standalone");
-		else{
-			if(program.isETL()) label.addStyleName("bda-action-ETL");
-			else label.addStyleName("bda-action-distribute");
-		}
+	    if (program.isStandalone())
+	    	label.addStyleName("bda-action-standalone");
+	    else if(program.isETL()) 
+	    	label.addStyleName("bda-action-ETL");
+	    else if(program.isTensorflow())
+	    	label.addStyleName("bda-action-tensorflow");
+	    else 
+	    	label.addStyleName("bda-action-distribute");
 	}
 
 	@Override
@@ -241,15 +243,14 @@ public abstract class ProgramWidget extends BaseWidget {
 		else
 			label.addStyleName("deselected");
 
-		if (program.isDistributed()) {
-			label.addStyleName("bda-action-distribute");
-		} else {
-			if(program.isETL()){
-				label.addStyleName("bda-action-ETL");
-			}else {
-				label.addStyleName("bda-action-standalone");
-			}
-		}
+	    if (program.isStandalone()) 
+	        label.addStyleName("bda-action-standalone");
+	      else if(program.isETL()) 
+	      	label.addStyleName("bda-action-ETL");
+	      else if(program.isTensorflow())
+	      	label.addStyleName("bda-action-tensorflow");
+	      else 
+	      	label.addStyleName("bda-action-distribute");
 	}
 
 	@Override

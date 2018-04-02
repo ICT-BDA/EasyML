@@ -14,14 +14,17 @@ public class ProgramLeaf extends Leaf<Program> {
 
 	public ProgramLeaf(Program m) {
 		super(m.getName(), m);
-		if(m.isETL()){
-			this.label.addStyleName("bda-treeleaf-etl");
-		}else{
-			if (m.isDistributed())
-				this.label.addStyleName("bda-treeleaf-distribute");
-			else
-				this.label.addStyleName("bda-treeleaf-standalone");
-		}
+	    if(m.isETL()){
+	        this.label.addStyleName("bda-treeleaf-etl");
+	      }else if(m.isTensorflow())
+	      	this.label.addStyleName("bda-treeleaf-tensorflow");
+	      else{
+	        if (m.isDistributed())
+	          this.label.addStyleName("bda-treeleaf-distribute");
+	        else
+	          this.label.addStyleName("bda-treeleaf-standalone");
+	      }
+
 
 	}
 }

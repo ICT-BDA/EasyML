@@ -47,21 +47,21 @@ public class UpdateProgramPanel extends BasePanel {
 		super();
 		labarr = new String[][]{
 				{"Name","Category","Type","Programable","Isdeterministic","Version","CreateDate",
-					"Owner","Description","CommandLine"},
+					"Owner","Description","CommandLine","TensorflowMode"},
 					{Constants.studioUIMsg.moduleName(), Constants.studioUIMsg.moduleCategory()
 						, Constants.studioUIMsg.moduleType(), Constants.studioUIMsg.programable(),
 						Constants.studioUIMsg.moduleDeterminacy(),Constants.studioUIMsg.moduleVersion(),
 						Constants.studioUIMsg.moduleCreateTime(), Constants.studioUIMsg.moduleOwner(),
-						Constants.studioUIMsg.dataDescription(),Constants.studioUIMsg.moduleCMDFormat()},//显示的标签
+						Constants.studioUIMsg.dataDescription(),Constants.studioUIMsg.moduleCMDFormat(),Constants.studioUIMsg.tensorflowMode()},//Displayed label
 						{"textbox","tree","listbox","listbox","listbox","textbox","textbox",
-							"textbox","textarea","textarea"},
-							{"true","true","true","true","true","true","false","false","true","true"},
+							"textbox","textarea","textarea","listbox"},
+							{"true","true","true","true","true","true","false","false","true","true","true"},
 							{"", Constants.studioUIMsg.chooseCategory(), 
-								Constants.studioUIMsg.standalone() + "/" + Constants.studioUIMsg.distributed()+"/ETL",// "单机/分布式",
+								Constants.studioUIMsg.standalone() + "/" + Constants.studioUIMsg.distributed()+"/ETL"+"/Tensorflow",// "Singleton or distribute",
 								Constants.studioUIMsg.no()+"/" + Constants.studioUIMsg.yes(),
 								Constants.studioUIMsg.no()+"/" + Constants.studioUIMsg.yes(),
-								"0.1", TimeUtils.timeNow(), AppController.email, "", ""},
-								{"left","left","left","left","left","left","left","left","left","right"}
+								"0.1", TimeUtils.timeNow(), AppController.email, "", "",Constants.studioUIMsg.standalone()+"/"+Constants.studioUIMsg.modelDistributed()+"/"+Constants.studioUIMsg.dataDistributed()},
+								{"left","left","left","left","left","left","left","left","left","right","right"}
 		};
 		this.tree = tree;
 		this.node = node;

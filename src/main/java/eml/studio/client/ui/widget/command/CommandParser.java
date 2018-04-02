@@ -101,7 +101,7 @@ public class CommandParser {
 					"Parsing failed, colon is not found in " +String.valueOf(arr, offset + 1, arr.length));
 
 			cntType = String.valueOf(arr,offset + 1, k - offset - 1 );
-			storeType = "HFile";
+			storeType = FileDescription.StoreType.HFile.name();;
 		}else if( word.equals("out") ){
 			holder.setFileType( FileHolder.FileType.OutputFile);
 			offset = k;
@@ -115,7 +115,7 @@ public class CommandParser {
 			//There are no colons exists
 			if( k == - 1 ){
 				cntType = String.valueOf(arr,offset + 1, end - offset - 1 );
-				storeType = "HFile";
+				storeType = FileDescription.StoreType.HFile.name();
 			}else{
 				cntType = String.valueOf(arr,offset + 1, k - offset - 1 );
 				storeType = String.valueOf(arr,k + 1, end - k - 1 );

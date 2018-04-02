@@ -6,6 +6,8 @@
 package eml.studio.client.ui.panel.component;
 
 import eml.studio.client.util.Constants;
+import eml.studio.shared.util.DatasetType;
+
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
@@ -19,7 +21,7 @@ import java.util.ArrayList;
  */
 public class DescCmdPanel extends VerticalPanel implements DescWidget {
 	ArrayList<ListBox> parameterListType = new ArrayList<ListBox>();
-	ArrayList<TextBox> parameterTypeDetail = new ArrayList<TextBox>();
+	ArrayList<ListBox> parameterTypeDetail = new ArrayList<ListBox>();
 	ArrayList<TextBox> parameterName = new ArrayList<TextBox>();
 	ArrayList<TextBox> parameterValue = new ArrayList<TextBox>();
 	ArrayList<TextBox> parameterDetail = new ArrayList<TextBox>();
@@ -54,16 +56,20 @@ public class DescCmdPanel extends VerticalPanel implements DescWidget {
 				parameterName.add(new TextBox());// Parameter name
 				parameterName.get(count - 4).setStyleName("desccmdpanel-other-textbox");
 
-				parameterTypeDetail.add(new TextBox());// Type description
-				parameterTypeDetail.get(count - 4).setStyleName(
-						"desccmdpanel-other-textbox");
+				parameterTypeDetail.add(new ListBox());//参数类型
+				parameterTypeDetail.get(count - 4).setStyleName("desccmdpanel-ListBox");
+				parameterTypeDetail.get(count - 4).addItem(" ");
+				parameterTypeDetail.get(count - 4).addItem(DatasetType.GENERAL.getDesc());
+				parameterTypeDetail.get(count - 4).addItem(DatasetType.CSV.getDesc());
+				parameterTypeDetail.get(count - 4).addItem(DatasetType.TSV.getDesc());
+				parameterTypeDetail.get(count - 4).addItem(DatasetType.JSON.getDesc());
+				parameterTypeDetail.get(count - 4).addItem(DatasetType.DIRECTORY.getDesc());
+
 				parameterListType.add(new ListBox());// Type description
 				parameterListType.get(count - 4).setStyleName("desccmdpanel-ListBox");
 				parameterListType.add(new ListBox());
 				parameterListType.get(count - 4).addItem("in");
 				parameterListType.get(count - 4).addItem("out");
-				parameterListType.get(count - 4).addItem("din"); //Stream input
-				parameterListType.get(count - 4).addItem("dout"); //Stream output
 				parameterListType.get(count - 4).addItem("int");
 				parameterListType.get(count - 4).addItem("double");
 				parameterListType.get(count - 4).addItem("string");
@@ -78,12 +84,13 @@ public class DescCmdPanel extends VerticalPanel implements DescWidget {
 						// String Type=type.substring(0, 1).toUpperCase()+type.substring(1);
 						if (type.equals("int") || type.equals("double")
 								|| type.equals("string") || type.equals("bool")) {
-							parameterTypeDetail.get(count - 4).setText(type);
+							parameterTypeDetail.get(count - 4).setItemSelected(0, true);
 							parameterTypeDetail.get(count - 4).setEnabled(false);
 							parameterValue.get(count - 4).setEnabled(true);
 						} else {
+							parameterValue.get(count - 4).setEnabled(false);
 							parameterTypeDetail.get(count - 4).setEnabled(true);
-							parameterTypeDetail.get(count - 4).setText("");
+							parameterTypeDetail.get(count - 4).setItemSelected(1, true);
 						}
 					}
 				});
@@ -159,17 +166,10 @@ public class DescCmdPanel extends VerticalPanel implements DescWidget {
 
 					}
 
-					if (type.equals("din") || type.equals("dout")) {
-						if (parameterDetail.get(i).getText().equals("")) {
-							alertstr += "Please enter the description of the file parameters" + "\n";
-						}
-					} else {
-						if (parameterDetail.get(i).getText().equals(""))
-							alertstr += "Please enter the description of the normal parameters" + "\n";
-						else if (parameterDetail.get(i).getText().contains(":"))
-							alertstr += "The characters can not be used in the description of normal parameters':'" + "\n";
-
-					}
+					if (parameterDetail.get(i).getText().equals(""))
+						alertstr += "Please enter the description of the normal parameters" + "\n";
+					else if (parameterDetail.get(i).getText().contains(":"))
+						alertstr += "The characters can not be used in the description of normal parameters':'" + "\n";
 				}
 
 
@@ -185,7 +185,8 @@ public class DescCmdPanel extends VerticalPanel implements DescWidget {
 					for (int i = 0; i < parameterName.size(); i++) {
 						String type = parameterListType.get(i).getValue(
 								parameterListType.get(i).getSelectedIndex());
-						String typedetail = parameterTypeDetail.get(i).getValue();
+						String typedetail = parameterTypeDetail.get(i).getValue(
+								parameterTypeDetail.get(i).getSelectedIndex());
 						String name = parameterName.get(i).getText();
 
 						// Value and detail may have spaces,
@@ -197,17 +198,12 @@ public class DescCmdPanel extends VerticalPanel implements DescWidget {
 						if (type.equals("in") || type.equals("out")) {
 							str += "{" + type + ":" + typedetail
 									+ ":\"" + detail + "\"}" + " ";
-						}else if(type.equals("din") || type.equals("dout")){
-							str +=  "{" + type + ":" + typedetail
-									+ ":\"" + detail + "\"}" + " ";
-						} else {
-							if( "string".equals(typedetail.toLowerCase())){
-								str +=  "[\"" + detail + "\":" + typedetail
-										+ ":" + "default" + ",\"" + value + "\"]" + " ";
-							}else{
-								str +=  "[\"" + detail + "\":" + typedetail
-										+ ":" + "default" + "," + value + "]" + " ";
-							}
+						}else if( "string".equals(typedetail.toLowerCase())){
+							str +=  "[\"" + detail + "\":" + type
+									+ ":" + "default" + ",\"" + value + "\"]" + " ";
+						}else{
+							str +=  "[\"" + detail + "\":" + type
+									+ ":" + "default" + "," + value + "]" + " ";
 						}
 					}
 					setValue(str);

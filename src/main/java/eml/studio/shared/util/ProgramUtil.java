@@ -33,6 +33,11 @@ public class ProgramUtil {
 		return false;
 	}
 
+	public static boolean isTensorflow(String type){
+		if("Tensorflow".equals(type) || "tensorflow".equals(type)) return true;
+		return false;
+	}
+
 	public static boolean isSuccess(OozieAction action){
 		if( action == null ||
 				action.getAppPath() == null ||

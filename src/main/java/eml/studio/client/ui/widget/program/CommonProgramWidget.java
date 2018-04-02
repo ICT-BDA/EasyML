@@ -37,7 +37,12 @@ public class CommonProgramWidget extends ProgramWidget {
 		} catch (CommandParseException e) {
 			Window.alert( e.getMessage() );
 		}
-		CommonProgramConf conf = new CommonProgramConf(cmd, program.isStandalone());
+	    CommonProgramConf conf = null;
+	    
+	    if(program.isTensorflow())
+	         conf = new CommonProgramConf(cmd, true);
+	    else
+	         conf = new CommonProgramConf(cmd, program.isStandalone());
 
 		return conf;
 	}

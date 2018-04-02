@@ -11,14 +11,18 @@ import eml.studio.server.db.SecureDao;
 import eml.studio.server.util.DistributedRunShellGenerator;
 import eml.studio.server.util.HDFSIO;
 import eml.studio.server.util.RunShellGenerator;
+import eml.studio.server.util.TensorflowRunShellGenerator;
 import eml.studio.shared.model.Category;
 import eml.studio.shared.model.ModuleVersion;
 import eml.studio.shared.model.Program;
 import eml.studio.shared.util.ProgramUtil;
+
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+
 import org.apache.hadoop.fs.Path;
-import org.apache.log4j.Logger;
+
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * Specific methods in Program modules' related RemoteServiceServlet
@@ -154,18 +158,42 @@ public class ProgramServiceImpl extends RemoteServiceServlet implements ProgramS
 			}else
 				category = program.getCategory();
 
-			RunShellGenerator gen = null;
-			if (ProgramUtil.isDistributed( program.getType().toLowerCase() )||
-					ProgramUtil.isETL( program.getType().toLowerCase() )) {
-				gen = new DistributedRunShellGenerator();
-			} else {
-				gen = new RunShellGenerator();
+			String run = "";
+			if(program.isTensorflow())
+			{
+				TensorflowRunShellGenerator gen = new TensorflowRunShellGenerator();
+				run = gen.generate(program.getTensorflowMode(),program.getCommandline());
+				if("data distributed".equals(program.getTensorflowMode()))
+				{
+					String tensorflowScript = Constants.TENSORFLOW_DATA_SCRIPT;
+					if(HDFSIO.exist(path + "/lib/tensor_distributed.py"))
+						HDFSIO.delete(path + "/lib/tensor_distributed.py");
+					HDFSIO.upload(path + "/lib/tensor_distributed.py", tensorflowScript);
+				}else if("model distributed".equals(program.getTensorflowMode())){
+					String tensorflowScript = Constants.TENSORFLOW_MODEL_SCRIPT;
+					if(HDFSIO.exist(path + "/lib/tensor_distributed.py"))
+						HDFSIO.delete(path + "/lib/tensor_distributed.py");
+					HDFSIO.upload(path + "/lib/tensor_distributed.py", tensorflowScript);
+				}else{
+					if(HDFSIO.exist(path + "/lib/tensor_distributed.py"))
+						HDFSIO.delete(path + "/lib/tensor_distributed.py");
+				}
+
+			}else{
+				RunShellGenerator gen = null;
+				if ( ProgramUtil.isDistributed(program.getType().toLowerCase())||
+						ProgramUtil.isETL( program.getType().toLowerCase() )) {
+					gen = new DistributedRunShellGenerator();
+				} else {
+					gen = new RunShellGenerator();
+				}
+				run = gen.generate(program.getCommandline());
 			}
-			String run = gen.generate(program.getCommandline());
 
 			if (HDFSIO.exist(path + "/run.sh"))
 				HDFSIO.delete(path + "/run.sh");
 			HDFSIO.upload(path + "/run.sh", run);
+
 			program.setId(uuid);
 			program.setName(name);
 			program.setCategory(category);
@@ -227,6 +255,11 @@ public class ProgramServiceImpl extends RemoteServiceServlet implements ProgramS
 	 */
 	@Override
 	public void edit(Program program) throws Exception {
+		if(program.getId() == null || program.getId().trim().equals(""))
+		{
+			logger.info("Program id is null or empty,edit failed!");
+			return;
+		}
 		String path = program.getPath();
 		String name = program.getName();
 		String category = null;
@@ -244,23 +277,45 @@ public class ProgramServiceImpl extends RemoteServiceServlet implements ProgramS
 			}else
 				category = program.getCategory();
 
-			RunShellGenerator gen = null;
-			if ( ProgramUtil.isDistributed(program.getType().toLowerCase())||
-					ProgramUtil.isETL( program.getType().toLowerCase() )) {
-				gen = new DistributedRunShellGenerator();
-			} else {
-				gen = new RunShellGenerator();
-			}
-
 			if( (program.getProgramable() && !program.isDistributed()) ){
 			}else{
-				String run = gen.generate(
-						program.getCommandline());
+				String run = "";
+				if(program.isTensorflow())
+				{
+					TensorflowRunShellGenerator gen = new TensorflowRunShellGenerator();
+					run = gen.generate(program.getTensorflowMode(),program.getCommandline());
+					if("data distributed".equals(program.getTensorflowMode()))
+					{
+						String tensorflowScript = Constants.TENSORFLOW_DATA_SCRIPT;
+						if(HDFSIO.exist(path + "/lib/tensor_distributed.py"))
+							HDFSIO.delete(path + "/lib/tensor_distributed.py");
+						HDFSIO.upload(path + "/lib/tensor_distributed.py", tensorflowScript);
+					}else if("model distributed".equals(program.getTensorflowMode())){
+						String tensorflowScript = Constants.TENSORFLOW_MODEL_SCRIPT;
+						if(HDFSIO.exist(path + "/lib/tensor_distributed.py"))
+							HDFSIO.delete(path + "/lib/tensor_distributed.py");
+						HDFSIO.upload(path + "/lib/tensor_distributed.py", tensorflowScript);
+					}else{
+						if(HDFSIO.exist(path + "/lib/tensor_distributed.py"))
+							HDFSIO.delete(path + "/lib/tensor_distributed.py");
+					}
+
+				}else{
+					RunShellGenerator gen = null;
+					if ( ProgramUtil.isDistributed(program.getType().toLowerCase())||
+							ProgramUtil.isETL( program.getType().toLowerCase() )) {
+						gen = new DistributedRunShellGenerator();
+					} else {
+						gen = new RunShellGenerator();
+					}
+					run = gen.generate(program.getCommandline());
+				}
 
 				if (HDFSIO.exist(path + "/run.sh"))
 					HDFSIO.delete(path + "/run.sh");
 				HDFSIO.upload(path + "/run.sh", run);
 			}
+
 			program.setName(name);
 			program.setCategory(category);
 			program.setDeprecated(false);
@@ -278,6 +333,11 @@ public class ProgramServiceImpl extends RemoteServiceServlet implements ProgramS
 	 */
 	@Override
 	public void deprecate(String id) throws Exception {
+	    if(  id == null || id.trim().equals(""))
+	    {
+	      logger.info("Program id is null or empty,deprecate failed!");
+	      return;
+	    }
 		Program program = new Program(id);
 		program = SecureDao.getObject(program, "");
 
@@ -301,9 +361,17 @@ public class ProgramServiceImpl extends RemoteServiceServlet implements ProgramS
 	@Override
 	public void delete(String id){
 		try{
+			if(id == null || id.trim().equals(""))
+			{
+				logger.info("Program id is null or empty,delete failed!");
+				return;
+			}
 			Program program = new Program(id);
-			SecureDao.delete(program);
+			program= SecureDao.getObject(program);
 			HDFSIO.delete(program.getPath());
+
+			SecureDao.delete(program);
+			logger.info("Program delete from mysql, id ="+program.getId());
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}
@@ -330,7 +398,7 @@ public class ProgramServiceImpl extends RemoteServiceServlet implements ProgramS
 					}
 				}
 			} else {
-				logger.error("cannot find the data with id:" + id);
+				logger.info("cannot find the data with id:" + id);
 			}
 		}catch(Exception ex ){
 			ex.printStackTrace();

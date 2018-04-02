@@ -74,14 +74,6 @@ public class UploadDatasetPanel extends BasePanel{
 			public boolean onUploadComplete(UploadCompleteEvent uploadCompleteEvent) {
 				uploaderPanel.getCancelButtons().get(uploadCompleteEvent.getFile().getId())
 				.removeFromParent();
-
-				DatasetLeaf node = new DatasetLeaf(uploaderPanel.getUpLoadDataset());
-				DatasetTreeLoader.addContextMenu( presenter.getView().getDatasetTree()
-						,node);
-				DatasetTreeLoader.addDatasetLeaf( presenter.getView().getDatasetTree(),
-						node,AppController.email);
-
-
 				Window.alert("Uploaded successfully！");
 				UploadDatasetPanel.this.hide();
 				UploadDatasetPanel.this.clean();
@@ -108,7 +100,7 @@ public class UploadDatasetPanel extends BasePanel{
 				params.put("Datauuid", new JSONString(uploaderPanel.getNewFileUUID()));
 				uploaderPanel.getUploader().setOption("post_params", params).setPostParams(params);
 				try {
-					if (dbController.submitUploadDataset2DB(presenter,uploaderPanel,dataset,grid)) {
+					if (dbController.submitUploadDataset2DB(presenter,presenter.getView(),uploaderPanel,dataset,grid)) {
 						uploaderPanel.getUploader().startUpload();
 						uploaderPanel.getStartbt().setEnabled(false);
 					}

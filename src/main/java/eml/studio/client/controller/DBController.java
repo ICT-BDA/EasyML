@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.logging.Logger;
 
 import eml.studio.client.mvp.AppController;
+import eml.studio.client.mvp.presenter.MonitorPresenter.View;
 import eml.studio.client.mvp.presenter.Presenter;
 import eml.studio.client.rpc.CategoryService;
 import eml.studio.client.rpc.CategoryServiceAsync;
@@ -71,7 +72,7 @@ public class DBController {
 	 * @return  If submit is success
 	 * @throws CommandParseException
 	 */
-	public boolean submitUploadProgram2DB(final Presenter presenter, final UploadFileModule fileUploader,
+	public boolean submitUploadProgram2DB(final Presenter presenter,  final View view, final UploadFileModule fileUploader,
 			Program program, final DescribeGrid grid)
 					throws CommandParseException {
 		String name = grid.getText("Name");
@@ -107,6 +108,11 @@ public class DBController {
 			@Override
 			public void onSuccess(Program result) {
 				fileUploader.setUpLoadProgram(result);
+				ProgramLeaf node = new ProgramLeaf(result);
+				ProgramTreeLoader.addContextMenu( view.getProgramTree(),
+						node);
+				ProgramTreeLoader.addProgramLeaf( view.getProgramTree(),
+						node,AppController.email);
 				logger.info("Program insert to DB:"+result.getCategory());
 			}
 		});
@@ -121,7 +127,7 @@ public class DBController {
 	 * @return  If submit is success
 	 * @throws CommandParseException
 	 */
-	public boolean submitUploadDataset2DB(final Presenter presenter,final UploadFileModule fileUploader
+	public boolean submitUploadDataset2DB(final Presenter presenter,final View view, final UploadFileModule fileUploader
 			,Dataset dataset, DescribeGrid grid)
 					throws CommandParseException {
 		String name = grid.getText("Name");
@@ -145,6 +151,12 @@ public class DBController {
 			@Override
 			public void onSuccess(Dataset result) {
 				fileUploader.setUpLoadDataset(result);
+				DatasetLeaf node = new DatasetLeaf(result);
+				DatasetTreeLoader.addContextMenu( view.getDatasetTree()
+						,node);
+				DatasetTreeLoader.addDatasetLeaf( view.getDatasetTree(),
+						node,AppController.email);
+				logger.info("Dataset insert to DB:"+result.getCategory());
 			}
 		});
 		return true;
@@ -446,12 +458,14 @@ public class DBController {
 		String TypeString = program.getType();
 		logger.info(TypeString.toLowerCase());
 		if ("单机".equals(TypeString.toLowerCase()) || "standalone".equals(TypeString.toLowerCase()))
-			values[i] = Constants.studioUIMsg.standalone() + "/" + Constants.studioUIMsg.distributed()+"/ETL";
+			values[i] = Constants.studioUIMsg.standalone() + "/" + Constants.studioUIMsg.distributed()+"/ETL"+"/Tensorflow";
 		if ("spark".equals(TypeString) || "分布式".equals(TypeString) ||TypeString.equals("distributed")||TypeString.toLowerCase().equals("distributed")) {
-			values[i] = Constants.studioUIMsg.distributed() + "/" + Constants.studioUIMsg.standalone() + "/ETL";
+			values[i] = Constants.studioUIMsg.distributed() + "/" + Constants.studioUIMsg.standalone() + "/ETL"+"/Tensorflow";
 		}
 		if ("etl".equals(TypeString))
-			values[i] = "ETL/"+Constants.studioUIMsg.distributed() + "/" + Constants.studioUIMsg.standalone();
+			values[i] = "ETL/"+Constants.studioUIMsg.distributed() + "/" + Constants.studioUIMsg.standalone()+"/Tensorflow";
+		if("tensorflow".equals(TypeString))
+			values[i] = "Tensorflow/"+Constants.studioUIMsg.distributed() + "/" + Constants.studioUIMsg.standalone()+"/ETL";
 
 		i ++;
 
@@ -482,6 +496,16 @@ public class DBController {
 		values[i++] = program.getDescription();
 		values[i++] = program.getCommandline();
 
+		String tensorflowMode = program.getTensorflowMode();
+		if("单机".equals(tensorflowMode) || "standalone".equals(tensorflowMode))
+			values[i] = Constants.studioUIMsg.standalone()+"/"+Constants.studioUIMsg.modelDistributed()+"/"+Constants.studioUIMsg.dataDistributed();
+		else if("模型分布".equals(tensorflowMode) || "model distributed".equals(tensorflowMode))
+			values[i] = Constants.studioUIMsg.modelDistributed()+"/"+Constants.studioUIMsg.standalone()+"/"+Constants.studioUIMsg.dataDistributed();
+		else if("数据分布".equals(tensorflowMode) || "data distributed".equals(tensorflowMode))
+			values[i] = Constants.studioUIMsg.dataDistributed()+"/"+Constants.studioUIMsg.standalone()+"/"+Constants.studioUIMsg.modelDistributed();
+		else 
+			values[i]= Constants.studioUIMsg.standalone()+"/"+Constants.studioUIMsg.modelDistributed()+"/"+Constants.studioUIMsg.dataDistributed();
+
 		return values;
 	}
 
@@ -507,10 +531,10 @@ public class DBController {
 
 		values[1] = null;
 		String TypeString = dataset.getContenttype();
-		if ("General".equals(TypeString)) values[2] = "General/TSV/CSV";
-		if ("TSV".equals(TypeString)) values[2] = "TSV/General/TSV";
-		if ("CSV".equals(TypeString)) values[2] = "CSV/General/TSV";
-		else values[2] = "General/TSV/CSV";
+		if (TypeString == null || TypeString.equals("") || "General".equals(TypeString)) values[2] = "General/CSV/TSV/JSON";
+		else if ("TSV".equals(TypeString)) values[2] = "TSV/General/CSV/JSON";
+		else if ("CSV".equals(TypeString)) values[2] = "CSV/General/TSV/JSON";
+		else values[2] = "JSON/General/TSV/CSV";
 		values[0] = dataset.getName();
 		values[5] = AppController.email;
 		values[6] = dataset.getDescription();

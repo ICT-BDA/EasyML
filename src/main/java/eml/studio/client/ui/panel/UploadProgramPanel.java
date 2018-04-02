@@ -40,21 +40,21 @@ public class UploadProgramPanel extends BasePanel {
 		this.presenter = presenter;
 		labarr = new String[][]{
 				{"Name","Category","Type","Programable","Isdeterministic","Version","CreateDate",
-					"Owner","Description","CommandLine"},
+					"Owner","Description","CommandLine","TensorflowMode"},
 					{Constants.studioUIMsg.moduleName(), Constants.studioUIMsg.moduleCategory()
 						, Constants.studioUIMsg.moduleType(), Constants.studioUIMsg.programable(),
 						Constants.studioUIMsg.moduleDeterminacy(),Constants.studioUIMsg.moduleVersion(),
 						Constants.studioUIMsg.moduleCreateTime(), Constants.studioUIMsg.moduleOwner(),
-						Constants.studioUIMsg.dataDescription(),Constants.studioUIMsg.moduleCMDFormat()},
+						Constants.studioUIMsg.dataDescription(),Constants.studioUIMsg.moduleCMDFormat(),Constants.studioUIMsg.tensorflowMode()},
 						{"textbox","tree","listbox","listbox","listbox","textbox","textbox",
-							"textbox","textarea","textarea"},
-							{"true","true","true","true","true","true","false","false","true","true"},
+							"textbox","textarea","textarea","listbox"},
+							{"true","true","true","true","true","true","false","false","true","true","true"},
 							{"", Constants.studioUIMsg.chooseCategory(), 
-								Constants.studioUIMsg.standalone() + "/" + Constants.studioUIMsg.distributed()+"/ETL",
+								Constants.studioUIMsg.standalone() + "/" + Constants.studioUIMsg.distributed()+"/ETL"+"/Tensorflow",
 								Constants.studioUIMsg.no()+"/" + Constants.studioUIMsg.yes(),
 								Constants.studioUIMsg.no()+"/" + Constants.studioUIMsg.yes(),
-								"0.1", TimeUtils.timeNow(), AppController.email, "", ""},
-								{"left","left","left","left","left","left","left","left","left","right"}
+								"0.1", TimeUtils.timeNow(), AppController.email, "", "",Constants.studioUIMsg.standalone()+"/"+Constants.studioUIMsg.modelDistributed()+"/"+Constants.studioUIMsg.dataDistributed()},
+								{"left","left","left","left","left","left","left","left","left","right","right"}
 		};
 		owner = emailAccount;
 		init();
@@ -78,12 +78,6 @@ public class UploadProgramPanel extends BasePanel {
 				uploaderPanel.getCancelButtons().get(uploadCompleteEvent.getFile().getId())
 				.removeFromParent();
 				uploaderPanel.getUploader().cancelUpload(uploaderPanel.getFileQueuedId(), false);
-
-				ProgramLeaf node = new ProgramLeaf(uploaderPanel.getUpLoadProgram());
-				ProgramTreeLoader.addContextMenu( presenter.getView().getProgramTree(),
-						node);
-				ProgramTreeLoader.addProgramLeaf( presenter.getView().getProgramTree(),
-						node,AppController.email);
 
 				Window.alert("Uploaded successfully！");
 				UploadProgramPanel.this.hide();
@@ -109,7 +103,7 @@ public class UploadProgramPanel extends BasePanel {
 				params.put("Fileuuid", new JSONString(uploaderPanel.getNewFileUUID()));
 				uploaderPanel.getUploader().setOption("post_params", params).setPostParams(params);
 				try {
-					if (dbController.submitUploadProgram2DB(presenter,uploaderPanel,program,grid)) {
+					if (dbController.submitUploadProgram2DB(presenter,presenter.getView(), uploaderPanel,program,grid)) {
 						uploaderPanel.getUploader().startUpload();
 						uploaderPanel.getStartbt().setEnabled(false);
 					}

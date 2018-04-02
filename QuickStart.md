@@ -188,6 +188,12 @@ Because the hadoop cluster network communication depend on ssh, we need to confi
 
 ### Init Mysql database
  * Run `sh init_mysql.sh` to prepare the databases for *Oozie* and *EasyML Studio* 
+### Add Tensorflow Support
+Our EML installation package in version 1.2.0 or above could support Tensorflow mode.Follow the steps bellow If you want to have a try.
+
+ * Enter the `hadoop-master` container via  docker exec -it hadoop-master /bin/bash 
+ * Run `sh /root/config-tensorflow.sh` to config the environment that tensorflow need.
+ * If you want to config the environment yourself, you can do use the  tensorflow folder scripts in EasyML Project.
 ### Start HDFS，spark and Yarn service
  * Enter the *hadoop-master* container via `docker exec -it hadoop-master /bin/bash` (a vital important command to enter every container)
  * Run `sh /root/start-hadoop.sh` to start hadoop and spark service

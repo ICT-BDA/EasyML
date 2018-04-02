@@ -5,9 +5,11 @@
  */
 package eml.studio.client.ui.menu;
 
+import eml.studio.client.mvp.AppController;
 import eml.studio.client.rpc.JobService;
 import eml.studio.client.rpc.JobServiceAsync;
 import eml.studio.client.ui.tree.JobLeaf;
+import eml.studio.client.util.Constants;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Command;
@@ -26,21 +28,27 @@ public class JobDeleteMenu {
 			@Override
 			public void execute() {
 				String id = node.getModule().getJobId();
-				boolean y = Window.confirm("Are you sure you want to delete?");
-				if (y) {
-					JobServiceAsync srv = GWT.create(JobService.class);
-					srv.deleteJob(id, new AsyncCallback<Void>() {
+				boolean isExampleDir = node.getParentItem().getText().equals(Constants.studioUIMsg.examples());
+				if(!isExampleDir && node.getModule().getAccount().equals(AppController.email) && node.getModule().getIsExample())
+					Window.alert("The job is example job, please don't delete it in my task!");
+				else
+				{
+					boolean y = Window.confirm("Are you sure you want to delete?");
+					if (y) {
+						JobServiceAsync srv = GWT.create(JobService.class);
+						srv.deleteJob(id, new AsyncCallback<Void>() {
 
-						@Override
-						public void onFailure(Throwable caught) {
-							Window.alert(caught.getMessage());
-						}
+							@Override
+							public void onFailure(Throwable caught) {
+								Window.alert(caught.getMessage());
+							}
 
-						@Override
-						public void onSuccess(Void result) {
-							node.delete();
-						}
-					});
+							@Override
+							public void onSuccess(Void result) {
+								node.delete();
+							}
+						});
+					}
 				}
 				this.component.getContextMenu().hide();
 			}

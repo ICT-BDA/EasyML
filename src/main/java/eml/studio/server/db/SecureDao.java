@@ -92,7 +92,6 @@ public class SecureDao extends BaseDao {
 
 		List<String> conds = new LinkedList<String>();
 		for (Map.Entry<String, Field> entry : fields.entrySet()) {
-			String name = entry.getKey();
 			Field field = entry.getValue();
 			String invoke = toString(obj, field);
 
@@ -136,7 +135,8 @@ public class SecureDao extends BaseDao {
 			for (Map.Entry<String, Field> entry : fields.entrySet()) {
 				String name = entry.getKey();
 				Field field = entry.getValue();
-
+                if(resultSet.getString(name)==null)
+                	continue;
 				invoke(instance, resultSet.getString(name), field);
 			}
 
@@ -168,6 +168,8 @@ public class SecureDao extends BaseDao {
 			for (Map.Entry<String, Field> entry : fields.entrySet()) {
 				String name = entry.getKey();
 				Field field = entry.getValue();
+                if(resultSet.getString(name)==null)
+                	continue;
 				invoke(instance, resultSet.getString(name), field);
 			}
 
@@ -359,7 +361,6 @@ public class SecureDao extends BaseDao {
 		List<String> values = new LinkedList<String>();
 		// 再遍历一边添加where条件
 		for (Map.Entry<String, Field> entry : fields.entrySet()) {
-			String name = entry.getKey();
 			Field field = entry.getValue();
 			String invoke = toString(o, field);
 			// 如果属性有值

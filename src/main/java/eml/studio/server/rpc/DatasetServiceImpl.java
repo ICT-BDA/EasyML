@@ -255,6 +255,11 @@ DatasetService {
 	 */
 	@Override
 	public void edit(Dataset dataset) throws Exception {
+	    if(  dataset.getId() == null || dataset.getId().trim().equals(""))
+	    {
+	      logger.info("Dataset id is null or empty,deprecate failed!");
+	      return;
+	    }
 		String category = null;
 		try {
 			if(dataset.getCategory().contains(">")){
@@ -313,6 +318,11 @@ DatasetService {
 	 */
 	@Override
 	public void deprecate(String id){
+	    if(  id == null || id.trim().equals(""))
+	    {
+	      logger.info("Dataset id is null or empty,deprecate failed!");
+	      return;
+	    }
 		Dataset dataset = new Dataset();
 		dataset.setId(id);
 		try{

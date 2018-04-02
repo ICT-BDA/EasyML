@@ -12,7 +12,8 @@ public enum DatasetType {
 	JSON(0,"JSON"),
 	CSV(1,"CSV"),
 	TSV(2,"TSV"),
-	GENERAL(3,"General");
+	GENERAL(3,"General"),
+	DIRECTORY(4,"Directory");
 
 	private int typeCode;  
 	private String desc;

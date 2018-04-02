@@ -6,12 +6,16 @@
 package eml.studio.server.constant;
 
 import eml.studio.server.util.XMLUtil;
+
 import com.github.drapostolos.typeparser.StringToTypeParser;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.util.logging.Logger;
 
@@ -29,8 +33,14 @@ public class Constants {
 	public static String DRAFT_PATH;
 	public static String DATASET_PATH;
 	public static String MODULE_PATH;
+	
+	// public static final String DB_URL ="jdbc:mysql://mysql:3306/dfgendb";
 	public static String DB_URL;
+	public static String DB_HOST;
 	public static String DB_USER;
+	public static String DB_PORT;
+	public static String DB_NAME;
+	
 	public static String DB_PASSWORD;
 	public static Integer DB_TIMEOUT;
 	/**********************************************
@@ -40,6 +50,14 @@ public class Constants {
 	public static String MAIL_USERNAME;
 	public static String MAIL_PASSWORD;
 	public static String HOSTNAME_CON;
+
+	// This is the tensorflow cluster ip list, segment by ","
+	public static String TENSORFLOW_CLUSTER;  
+	public static String TENSORFLOW_MASTER;
+	public static String TENSORFLOW_USER;
+	public static String TENSORFLOW_MODEL_SCRIPT;
+	public static String TENSORFLOW_DATA_SCRIPT;
+
 	static Logger logger = Logger.getLogger(Constants.class.getName());
 
 	static {
@@ -78,6 +96,27 @@ public class Constants {
 			}
 
 		}
+		DB_URL="jdbc:mysql://"+DB_HOST+":"+DB_PORT+"/"+DB_NAME+"?useUnicode=true&amp;characterEncoding=UTF-8";
+	
+		//Tensorflow file reader
+		try {
+			InputStream modelReader = classLoader.getResourceAsStream("model_distributed.py");
+			byte[] pyByte;
+
+			pyByte = new byte[(int)modelReader.available()];
+			modelReader.read(pyByte); 
+			modelReader.close();   
+			TENSORFLOW_MODEL_SCRIPT = new String(pyByte); 
+
+			InputStream dataReader = classLoader.getResourceAsStream("data_distributed.py");
+			pyByte = new byte[(int)dataReader.available()];
+			dataReader.read(pyByte); 
+			dataReader.close();   
+			TENSORFLOW_DATA_SCRIPT = new String(pyByte); 
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 	}
 
 }

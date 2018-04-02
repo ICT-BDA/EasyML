@@ -8,7 +8,7 @@ package eml.studio.client.i18n;
 import com.google.gwt.i18n.client.Messages;
 
 public interface StudioUIMessages extends Messages {
-	
+
 	String yes();
 	String no();
 	String submit();
@@ -30,6 +30,8 @@ public interface StudioUIMessages extends Messages {
 	String systemData();
 	String preprocess();
 	String standalone();
+	String modelDistributed();
+	String dataDistributed();
 	String distributed();
 	String evaluation();
 	String transformation();
@@ -87,6 +89,7 @@ public interface StudioUIMessages extends Messages {
 	String moduleType();
 	String programable();
 	String moduleCMDFormat();
+	String tensorflowMode();
 
 	String dataName();
 	String dataCategory();

@@ -9,6 +9,7 @@ import eml.studio.client.ui.widget.command.CommandParseException;
 import eml.studio.client.ui.widget.command.CommandParser;
 import eml.studio.client.ui.widget.command.Commander;
 import eml.studio.client.ui.widget.command.FileHolder;
+import eml.studio.shared.util.DatasetType;
 
 /**
  * Generator local version run.sh
@@ -42,22 +43,42 @@ public class RunShellGenerator {
 		int idx = 3;
 		for (FileHolder fp : commander.getInFileHolders()) {
 			idx++;
-			sb.append(String.format(
-					"if [ \"${%d}\" = \"HFile\" ]\n" +
-							"then\n" +
-							"\t hdfs dfs -getmerge ${%d}/${%d##*/} ${%d##*/} 1>>stdout 2>>stderr\n",
-							idx, idx + 1, idx + 1, idx + 1));
-			sb.append(String.format(
-					"else\n" +
-							"\t hdfs dfs -get ${%d}/${%d##*/} ${%d##*/} 1>>stdout 2>>stderr\n" +
-							"fi\n\n", idx + 1, idx + 1, idx + 1));
+			if(DatasetType.DIRECTORY.getDesc().equals(fp.getContentType()))
+			{
+				sb.append(String.format(
+								"hdfs dfs -get ${%d}/${%d##*/} ${%d##*/} 1>>stdout 2>>stderr\n" +
+								"fi\n\n", idx + 1, idx + 1, idx + 1));
+				
+			}else{
+				sb.append(String.format(
+						"if [ \"${%d}\" = \"HFile\" ]\n" +
+								"then\n" +
+								"\t hdfs dfs -getmerge ${%d}/${%d##*/} ${%d##*/} 1>>stdout 2>>stderr\n",
+								idx, idx + 1, idx + 1, idx + 1));
+
+				sb.append(String.format(
+						"else\n" +
+								"\t hdfs dfs -get ${%d}/${%d##*/} ${%d##*/} 1>>stdout 2>>stderr\n" +
+								"fi\n\n", idx + 1, idx + 1, idx + 1));
+			}
 			idx++;
 		}
 
+		int outIdx = idx;  //backup output first index
+		for (FileHolder fp : commander.getOutFileHolders()) {
+			idx++;
+			if(DatasetType.DIRECTORY.getDesc().equals(fp.getContentType()))
+			{
+				sb.append(String.format("mkdir ${%d##*/}\n", idx));
+			}
+		}
+		
 		sb.append("\necho execute command line\n" +
 				"echo $1 1>>stdout 2>>stderr\n" +
 				"eval $1 1>>stdout 2>>stderr\n" +
 				"((exit_code=exit_code|$?))\n\n");
+		
+		idx = outIdx;
 		for (FileHolder fp : commander.getOutFileHolders()) {
 			idx++;
 			sb.append( String.format("mkdir $actionId/${%d##*/}\n", idx));

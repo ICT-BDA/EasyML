@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8" />
+</head>
+
+<body>
+	<div id="chart_cont">
+		<div class="breadcrumbs" id="breadcrumbs">
+			<script type="text/javascript">
+				try {
+					ace.settings.check('breadcrumbs', 'fixed')
+				} catch (e) {
+				}
+			</script>
+			<ul class="breadcrumb">
+				<li><i class="icon-home home-icon"></i> <a href="#">Home</a></li>
+				<li><a href="#">Charts</a></li>
+			</ul>
+			<!-- .breadcrumb -->
+		</div>
+		<div class="row">
+			<div class="statics-panel">
+				<div class="row">
+					<div class="chart-info-panel">
+						<div class="widget-box transparent">
+							<div class="widget-header chart-title-panel">
+								<h4 class="lighter">
+									<i class="icon-star orange"></i> Chart Feature
+								</h4>
+							</div>
+							<div>
+								<label for="form-field-select-1">Chart Style</label>
+								<button id="chartSelBtn" class="btn  btn-success form-control"
+									data-toggle="modal" data-target="#myModal">Selector</button>
+								<!-- 模态框（Modal） -->
+								<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+									aria-labelledby="myModalLabel" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content chart-style-modal-panel">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal"
+													aria-hidden="true">&times;</button>
+												<h4 class="modal-title" id="myModalLabel">Chart Style
+													Selection</h4>
+											</div>
+											<div
+												class="modal-body chart-selection-content chart-selection-scrollable">
+												<div class="row">
+													<div class="col-xs-12">
+														<!-- PAGE CONTENT BEGINS -->
+														<ul class="ace-thumbnails">
+															<li><a id="bar" href="javascript:void(0)"
+																data-rel="colorbox" onclick="imageSelect(this)"> <img
+																	alt="150x150" style="width: 150px; height: 150px"
+																	src="visual/images/charts/Bar.png" />
+																	<div class="text">
+																		<div class="inner" id="bar_title">Bar</div>
+																	</div>
+															</a></li>
+															<li><a id="line" href="javascript:void(0)"
+																data-rel="colorbox" onclick="imageSelect(this)"> <img
+																	alt="150x150" style="width: 150px; height: 150px"
+																	src="visual/images/charts/Line.png" />
+																	<div class="text">
+																		<div id="line_title" class="inner">Line</div>
+																	</div>
+															</a></li>
+															<li><a id="scatter" href="javascript:void(0)"
+																data-rel="colorbox" onclick="imageSelect(this)"> <img
+																	alt="150x150" style="width: 150px; height: 150px"
+																	src="visual/images/charts/Scatter.png" />
+																	<div class="text">
+																		<div id="scatter_title" class="inner">Scatter</div>
+																	</div>
+															</a></li>
+														</ul>
+													</div>
+													<!-- PAGE CONTENT ENDS -->
+												</div>
+												<!-- /.row -->
+											</div>
+										</div>
+										<!-- /.modal-content -->
+									</div>
+									<!-- /.modal -->
+								</div>
+							</div>
+						</div>
+						<div id="chart_params" class="widget-box transparent"></div>
+					</div>
+					<div class="col-sm-7">
+						<div class="widget-box transparent">
+							<div class="widget-body">
+								<div class="widget-main padding-4">
+									<div id="chart_draw_box" style="width: 750px; height: 500px;">
+									</div>
+								</div>
+								<!-- /widget-main -->
+							</div>
+							<!-- /widget-body -->
+
+						</div>
+						<!-- /widget-box -->
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<script type="text/javascript">
+			jQuery.ajaxSettings.traditional = true;
+			var path = getUrlParam("path");
+			var type = getUrlParam("type");
+			var url_at = getAppPath()+"/restfulapi/visual/statics/getAllCols";
+			var params = {
+				filePath : path,
+				dataType : type
+			}
+			var columns = new Array();
+			$.post(url_at, params, function(data, status) {
+				$.each(data, function(index, item) {
+					var id = data[index];
+					var text = data[index];
+					columns[index] = data[index];
+				});
+			});
+
+			function imageSelect(obj) {
+				var objId = obj.id;
+				var titleId = objId + "_title";
+				var chartCont = $("#" + titleId).text();
+				$("#chartSelBtn").text(chartCont);
+				$("#myModal").modal("hide");
+				var getChartParam = getAppPath()+"/restfulapi/visual/charts/getChartParams";
+				var params = {
+						filePath : path,
+						dataType : type,
+						columns : columns,
+						chartType : chartCont
+				}
+				$.post(getChartParam, params, function(data, status) {
+					var controlObj = eval(data);
+					controlParser(controlObj,'chart_params');
+					switch(objId)
+					{
+					case "bar":
+						drawBarChart('chart_draw_box');
+						break;
+					case "line":
+						drawLineChart('chart_draw_box');
+						break;
+					case "scatter":
+						drawScatterChart('chart_draw_box');
+						break;
+					}
+				});
+			}
+
+		</script>
+	</div>
+
+</body>
+</html>

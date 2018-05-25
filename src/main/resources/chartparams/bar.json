@@ -1,0 +1,47 @@
+{
+	"controls": [
+		{
+			"control_type": "label",
+			"id": "group-label",
+			"value": "Group-By Column:"
+		},
+		{
+		    "control_type":"select",
+		    "id":"group-select",
+		    "multiple":"false",
+		    "value":"",
+		    "onchange":"drawBarChart('chart_draw_box')"
+		},
+		{
+		    "control_type":"label",
+		    "id":"value-label",
+		    "value":"Value Column:"
+		},
+		{
+		   "control_type":"select",
+		   "id":"value-select",
+		   "multiple":"false",
+		   "value":"",
+		   "onchange":"drawBarChart('chart_draw_box')"
+		},
+		{
+		    "control_type":"checkbox",
+		    "id":"value-logchk",
+		    "value":"false",
+		    "label":"Log Scale",
+		    "onclick":"drawBarChart('chart_draw_box')"
+		},
+		{
+		    "control_type":"label",
+		    "id":"aggre-label",
+		    "value":"Aggregation:"
+		},
+		{
+		    "control_type":"select",
+		    "id":"aggre-select",
+		    "multiple":"false",
+		    "value":"average,stand_deviation,count,minimum,maximum",
+		    "onchange":"drawBarChart('chart_draw_box')"
+	    }
+	]
+}

@@ -1,0 +1,16 @@
+{
+	"controls": [
+		{
+			"control_type": "label",
+			"id": "series-label",
+			"value": "Plot Series:"
+		},
+		{
+		    "control_type":"select",
+		    "id":"group-select",
+		    "multiple":"true",
+		    "value":"",
+		    "onchange":"drawLineChart('chart_draw_box')"
+		}
+	]
+}

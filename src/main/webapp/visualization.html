@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8" />
+<title>EML Visualization</title>
+<meta name="keywords" content="BDA" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- basic styles -->
+<link href="visual/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="visual/css/font-awesome.min.css" />
+<link rel="stylesheet"
+	href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
+<link rel="stylesheet" href="visual/css/ace.min.css" />
+<link rel="stylesheet" href="visual/css/ace-rtl.min.css" />
+<link rel="stylesheet" href="visual/css/eml-visual.css" />
+<!-- ace scripts -->
+<script src="visual/js/jquery-2.0.3.min.js"></script>
+<script src="visual/js/jquery.mobile.custom.min.js"></script>
+<script src="visual/js/ace-elements.min.js"></script>
+<script src="visual/js/ace.min.js"></script>
+<script src="visual/js/ace-extra.min.js"></script>
+<script src="visual/js/bootstrap.min.js"></script>
+<script src="visual/js/typeahead-bs2.min.js"></script>
+
+<!-- page specific plugin scripts -->
+<script src="visual/js/datatables.min.js"></script>
+<script src="visual/js/jquery.dataTables.bootstrap.js"></script>
+<script src="visual/js/echarts.min.4.0.js"></script>
+<script src="visual/js/aes.js"></script>
+<script src="visual/js/eml-visual.js"></script>
+<script src="visual/js/charts/chart.js"></script>
+<script src="visual/js/charts/common.js"></script>
+</head>
+
+<body>
+	<div class="navbar navbar-default" id="navbar">
+		<script type="text/javascript">
+			try {
+				ace.settings.check('navbar', 'fixed')
+			} catch (e) {
+			}
+		</script>
+		<div class="navbar-container" id="navbar-container">
+			<div class="navbar-header pull-left">
+				<div class="bda-logo">
+				         <img src="welcome/img/EMLLogo.png" height="35px">
+				</div>
+				<a href="index.html" class="navbar-brand"> 
+				<small>  
+				       Visualization
+				</small>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="main-container" id="main-container">
+		<script type="text/javascript">
+			try {
+				ace.settings.check('main-container', 'fixed')
+			} catch (e) {
+			}
+		</script>
+		<div class="main-container-inner">
+			<a class="menu-toggler" id="menu-toggler" href="#"> <span
+				class="menu-text"></span>
+			</a>
+			<div class="sidebar" id="sidebar">
+				<script type="text/javascript">
+					try {
+						ace.settings.check('sidebar', 'fixed')
+					} catch (e) {
+					}
+				</script>
+				<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+					<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+						<button class="btn btn-success">
+							<i class="icon-signal"></i>
+						</button>
+						<button class="btn btn-info">
+							<i class="icon-pencil"></i>
+						</button>
+						<button class="btn btn-warning">
+							<i class="icon-group"></i>
+						</button>
+						<button class="btn btn-danger">
+							<i class="icon-cogs"></i>
+						</button>
+					</div>
+					<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+						<span class="btn btn-success"></span> <span class="btn btn-info"></span>
+						<span class="btn btn-warning"></span> <span class="btn btn-danger"></span>
+					</div>
+				</div>
+				<!-- #sidebar-shortcuts -->
+				<ul class="nav nav-list">
+					<li class="active" id="data_nav"><a href="javascript:void(0)"
+						id="data_link" onclick="navSelect(this)"> <i class="icon-list"></i>
+							<span class="menu-text"> Data </span>
+					</a></li>
+					<li id="statics_nav"><a href="javascript:void(0)"
+						id="statics_link" onclick="navSelect(this)"> <i
+							class="icon-dashboard"></i> <span class="menu-text">
+								Statistics </span>
+					</a></li>
+					<li id="charts_nav"><a href="javascript:void(0)"
+						id="charts_link" onclick="navSelect(this)"> <i
+							class="icon-picture"></i> <span class="menu-text">
+								Charts </span>
+					</a></li>
+					<div class="sidebar-collapse" id="sidebar-collapse">
+						<i class="icon-double-angle-left"
+							data-icon1="icon-double-angle-left"
+							data-icon2="icon-double-angle-right"></i>
+					</div>
+					<script type="text/javascript">
+						try {
+							ace.settings.check('sidebar', 'collapsed')
+						} catch (e) {
+						}
+					</script>
+			</div>
+			<div class="main-content">
+				<script type="text/javascript">
+					$(".main-content").load(
+							"tables.html" + ' #data_cont',
+							function(result) {
+								$result = $(result);
+								$result.find("script")
+										.appendTo(".main-content")
+							}).fadeIn('slow');
+				</script>
+			</div>
+		</div>
+	</div>
+	<a href="#" id="btn-scroll-up"
+		class="btn-scroll-up btn btn-sm btn-inverse"> <i
+		class="icon-double-angle-up icon-only bigger-110"></i>
+	</a>
+	</div>
+</body>
+
+</html>

@@ -11,7 +11,7 @@
     	<div class="bda-header_bg">
         	<div class="bda-wrap">
                 <div class="bda-logo">
-                    <a href="index.html"><img src="img/EMLLogo.png" alt="" /></a>
+                    <a href="index.html"><img src="welcome/img/EMLLogo.png" alt="" /></a>
                 </div>
                 <div class="bda-h_menu bda-h_icon">
                 	<ul><li><g:Anchor ui:field="register">用户注册</g:Anchor></li></ul>

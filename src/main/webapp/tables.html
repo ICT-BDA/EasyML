@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="utf-8" />
+</head>
+
+<body>
+	<div id="data_cont">
+		<div class="breadcrumbs" id="breadcrumbs">
+			<script type="text/javascript">
+				try {
+					ace.settings.check('breadcrumbs', 'fixed')
+				} catch (e) {
+				}
+			</script>
+			<ul class="breadcrumb">
+				<li><i class="icon-home home-icon"></i> <a href="#">Home</a></li>
+				<li><a href="#">Data Tables</a></li>
+			</ul>
+			<!-- .breadcrumb -->
+		</div>
+		<div class="page-content">
+			<div class="row" id="data_table">
+				<div class="col-xs-12">
+					<div class="table-header" id="data_name">Results for </div>
+					<div class="table-responsive">
+						<table id="data-table" class="table table-striped table-bordered table-hover">
+						</table>
+					</div>
+				</div>
+
+			</div>
+			<!-- PAGE CONTENT ENDS -->
+		</div>
+		<script type="text/javascript">
+			var path = getUrlParam('path');
+			var type = getUrlParam('type');
+			var getCol =getAppPath()+ '/restfulapi/visual/statics/getAllCols';
+			var getDataTable =getAppPath()+ '/restfulapi/visual/statics/getDataTable';
+			var getDataSize =getAppPath()+ '/restfulapi/visual/statics/getTotalSize';
+			var params = {
+				filePath : path,
+				dataType : type
+			};
+			var columns;
+			var rows ;
+		    
+			var pathArr = path.split('/');
+			var data_name = pathArr[pathArr.length-1];
+			$('#data_name').text($('#data_name').text()+data_name);
+			
+			$.post(getCol, params, function(data, status) {
+				columns = data;
+				$.post(getDataSize, params, function(data, status){
+					rows = data;
+					let titles = columns.map((s) => { return { title: s } })
+					$('#data-table').DataTable({
+						serverSide: true,
+						processing: true,
+						ordering: false,
+						searching: false,
+						ajax: {
+							url: getDataTable,
+							data: { filePath: path, dataType: type, cols : columns, totalSize: rows}
+						},
+						columns: titles
+					});
+				});				
+			});
+		</script>
+	</div>
+	<!-- /.col -->
+	<!-- inline scripts related to this page -->
+</body>
+
+</html>

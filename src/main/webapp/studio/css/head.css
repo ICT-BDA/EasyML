@@ -1,0 +1,126 @@
+body, table td, select, button{
+	font-family: Arial,"黑体" !important;
+}
+
+
+.bda-header_bg {
+    /* background: #f9f9f9; */
+    background-image:  linear-gradient(to bottom, #5C6780, #284869);
+    border-bottom: 1px solid #D4D4D4;
+    height: 35px;
+    padding: 2px;
+    font-size: 18px;
+}
+
+.bda-header {
+    padding: 0%;
+}
+
+.bda-wrap {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.bda-logo {
+    float: left;
+    vertical-align:middle;
+    padding-left: 70px;
+}
+.bda-logo img{
+	height: 30px;
+    margin-top: 0px;
+}
+
+.bda-h_menu {
+    float: left;
+    color: #ffffff;
+  	margin-top: 3px;
+}
+
+.bda-h_menu ul{
+	margin: 0px;
+	margin-left: 80px;
+	padding: 0px;
+}
+
+.bda-h_menu ul li {
+    display: inline-block;
+    vertical-align: middle;
+/*    min-width: 80px;
+    text-align: center;*/
+}
+/*
+.bda-h_menu ul li:hover {
+    text-decoration: none;
+    color: #FFFFFF;
+    background: #4CCFC1;
+    border-radius: 5px;
+}
+*/
+.bda-h_menu ul li a:hover {
+    text-decoration: none;
+    color: #FFFFFF;
+    background: #4CCFC1;
+    border-radius: 5px;
+}
+
+.bda-h_menu ul li a {
+   /* display: block;*/
+    margin: 2px;
+    padding: 5px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 10pt;
+    color: #ffffff;
+    border: none;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.bda-h_menu ul li.bda-active div {
+    text-decoration: none;
+    color: #FFFFFF;
+    background: #4CCFC1;
+    border-radius: 5px;
+}
+
+.current {
+    text-decoration: none;
+    color: #FFFFFF;
+    background: #4CCFC1;
+    border-radius: 5px;
+    min-width: 80px;
+    text-align: center;
+}
+
+.bda-h_icon {
+   float: right;
+   /*margin: 5px;*/
+}
+
+.bda-login-menu{
+	background: url(../img/login_white.png) no-repeat 20% 50%;
+}
+
+.bda-logout-menu{
+	background: url(../img/logout_white.png) no-repeat 20% 50%;
+}
+
+.bda-log-menu{
+	background-size: auto 17px;
+    width: 100px;
+    height: 30px !important;
+    display: inline;
+    text-decoration: initial;
+    cursor: pointer;
+}
+
+.bda-log-menu a{
+	font-size: 10pt;
+    color: #ffffff;
+    padding-left: 30px !important;
+    font-style: normal;
+}
+

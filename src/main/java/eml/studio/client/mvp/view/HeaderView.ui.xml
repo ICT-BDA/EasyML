@@ -12,7 +12,7 @@
 	    <div class="bda-wrap">
 			<div class="bda-headerView">
         		<div class="bda-logo">
-                    <a href="index.html"><img src="img/EMLLogo.png" alt="" /></a>
+                    <a href="index.html"><img src="welcome/img/EMLLogo.png" alt="" /></a>
                 </div>
 				<g:HTMLPanel styleName="bda-h_menu" ui:field="navMenu">
                 <!-- <div class="bda-h_menu"> -->

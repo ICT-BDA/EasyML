@@ -5,12 +5,16 @@
  */
 package eml.studio.client.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Logger;
 
 import eml.studio.client.mvp.AppController;
 import eml.studio.client.mvp.presenter.MonitorPresenter.View;
 import eml.studio.client.mvp.presenter.Presenter;
+import eml.studio.client.rpc.AesService;
+import eml.studio.client.rpc.AesServiceAsync;
 import eml.studio.client.rpc.CategoryService;
 import eml.studio.client.rpc.CategoryServiceAsync;
 import eml.studio.client.rpc.DatasetService;
@@ -21,7 +25,6 @@ import eml.studio.client.ui.binding.DatasetBinder;
 import eml.studio.client.ui.panel.component.DescribeGrid;
 import eml.studio.client.ui.binding.ProgramBinder;
 import eml.studio.client.ui.panel.DataTypeSelectPanel;
-import eml.studio.client.ui.panel.DataVisualPopPanel;
 import eml.studio.client.ui.panel.EditDatasetPanel;
 import eml.studio.client.ui.panel.EditProgramPanel;
 import eml.studio.client.ui.panel.PreviewPopupPanel;
@@ -57,7 +60,7 @@ public class DBController {
 	public static ProgramServiceAsync programSrv = GWT.create(ProgramService.class);
 	public static DatasetServiceAsync datasetSrv = GWT.create(DatasetService.class);
 	public static CategoryServiceAsync categorySrv = GWT.create(CategoryService.class);
-
+	public static AesServiceAsync aesSrv = GWT.create(AesService.class);
 	public static ProgramBinder programBinder = GWT.create(ProgramBinder.class);
 	public static DatasetBinder datasetBinder = GWT.create(DatasetBinder.class);
 	private static Logger logger = Logger.getLogger(DBController.class.getName());
@@ -606,18 +609,33 @@ public class DBController {
 					return;
 				if(result.getContenttype() == null)
 				{
-					Window.alert("Data type is not defined ，please select the data type first！");
+					Window.alert("Data type is not defined, please select the data type first！");
 					DataTypeSelectPanel dataSelectPanel = new DataTypeSelectPanel(path,result);
 					dataSelectPanel.getDescLabel().setText("Data Type Selection - " + result.getName());
 					dataSelectPanel.center();
 				}
 				else if(result.getContenttype().equals(DatasetType.GENERAL.getDesc()))
-					Window.alert("Visualization only support json、tsv、csv data type！");
+					Window.alert("Visualization only support json、tsv、csv data type! ");
 				else
 				{
-					DataVisualPopPanel chartPopPanel = new DataVisualPopPanel(path	,result);
-					chartPopPanel.getDescLabel().setText("Data Visualization - " + result.getName());
-					chartPopPanel.center();
+					List<String> conts = new ArrayList<String>();
+					conts.add(path);
+					conts.add(result.getContenttype());
+					aesSrv.aesEncrypt(conts,  new AsyncCallback<List<String>>(){
+
+						@Override
+						public void onFailure(Throwable caught) {
+							// TODO Auto-generated method stub
+							logger.info(caught.getMessage());
+						}
+
+						@Override
+						public void onSuccess(List<String> result) {
+							// TODO Auto-generated method stub
+							Window.open("visualization.html?"+"path="+result.get(0)+"&type="+result.get(1), "BDA Visualization", "");
+						}
+						
+					});
 				}
 			}
 		});

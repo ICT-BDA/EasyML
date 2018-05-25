@@ -3,6 +3,9 @@
     <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
+        <dependent-module archiveName="ECharts-2.2.7.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ECharts/ECharts">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="EMLstudio"/>
         <property name="java-output-path" value="/EMLstudio/target/EMLstudio-0.1/WEB-INF/classes"/>
   </wb-module>

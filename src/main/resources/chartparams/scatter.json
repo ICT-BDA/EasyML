@@ -1,0 +1,55 @@
+{
+	"controls": [
+		{
+			"control_type": "label",
+			"id": "x-label",
+			"value": "x-Axis:"
+		},
+		{
+		    "control_type":"select",
+		    "id":"x-select",
+		    "multiple":"false",
+		    "value":"",
+		    "onchange":"drawScatterChart('chart_draw_box')"
+		},
+		{
+		    "control_type":"checkbox",
+		    "id":"x-logchk",
+		    "value":"false",
+		    "label":"Log Scale",
+		    "onclick":"drawScatterChart('chart_draw_box')"
+		},
+		{
+		   "control_type":"label",
+		   "id":"y-label",
+		   "value":"y-Axis:"
+		},
+		{
+		    "control_type":"select",
+		    "id":"y-select",
+		    "multiple":"false",
+		    "value":"",
+		    "onchange":"drawScatterChart('chart_draw_box')"
+		    
+		},
+		{
+		    "control_type":"checkbox",
+		    "id":"y-logchk",
+		    "value":"false",
+		    "label":"Log Scale",
+		    "onclick":"drawScatterChart('chart_draw_box')"
+	    },
+	    {
+	        "control_type":"label",
+	        "id":"color_label",
+	        "value":"Color Column:"
+	    },
+	    {
+		    "control_type":"select",
+		    "id":"color-select",
+		    "multiple":"false",
+		    "value":"",
+		    "onchange":"drawScatterChart('chart_draw_box')"
+	    }
+	]
+}

@@ -122,24 +122,6 @@
 	</servlet-mapping>
 
 	<servlet>
-		<servlet-name>chartService</servlet-name>
-		<servlet-class>eml.studio.server.rpc.ChartServiceImpl</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>chartService</servlet-name>
-		<url-pattern>/EMLStudio/chartservice</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
-		<servlet-name>dataAnalysisService</servlet-name>
-		<servlet-class>eml.studio.server.rpc.DataAnalysisServiceImpl</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>dataAnalysisService</servlet-name>
-		<url-pattern>/EMLStudio/analysisservice</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
 		<servlet-name>mailService</servlet-name>
 		<servlet-class>eml.studio.server.rpc.MailServiceImpl</servlet-class>
 	</servlet>
@@ -150,6 +132,31 @@
 	<servlet-mapping>
 		<servlet-name>mailService</servlet-name>
 		<url-pattern>/IndexPage/mailService</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>aesService</servlet-name>
+		<servlet-class>eml.studio.server.rpc.AesServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>aesService</servlet-name>
+		<url-pattern>/EMLStudio/aesservice</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Jersey Servlet -->
+	<servlet>
+		<servlet-name>VisualizationServlet</servlet-name>
+		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+		<init-param>
+			<param-name>jersey.config.server.provider.packages</param-name>
+			<param-value>
+				eml.studio.server.visual.restful
+			</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>VisualizationServlet</servlet-name>
+		<url-pattern>/restfulapi/visual/*</url-pattern>
 	</servlet-mapping>
 
 	<welcome-file-list>

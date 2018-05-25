@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="utf-8" />
+</head>
+
+<body>
+
+	<div id="statics_cont">
+		<div class="breadcrumbs" id="breadcrumbs">
+			<script type="text/javascript">
+				try {
+					ace.settings.check('breadcrumbs', 'fixed')
+				} catch (e) {
+				}
+			</script>
+
+			<ul class="breadcrumb">
+				<li><i class="icon-home home-icon"></i> <a href="#">Home</a></li>
+
+				<li><a href="#">Statistics</a></li>
+			</ul>
+			<!-- .breadcrumb -->
+
+		</div>
+		<div class="row">
+			<div class="statics-panel">
+				<div class="row">
+					<div class="col-sm-5">
+						<div class="widget-box transparent">
+							<div class="widget-header statics-info-panel">
+								<h4 class="lighter">
+									<i class="icon-star orange"></i> Statics Information
+								</h4>
+							</div>
+
+							<div>
+								<label for="form-field-select-1">Column</label> <select
+									class="form-control" id="data_column_selector"
+									onchange="extractDataFeature();drawFreqChart('freq_chart')">
+								</select>
+
+							</div>
+							<div class="widget-box transparent">
+								<div class="widget-body">
+									<div class="widget-main no-padding">
+										<table class="table table-bordered table-striped">
+											<thead class="thin-border-bottom">
+												<tr>
+													<th><i class="icon-caret-right blue"></i> Feature Name
+													</th>
+
+													<th><i class="icon-caret-right blue"></i> Value</th>
+												</tr>
+											</thead>
+
+											<tbody>
+												<tr>
+													<td>Type</td>
+
+													<td><b class="green" id="data_type">----</b></td>
+
+												</tr>
+
+												<tr>
+													<td>Mean</td>
+
+													<td><b class="green" id="mean">----</b></td>
+
+												</tr>
+
+												<tr>
+													<td>Median</td>
+
+													<td><b class="green" id="median">----</b></td>
+												</tr>
+
+												<tr>
+													<td>Max</td>
+
+													<td><b class="green" id="max">----</b></td>
+												</tr>
+
+												<tr>
+													<td>Min</td>
+
+													<td><b class="green" id="min">----</b></td>
+												</tr>
+												<tr>
+													<td>Deviation</td>
+
+													<td><b class="green" id="deviation">----</b></td>
+												</tr>
+												<tr>
+													<td>Unique Values</td>
+
+													<td><b class="green" id="unique">----</b></td>
+												</tr>
+												<tr>
+													<td>Missing Values</td>
+
+													<td><b class="green" id="missing">----</b></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<!-- /widget-main -->
+								</div>
+								<!-- /widget-body -->
+							</div>
+							<!-- /widget-box -->
+						</div>
+						<!-- /widget-box -->
+					</div>
+
+					<div class="col-sm-7">
+						<div class="widget-box transparent">
+							<div class="widget-header statics-chart-panel">
+								<h4 class="lighter">
+									<i class="icon-signal"></i> Frequency Distribution
+								</h4>
+
+							</div>
+
+							<div class="widget-body">
+								<div class="widget-main padding-4">
+									<div id="freq_chart" style="width: 550px; height: 400px;">
+									</div>
+								</div>
+								<!-- /widget-main -->
+							</div>
+							<!-- /widget-body -->
+							<div class="checkbox">
+								<label> <input name="form-field-checkbox"
+									class="ace ace-checkbox-2" type="checkbox" id="logScale"
+									onclick="drawFreqChart('freq_chart')" /> <span class="lbl"> Log
+										Scale</span>
+								</label>
+							</div>
+							<div class="bin-from-group">
+								<label class="col-sm-3 control-label no-padding-right"
+									for="form-field-1"> Bin Size </label>
+
+								<div class="col-sm-9">
+									<input type="text" id="bins" class="col-xs-10 col-sm-5"
+										value="10" onchange="drawFreqChart('freq_chart')" />
+								</div>
+							</div>
+						</div>
+						<!-- /widget-box -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			jQuery.ajaxSettings.traditional = true;
+			var path = getUrlParam("path");
+			var type = getUrlParam("type");
+			var url_at = getAppPath()+"/restfulapi/visual/statics/getAllCols";
+			var params = {
+				filePath : path,
+				dataType : type
+			}
+			var columns = new Array();
+
+			$.post(url_at, params, function(data, status) {
+				$.each(data, function(index, item) {
+					var id = data[index];
+					var text = data[index];
+					columns[index] = data[index];
+					$("#data_column_selector").append(
+							"<option value='"+id+"'>" + text + "</option>");
+				});
+				$("#data_column_selector").trigger("change");
+			});
+
+			function extractDataFeature() {
+				var selectedColumn = $("#data_column_selector").val();
+				var url_at = getAppPath()+"/restfulapi/visual/statics/getColFeature";
+				var params = {
+					filePath : path,
+					dataType : type,
+					columns : columns,
+					selectedCol : selectedColumn
+				}
+				$.post(url_at, params, function(data, status) {
+					if (data.numberic == true) {
+						$("#data_type").text("Numberic Data");
+						$("#mean").text(data.mean);
+						$("#median").text(data.median);
+						$("#max").text(data.max);
+						$("#min").text(data.min);
+						$("#deviation").text(data.standDeviation);
+						$("#unique").text(data.uniqueValues);
+						$("#missing").text(data.missingValues);
+					} else {
+						$("#data_type").text("String Data");
+						$("#mean").text("----");
+						$("#median").text("----");
+						$("#max").text("----");
+						$("#min").text("----");
+						$("#deviation").text("----");
+						$("#unique").text(data.uniqueValues);
+						$("#missing").text(data.missingValues);
+					}
+				});
+			}
+
+		</script>
+
+	</div>
+
+</body>
+</html>

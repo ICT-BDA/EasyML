@@ -54,7 +54,7 @@ public class FileUploader extends VerticalPanel {
 	protected HorizontalPanel horizontalPanel = new HorizontalPanel();
 	protected final VerticalPanel progressBarPanel = new VerticalPanel();
 	protected CancelProgressBarTextFormatter cancelProgressBarTextFormatter = new CancelProgressBarTextFormatter();
-	protected final Image dropFilesLabel = new Image("img/droparea.png");
+	protected final Image dropFilesLabel = new Image("studio/img/droparea.png");
 	protected final Uploader uploader = new Uploader();
 	protected String fileQueuedName = null;
 	protected String fileQueuedId = null;
@@ -67,7 +67,7 @@ public class FileUploader extends VerticalPanel {
 
 	public void init() {
 
-		uploader.setButtonImageURL("img/uploadimg.png").setButtonWidth(32)
+		uploader.setButtonImageURL("studio/img/uploadimg.png").setButtonWidth(32)
 		.setButtonHeight(32)
 		.setButtonCursor(Uploader.Cursor.HAND);
 

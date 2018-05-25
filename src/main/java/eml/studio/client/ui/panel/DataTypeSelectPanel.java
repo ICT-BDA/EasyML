@@ -5,16 +5,17 @@
  */
 package eml.studio.client.ui.panel;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
-import eml.studio.shared.model.Dataset;
-import eml.studio.shared.util.DatasetType;
-
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -23,12 +24,18 @@ import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
+import eml.studio.client.rpc.AesService;
+import eml.studio.client.rpc.AesServiceAsync;
+import eml.studio.shared.model.Dataset;
+import eml.studio.shared.util.DatasetType;
+
 /**
  * Result data type selection popup panel( for data visiualization)
  *
  */
 public class DataTypeSelectPanel extends PopupPanel{
-	protected static Logger logger = Logger.getLogger(DataVisualPopPanel.class.getName());
+	protected static Logger logger = Logger.getLogger(DataTypeSelectPanel.class.getName());
+	protected static AesServiceAsync aesSrv = GWT.create(AesService.class);
 	private final Label desc = new Label("Data Type Selection");
 	private HTML closeButton = new HTML("X");
 	private  ListBox typeListBox;
@@ -136,9 +143,24 @@ public class DataTypeSelectPanel extends PopupPanel{
 					Window.alert("Visualization only support data for json、tsv or csv!");
 				else
 				{
-					DataVisualPopPanel chartPopPanel = new DataVisualPopPanel(filePath,dataset);
-					chartPopPanel.getDescLabel().setText("Data Visualization - " + dataset.getName());
-					chartPopPanel.center();
+					List<String> conts = new ArrayList<String>();
+					conts.add(filePath);
+					conts.add(dataset.getContenttype());
+					aesSrv.aesEncrypt(conts,  new AsyncCallback<List<String>>(){
+
+						@Override
+						public void onFailure(Throwable caught) {
+							// TODO Auto-generated method stub
+							logger.info(caught.getMessage());
+						}
+
+						@Override
+						public void onSuccess(List<String> result) {
+							// TODO Auto-generated method stub
+							Window.open("visualization.html?"+"path="+result.get(0)+"&type="+result.get(1), "BDA Visualization", "");
+						}
+						
+					});
 				}
 			}
 

@@ -77,7 +77,7 @@ body {
 }
 .h_search input[type="submit"]{
 	-webkit-appearance: none;
-	background: url('../images/search.png') no-repeat 10px 5px;
+	background: url('../img/search.png') no-repeat 10px 5px;
 	padding: 6px 0px;
 	border: none;
 	cursor: pointer;
@@ -88,7 +88,7 @@ body {
 	right: 0px;
 }
 .h_search input[type="submit"]:hover {
-	background: url('../images/search_h.png') no-repeat 10px 5px;
+	background: url('../img/search_h.png') no-repeat 10px 5px;
 }
 /*------start-top-nav------*/
 .top-nav {
@@ -156,7 +156,7 @@ body {
 	padding: 5px 0;
 }
 .top-nav-right input[type="submit"]{
-	background: url(../images/search-icon.png) no-repeat 42% 50% #bd7f1c;
+	background: url(../img/search_h.png) no-repeat 42% 50% #bd7f1c;
 	padding:10px 20px;
 	border: none;
 	display: block;
@@ -169,7 +169,7 @@ body {
 	-webkit-transition: 0.5s ease;
 }
 .top-nav-right input[type="submit"]:hover{
-	background: url(../images/search-icon.png) no-repeat 42% 50% #996004;
+	background: url(../img/search_h.png) no-repeat 42% 50% #996004;
 }
 .top-nav-right input[type="text"]{
 	border:none;
@@ -206,7 +206,7 @@ body {
 }
 .search_box form input[type="submit"] {
 	-webkit-appearance: none;
-	background: url('../images/search.png') no-repeat 10px 5px;
+	background: url('../img/search.png') no-repeat 10px 5px;
 	padding: 6px 0px;
 	border: none;
 	cursor: pointer;
@@ -574,7 +574,7 @@ body {
 	height: 34px;
 	border: none;
 	text-indent: 100%;
-	background: url(../images/top_move.png) no-repeat right top;
+	background: url(../img/top_move.png) no-repeat right top;
 }
 .copy{
 	text-align:center;
@@ -1064,7 +1064,7 @@ p.para{
 	background: #4CCFC1;
 }
 .single-nav li {
-	list-style-image: url(../images/marker1.gif);
+	list-style-image: url(../img/marker1.gif);
 	border-bottom: 1px dotted #E8E8E8;
 }
 .single-nav li a {
@@ -1303,7 +1303,7 @@ p.para{
 	font-family: Arial,"黑体";
 }
 .content ul li:before{
-	content: url('../images/arrow.png');
+	content: url('../img/arrow.png');
 	padding-top: 4px;
 	padding-right: 8px;
 	display: inline-block;

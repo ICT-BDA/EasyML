@@ -74,7 +74,7 @@ public class LinkUtils {
 				long minute = ((between/(60*1000)) - day*24*60 - hour*60);
 				long second = (between/1000 - day*24*60*60 - hour*60*60 - minute*60);
 				//The account.verifylink is verify link flag，ok：verification passed，other：first verification
-				if (!temp.getVerifylink().equals("ok")){				//Not ok: first verification
+				if (temp.getVerifylink()==null || !temp.getVerifylink().equals("ok")){				//Not ok: first verification
 					if(second > 1800){									//Over valid date
 						return "timed_out" + " " + temp.getEmail();	
 					}else{												//Not over valid date

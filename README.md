@@ -84,7 +84,7 @@ If you have any advice or problems when you expericen our system, welcome to con
 ## Acknowledgements
 The following people contributed to the development of the EasyML project：
 
-* **Jun Xu**, Institute of Computing Technolgy, Chinese Academy of Sciences. Homepage: [http://www.bigdatalab.ac.cn/~junxu](http://www.bigdatalab.ac.cn/~junxu)
+* **Jun Xu**, School of Information, Renmin University of China. Homepage: [http://info.ruc.edu.cn/academic_professor.php?teacher_id=169](http://info.ruc.edu.cn/academic_professor.php?teacher_id=169)
 * **Xiaohui Yan**, Homepage: [http://xiaohuiyan.github.io/](http://xiaohuiyan.github.io/) 
 * **Xinjie Chen**,  Institute of Computing Technolgy, Chinese Academy of Sciences
 * **Zhaohui Li**,  Institute of Computing Technolgy, Chinese Academy of Sciences
